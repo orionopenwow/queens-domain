@@ -1,0 +1,16 @@
+{
+  "name": "ai-game-studio",
+  "version": "0.2.0",
+  "private": true,
+  "description": "StarCraft-styled vibe-coding game planner: step-by-step AI prompts, model auditor, local-model hardware ratings, and dev console wizard.",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node tests/run.js",
+    "dev-wizard": "node scripts/dev-console-wizard.js",
+    "dev-wizard:auto": "node scripts/dev-console-wizard.js --auto --repo=ai-game-studio",
+    "dev-wizard:names": "node scripts/dev-console-wizard.js --names",
+    "audit:security": "node scripts/dev-console-wizard.js --audit",
+    "install-shortcut": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install.ps1"
+  },
+  "engines": { "node": ">=18.15" }
+}
