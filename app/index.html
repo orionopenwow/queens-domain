@@ -535,6 +535,17 @@ textarea:focus,input:focus{border-color:var(--gold);box-shadow:0 0 8px rgba(220,
     </div>
   </header>
 
+  <!-- Auto-Update Alert Banner (Revealed when a new commit/release is out on GitHub) -->
+  <div id="sb-update-banner" style="display:none;background:linear-gradient(135deg,#382c16 0%,#1f160b 100%);border:1px solid var(--gold);border-radius:8px;padding:8px 10px;margin-bottom:8px;box-shadow:0 0 14px rgba(220,179,123,.35)">
+    <div style="font-size:11px;font-weight:bold;color:var(--gold);margin-bottom:4px;display:flex;align-items:center;gap:6px">
+      <span>✨ NEW UPDATE DETECTED</span>
+    </div>
+    <div id="sb-update-msg" style="font-size:10.5px;color:var(--text);margin-bottom:6px;line-height:1.35;word-break:break-word"></div>
+    <button class="btn gold" id="sb-update-btn" style="width:100%;font-size:11.5px;padding:6px;border-radius:6px;text-align:center;justify-content:center;cursor:pointer">
+      📥 Update & Restart
+    </button>
+  </div>
+
   <!-- PLATFORM Section -->
   <div class="sb-section-title">PLATFORM</div>
   <button id="sb-agent-connect" class="sb-btn"><span>🤖 Plug AI Agents</span></button>
@@ -554,6 +565,7 @@ textarea:focus,input:focus{border-color:var(--gold);box-shadow:0 0 8px rgba(220,
 
   <!-- Tucked Utility Controls (Combined on the left side under menu options) -->
   <div class="header-actions" id="hdr-desktop-ctrls" style="display:flex;gap:4px;margin:6px 0 4px 0;padding:6px 0 0 0;border-top:1px solid rgba(220,179,123,.18);border-left:none">
+    <button class="icon-btn" id="btn-check-updates" title="Check for Launcher Updates from GitHub" style="padding:5px 6px;font-size:11px;border-radius:6px;color:var(--gold)">⚡ Update</button>
     <button class="icon-btn" id="btn-fs-toggle" title="Toggle Desktop Fullscreen (F11)" style="flex:1;text-align:center;padding:5px 6px;font-size:11px;border-radius:6px">⛶ Fullscreen</button>
     <button class="icon-btn" id="btn-reload" title="Refresh Interface (Ctrl+R)" style="padding:5px 8px;font-size:11px;border-radius:6px">🔄</button>
     <button class="icon-btn" id="btn-help" title="Open Game Architecture Guide & Academy" style="padding:5px 8px;font-size:11px;border-radius:6px">❓ Guide</button>
@@ -3294,6 +3306,70 @@ document.addEventListener('keydown', e => {
     }
   }
 });
+
+// ---------- Auto-Update & Launcher Restart ----------
+const updateBanner = $('sb-update-banner');
+const updateMsg = $('sb-update-msg');
+const updateBtn = $('sb-update-btn');
+const checkUpdatesBtn = $('btn-check-updates');
+
+async function checkForUpdates(manual = false) {
+  try {
+    const res = await fetch('/api/launcher/update-check');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data && data.updateAvailable) {
+      if (updateBanner) updateBanner.style.display = 'block';
+      if (updateMsg) updateMsg.textContent = `${data.remoteSha || 'Latest'}: ${data.message || 'New features available'}`;
+      toast('✨ NEW LAUNCHER UPDATE AVAILABLE');
+    } else if (manual) {
+      toast('YOU ARE ON THE LATEST VERSION (' + (data.localSha || 'LATEST') + ')');
+    }
+  } catch (e) {
+    if (manual) toast('UPDATE CHECK FAILED: ' + e.message);
+  }
+}
+
+if (checkUpdatesBtn) {
+  checkUpdatesBtn.onclick = () => {
+    toast('CHECKING GITHUB FOR UPDATES...');
+    checkForUpdates(true);
+  };
+}
+
+if (updateBtn) {
+  updateBtn.onclick = async () => {
+    if (confirm('Download latest update and restart Queen\'s Domain?')) {
+      updateBtn.disabled = true;
+      updateBtn.textContent = 'Updating...';
+      toast('DOWNLOADING UPDATE & RESTARTING...');
+      try {
+        const r = await fetch('/api/launcher/update-apply', { method: 'POST' });
+        const j = await r.json();
+        if (j.error) throw new Error(j.error);
+        if (updateMsg) updateMsg.textContent = 'Restarting launcher in 3 seconds...';
+        let tries = 0;
+        const poll = setInterval(async () => {
+          tries++;
+          try {
+            await fetch('/api/ping');
+            clearInterval(poll);
+            window.location.reload();
+          } catch (e) {
+            if (tries > 15) { clearInterval(poll); window.location.reload(); }
+          }
+        }, 1000);
+      } catch (err) {
+        updateBtn.disabled = false;
+        updateBtn.textContent = 'Update & Restart';
+        toast('UPDATE FAILED: ' + err.message);
+      }
+    }
+  };
+}
+
+setTimeout(() => checkForUpdates(false), 3000);
+setInterval(() => checkForUpdates(false), 600000);
 
 document.querySelector('[data-t=projects]').addEventListener('click',()=>{if(!wz)showWiz(false);renderProjects()});
 

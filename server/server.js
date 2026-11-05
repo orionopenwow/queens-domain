@@ -881,6 +881,67 @@ http.createServer(async (req, res) => {
       res.writeHead(200, { 'Content-Type': 'application/x-ndjson' });
       for await (const c of r.body) res.write(c); return res.end();
     }
+    if (req.url === '/api/launcher/update-check' && req.method === 'GET') {
+      const rootDir = path.join(__dirname, '..');
+      let localSha = '';
+      try {
+        localSha = (await new Promise((res, rej) => execFile('git', ['rev-parse', 'HEAD'], { cwd: rootDir, windowsHide: true }, (err, stdout) => err ? rej(err) : res(stdout)))).trim();
+      } catch {}
+
+      try {
+        const ghRes = await fetch('https://api.github.com/repos/orionopenwow/queens-domain/commits/main', {
+          headers: { 'User-Agent': 'QueensDomain-Launcher', 'Accept': 'application/vnd.github.v3+json' },
+          signal: AbortSignal.timeout(6000)
+        });
+        if (!ghRes.ok) return send(res, 200, { updateAvailable: false, error: 'GitHub responded with ' + ghRes.status });
+        const ghData = await ghRes.json();
+        const remoteSha = String(ghData.sha || '');
+        const message = String(ghData.commit?.message || '').split('\n')[0].slice(0, 80);
+        const date = String(ghData.commit?.author?.date || '');
+        const hasUpdate = !!(remoteSha && localSha && remoteSha !== localSha);
+        return send(res, 200, {
+          updateAvailable: hasUpdate,
+          localSha: localSha ? localSha.slice(0, 7) : 'current',
+          remoteSha: remoteSha.slice(0, 7),
+          message,
+          date,
+          isGit: !!localSha
+        });
+      } catch (e) {
+        return send(res, 200, { updateAvailable: false, error: e.message });
+      }
+    }
+    if (req.url === '/api/launcher/update-apply' && req.method === 'POST') {
+      const rootDir = path.join(__dirname, '..');
+      let out = '';
+      try {
+        const gitPull = await new Promise((res, rej) => execFile('git', ['pull', 'origin', 'main'], { cwd: rootDir, windowsHide: true }, (err, stdout, stderr) => err ? rej(new Error(stderr || stdout || err.message)) : res(stdout)));
+        out += gitPull + '\n';
+        const buildScript = path.join(rootDir, 'scripts', 'build-exe.js');
+        if (fs.existsSync(buildScript)) {
+          try {
+            const buildOut = execFileSync(process.execPath, [buildScript], { cwd: rootDir, encoding: 'utf8' });
+            out += buildOut + '\n';
+          } catch (e) { out += 'exe build warning: ' + e.message + '\n'; }
+        }
+      } catch (e) {
+        return send(res, 500, { error: 'Update pull failed: ' + e.message });
+      }
+
+      send(res, 200, { ok: true, output: out, restarting: true });
+
+      setTimeout(() => {
+        const bat = path.join(rootDir, 'launch.bat');
+        const exe = path.join(rootDir, 'QueensDomain.exe');
+        if (fs.existsSync(bat)) {
+          spawn('cmd.exe', ['/c', bat], { cwd: rootDir, detached: true, stdio: 'ignore' }).unref();
+        } else if (fs.existsSync(exe)) {
+          spawn(exe, [], { cwd: rootDir, detached: true, stdio: 'ignore' }).unref();
+        }
+        process.exit(0);
+      }, 700);
+      return;
+    }
     send(res, 404, { error: 'not found' });
   } catch (e) { if (!res.headersSent) send(res, 500, { error: e.message }); else res.end(); }
 }).on('error', e => { if (e.code === 'EADDRINUSE') process.exit(0); }) // already running
