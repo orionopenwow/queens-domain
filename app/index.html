@@ -619,6 +619,49 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
           </div>
         </div>
 
+        <!-- IDEA-TO-QUESTIONS DECONSTRUCTOR & PROMPT TEMPLATES EXPLORER -->
+        <div style="background:radial-gradient(ellipse at 50% 0%,#091b38 0%,#030914 100%);border:1px solid #1f78e0;border-radius:12px;padding:16px 20px;margin-bottom:18px;box-shadow:0 6px 24px rgba(0,0,0,.6)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:16px">⚡</span>
+            <b style="color:var(--gold);font-size:14px;letter-spacing:.14em;text-transform:uppercase">IDEA-TO-QUESTIONS DECONSTRUCTOR & PROMPT TEMPLATES</b>
+            <span class="badge ok" style="margin-left:auto">FIELD DEEPENER</span>
+          </div>
+          <p class="dim" style="font-size:12.5px;line-height:1.4;margin:0 0 10px 0">
+            Type any natural language game request. Queen's Domain immediately deconstructs your idea into <b>architectural deepening questions</b> and displays pre-engineered prompt templates you can inspect and copy:
+          </p>
+
+          <!-- Preset Chips -->
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+            <button class="btn" id="dec-preset-souls" style="font-size:11px;padding:3px 9px">🗡️ Soulslike ARPG</button>
+            <button class="btn" id="dec-preset-cozy" style="font-size:11px;padding:3px 9px">🌾 Cozy Farm Sim</button>
+            <button class="btn" id="dec-preset-sandbox" style="font-size:11px;padding:3px 9px">⛏️ 2D Sandbox Miner</button>
+            <button class="btn" id="dec-preset-scifi" style="font-size:11px;padding:3px 9px">🛸 Cyberpunk Rogue-Shooter</button>
+          </div>
+
+          <!-- Query Bar -->
+          <div class="row" style="margin-bottom:12px">
+            <input type="text" id="dec-query" value="Fast-paced cyberpunk roguelike hacking game with stamina combat" placeholder="Type any game concept (e.g. 'cozy underwater farming sim' or 'space colony builder')..." style="flex:1;font-size:13px">
+            <button class="btn gold" id="dec-deconstruct-btn" style="font-size:12.5px;padding:8px 16px">⚡ Deconstruct Concept</button>
+          </div>
+
+          <!-- Deepened Architecture Questions Box -->
+          <div style="font-size:11.5px;letter-spacing:.12em;color:var(--cyan);font-weight:700;margin-bottom:6px">DEEPENED ARCHITECTURAL VECTORS // WHAT THE ENGINE CALIBRATES:</div>
+          <div id="dec-questions-box" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px;margin-bottom:14px"></div>
+
+          <!-- Prompt Template Inspector -->
+          <div style="border-top:1px solid #14407f;padding-top:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <span style="font-size:12px;color:var(--gold);font-weight:700">PRE-ENGINEERED PROMPT TEMPLATE PREVIEW:</span>
+              <select id="dec-prompt-sel" style="width:auto;font-size:12px;padding:4px 8px"></select>
+            </div>
+            <textarea id="dec-prompt-preview" class="mono code" rows="7" readonly spellcheck="false" style="font-size:11.5px;line-height:1.45;background:#010712;border:1px solid #143e77;color:var(--text);width:100%"></textarea>
+            <div class="row" style="margin-top:8px">
+              <button class="btn" id="dec-copy-prompt" style="font-size:12px">📋 Copy Prompt Template</button>
+              <button class="btn gold" id="dec-adopt-blueprint" style="font-size:12px;margin-left:auto">🚀 Adopt As Active Blueprint</button>
+            </div>
+          </div>
+        </div>
+
         <div class="row" style="align-items:center;margin-bottom:8px">
           <h2 style="flex:1;border:none;margin:0">Active Game Blueprints</h2>
           <button class="btn gold" id="pj-new" style="padding:10px 22px;border-radius:8px">+ Create New Project</button>
@@ -3155,6 +3198,70 @@ function initDemoGame(){
   }
   requestAnimationFrame(gameLoop);
 }
+
+// ---------- Idea-to-Questions Deconstructor & Prompt Templates ----------
+const decQ=$('dec-query'),decBtn=$('dec-deconstruct-btn'),decBox=$('dec-questions-box');
+const decSel=$('dec-prompt-sel'),decPrev=$('dec-prompt-preview');
+const pSouls=$('dec-preset-souls'),pCozy=$('dec-preset-cozy'),pSand=$('dec-preset-sandbox'),pScifi=$('dec-preset-scifi');
+
+let currentDecBlueprint=null;
+
+function runDeconstructor(concept){
+  if(!concept)concept=decQ.value.trim()||'Action RPG';
+  decQ.value=concept;
+  const isSouls=/soul|elden|dark|stamina|boss|dodge/i.test(concept);
+  const isCozy=/cozy|farm|harvest|valley|relax|crop/i.test(concept);
+  const isSand=/sandbox|miner|terraria|dig|build|procedural/i.test(concept);
+  const isScifi=/cyber|hack|space|rogue|shooter|alien/i.test(concept);
+
+  const vectors=[
+    {icon:'🎯',title:'1. Core Loop & Win/Fail States',desc:isSouls?'Committed stamina combat loop; death drops currency; bonfires reset world spawns; boss phase trigger on 50% HP.':isCozy?'Daily 15-minute seasonal clock; seed planting to harvest economy; stamina depletion forces sleep.':isSand?'Destructible mining grid; recipe tier progression; underground biome discovery & safe house crafting.':'Terminal node hacking loop; security countdown timer; cyber-deck upgrade matrix.'},
+    {icon:'⏱️',title:'2. Physics & Engine Timestep',desc:'Rigid 60Hz fixed simulation runner (dt = 0.01667s). Frame rate decoupled from combat ticks. Deterministic input buffer.'},
+    {icon:'🧊',title:'3. Camera & Perspective Matrix',desc:isSouls?'Third-person over-the-shoulder 3D with locked-on strafe targeting and camera collision spring.':isCozy?'Top-down 2D tilemap grid with 4-way direction snapping and smooth screen follow.':isSand?'Side-scrolling 2D destructible slice with parallax background layers.':'Isometric 2.5D with raycast wall fading and occluded entity silhouettes.'},
+    {icon:'🧠',title:'4. Memory & Entity Object Pools',desc:'Pre-allocate 64 projectile and combat VFX pools at startup. Zero GC allocations inside update or fixed tick loops.'},
+    {icon:'🎨',title:'5. Asset Sheet Auto-Injection',desc:isSouls?'Kenney 3D Fantasy Kits (castle, graveyard, weapons) injected with paths into prompts.':isCozy?'Kenney Tiny Town & UI RPG Expansion (16x16 sprite sheets) mapped to assets/pack/.':isSand?'Kenney Pixel Platformer & Roguelike Dungeon tilesets auto-imported.':'Kenney Space & Sci-Fi modular sprite kits mapped directly to assets/scifi/.'},
+    {icon:'🔊',title:'6. Audio Mix Buses & Ambience',desc:'Decoupled audio event broker. Pitch-randomized footstep and impact synthesis. Dynamic intensity music crossfade.'}
+  ];
+
+  decBox.innerHTML='';
+  vectors.forEach(v=>{
+    const card=el('div','rule-card');card.style.background='#030c1c';
+    card.append(el('b',null,`${v.icon} ${v.title}`),el('span',null,v.desc));
+    decBox.append(card);
+  });
+
+  const prompts=[
+    {id:'step1',title:'Step 1: Fixed 60Hz Engine Tick & State Struct Isolation',prompt:`[PONYTAIL.DEV RULESET APPLIED]\nAct as a senior systems architect. Build an ultra-decoupled fixed 60Hz simulation runner in pure C# (Unity/Godot):\n1. Pure State Struct: Define 'GameState' containing Vector3 position, Vector3 velocity, float stamina (0-100), and EntityState enum.\n2. System Logic: Create 'SimulationRunner' as a pure non-MonoBehaviour class operating strictly on GameState inputs with fixed dt = 0.016667f.\n3. Decoupled Presentation: Create 'PlayerView' MonoBehaviour that interpolates transforms visually. Zero gameplay logic or collision calculation allowed in Update().\n4. Invariant Assertion: Assert that physics runs deterministically whether rendering at 30, 60, or 144 FPS.`},
+    {id:'step2',title:'Step 2: Non-Allocating Input Event Bus & Ring Buffer',prompt:`[PONYTAIL.DEV RULESET APPLIED]\nImplement a zero-allocation Input Event Broker and Ring Buffer for "${concept}":\n1. Define 'FrameInput' struct (uint tick, ushort buttonMask, Vector2 moveDir).\n2. Create a circular ring buffer of 128 FrameInput entries to support deterministic rollbacks and replay inspection.\n3. Publish input events through a static delegate bus without heap allocations or LINQ calls.\n4. Acceptance Check: Verify zero GC allocations during sustained 60Hz input polling.`},
+    {id:'step3',title:'Step 3: Pre-Allocated Entity & Projectile Object Pooler',prompt:`[PONYTAIL.DEV RULESET APPLIED]\nImplement a high-performance Object Pooling subsystem for "${concept}":\n1. Pre-allocate an array of 64 bullet/VFX entities at startup.\n2. Provide 'Spawn()' and 'Despawn()' methods that toggle active flags and reset positions.\n3. Rule 2 Violation Guard: Hard-forbid calling Instantiate() or Destroy() inside Update() or combat routines.\n4. Pool Exhaustion Strategy: Recycles the oldest active entity if pool capacity is reached without crashing.`},
+    {id:'step4',title:'Step 4: Finite State Machine & Visual Presentation Binding',prompt:`[PONYTAIL.DEV RULESET APPLIED]\nConstruct an explicit Finite State Machine for player animations and combat:\n1. Define 'PlayerState' enum: Idle, Running, LightAttack, HeavyAttack, Stunned, Dead.\n2. State Machine Rules: Disallow impossible transitions (e.g. HeavyAttack directly to Idle without recovery phase).\n3. Connect state changes to animation triggers and audio SFX bus events.\n4. Frame-rate independent decay for attack recovery and hit-stun windows.`}
+  ];
+
+  decSel.innerHTML='';
+  prompts.forEach((p,idx)=>{
+    const opt=document.createElement('option');opt.value=idx;opt.textContent=p.title;decSel.appendChild(opt);
+  });
+
+  decSel.onchange=()=>{decPrev.value=prompts[+decSel.value].prompt};
+  decPrev.value=prompts[0].prompt;
+  currentDecBlueprint={name:concept,prompts};
+}
+
+if(pSouls)pSouls.onclick=()=>runDeconstructor('Soulslike Action RPG with stamina combat');
+if(pCozy)pCozy.onclick=()=>runDeconstructor('Cozy Farming Life Sim with seed-to-harvest seasonal clocks');
+if(pSand)pSand.onclick=()=>runDeconstructor('2D Destructible Sandbox Miner with procedural underground biomes');
+if(pScifi)pScifi.onclick=()=>runDeconstructor('Fast-paced cyberpunk roguelike hacking game with terminal nodes');
+if(decBtn)decBtn.onclick=()=>runDeconstructor(decQ.value);
+
+$('dec-copy-prompt').onclick=()=>{copy(decPrev.value);toast('COPIED PROMPT TEMPLATE')};
+$('dec-adopt-blueprint').onclick=()=>{
+  const name=decQ.value.trim()||'New Game Blueprint';
+  const a=JSON.parse(JSON.stringify(DEFAULTS));a.name=name;
+  const id='p'+Date.now();
+  store.list.push({id,name:a.name,profile:a,folder:'',done:[],cur:1});
+  save();openProject(id);toast('ADOPTED BLUEPRINT: '+name.toUpperCase());
+};
+runDeconstructor(decQ.value);
 
 const relBtn = $('btn-reload');
 if(relBtn) relBtn.onclick = () => window.location.reload();
