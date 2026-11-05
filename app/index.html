@@ -294,6 +294,97 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
 #r-prog{width:230px;margin-left:6px}
 #ch-bar{flex-wrap:wrap}#ch-bar label{white-space:nowrap;display:flex;align-items:center;gap:5px}#ch-bar input[type=checkbox]{width:auto;box-shadow:none;accent-color:#ffffff}#ch-bar select{width:auto;min-width:130px}#ch-agentbar{flex-wrap:wrap}#ch-agentbar label{white-space:nowrap;display:flex;align-items:center;gap:5px}#ch-agentbar input[type=checkbox]{width:auto;box-shadow:none;accent-color:#ffffff}
 @media(max-width:900px){nav{width:150px}#t-steps{grid-template-columns:1fr}.rules{grid-template-columns:1fr}}
+
+/* 50 Features UI Additions: Chips, Density Buttons & Nuances */
+.filter-chip {
+  padding: 3px 9px;
+  font-size: 11px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #a1a1aa;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.filter-chip:hover {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.2);
+}
+.filter-chip.on {
+  background: rgba(0,240,255,0.12);
+  border-color: var(--cyan);
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,240,255,0.2);
+}
+
+.density-btn {
+  padding: 3px 9px;
+  font-size: 10.5px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  color: #a1a1aa;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.density-btn:hover {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.25);
+}
+.density-btn.on {
+  border-color: var(--cyan);
+  background: rgba(0,240,255,0.14);
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(0,240,255,0.25);
+}
+
+.nu-chip {
+  padding: 3px 8px;
+  font-size: 10.5px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.09);
+  color: #d4d4d8;
+  cursor: pointer;
+  transition: all .15s ease;
+  user-select: none;
+}
+.nu-chip:hover {
+  border-color: rgba(255,255,255,0.25);
+  color: #ffffff;
+}
+.nu-chip.on {
+  border-color: #38bdf8;
+  background: rgba(56,189,248,0.16);
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(56,189,248,0.25);
+}
+
+.lock-btn {
+  padding: 2px 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  color: #71717a;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.lock-btn:hover {
+  border-color: rgba(255,255,255,0.2);
+  color: #ffffff;
+}
+.lock-btn.locked {
+  border-color: var(--gold);
+  background: rgba(251,191,36,0.12);
+  color: var(--gold);
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(251,191,36,0.25);
+}
 </style>
 </head>
 <body>
@@ -628,40 +719,63 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
 
           <!-- Inspiration & Search Section -->
           <div style="margin-bottom:14px">
-            <div style="font-size:11.5px;font-weight:bold;color:#a1a1aa;margin-bottom:6px">Inspiration & Game Presets (1-Click Fill & Local DB Search)</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;flex-wrap:wrap;gap:6px">
+              <span style="font-size:11.5px;font-weight:bold;color:#a1a1aa">Inspiration & Game Presets (1-Click Fill & Local DB Search)</span>
+              <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+                <button class="filter-chip on" id="insp-filter-all">All</button>
+                <button class="filter-chip" id="insp-filter-rpg">RPG</button>
+                <button class="filter-chip" id="insp-filter-action">Action</button>
+                <button class="filter-chip" id="insp-filter-cozy">Cozy Sim</button>
+                <button class="filter-chip" id="insp-filter-sand">Sandbox</button>
+                <button class="filter-chip" id="insp-filter-retro">Retro</button>
+                <button class="btn gold" id="btn-surprise-idea" style="padding:2px 8px;font-size:10.5px;font-weight:bold;margin-left:4px" title="Generate random game concept">🎲 Surprise Me</button>
+              </div>
+            </div>
             <div style="position:relative;margin-bottom:10px">
               <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#00f0ff;font-size:14px;pointer-events:none">🔍</span>
-              <input id="dec-query" placeholder="Game Idea or Preset Search..." style="width:100%;padding:10px 14px 10px 38px;background:rgba(8,10,14,0.92);border:1px solid rgba(0,240,255,0.3);border-radius:8px;color:#ffffff;font-size:13.5px;outline:none;box-shadow:inset 0 0 12px rgba(0,0,0,0.6)">
+              <input id="dec-query" placeholder="Game Idea or Preset Search... (Press '/' to search)" style="width:100%;padding:10px 14px 10px 38px;background:rgba(8,10,14,0.92);border:1px solid rgba(0,240,255,0.3);border-radius:8px;color:#ffffff;font-size:13.5px;outline:none;box-shadow:inset 0 0 12px rgba(0,0,0,0.6)">
             </div>
 
             <!-- 4 Preset Cards Grid -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+            <div id="insp-cards-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
               <!-- Card 1: 2D Pixel RPG -->
-              <div class="cg-insp-card" id="dec-preset-pixel" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+              <div class="cg-insp-card" id="dec-preset-pixel" data-cat="rpg retro" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
                 <b style="font-size:12px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>✦</span> 2D Pixel Art RPG</b>
                 <div style="font-size:10.5px;color:#a1a1aa;margin:4px 0 6px;line-height:1.35">16x16 top-down tiles, retro hero walk cycle, village NPCs & inventory</div>
-                <span class="badge ok" style="font-size:9px">Tiny Town · Godot/Unity</span>
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <span class="badge ok" style="font-size:9px">Tiny Town · Godot/Unity</span>
+                  <span class="badge" style="font-size:8.5px;color:#a1a1aa">Jam ~12 steps</span>
+                </div>
               </div>
 
               <!-- Card 2: 3D Soulslike -->
-              <div class="cg-insp-card" id="dec-preset-souls" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+              <div class="cg-insp-card" id="dec-preset-souls" data-cat="rpg action" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
                 <b style="font-size:12px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>⚔️</span> 3D Low-Poly Souls</b>
                 <div style="font-size:10.5px;color:#a1a1aa;margin:4px 0 6px;line-height:1.35">Over-the-shoulder camera, committed stamina combat, dark castle kit</div>
-                <span class="badge act" style="font-size:9px">Castle Kit · Unity C#</span>
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <span class="badge act" style="font-size:9px">Castle Kit · Unity C#</span>
+                  <span class="badge" style="font-size:8.5px;color:#a1a1aa">Indie ~32 steps</span>
+                </div>
               </div>
 
               <!-- Card 3: Cozy Farm Sim -->
-              <div class="cg-insp-card" id="dec-preset-cozy" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+              <div class="cg-insp-card" id="dec-preset-cozy" data-cat="cozy" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
                 <b style="font-size:12px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>🌾</span> 2D Cozy Farm Sim</b>
                 <div style="font-size:10.5px;color:#a1a1aa;margin:4px 0 6px;line-height:1.35">15-minute daily clock, seed to harvest crop economy, peaceful ambient mix</div>
-                <span class="badge ok" style="font-size:9px">Tiny Town · Godot 4</span>
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <span class="badge ok" style="font-size:9px">Tiny Town · Godot 4</span>
+                  <span class="badge" style="font-size:8.5px;color:#a1a1aa">Indie ~24 steps</span>
+                </div>
               </div>
 
               <!-- Card 4: 2D Sandbox Miner -->
-              <div class="cg-insp-card" id="dec-preset-sandbox" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+              <div class="cg-insp-card" id="dec-preset-sandbox" data-cat="sand action" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
                 <b style="font-size:12px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>⛏️</span> 2D Sandbox Miner</b>
                 <div style="font-size:10.5px;color:#a1a1aa;margin:4px 0 6px;line-height:1.35">Destructible voxel slice, underground mining tiers, safehouse crafting</div>
-                <span class="badge no" style="font-size:9px">Dungeon Pack · Spawn.co</span>
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <span class="badge no" style="font-size:9px">Dungeon Pack · Spawn.co</span>
+                  <span class="badge" style="font-size:8.5px;color:#a1a1aa">Jam ~16 steps</span>
+                </div>
               </div>
             </div>
           </div>
@@ -673,7 +787,10 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
             <div style="background:rgba(10,12,18,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
                 <b style="font-size:12.5px;color:#ffffff;letter-spacing:.02em">Curated Game Asset Sheet (Local CC0 Database)</b>
-                <span class="badge ok" style="font-size:9px">LOCAL DB</span>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <button class="btn" id="btn-random-assets" style="padding:2px 8px;font-size:10.5px;font-weight:bold" title="Randomize compatible asset combo">🎲 Randomize</button>
+                  <span class="badge ok" style="font-size:9px">LOCAL DB</span>
+                </div>
               </div>
 
               <div style="display:flex;flex-direction:column;gap:6px;flex:1">
@@ -685,6 +802,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
                     <div id="ash-char-specs" style="display:none"></div>
                   </div>
                   <div style="display:flex;align-items:center;gap:6px">
+                    <button class="lock-btn" id="lock-char-btn" title="Lock/Unlock Slot from Randomization">🔓</button>
                     <span class="badge ok" style="font-size:9px">Slot 1</span>
                     <button class="icon-btn" id="sub-char-btn" title="Substitute Asset" style="padding:2px 7px;font-size:12px">☰</button>
                   </div>
@@ -698,6 +816,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
                     <div id="ash-world-specs" style="display:none"></div>
                   </div>
                   <div style="display:flex;align-items:center;gap:6px">
+                    <button class="lock-btn" id="lock-world-btn" title="Lock/Unlock Slot from Randomization">🔓</button>
                     <span class="badge ok" style="font-size:9px">Slot 2</span>
                     <button class="icon-btn" id="sub-world-btn" title="Substitute Asset" style="padding:2px 7px;font-size:12px">☰</button>
                   </div>
@@ -711,6 +830,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
                     <div id="ash-ui-specs" style="display:none"></div>
                   </div>
                   <div style="display:flex;align-items:center;gap:6px">
+                    <button class="lock-btn" id="lock-ui-btn" title="Lock/Unlock Slot from Randomization">🔓</button>
                     <span class="badge ok" style="font-size:9px">Slot 4</span>
                     <button class="icon-btn" id="sub-ui-btn" title="Substitute Asset" style="padding:2px 7px;font-size:12px">☰</button>
                   </div>
@@ -724,6 +844,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
                     <div id="ash-audio-specs" style="display:none"></div>
                   </div>
                   <div style="display:flex;align-items:center;gap:6px">
+                    <button class="lock-btn" id="lock-audio-btn" title="Lock/Unlock Slot from Randomization">🔓</button>
                     <span class="badge ok" style="font-size:9px">Slot 5</span>
                     <button class="icon-btn" id="sub-audio-btn" title="Substitute Asset" style="padding:2px 7px;font-size:12px">☰</button>
                   </div>
@@ -739,28 +860,64 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
                 <div id="asset-sub-options" style="display:grid;grid-template-columns:1fr;gap:5px;max-height:160px;overflow-y:auto"></div>
               </div>
 
-              <button id="btn-view-asset-sheet" class="btn" style="width:100%;margin-top:10px;padding:7px;font-size:12px;text-align:center;justify-content:center">
-                View Full Asset Sheet & Manifest
-              </button>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+                <button id="btn-view-asset-sheet" class="btn" style="padding:7px;font-size:11px;text-align:center;justify-content:center">
+                  Full Asset Manifest
+                </button>
+                <button id="btn-copy-attribution" class="btn" style="padding:7px;font-size:11px;text-align:center;justify-content:center" title="Copy CC0 Attribution.md">
+                  📋 CC0 Attribution
+                </button>
+              </div>
             </div>
 
             <!-- Right Column: Ever-Evolving Game Prompt (LIVE) -->
             <div style="background:rgba(10,12,18,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
                 <b style="font-size:12.5px;color:#ffffff;letter-spacing:.02em">Ever-Evolving Game Prompt (LIVE)</b>
-                <span class="badge ok" style="font-size:9px">● LIVE SYNC</span>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span id="prompt-token-meter" class="badge ok" style="font-size:9.5px;font-weight:bold" title="Estimated Context Tokens">~420 Tok (Safe)</span>
+                  <span class="badge ok" style="font-size:9px">● LIVE SYNC</span>
+                </div>
               </div>
-              <div id="dock-prompt-meta" style="font-size:11px;color:#a1a1aa;margin-bottom:8px">Target: Unity C# | Vision: Action RPG | Protagonist: Guardian | Environment: Dungeon</div>
+              <div id="dock-prompt-meta" style="font-size:11px;color:#a1a1aa;margin-bottom:6px">Target: Unity C# | Vision: Action RPG | Protagonist: Guardian | Environment: Dungeon</div>
               
-              <textarea id="dec-prompt-preview" class="mono code" rows="8" readonly spellcheck="false" style="flex:1;width:100%;background:rgba(6,8,12,0.92);border:1px solid rgba(255,255,255,0.08);color:#e4e4e7;border-radius:6px;padding:8px 10px;font-size:11.5px;line-height:1.45;resize:none;margin-bottom:10px"></textarea>
+              <!-- Prompt Density Mode Pills -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+                <span style="font-size:11px;font-weight:bold;color:#a1a1aa">Density Mode:</span>
+                <div style="display:flex;align-items:center;gap:4px">
+                  <button class="density-btn" id="prompt-density-lite" title="Concise single-pass prompt for Cursor/Copilot">⚡ Lite</button>
+                  <button class="density-btn on" id="prompt-density-std" title="Balanced game architecture with state structs">⚙️ Standard</button>
+                  <button class="density-btn" id="prompt-density-deep" title="Exhaustive Ponytail zero-GC rules & invariants">🏛️ Deep / Zero-GC</button>
+                </div>
+              </div>
+
+              <!-- Interactive Nuance Chips Injector -->
+              <div id="nuance-chips-bar" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:8px">
+                <span style="font-size:10.5px;font-weight:bold;color:#a1a1aa;margin-right:2px">+ Nuance:</span>
+                <button class="nu-chip" id="chip-proc" title="Inject procedural map generation">+ Proc Map</button>
+                <button class="nu-chip" id="chip-pad" title="Inject gamepad input ring buffer">+ Gamepad</button>
+                <button class="nu-chip" id="chip-fog" title="Inject dynamic fog of war">+ Fog</button>
+                <button class="nu-chip" id="chip-daynight" title="Inject day/night clock cycle">+ Day/Night</button>
+                <button class="nu-chip" id="chip-save" title="Inject save monument serializer">+ Save</button>
+                <button class="nu-chip" id="chip-juice" title="Inject combat hit-stop & screen shake">+ Screen Juice</button>
+              </div>
+
+              <textarea id="dec-prompt-preview" class="mono code" rows="8" readonly spellcheck="false" style="flex:1;width:100%;background:rgba(6,8,12,0.92);border:1px solid rgba(255,255,255,0.08);color:#e4e4e7;border-radius:6px;padding:8px 10px;font-size:11.5px;line-height:1.45;resize:none;margin-bottom:8px"></textarea>
               
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px">
                 <button class="btn" id="dec-copy-prompt" style="padding:8px;font-size:12px;font-weight:bold;text-align:center;justify-content:center">
-                  Copy Prompt (Lite)
+                  Copy Prompt (Standard)
                 </button>
                 <button class="btn gold" id="btn-dock-send-agent" style="padding:8px;font-size:12px;font-weight:bold;text-align:center;justify-content:center">
                   Send to Agent
                 </button>
+              </div>
+
+              <!-- Quick CLI and Export Bar -->
+              <div style="display:flex;gap:6px">
+                <button class="icon-btn" id="btn-copy-claude-cli" style="flex:1;font-size:10.5px;padding:4px 6px;text-align:center" title="Copy claude -p command">⚡ Claude CLI</button>
+                <button class="icon-btn" id="btn-copy-codex-cli" style="flex:1;font-size:10.5px;padding:4px 6px;text-align:center" title="Copy codex exec command">⚡ Codex CLI</button>
+                <button class="icon-btn" id="btn-export-prompt-md" style="flex:1;font-size:10.5px;padding:4px 6px;text-align:center" title="Export prompt as Markdown">📄 Export .MD</button>
               </div>
             </div>
           </div>
@@ -4276,6 +4433,18 @@ const decThemeEl=$('dec-detected-theme'),decScopeEl=$('dec-scope-badge');
 let currentDecBlueprint=null;
 let ideEng='unity', ideArt='3d', ideRule='ponytail', ideAI='claude', ideScope='24';
 let nuPace='fast', nuMech='action', nuRigor='strict';
+let promptDensity='std';
+const activeNuances=new Set();
+const lockedSlots={char:false,world:false,ui:false,audio:false};
+
+function updateTokenMeter(){
+  const tokenMeter=$('prompt-token-meter');
+  if(!tokenMeter||!decPrev)return;
+  const words=decPrev.value.trim().split(/\s+/).filter(Boolean).length;
+  const tokens=Math.round(words*1.33);
+  tokenMeter.textContent=`~${tokens} Tok (${tokens<2000?'🟢 Safe':tokens<8000?'🟡 Standard':'🔵 Deep'})`;
+  tokenMeter.className='badge '+(tokens<2000?'ok':tokens<8000?'act':'gold');
+}
 
 function runDeconstructor(concept){
   if(!concept)concept=decQ.value.trim()||'Action RPG';
@@ -4333,50 +4502,177 @@ function runDeconstructor(concept){
 - Audio Mix SFX: ${curAudio.name} -> ${curAudio.path}
 - Shader/Palette: ${curVis.name} -> ${curVis.path}`;
 
-  const prompts=[
-    {id:'step1',title:`Step 1: Fixed 60Hz Engine Tick & State Struct Isolation (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
+  let nuanceBlock = '';
+  if (activeNuances.has('proc')) {
+    nuanceBlock += `\n[NUANCE: PROCEDURAL DUNGEON/MAP]\n- Deterministic seed generation with cellular automata / BSP rooms.\n- Dynamic collider instantiation into pre-allocated chunk grids.`;
+  }
+  if (activeNuances.has('pad')) {
+    nuanceBlock += `\n[NUANCE: GAMEPAD & INPUT RING BUFFER]\n- 4-frame deterministic input buffer for queuing rolls, attacks, and parries.\n- Deadzone calibration and analog vector normalization.`;
+  }
+  if (activeNuances.has('fog')) {
+    nuanceBlock += `\n[NUANCE: DYNAMIC FOG OF WAR]\n- 2D shadowcaster grid with raycast field-of-view.\n- Unexplored cells shrouded in bitwise occlusion mask.`;
+  }
+  if (activeNuances.has('daynight')) {
+    nuanceBlock += `\n[NUANCE: DAY / NIGHT CYCLE & CLOCK]\n- 24-hour in-game clock normalized to 15-minute real-world duration.\n- Ambient lighting color temperature crossfade & nocturnal entity spawning.`;
+  }
+  if (activeNuances.has('save')) {
+    nuanceBlock += `\n[NUANCE: SAVE MONUMENTS & PROGRESSION]\n- Binary serializer for GameState delta snapshots.\n- Interactive bonfires/monuments that commit progression and reset enemy object pools.`;
+  }
+  if (activeNuances.has('juice')) {
+    nuanceBlock += `\n[NUANCE: COMBAT JUICE & SCREEN SHAKE]\n- Directional screen-shake impulse buffer with quadratic decay.\n- Hit-stop (3-frame freeze) on impact with chromatic aberration burst.`;
+  }
+
+  let prompts = [];
+  if (promptDensity === 'lite') {
+    prompts = [
+      {id:'step1',title:`Step 1: Fixed 60Hz Engine Tick & State Struct Isolation (${lang})`,prompt:`[TARGET: ${lang.toUpperCase()} - LITE SPEC]
+Game Vision: "${concept}"
+Selected CC0 Assets:
+- Protagonist: ${curChar.name} (${curChar.path})
+- World: ${curWorld.name} (${curWorld.path})
+- UI: ${curUi.name} | SFX: ${curAudio.name}
+${nuanceBlock}
+
+Implement a minimalist, decoupled fixed 60Hz simulation in pure ${lang}:
+1. GameState: Position, velocity, stamina struct.
+2. SimulationRunner: Pure decoupled class running at dt = 0.016667f.
+3. PlayerView: Visual interpolation only (no game logic in Update).
+4. Determinism invariant across 30, 60, and 144 FPS.`},
+      {id:'step2',title:`Step 2: Non-Allocating Input Event Bus & Ring Buffer (${lang})`,prompt:`[TARGET: ${lang.toUpperCase()} - LITE SPEC]
+Implement FrameInput struct & circular 128-slot ring buffer for "${concept}":
+${assetBlock}
+${nuanceBlock}
+1. Static input bus without heap allocations.
+2. Circular buffer for deterministic rollback & replay.`},
+      {id:'step3',title:`Step 3: Pre-Allocated Entity & Projectile Object Pooler (${lang})`,prompt:`[TARGET: ${lang.toUpperCase()} - LITE SPEC]
+Pre-allocated 64-slot entity pooler for "${concept}":
+${assetBlock}
+${nuanceBlock}
+1. Toggle active flags, zero Instantiate/Destroy calls in Update().`},
+      {id:'step4',title:`Step 4: Finite State Machine & Visual Binding (${lang})`,prompt:`[TARGET: ${lang.toUpperCase()} - LITE SPEC]
+Explicit Finite State Machine for "${concept}":
+${assetBlock}
+${nuanceBlock}
+1. PlayerState enum: Idle, Run, LightAttack, HeavyAttack, Dead.`},
+      {id:'full',title:`Full Blueprint: Autonomous Agent Master Prompt (${lang})`,prompt:`[TARGET: ${lang.toUpperCase()} - LITE MASTER BLUEPRINT]
+Build "${concept}" using ${lang}:
+${assetBlock}
+${nuanceBlock}
+- 60Hz deterministic tick.
+- Pre-allocated pools. Zero GC allocations in update loops.`}
+    ];
+  } else if (promptDensity === 'deep') {
+    prompts = [
+      {id:'step1',title:`Step 1: Fixed 60Hz Engine Tick & State Struct Isolation (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - DEEP SPEC - TARGET: ${lang.toUpperCase()}]
+Game Vision: "${concept}"
+Pacing: ${nuPace.toUpperCase()} | Mechanic: ${nuMech.toUpperCase()} | Style: ${ideArt.toUpperCase()} (Ponytail Zero-GC Rigor)
+
+${assetBlock}
+${nuanceBlock}
+
+Act as a Principal Systems Architect. Build an ultra-decoupled, non-allocating fixed 60Hz simulation runner in pure ${lang}:
+1. Pure State Struct: Define 'GameState' containing Vector3 position, Vector3 velocity, float stamina (0-100), and EntityState enum. No engine references allowed.
+2. System Logic: Create 'SimulationRunner' as a pure isolated class operating strictly on GameState inputs with fixed dt = 0.016667f.
+3. Decoupled Presentation: Create 'PlayerView' that interpolates transforms visually. Zero gameplay logic or collision calculation allowed in Update().
+4. Invariant Assertion: Assert that physics runs deterministically whether rendering at 30, 60, or 144 FPS. Include unit assertion test runner.
+5. Zero GC Enforcement: Profile tick loop ensuring 0 bytes allocated per frame on heap.`},
+      {id:'step2',title:`Step 2: Non-Allocating Input Event Bus & Ring Buffer (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - DEEP SPEC - TARGET: ${lang.toUpperCase()}]
+Implement a zero-allocation Input Event Broker and Ring Buffer for "${concept}":
+
+${assetBlock}
+${nuanceBlock}
+
+1. Define 'FrameInput' struct (uint tick, ushort buttonMask, Vector2 moveDir).
+2. Create a circular ring buffer of 128 FrameInput entries to support deterministic rollbacks and replay inspection.
+3. Publish input events through a static delegate bus without heap allocations or LINQ calls.
+4. Acceptance Check: Verify zero GC allocations during sustained 60Hz input polling with memory profiler guard.`},
+      {id:'step3',title:`Step 3: Pre-Allocated Entity & Projectile Object Pooler (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - DEEP SPEC - TARGET: ${lang.toUpperCase()}]
+Implement a high-performance Object Pooling subsystem for "${concept}":
+
+${assetBlock}
+${nuanceBlock}
+
+1. Pre-allocate an array of 64 bullet/VFX entities at startup.
+2. Provide 'Spawn()' and 'Despawn()' methods that toggle active flags and reset positions.
+3. Rule 2 Violation Guard: Hard-forbid calling Instantiate() or Destroy() inside Update() or combat routines.
+4. Pool Exhaustion Strategy: Recycles the oldest active entity if pool capacity is reached without crashing.`},
+      {id:'step4',title:`Step 4: Finite State Machine & Visual Presentation Binding (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - DEEP SPEC - TARGET: ${lang.toUpperCase()}]
+Construct an explicit Finite State Machine for player animations and combat:
+
+${assetBlock}
+${nuanceBlock}
+
+1. Define 'PlayerState' enum: Idle, Running, LightAttack, HeavyAttack, Stunned, Dead.
+2. State Machine Rules: Disallow impossible transitions (e.g. HeavyAttack directly to Idle without recovery phase).
+3. Connect state changes to animation triggers and audio SFX bus events.
+4. Frame-rate independent decay for attack recovery and hit-stun windows.`},
+      {id:'full',title:`Full Blueprint: Autonomous Agent Master Prompt (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - DEEP MASTER SPEC - ${lang.toUpperCase()}]
+Game Vision: "${concept}"
+Pacing: ${nuPace.toUpperCase()} | Mechanic: ${nuMech.toUpperCase()} | Engine: ${ideEng.toUpperCase()} | Rigor: ${nuRigor.toUpperCase()}
+
+${assetBlock}
+${nuanceBlock}
+
+ARCHITECTURAL RULES (NON-NEGOTIABLE PONYTAIL 12-RULE SYSTEM):
+- 60Hz deterministic fixed tick decoupled from visual rendering.
+- Zero heap allocations inside hot paths (Update/FixedUpdate/Tick).
+- Pre-allocated object pools for entities and particles.
+- Pure state structs without engine-specific MonoBehaviours or node bloat.
+- Audio events dispatched through decoupled brokers to prevent cyclic coupling.
+- Deterministic frame ring buffer for inputs and network rollback.
+
+Please build this game layer by layer according to AGENTS.md and .cursorrules.`}
+    ];
+  } else {
+    prompts = [
+      {id:'step1',title:`Step 1: Fixed 60Hz Engine Tick & State Struct Isolation (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
 Game Vision: "${concept}"
 Pacing: ${nuPace.toUpperCase()} | Mechanic: ${nuMech.toUpperCase()} | Style: ${ideArt.toUpperCase()} (${ideRule==='ponytail'?'Ponytail Zero-GC':'Rapid Prototype'})
 
 ${assetBlock}
+${nuanceBlock}
 
 Act as a senior systems architect. Build an ultra-decoupled fixed 60Hz simulation runner in pure ${lang}:
 1. Pure State Struct: Define 'GameState' containing Vector3 position, Vector3 velocity, float stamina (0-100), and EntityState enum.
 2. System Logic: Create 'SimulationRunner' as a pure isolated class operating strictly on GameState inputs with fixed dt = 0.016667f.
 3. Decoupled Presentation: Create 'PlayerView' that interpolates transforms visually. Zero gameplay logic or collision calculation allowed in Update().
 4. Invariant Assertion: Assert that physics runs deterministically whether rendering at 30, 60, or 144 FPS.`},
-    {id:'step2',title:`Step 2: Non-Allocating Input Event Bus & Ring Buffer (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
+      {id:'step2',title:`Step 2: Non-Allocating Input Event Bus & Ring Buffer (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
 Implement a zero-allocation Input Event Broker and Ring Buffer for "${concept}":
 
 ${assetBlock}
+${nuanceBlock}
 
 1. Define 'FrameInput' struct (uint tick, ushort buttonMask, Vector2 moveDir).
 2. Create a circular ring buffer of 128 FrameInput entries to support deterministic rollbacks and replay inspection.
 3. Publish input events through a static delegate bus without heap allocations or LINQ calls.
 4. Acceptance Check: Verify zero GC allocations during sustained 60Hz input polling.`},
-    {id:'step3',title:`Step 3: Pre-Allocated Entity & Projectile Object Pooler (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
+      {id:'step3',title:`Step 3: Pre-Allocated Entity & Projectile Object Pooler (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
 Implement a high-performance Object Pooling subsystem for "${concept}":
 
 ${assetBlock}
+${nuanceBlock}
 
 1. Pre-allocate an array of 64 bullet/VFX entities at startup.
 2. Provide 'Spawn()' and 'Despawn()' methods that toggle active flags and reset positions.
 3. Rule 2 Violation Guard: Hard-forbid calling Instantiate() or Destroy() inside Update() or combat routines.
 4. Pool Exhaustion Strategy: Recycles the oldest active entity if pool capacity is reached without crashing.`},
-    {id:'step4',title:`Step 4: Finite State Machine & Visual Presentation Binding (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
+      {id:'step4',title:`Step 4: Finite State Machine & Visual Presentation Binding (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
 Construct an explicit Finite State Machine for player animations and combat:
 
 ${assetBlock}
+${nuanceBlock}
 
 1. Define 'PlayerState' enum: Idle, Running, LightAttack, HeavyAttack, Stunned, Dead.
 2. State Machine Rules: Disallow impossible transitions (e.g. HeavyAttack directly to Idle without recovery phase).
 3. Connect state changes to animation triggers and audio SFX bus events.
 4. Frame-rate independent decay for attack recovery and hit-stun windows.`},
-    {id:'full',title:`Full Blueprint: Autonomous Agent Master Prompt (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - FULL SPECIFICATION - ${lang.toUpperCase()}]
+      {id:'full',title:`Full Blueprint: Autonomous Agent Master Prompt (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - FULL SPECIFICATION - ${lang.toUpperCase()}]
 Game Vision: "${concept}"
 Pacing: ${nuPace.toUpperCase()} | Mechanic: ${nuMech.toUpperCase()} | Engine: ${ideEng.toUpperCase()} | Rigor: ${nuRigor.toUpperCase()}
 
 ${assetBlock}
+${nuanceBlock}
 
 ARCHITECTURAL RULES (NON-NEGOTIABLE):
 - 60Hz deterministic fixed tick decoupled from visual rendering.
@@ -4386,7 +4682,8 @@ ARCHITECTURAL RULES (NON-NEGOTIABLE):
 - Audio events dispatched through decoupled brokers to prevent cyclic coupling.
 
 Please build this game layer by layer according to AGENTS.md and .cursorrules.`}
-  ];
+    ];
+  }
 
   if (decSel) {
     const curVal = decSel.value;
@@ -4395,8 +4692,20 @@ Please build this game layer by layer according to AGENTS.md and .cursorrules.`}
       const opt=document.createElement('option');opt.value=idx;opt.textContent=p.title;decSel.appendChild(opt);
     });
     if (curVal && prompts[+curVal]) decSel.value = curVal;
-    decSel.onchange=()=>{if(decPrev)decPrev.value=prompts[+decSel.value].prompt};
-    if (decPrev) decPrev.value=prompts[+decSel.value || 0].prompt;
+    decSel.onchange=()=>{
+      if(decPrev) {
+        decPrev.value=prompts[+decSel.value].prompt;
+        updateTokenMeter();
+      }
+    };
+    if (decPrev) {
+      decPrev.value=prompts[+decSel.value || 0].prompt;
+      updateTokenMeter();
+    }
+  }
+  const copyBtn = $('dec-copy-prompt');
+  if (copyBtn) {
+    copyBtn.textContent = promptDensity === 'lite' ? 'Copy Prompt (Lite)' : promptDensity === 'deep' ? 'Copy Prompt (Deep)' : 'Copy Prompt (Standard)';
   }
   const metaEl = $('dock-prompt-meta');
   if (metaEl) {
@@ -4620,7 +4929,190 @@ if (dockToggleBtn && dockBody) {
 }
 
 const copyPromptBtn = $('dec-copy-prompt');
-if (copyPromptBtn) copyPromptBtn.onclick=()=>{copy(decPrev.value);toast('📋 COPIED EVER-EVOLVING PROMPT');};
+if (copyPromptBtn) copyPromptBtn.onclick=()=>{copy(decPrev.value);toast('📋 COPIED EVER-EVOLVING PROMPT (' + promptDensity.toUpperCase() + ')');};
+
+// Density Mode Pills (Lite / Standard / Deep)
+const dLite = $('prompt-density-lite'), dStd = $('prompt-density-std'), dDeep = $('prompt-density-deep');
+const dBtns = { lite: dLite, std: dStd, deep: dDeep };
+Object.keys(dBtns).forEach(k => {
+  const b = dBtns[k];
+  if (b) {
+    b.onclick = () => {
+      promptDensity = k;
+      Object.values(dBtns).forEach(x => { if (x) x.classList.remove('on'); });
+      b.classList.add('on');
+      runDeconstructor(decQ.value);
+      toast('PROMPT DENSITY: ' + k.toUpperCase());
+    };
+  }
+});
+
+// Interactive Nuance Chips
+const nChips = {
+  proc: $('chip-proc'),
+  pad: $('chip-pad'),
+  fog: $('chip-fog'),
+  daynight: $('chip-daynight'),
+  save: $('chip-save'),
+  juice: $('chip-juice')
+};
+Object.keys(nChips).forEach(k => {
+  const chip = nChips[k];
+  if (chip) {
+    chip.onclick = () => {
+      if (activeNuances.has(k)) {
+        activeNuances.delete(k);
+        chip.classList.remove('on');
+        toast('REMOVED ' + chip.textContent.trim().toUpperCase());
+      } else {
+        activeNuances.add(k);
+        chip.classList.add('on');
+        toast('INJECTED ' + chip.textContent.trim().toUpperCase());
+      }
+      runDeconstructor(decQ.value);
+    };
+  }
+});
+
+// Randomize Compatible CC0 Assets
+const btnRandAssets = $('btn-random-assets');
+if (btnRandAssets) {
+  btnRandAssets.onclick = () => {
+    ['char', 'world', 'ui', 'audio'].forEach(k => {
+      if (!lockedSlots[k]) {
+        const opts = ASSET_SLOTS[k].options;
+        ASSET_SLOTS[k].active = Math.floor(Math.random() * opts.length);
+      }
+    });
+    renderAssetSheet();
+    runDeconstructor(decQ.value);
+    toast('🎲 RANDOMIZED COMPATIBLE ASSETS');
+  };
+}
+
+// Slot Locking System
+const lChar = $('lock-char-btn'), lWorld = $('lock-world-btn'), lUi = $('lock-ui-btn'), lAudio = $('lock-audio-btn');
+const lBtns = { char: lChar, world: lWorld, ui: lUi, audio: lAudio };
+Object.keys(lBtns).forEach(k => {
+  const b = lBtns[k];
+  if (b) {
+    b.onclick = () => {
+      lockedSlots[k] = !lockedSlots[k];
+      b.textContent = lockedSlots[k] ? '🔒' : '🔓';
+      b.classList.toggle('locked', lockedSlots[k]);
+      b.title = lockedSlots[k] ? 'Locked: Will not be replaced by randomize' : 'Lock/Unlock Slot';
+      toast(lockedSlots[k] ? `LOCKED ${k.toUpperCase()} SLOT` : `UNLOCKED ${k.toUpperCase()} SLOT`);
+    };
+  }
+});
+
+// CC0 Attribution Copy
+const btnCopyAttr = $('btn-copy-attribution');
+if (btnCopyAttr) {
+  btnCopyAttr.onclick = () => {
+    const c = ASSET_SLOTS.char.options[ASSET_SLOTS.char.active];
+    const w = ASSET_SLOTS.world.options[ASSET_SLOTS.world.active];
+    const g = ASSET_SLOTS.gear.options[ASSET_SLOTS.gear.active];
+    const u = ASSET_SLOTS.ui.options[ASSET_SLOTS.ui.active];
+    const a = ASSET_SLOTS.audio.options[ASSET_SLOTS.audio.active];
+    const v = ASSET_SLOTS.vis.options[ASSET_SLOTS.vis.active];
+    const vision = decQ.value.trim() || 'New Game Project';
+    const txt = `# ATTRIBUTION & CC0 ASSET MANIFEST\n\nProject: ${vision}\nTarget Engine: ${ideEng.toUpperCase()}\nArt Mode: ${ideArt.toUpperCase()}\nGenerated with Queen's Domain Architecture Engine\n\n## Included CC0 1.0 Public Domain Assets:\n- Protagonist: ${c.name} (${c.path})\n- Environment/Tiles: ${w.name} (${w.path})\n- Weapons/Gear: ${g.name} (${g.path})\n- UI & HUD Kit: ${u.name} (${u.path})\n- Audio Mix SFX: ${a.name} (${a.path})\n- Palette & Shaders: ${v.name} (${v.path})\n\nCC0 Assets courtesy of Kenney.nl (Public Domain CC0 1.0)\n`;
+    copy(txt);
+    toast('📋 COPIED CC0 ATTRIBUTION.MD');
+  };
+}
+
+// Quick CLI & Markdown Export
+const btnCopyClCli = $('btn-copy-claude-cli');
+if (btnCopyClCli) {
+  btnCopyClCli.onclick = () => {
+    if (decPrev) {
+      copy(`claude -p "${decPrev.value.replace(/"/g, '\\"')}"`);
+      toast('⚡ COPIED CLAUDE CLI COMMAND');
+    }
+  };
+}
+const btnCopyCodCli = $('btn-copy-codex-cli');
+if (btnCopyCodCli) {
+  btnCopyCodCli.onclick = () => {
+    if (decPrev) {
+      copy(`codex exec "${decPrev.value.replace(/"/g, '\\"')}"`);
+      toast('⚡ COPIED CODEX CLI COMMAND');
+    }
+  };
+}
+const btnExpPromptMd = $('btn-export-prompt-md');
+if (btnExpPromptMd) {
+  btnExpPromptMd.onclick = () => {
+    if (!decPrev) return;
+    const blob = new Blob([decPrev.value], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const dl = document.createElement('a');
+    dl.href = url;
+    dl.download = `prompt_${(decQ.value.trim() || 'game').replace(/[^a-zA-Z0-9_-]/g, '_')}.md`;
+    document.body.appendChild(dl);
+    dl.click();
+    document.body.removeChild(dl);
+    URL.revokeObjectURL(url);
+    toast('📄 DOWNLOADED PROMPT AS MARKDOWN');
+  };
+}
+
+// Preset Category Filters & Surprise Me
+const filterChips = {
+  all: $('insp-filter-all'),
+  rpg: $('insp-filter-rpg'),
+  action: $('insp-filter-action'),
+  cozy: $('insp-filter-cozy'),
+  sand: $('insp-filter-sand'),
+  retro: $('insp-filter-retro')
+};
+let activePresetFilter = 'all';
+function applyPresetFilter(cat) {
+  activePresetFilter = cat;
+  Object.keys(filterChips).forEach(k => {
+    if (filterChips[k]) filterChips[k].classList.toggle('on', k === cat);
+  });
+  const cards = document.querySelectorAll('.cg-insp-card');
+  const q = (decQ ? decQ.value.trim().toLowerCase() : '');
+  cards.forEach(c => {
+    const cCat = c.getAttribute('data-cat') || '';
+    const matchesCat = (cat === 'all' || cCat.includes(cat));
+    const matchesQ = (!q || c.textContent.toLowerCase().includes(q));
+    c.style.display = (matchesCat && matchesQ) ? 'block' : 'none';
+  });
+}
+Object.keys(filterChips).forEach(k => {
+  if (filterChips[k]) {
+    filterChips[k].onclick = () => applyPresetFilter(k);
+  }
+});
+
+const btnSurprise = $('btn-surprise-idea');
+if (btnSurprise) {
+  const pitches = [
+    "Cyberpunk neon stealth action RPG with hacking terminals and stamina dash",
+    "3D Souls-like Gothic dungeon crawler with parry timing and bonfire checkpoints",
+    "2D Cozy valley farming simulator with daily seasonal clock and crop economy",
+    "2D Destructible sandbox miner with underground biomes and safehouse crafting",
+    "Retro 16-bit space arcade shooter with bullet-hell patterns and shield absorption",
+    "Isometric tactical turn-based heist game with line-of-sight and noise meters"
+  ];
+  btnSurprise.onclick = () => {
+    const p = pitches[Math.floor(Math.random() * pitches.length)];
+    if (decQ) decQ.value = p;
+    runDeconstructor(p);
+    applyPresetFilter('all');
+    toast('🎲 SYNTHESIZED GAME VISION!');
+  };
+}
+
+if (decQ) {
+  decQ.addEventListener('input', () => {
+    applyPresetFilter(activePresetFilter);
+  });
+}
 
 const sendAgentBtn = $('btn-dock-send-agent');
 if (sendAgentBtn) {
@@ -4731,6 +5223,30 @@ const sbAssets = $('sb-assets');
 if(sbAssets) sbAssets.onclick = () => showTab('assets');
 
 document.addEventListener('keydown', e => {
+  if (e.key === '/' && !e.target.matches('textarea,input,select')) {
+    e.preventDefault();
+    if (decQ) { decQ.focus(); decQ.select(); }
+  }
+  if (e.ctrlKey && e.key === 'Enter') {
+    e.preventDefault();
+    runDeconstructor(decQ.value);
+    toast('⚡ REBUILT ARCHITECTURE PROMPT');
+  }
+  if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')) {
+    e.preventDefault();
+    if (decPrev) {
+      copy(decPrev.value);
+      toast('📋 COPIED PROMPT (CTRL+SHIFT+C)');
+    }
+  }
+  if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+    e.preventDefault();
+    if (sendAgentBtn) sendAgentBtn.click();
+  }
+  if ((e.key === 'm' || e.key === 'M') && !e.target.matches('textarea,input,select') && !e.ctrlKey && !e.altKey && !e.metaKey) {
+    e.preventDefault();
+    if (topMenuBtn) topMenuBtn.click();
+  }
   if(e.key === 'F11'){
     e.preventDefault();
     if(fsBtn) fsBtn.click();
