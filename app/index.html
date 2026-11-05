@@ -30,35 +30,42 @@ button{font:inherit;color:inherit;cursor:pointer}
   backdrop-filter:blur(8px)}
 .frame>h2,.title{font-size:15px;font-weight:bold;letter-spacing:.02em;color:var(--gold)}
 
-/* Unified rounded top taskbar */
-header{display:flex;align-items:center;gap:14px;padding:8px 18px;margin:8px 12px 6px 12px;border-radius:12px;
-  border:1px solid rgba(220,179,123,.35);background:linear-gradient(180deg,#2b221a 0%,#19130f 100%);
-  box-shadow:0 4px 20px rgba(0,0,0,.6),inset 0 1px 0 rgba(245,207,156,.18);position:relative;z-index:2}
-.logo{width:36px;height:36px;flex:none;border-radius:8px;object-fit:cover;box-shadow:0 0 10px rgba(220,179,123,.3);border:1px solid #5a483a}
-header h1{font-size:18px;font-weight:bold;letter-spacing:.04em;color:var(--gold);text-shadow:0 1px 3px rgba(0,0,0,.8)}
-header small{display:block;font-size:11px;font-weight:normal;letter-spacing:.02em;color:var(--dim)}
-.header-actions{display:flex;gap:6px;align-items:center;margin-left:8px;border-left:1px solid rgba(220,179,123,.25);padding-left:10px}
-.icon-btn{background:#231a14;border:1px solid #4a3a2d;border-radius:20px;color:var(--gold);padding:5px 12px;font-size:12px;font-weight:bold;cursor:pointer;transition:all .15s}
-.icon-btn:hover{border-color:var(--gold);color:#fff;background:#382b20;box-shadow:0 0 8px rgba(220,179,123,.3)}
-.res{margin-left:auto;display:flex;gap:12px;font-size:13px;font-weight:bold;color:var(--green)}
-.res span{display:flex;align-items:center;gap:7px;min-width:0;padding:4px 12px;background:rgba(18,14,11,.85);border:1px solid rgba(220,179,123,.3);border-radius:20px}
-.res b{max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.gem{width:11px;height:11px;transform:rotate(45deg);border-radius:2px;background:linear-gradient(135deg,#f5cf9c,#dcb37b);box-shadow:0 0 6px var(--gold)}
-.gem.g{background:linear-gradient(135deg,#b3e2cd,#67c289);box-shadow:0 0 6px var(--green)}
-.gem.s{background:linear-gradient(135deg,#c4e2d4,#3d6855);box-shadow:0 0 6px var(--cyan)}
+/* Sidebar Header Card (Moved from top taskbar) */
+.sb-header-card{display:flex;flex-direction:column;gap:8px;padding:12px 10px;margin-bottom:8px;border-radius:10px;
+  border:1px solid rgba(220,179,123,.35);background:linear-gradient(180deg,#261e17 0%,#15100c 100%);
+  box-shadow:0 4px 16px rgba(0,0,0,.6),inset 0 1px 0 rgba(245,207,156,.15)}
+.logo{width:34px;height:34px;flex:none;border-radius:6px;object-fit:cover;box-shadow:0 0 10px rgba(220,179,123,.35);border:1px solid #5a483a}
+.sb-header-card h1{font-size:14px;font-weight:bold;letter-spacing:.04em;color:var(--gold);margin:0;line-height:1.2;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.sb-header-card small{display:block;font-size:9.5px;font-weight:bold;letter-spacing:.03em;color:var(--dim)}
+.header-actions{display:flex;gap:4px;align-items:center}
+.icon-btn{background:#201812;border:1px solid rgba(220,179,123,.3);border-radius:6px;color:var(--dim);padding:5px 8px;font-size:11px;font-weight:bold;cursor:pointer;transition:all .15s}
+.icon-btn:hover{border-color:var(--gold);color:#fff;background:#35271a;box-shadow:0 0 8px rgba(220,179,123,.3)}
+.res{display:flex;gap:4px;font-size:11px;font-weight:bold;color:var(--green)}
+.res span{display:flex;align-items:center;gap:5px;min-width:0;padding:3px 8px;background:rgba(18,14,11,.85);border:1px solid rgba(220,179,123,.3);border-radius:14px}
+.res b{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gem{width:9px;height:9px;transform:rotate(45deg);border-radius:2px;background:linear-gradient(135deg,#f5cf9c,#dcb37b);box-shadow:0 0 5px var(--gold)}
+.gem.g{background:linear-gradient(135deg,#b3e2cd,#67c289);box-shadow:0 0 5px var(--green)}
+.gem.s{background:linear-gradient(135deg,#c4e2d4,#3d6855);box-shadow:0 0 5px var(--cyan)}
 
 /* left sidebar */
-#shell{flex:1;min-height:0;display:flex}
-nav{width:220px;flex:none;display:flex;flex-direction:column;gap:5px;padding:10px;overflow-y:auto;border-right:1px solid rgba(220,179,123,.25);background:linear-gradient(180deg,#1c1612,#110d0a)}
-nav button{text-align:left;padding:9px 12px;background:transparent;border:1px solid transparent;border-radius:8px;
-  font-weight:bold;font-size:13px;color:var(--dim);transition:all .15s ease}
-nav button:hover{color:#fff;background:#261e18;border-color:#4a3a2d}
-nav button.on{background:linear-gradient(90deg,#3b2d20,#221911);color:#fff;border-color:var(--gold);box-shadow:0 0 12px rgba(220,179,123,.3),inset 0 1px 0 rgba(245,207,156,.2)}
-nav #sb-newproj{border:1px solid var(--gold);border-radius:8px;color:var(--gold);text-align:center;margin-bottom:8px;background:linear-gradient(180deg,#382c16,#1b1509);font-weight:bold}
-nav #sb-newproj:hover{background:linear-gradient(180deg,#4f3e1f,#271e0d);box-shadow:0 0 14px rgba(220,179,123,.5)}
-nav h3{font-size:11px;font-weight:bold;letter-spacing:.05em;color:var(--gold2);margin:12px 4px 4px}
+#shell{flex:1;min-height:0;display:flex;width:100vw;height:100vh;overflow:hidden}
+nav{width:240px;flex:none;display:flex;flex-direction:column;gap:5px;padding:10px 10px 16px;overflow-y:auto;overflow-x:hidden;border-right:1px solid rgba(220,179,123,.25);background:linear-gradient(180deg,#1c1612,#110d0a)}
+nav *{box-sizing:border-box}
+nav button{text-align:left;padding:8px 12px;background:#18120d;border:1px solid rgba(220,179,123,.32);border-radius:8px;
+  font-weight:bold;font-size:13.5px;color:#e5dac9;transition:all .15s ease;cursor:pointer;display:flex;align-items:center;gap:8px;width:100%}
+nav button *{pointer-events:none}
+nav button:hover{color:#fff;background:#281f17;border-color:rgba(220,179,123,.6);transform:translateY(-1px)}
+nav button.on{background:linear-gradient(90deg,#3b2d20,#221911);color:#fff;border-color:var(--gold);box-shadow:0 0 10px rgba(220,179,123,.3),inset 0 1px 0 rgba(245,207,156,.2)}
+nav #sb-newproj{border:1px solid rgba(220,179,123,.45);border-radius:8px;color:var(--gold);text-align:center;justify-content:center;background:#18120d;font-weight:bold;margin-bottom:4px}
+nav #sb-newproj:hover{background:linear-gradient(180deg,#382c16,#1b1509);border-color:var(--gold);color:#fff;box-shadow:0 0 12px rgba(220,179,123,.4)}
+nav h3,.sb-section-title{font-size:11px;font-weight:800;letter-spacing:.08em;color:#9c8b76;margin:12px 4px 4px;text-transform:uppercase}
 nav .sbrow{display:flex}nav .sbrow .sbp{flex:1;min-width:0}nav .sbx{padding:8px;visibility:hidden}nav .sbrow:hover .sbx{visibility:visible}nav .sbx:hover{color:var(--red)}
-nav .sbp{text-transform:none;letter-spacing:0;font-weight:400;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+nav .sbp{display:flex;flex-direction:column;gap:6px;padding:9px 11px;border:1px solid rgba(220,179,123,.3);border-radius:8px;background:#18120d;color:#e5dac9;font-weight:bold;font-size:13px;cursor:pointer;transition:all .15s ease;margin-bottom:5px;text-align:left;width:100%}
+nav .sbp:hover{background:#261e17;border-color:rgba(220,179,123,.6);color:#fff;transform:translateY(-1px)}
+nav .sbp .sbar{width:100%;margin:2px 0 0 0;border-radius:3px}
+.sb-key-badge{border:1px solid rgba(220,179,123,.45);border-radius:4px;padding:1px 6px;font-size:11px;font-weight:bold;color:#e5dac9;line-height:1.2}
+.sb-btn-dev{color:#7ce8b2!important;border-color:rgba(124,232,178,.35)!important}
+.sb-btn-dev:hover{border-color:#7ce8b2!important;color:#a4ffd0!important}
 
 main{flex:1;min-width:0;min-height:0;padding:10px 16px 14px;display:flex;flex-direction:column;gap:8px}
 #phead{border:1px solid var(--blue);border-radius:10px;background:#030a18;padding:8px 12px;display:flex;flex-direction:column;gap:6px}
@@ -264,18 +271,18 @@ body{background:radial-gradient(ellipse at 50% 0%,#282019 0%,var(--bg) 75%),repe
 ::-webkit-scrollbar{width:14px;height:14px}::-webkit-scrollbar-track{background:#0e0b09;border-left:1px solid #000}
 ::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--gold2),var(--gold3) 50%,var(--gold2));border:2px solid #000;box-shadow:inset 0 0 0 1px #3a2c08}
 .frame{border:1px solid rgba(220,179,123,.4);border-radius:12px;box-shadow:0 12px 36px rgba(0,0,0,.7),inset 0 1px 0 rgba(245,207,156,.18)}
-header{border:1px solid rgba(220,179,123,.35);border-radius:12px;margin:8px 12px 6px 12px;
-  background:linear-gradient(180deg,#2b221a 0%,#19130f 100%);
-  box-shadow:0 4px 20px rgba(0,0,0,.6),inset 0 1px 0 rgba(245,207,156,.18);position:relative;z-index:2}
-header h1{text-shadow:0 1px 3px rgba(0,0,0,.8)}
-.res span{padding:4px 12px;background:rgba(18,14,11,.85);border:1px solid rgba(220,179,123,.3);border-radius:20px}
+header#sb-header{border:1px solid rgba(220,179,123,.35);border-radius:10px;margin:0 0 8px 0;
+  background:linear-gradient(180deg,#261e17 0%,#15100c 100%);
+  box-shadow:0 4px 16px rgba(0,0,0,.6),inset 0 1px 0 rgba(245,207,156,.18)}
+.sb-header-card h1{text-shadow:0 1px 3px rgba(0,0,0,.8)}
 nav{border-right:1px solid rgba(220,179,123,.25);background:linear-gradient(180deg,#1c1612,#110d0a)}
-nav button{border:1px solid transparent;background:transparent;color:var(--dim);border-radius:8px;font-family:Arial,Helvetica,sans-serif}
-nav button:hover{background:#261e18;color:#fff;border-color:#4a3a2d}
-nav button.on{background:linear-gradient(90deg,#3b2d20,#221911);color:#fff;border-color:var(--gold);box-shadow:0 0 12px rgba(220,179,123,.3),inset 0 1px 0 rgba(245,207,156,.2)}
-nav #sb-newproj{background:linear-gradient(180deg,#382c16,#1b1509);border:1px solid var(--gold);box-shadow:inset 0 1px 0 rgba(245,207,156,.35);border-radius:8px}
-nav h3{color:var(--gold2);border-bottom:1px solid rgba(220,179,123,.2);padding-bottom:3px;font-weight:bold}
-nav .sbp{background:#16120e;border:1px solid #33271d;border-radius:6px;display:block;width:100%}
+nav button{border:1px solid rgba(220,179,123,.32);background:#18120d;color:#e5dac9;border-radius:8px;font-family:Arial,Helvetica,sans-serif}
+nav button:hover{background:#281f17;color:#fff;border-color:rgba(220,179,123,.6)}
+nav button.on{background:linear-gradient(90deg,#3b2d20,#221911);color:#fff;border-color:var(--gold);box-shadow:0 0 10px rgba(220,179,123,.3),inset 0 1px 0 rgba(245,207,156,.2)}
+nav #sb-newproj{background:#18120d;border:1px solid rgba(220,179,123,.45);color:var(--gold);border-radius:8px}
+nav h3{color:#9c8b76;font-size:11px;font-weight:800;letter-spacing:.08em;margin:12px 4px 4px;text-transform:uppercase}
+nav .sbp{background:#18120d;border:1px solid rgba(220,179,123,.3);border-radius:8px;display:flex;flex-direction:column;gap:6px;width:100%}
+nav .sbp:hover{background:#261e17;border-color:rgba(220,179,123,.6);color:#fff}
 nav .sbp>span{display:block;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
 .btn{border:1px solid #4a3a2d;color:var(--text);background:linear-gradient(180deg,#2d231a,#1a130e);border-radius:8px;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:13px;box-shadow:0 2px 6px rgba(0,0,0,.4),inset 0 1px 0 rgba(245,207,156,.15);transition:all .15s}
 .btn:hover{box-shadow:0 0 12px rgba(220,179,123,.3);background:linear-gradient(180deg,#3d2f23,#221912);color:#fff;transform:translateY(-1px)}
@@ -509,37 +516,63 @@ textarea:focus,input:focus{border-color:var(--gold);box-shadow:0 0 8px rgba(220,
   </div>
 </div>
 
-<header>
-  <img class="logo" src="icon.png" alt="Queen's Domain" style="width:38px;height:38px;border-radius:6px;object-fit:cover;box-shadow:0 0 10px rgba(220,179,123,.35);border:1px solid #5a483a">
-  <div><h1>QUEEN'S DOMAIN</h1><small>ARPG ARCHITECTURE LAB // VIBE-CODING FRAMEWORK</small></div>
-  <div class="sbar big" id="r-prog" title=""><i></i></div>
-  <div class="res">
-    <span title="Steps completed"><i class="gem"></i><b id="r-done">0</b></span>
-    <span title="Total steps"><i class="gem g"></i><b id="r-total">50</b></span>
-    <span title="Target engine"><i class="gem s"></i><b id="r-plat">UNITY</b></span>
-    <span title="Loaded model" style="font-size:14px"><i class="gem" style="background:#c9a8ff;box-shadow:0 0 6px #9a6bff"></i><b id="r-model">NO MODEL</b></span>
-  </div>
-  <div class="header-actions" id="hdr-desktop-ctrls">
-    <button class="icon-btn gold" id="btn-agent-connect" title="Plug in Claude, Codex, Local Ollama or Custom API" style="border-color:var(--gold);color:var(--gold);font-weight:700">🤖 Plug AI Agent</button>
-    <button class="icon-btn" id="btn-help" title="Open Game Architecture Guide & Academy (?)">❓ Guide</button>
-    <button class="icon-btn" id="btn-fs-toggle" title="Toggle Desktop Fullscreen (F11)">⛶ Fullscreen</button>
-    <button class="icon-btn" id="btn-reload" title="Refresh Interface (Ctrl+R)">🔄</button>
-  </div>
-</header>
-
 <div id="shell">
 <nav id="nav">
-  <button id="sb-agent-connect" style="color:var(--gold);border:1px solid rgba(212,174,69,.5);margin-bottom:2px">🤖 Plug AI Agents</button>
-  <button data-t="demo" id="sb-demo" style="color:var(--green);border:1px solid rgba(65,224,96,.4);margin-bottom:4px">🎮 Demo & Tool Lab</button>
-  <button id="sb-guide" style="color:#d5e6fb;border:1px solid #14407f;margin-bottom:4px">🎓 Academy & Guide</button>
-  <button id="sb-newproj">+ New project</button>
-  <button data-t="projects" class="on">Projects</button>
-  <button data-t="assets" id="sb-assets" style="display:flex;align-items:center;justify-content:space-between;color:var(--gold);border:1px solid rgba(212,174,69,.4);margin-top:2px"><span>🎨 Asset Studio</span><span class="badge act" style="padding:1px 5px;font-size:10px;border-radius:3px">A</span></button>
-  <button data-t="settings">Settings</button>
-  <button data-t="devconsole" id="sb-devconsole" style="color:var(--cyan);border:1px solid #14407f;margin-top:2px">★ Dev Console</button>
-  <div id="nav-old" style="display:none"><button data-t="chat"></button><button data-t="spawn"></button><button data-t="steps"></button><button data-t="audit"></button><button data-t="agents"></button><button data-t="handoff"></button><button data-t="repo"></button><button data-t="assets"></button><button data-t="devconsole"></button></div>
-  <h3>RECENT CHATS</h3><div id="sb-chats"></div>
-  <h3>YOUR PROJECTS</h3><div id="sb-proj"></div>
+  <!-- Brand & Status Console (Integrated from header bar into sidebar) -->
+  <header id="sb-header" class="sb-header-card">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img class="logo" src="icon.png" alt="Queen's Domain" style="width:34px;height:34px;border-radius:6px;object-fit:cover;box-shadow:0 0 10px rgba(220,179,123,.35);border:1px solid #5a483a;flex:none">
+      <div style="flex:1;min-width:0">
+        <h1 style="font-size:13.5px;font-weight:bold;letter-spacing:.04em;color:var(--gold);margin:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">QUEEN'S DOMAIN</h1>
+        <small style="display:block;font-size:9px;font-weight:700;letter-spacing:.02em;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">ARPG ARCHITECTURE LAB</small>
+      </div>
+    </div>
+    <div class="sbar big" id="r-prog" title="Blueprint Progress" style="height:6px;margin:6px 0 4px;border-radius:3px;background:#0d0a08"><i></i></div>
+    <div class="res" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0;font-size:11px">
+      <span title="Steps completed / total" style="padding:3px 6px;border-radius:12px;justify-content:center"><i class="gem"></i><b id="r-done">0</b>/<b id="r-total">50</b></span>
+      <span title="Target platform" style="padding:3px 6px;border-radius:12px;justify-content:center"><i class="gem s"></i><b id="r-plat">UNITY</b></span>
+      <span title="Loaded model" style="grid-column:span 2;padding:3px 6px;border-radius:12px;justify-content:center"><i class="gem" style="background:#c9a8ff;box-shadow:0 0 6px #9a6bff"></i><b id="r-model">NO MODEL</b></span>
+    </div>
+  </header>
+
+  <!-- PLATFORM Section -->
+  <div class="sb-section-title">PLATFORM</div>
+  <button id="sb-agent-connect" class="sb-btn"><span>🤖 Plug AI Agents</span></button>
+  <button data-t="demo" id="sb-demo" class="sb-btn"><span>🎮 Demo & Tool Lab</span></button>
+  <button id="sb-guide" class="sb-btn"><span>🎓 Academy & Guide</span></button>
+  <button id="sb-newproj" class="sb-btn sb-btn-new"><span>+ New Project</span></button>
+  <button data-t="assets" id="sb-assets" class="sb-btn" style="justify-content:space-between">
+    <span>🎨 Asset Studio</span>
+    <span class="sb-key-badge">A</span>
+  </button>
+  <button data-t="projects" class="sb-btn on" id="sb-projects"><span>📁 Projects</span></button>
+
+  <!-- SETTINGS Section -->
+  <div class="sb-section-title">SETTINGS</div>
+  <button data-t="settings" class="sb-btn" id="sb-settings"><span>⚙️ Settings</span></button>
+  <button data-t="devconsole" id="sb-devconsole" class="sb-btn sb-btn-dev"><span>★ Dev Console</span></button>
+
+  <!-- Tucked Utility Controls (Combined on the left side under menu options) -->
+  <div class="header-actions" id="hdr-desktop-ctrls" style="display:flex;gap:4px;margin:6px 0 4px 0;padding:6px 0 0 0;border-top:1px solid rgba(220,179,123,.18);border-left:none">
+    <button class="icon-btn" id="btn-fs-toggle" title="Toggle Desktop Fullscreen (F11)" style="flex:1;text-align:center;padding:5px 6px;font-size:11px;border-radius:6px">⛶ Fullscreen</button>
+    <button class="icon-btn" id="btn-reload" title="Refresh Interface (Ctrl+R)" style="padding:5px 8px;font-size:11px;border-radius:6px">🔄</button>
+    <button class="icon-btn" id="btn-help" title="Open Game Architecture Guide & Academy" style="padding:5px 8px;font-size:11px;border-radius:6px">❓ Guide</button>
+    <button id="btn-agent-connect" style="display:none"></button>
+  </div>
+
+  <div id="nav-old" style="display:none">
+    <button data-t="chat"></button><button data-t="spawn"></button><button data-t="steps"></button>
+    <button data-t="audit"></button><button data-t="agents"></button><button data-t="handoff"></button>
+    <button data-t="repo"></button><button data-t="assets"></button><button data-t="devconsole"></button>
+  </div>
+
+  <!-- RECENT CHATS -->
+  <div class="sb-section-title">RECENT CHATS</div>
+  <div id="sb-chats"></div>
+
+  <!-- YOUR PROJECTS -->
+  <div class="sb-section-title">YOUR PROJECTS</div>
+  <div id="sb-proj"></div>
 </nav>
 
 <main>
