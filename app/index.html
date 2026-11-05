@@ -579,10 +579,10 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
     <div class="frame page">
       <div id="pj-list">
         <!-- Unified Clean Autonomous Game Pipeline & Project Starter -->
-        <div class="explainer-hero" id="pj-explainer" style="background:rgba(18,18,24,0.72);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 22px;margin-bottom:16px;box-shadow:0 12px 36px rgba(0,0,0,0.65),inset 0 1px 0 rgba(255,255,255,0.1)">
+        <div class="explainer-hero" id="pj-explainer" style="background:rgba(18,18,24,0.75);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 20px;margin-bottom:16px;box-shadow:0 12px 36px rgba(0,0,0,0.65),inset 0 1px 0 rgba(255,255,255,0.1)">
           
           <!-- Top Clean Header & 5-Step Flow -->
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.08)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.08)">
             <div style="display:flex;align-items:center;gap:10px">
               <div style="width:10px;height:10px;background:#00f0ff;box-shadow:0 0 10px #00f0ff;transform:rotate(45deg);border-radius:2px"></div>
               <h2 style="font-size:15px;font-weight:bold;color:#ffffff;letter-spacing:.03em;margin:0;border:none">AUTONOMOUS GAME PIPELINE</h2>
@@ -592,60 +592,172 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
             </div>
           </div>
 
-          <!-- Vision Input: What does your game look like? with Prompt Pills ABOVE the chat bar -->
-          <div style="margin-bottom:14px">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-              <div style="font-size:13px;font-weight:bold;color:#ffffff;display:flex;align-items:center;gap:6px">
-                <span>💭 WHAT DOES YOUR GAME LOOK LIKE?</span>
+          <!-- Two-Column Layout: Left-Hand Game Identity Dock + Right-Hand Prompt & Scope Calibrator -->
+          <div style="display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start">
+            
+            <!-- LEFT-HAND SIDE: GAME IDENTITY & ENGINE TOOLS -->
+            <div id="pj-identity-dock" style="background:rgba(12,12,18,0.7);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px">
+              <div>
+                <div style="font-size:12px;font-weight:bold;color:#ffffff;display:flex;align-items:center;gap:6px">
+                  <span style="color:#00f0ff">🛠️</span> GAME IDENTITY TOOLS
+                </div>
+                <div style="font-size:11px;color:#a1a1aa;margin-top:2px">Shapes engine, art pipeline & AI rules</div>
               </div>
-              <span style="font-size:11px;color:#a1a1aa">Click an idea or type below to shape game theory & tools</span>
+
+              <!-- Target Engine -->
+              <div>
+                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Target Engine</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                  <button class="btn on" id="ide-eng-unity" style="font-size:11px;padding:5px 6px;text-align:center;border-color:var(--cyan);color:var(--cyan);font-weight:bold">🎮 Unity C#</button>
+                  <button class="btn" id="ide-eng-godot" style="font-size:11px;padding:5px 6px;text-align:center">🕹️ Godot 4</button>
+                  <button class="btn" id="ide-eng-spawn" style="font-size:11px;padding:5px 6px;text-align:center">🌐 Spawn.co</button>
+                  <button class="btn" id="ide-eng-unreal" style="font-size:11px;padding:5px 6px;text-align:center">⚡ Unreal 5</button>
+                </div>
+              </div>
+
+              <!-- Asset Mode & Free CDN Pipeline -->
+              <div>
+                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Asset Mode & Pipeline</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px">
+                  <button class="btn on" id="ide-art-3d" style="font-size:11px;padding:5px 6px;text-align:center;border-color:var(--gold);color:var(--gold);font-weight:bold">⚔️ 3D Low-Poly</button>
+                  <button class="btn" id="ide-art-2d" style="font-size:11px;padding:5px 6px;text-align:center">🎨 2D Pixel Sprite</button>
+                </div>
+                <button class="btn" id="ide-open-cdn" style="width:100%;font-size:11px;padding:4px;background:rgba(0,240,255,0.06);border-color:rgba(0,240,255,0.25);color:#00f0ff">🌐 Open Free CDN Scraper</button>
+              </div>
+
+              <!-- 12-Rule Code Hygiene Level -->
+              <div>
+                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Code Hygiene Rules</div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <button class="btn on" id="ide-rule-ponytail" style="font-size:11px;padding:4px 8px;text-align:left;border-color:var(--green);color:var(--green);font-weight:bold">🛡️ Ponytail Strict (Zero GC)</button>
+                  <button class="btn" id="ide-rule-rapid" style="font-size:11px;padding:4px 8px;text-align:left;color:#a1a1aa">⚡ Rapid Vibe Prototype</button>
+                </div>
+              </div>
+
+              <!-- AI Vibe-Coding Agent -->
+              <div>
+                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Vibe-Coding Agent</div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <button class="btn on" id="ide-ai-claude" style="font-size:11px;padding:4px 8px;text-align:left;border-color:rgba(255,255,255,0.2);color:#ffffff">🤖 Claude 3.7 Code</button>
+                  <button class="btn" id="ide-ai-codex" style="font-size:11px;padding:4px 8px;text-align:left;color:#a1a1aa">🧠 OpenAI Codex</button>
+                  <button class="btn" id="ide-ai-ollama" style="font-size:11px;padding:4px 8px;text-align:left;color:#a1a1aa">🦙 Ollama Local</button>
+                </div>
+              </div>
+
+              <!-- Game Scope Dial -->
+              <div>
+                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Blueprint Scope Dial</div>
+                <div style="display:flex;gap:3px">
+                  <button class="btn" id="ide-scope-12" style="flex:1;font-size:10.5px;padding:4px 2px;text-align:center">12 Steps</button>
+                  <button class="btn on" id="ide-scope-24" style="flex:1;font-size:10.5px;padding:4px 2px;text-align:center;border-color:var(--cyan);color:var(--cyan);font-weight:bold">24 Steps</button>
+                  <button class="btn" id="ide-scope-50" style="flex:1;font-size:10.5px;padding:4px 2px;text-align:center">50 Steps</button>
+                </div>
+              </div>
             </div>
 
-            <!-- Prompt Idea Pills directly ABOVE the chat bar -->
-            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px">
-              <button class="btn" id="dec-preset-souls" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🗡️ 3D Soulslike ARPG</button>
-              <button class="btn" id="dec-preset-cozy" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🌾 2D Cozy Farm Sim</button>
-              <button class="btn" id="dec-preset-sandbox" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">⛏️ 2D Sandbox Miner</button>
-              <button class="btn" id="dec-preset-scifi" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🛸 Cyberpunk Roguelike</button>
+            <!-- RIGHT-HAND MAIN COLUMN: PROMPT UNDERSTANDING, SCOPE & NUANCE CALIBRATOR -->
+            <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+              
+              <!-- 1. Vision Input: What does your game look like? with Prompt Pills ABOVE the chat bar -->
+              <div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                  <div style="font-size:13px;font-weight:bold;color:#ffffff;display:flex;align-items:center;gap:6px">
+                    <span>💭 WHAT DOES YOUR GAME LOOK LIKE?</span>
+                  </div>
+                  <span style="font-size:11px;color:#a1a1aa">Click an idea or type below to shape game theory & tools</span>
+                </div>
+
+                <!-- Prompt Idea Pills directly ABOVE the chat bar -->
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+                  <button class="btn" id="dec-preset-souls" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🗡️ 3D Soulslike ARPG</button>
+                  <button class="btn" id="dec-preset-cozy" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🌾 2D Cozy Farm Sim</button>
+                  <button class="btn" id="dec-preset-sandbox" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">⛏️ 2D Sandbox Miner</button>
+                  <button class="btn" id="dec-preset-scifi" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🛸 Cyberpunk Roguelike</button>
+                </div>
+
+                <!-- The Chat Input Bar -->
+                <div class="row" style="gap:8px">
+                  <input type="text" id="dec-query" value="Fast-paced cyberpunk roguelike hacking game with stamina combat" placeholder="Describe what your game looks and feels like (e.g. 'Cozy farming sim' or '3D dungeon crawler')..." style="flex:1;font-size:14px;padding:12px 16px;border-radius:8px;background:rgba(10,10,14,0.85);border:1px solid rgba(255,255,255,0.12);color:#ffffff">
+                  <button class="btn gold" id="dec-deconstruct-btn" style="font-size:13px;padding:12px 22px;white-space:nowrap;border-radius:8px;font-weight:bold">⚡ Shape Game Design</button>
+                </div>
+              </div>
+
+              <!-- 2. Prompt Understanding & Scope Analyzer Bar -->
+              <div id="dec-scope-bar" style="background:rgba(12,14,20,0.85);border:1px solid rgba(0,240,255,0.2);border-radius:8px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span id="dec-detected-theme" style="font-size:12px;font-weight:bold;color:#ffffff">🎯 Detected: Cyberpunk Roguelike</span>
+                  <span id="dec-scope-badge" class="badge ok">📐 SCOPE: 24 STEPS (BALANCED)</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;font-size:11.5px;color:#a1a1aa">
+                  <span>⏱️ Budget: <b style="color:var(--green)">16.6ms @ 60Hz</b></span>
+                  <span>🧠 Memory: <b style="color:var(--cyan)">Zero-GC Pool</b></span>
+                  <span>🛡️ Hygiene: <b style="color:#ffffff">12 Rules Active</b></span>
+                </div>
+              </div>
+
+              <!-- 3. Prompt Nuance Calibrator (Sliders/Pills to tweak prompt nuances for vibe coding) -->
+              <div id="dec-nuance-box" style="background:rgba(12,12,16,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <span style="font-size:11.5px;font-weight:bold;color:#a1a1aa;letter-spacing:.05em">⚡ TWEAK PROMPT NUANCES (VIBE-CODING CALIBRATOR)</span>
+                  <span style="font-size:11px;color:#10b981">Auto-tunes prompts to prevent AI hallucination</span>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
+                  <!-- Pacing Nuance -->
+                  <div style="display:flex;flex-direction:column;gap:3px">
+                    <span style="font-size:10.5px;color:#a1a1aa">Pacing Feel:</span>
+                    <div style="display:flex;gap:3px">
+                      <button class="btn on" id="nu-pace-fast" style="flex:1;font-size:10.5px;padding:3px;border-color:var(--cyan);color:var(--cyan)">🕹️ Fast Arcade</button>
+                      <button class="btn" id="nu-pace-souls" style="flex:1;font-size:10.5px;padding:3px">⚔️ Committed</button>
+                      <button class="btn" id="nu-pace-turn" style="flex:1;font-size:10.5px;padding:3px">⏳ Turn-Based</button>
+                    </div>
+                  </div>
+                  <!-- Core Mechanic Nuance -->
+                  <div style="display:flex;flex-direction:column;gap:3px">
+                    <span style="font-size:10.5px;color:#a1a1aa">Core Interaction:</span>
+                    <div style="display:flex;gap:3px">
+                      <button class="btn on" id="nu-mech-action" style="flex:1;font-size:10.5px;padding:3px;border-color:var(--cyan);color:var(--cyan)">🎯 Hitboxes</button>
+                      <button class="btn" id="nu-mech-grid" style="flex:1;font-size:10.5px;padding:3px">🌾 Grid Tile</button>
+                      <button class="btn" id="nu-mech-dig" style="flex:1;font-size:10.5px;padding:3px">⛏️ Voxel Dig</button>
+                    </div>
+                  </div>
+                  <!-- Architecture Rigor Nuance -->
+                  <div style="display:flex;flex-direction:column;gap:3px">
+                    <span style="font-size:10.5px;color:#a1a1aa">Vibe Architecture:</span>
+                    <div style="display:flex;gap:3px">
+                      <button class="btn on" id="nu-rigor-strict" style="flex:1;font-size:10.5px;padding:3px;border-color:var(--green);color:var(--green)">🛡️ Zero-GC Struct</button>
+                      <button class="btn" id="nu-rigor-single" style="flex:1;font-size:10.5px;padding:3px">⚡ Single File</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Deconstructed Architecture Questions Box (Glassware grid) -->
+              <div id="dec-questions-box" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px"></div>
+
+              <!-- 5. Step-by-Step Prompt Preview & Workspace Launcher -->
+              <div style="background:rgba(12,12,16,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                  <span style="font-size:12px;color:#ffffff;font-weight:bold;display:flex;align-items:center;gap:6px">
+                    <span style="color:#00f0ff">📐</span> CALIBRATED VIBE-CODING PROMPT PREVIEW:
+                  </span>
+                  <select id="dec-prompt-sel" style="width:auto;font-size:11.5px;padding:4px 10px;border-radius:6px;background:rgba(20,20,26,0.9);border:1px solid rgba(255,255,255,0.12);color:#ffffff"></select>
+                </div>
+                <textarea id="dec-prompt-preview" class="mono code" rows="4" readonly spellcheck="false" style="font-size:12px;line-height:1.45;background:rgba(8,8,10,0.9);border:1px solid rgba(255,255,255,0.07);color:#e4e4e7;width:100%;border-radius:6px"></textarea>
+                <div class="row" style="margin-top:10px;gap:8px">
+                  <button class="btn" id="dec-copy-prompt" style="font-size:12px;border-radius:8px">📋 1-Click Copy Step Prompt</button>
+                  <button class="btn gold" id="dec-adopt-blueprint" style="font-size:12px;margin-left:auto;border-radius:8px">🚀 1-Click Open In Project Workspace</button>
+                </div>
+              </div>
+
+              <!-- Quick Workflow Links -->
+              <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap">
+                <span class="dim" style="font-size:11px;font-weight:bold;color:#71717a">MORE WORKFLOWS:</span>
+                <button class="icon-btn" id="act-start-qd" style="font-size:11px;padding:5px 12px;border-radius:6px">👑 Built-In 50-Step ARPG</button>
+                <button class="icon-btn" id="act-create-custom" style="font-size:11px;padding:5px 12px;border-radius:6px">📐 25-Facet Slider Wizard</button>
+                <button class="icon-btn" id="act-browse-assets" style="font-size:11px;padding:5px 12px;border-radius:6px">🎨 Free CC0 Asset Studio</button>
+              </div>
+
             </div>
-
-            <!-- The Chat Input Bar -->
-            <div class="row" style="gap:8px">
-              <input type="text" id="dec-query" value="Fast-paced cyberpunk roguelike hacking game with stamina combat" placeholder="Describe what your game looks and feels like (e.g. 'Cozy farming sim' or '3D dungeon crawler')..." style="flex:1;font-size:14px;padding:12px 16px;border-radius:8px;background:rgba(10,10,14,0.85);border:1px solid rgba(255,255,255,0.12);color:#ffffff">
-              <button class="btn gold" id="dec-deconstruct-btn" style="font-size:13px;padding:12px 22px;white-space:nowrap;border-radius:8px;font-weight:bold">⚡ Shape Game Design</button>
-            </div>
-          </div>
-
-          <!-- Section Label: Game Theory & Design Cards -->
-          <div style="display:flex;align-items:center;justify-content:space-between;margin:12px 0 8px">
-            <span style="font-size:11.5px;font-weight:bold;color:#a1a1aa;letter-spacing:.05em">GAME THEORY & ARCHITECTURAL VECTORS</span>
-            <span style="font-size:11px;color:#10b981;font-weight:bold">✔ CALIBRATED</span>
-          </div>
-
-          <!-- Deconstructed Architecture Questions Box (Glassware grid) -->
-          <div id="dec-questions-box" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px;margin-bottom:14px"></div>
-
-          <!-- Step-by-Step Prompt Preview & Workspace Launcher -->
-          <div style="background:rgba(12,12,16,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;margin-bottom:12px">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-              <span style="font-size:12px;color:#ffffff;font-weight:bold;display:flex;align-items:center;gap:6px">
-                <span style="color:#00f0ff">📐</span> STEP-BY-STEP PROMPT PREVIEW:
-              </span>
-              <select id="dec-prompt-sel" style="width:auto;font-size:11.5px;padding:4px 10px;border-radius:6px;background:rgba(20,20,26,0.9);border:1px solid rgba(255,255,255,0.12);color:#ffffff"></select>
-            </div>
-            <textarea id="dec-prompt-preview" class="mono code" rows="4" readonly spellcheck="false" style="font-size:12px;line-height:1.45;background:rgba(8,8,10,0.9);border:1px solid rgba(255,255,255,0.07);color:#e4e4e7;width:100%;border-radius:6px"></textarea>
-            <div class="row" style="margin-top:10px;gap:8px">
-              <button class="btn" id="dec-copy-prompt" style="font-size:12px;border-radius:8px">📋 1-Click Copy Step Prompt</button>
-              <button class="btn gold" id="dec-adopt-blueprint" style="font-size:12px;margin-left:auto;border-radius:8px">🚀 1-Click Open In Project Workspace</button>
-            </div>
-          </div>
-
-          <!-- Quick Workflow Links -->
-          <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap">
-            <span class="dim" style="font-size:11px;font-weight:bold;color:#71717a">MORE WORKFLOWS:</span>
-            <button class="icon-btn" id="act-start-qd" style="font-size:11px;padding:5px 12px;border-radius:6px">👑 Built-In 50-Step ARPG</button>
-            <button class="icon-btn" id="act-create-custom" style="font-size:11px;padding:5px 12px;border-radius:6px">📐 25-Facet Slider Wizard</button>
-            <button class="icon-btn" id="act-browse-assets" style="font-size:11px;padding:5px 12px;border-radius:6px">🎨 Free CC0 Asset Studio</button>
           </div>
         </div>
 
@@ -866,6 +978,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
           <button class="btn gold" id="ast-btn-3d" style="font-size:12px;padding:6px 14px">⚔️ 3D Model Studio</button>
           <button class="btn" id="ast-btn-pixel" style="font-size:12px;padding:6px 14px">🎨 2D Pixel Art Studio</button>
           <button class="btn" id="ast-btn-catalog" style="font-size:12px;padding:6px 14px">📦 CC0 Packs Catalog</button>
+          <button class="btn" id="ast-btn-cdn" style="font-size:12px;padding:6px 14px">🌐 Free CDN Scraper</button>
         </div>
       </div>
 
@@ -876,12 +989,45 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
             <span style="color:#f43f5e">⯁</span> ISOLATED CHARACTER WORKSHOP: <span id="m3d-title-name" style="color:#ffffff">Queen's Domain Guardian</span>
           </div>
           <div style="display:flex;gap:4px">
+            <button class="icon-btn gold" id="m3d-cdn-btn" style="border-radius:6px;font-size:11.5px">🌐 Free 3D CDNs</button>
             <button class="icon-btn" id="m3d-sub-nav" style="border-color:rgba(255,255,255,0.2);color:#ffffff">Character Navigator</button>
             <button class="icon-btn" id="m3d-sub-view" style="color:var(--cyan);border-color:var(--cyan)">Model View</button>
             <button class="icon-btn" id="m3d-sub-anim">Animations</button>
             <button class="icon-btn" id="m3d-sub-ab">Abilities</button>
             <button class="icon-btn" id="m3d-sub-eq">Equipment</button>
             <button class="icon-btn" id="m3d-sub-meta">Metadata</button>
+          </div>
+        </div>
+
+        <!-- 3D Model Free CDN Fetcher & Scraper Drawer -->
+        <div id="m3d-cdn-drawer" style="display:none;background:rgba(10,12,18,0.9);border:1px solid rgba(0,240,255,0.25);border-radius:8px;padding:12px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <div style="font-size:12px;font-weight:bold;color:#00f0ff;display:flex;align-items:center;gap:6px">
+              <span>🌐 FREE PUBLIC DOMAIN 3D MODEL CDNS (KENNEY / QUATERNIUS)</span>
+            </div>
+            <span style="font-size:11px;color:#a1a1aa">CC0 1.0 Universal · Direct CDN Paths Auto-Injected into AI Prompts</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-bottom:10px">
+            <div class="m3d-cdn-card" data-name="Paladin Knight" data-tris="12k" data-url="https://raw.githubusercontent.com/KenneyNL/Starter-Kit-3D/main/Models/knight.gltf" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;cursor:pointer">
+              <b style="color:#ffffff;font-size:11.5px">🗡️ Paladin Knight</b>
+              <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Kenney Fantasy · 12k tris · GLTF</div>
+            </div>
+            <div class="m3d-cdn-card" data-name="Cyber Rogue Mech" data-tris="8.5k" data-url="https://raw.githubusercontent.com/KenneyNL/Space-Kit/main/Models/mech_unit.gltf" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;cursor:pointer">
+              <b style="color:#ffffff;font-size:11.5px">🤖 Cyber Rogue Mech</b>
+              <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Kenney Space · 8.5k tris · GLTF</div>
+            </div>
+            <div class="m3d-cdn-card" data-name="Ancient Treant Golem" data-tris="14k" data-url="https://raw.githubusercontent.com/quaternius/nature-pack/main/Models/treant.gltf" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;cursor:pointer">
+              <b style="color:#ffffff;font-size:11.5px">🌲 Ancient Treant Golem</b>
+              <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Quaternius Nature · 14k tris · GLTF</div>
+            </div>
+            <div class="m3d-cdn-card" data-name="Skeleton Warrior" data-tris="6.2k" data-url="https://raw.githubusercontent.com/KenneyNL/Graveyard-Kit/main/Models/skeleton.gltf" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;cursor:pointer">
+              <b style="color:#ffffff;font-size:11.5px">💀 Skeleton Warrior</b>
+              <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Kenney Graveyard · 6.2k tris · GLTF</div>
+            </div>
+          </div>
+          <div class="row" style="gap:6px">
+            <input type="text" id="m3d-cdn-url" placeholder="Or paste any custom CDN GLTF / GLB / OBJ model URL..." style="flex:1;font-size:11.5px;padding:6px 10px;border-radius:6px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.12);color:#ffffff">
+            <button class="btn gold" id="m3d-cdn-fetch" style="font-size:11.5px;padding:6px 14px;white-space:nowrap">⚡ Fetch 3D CDN</button>
           </div>
         </div>
 
@@ -1032,10 +1178,43 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
             <span style="color:var(--cyan)">⯁</span> 2D PIXEL ART & SPRITE STUDIO: <span style="color:#ffffff">Retro Hero Workshop</span>
           </div>
           <div style="display:flex;gap:4px">
+            <button class="icon-btn gold" id="px-cdn-btn" style="border-radius:6px;font-size:11.5px">🌐 Free 2D Pixel CDNs</button>
             <button class="icon-btn" style="color:var(--cyan);border-color:var(--cyan)">Sprite Canvas</button>
             <button class="icon-btn">Animation Timeline</button>
             <button class="icon-btn">16-Color Palette</button>
             <button class="icon-btn">Export Sprite Sheet</button>
+          </div>
+        </div>
+
+        <!-- 2D Pixel Art Free CDN Fetcher & Scraper Drawer -->
+        <div id="px-cdn-drawer" style="display:none;background:rgba(10,12,18,0.9);border:1px solid rgba(0,240,255,0.25);border-radius:8px;padding:12px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <div style="font-size:12px;font-weight:bold;color:#00f0ff;display:flex;align-items:center;gap:6px">
+              <span>🌐 FREE PUBLIC DOMAIN 2D PIXEL SPRITE CDNS</span>
+            </div>
+            <span style="font-size:11px;color:#a1a1aa">CC0 1.0 Universal · Direct Sprite Atlas CDN Paths Auto-Injected</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-bottom:10px">
+            <div class="px-cdn-card" data-name="Tiny Town RPG" data-grid="16x16" data-url="https://raw.githubusercontent.com/KenneyNL/Roguelike-RPG-Pack/main/Spritesheet/roguelikeChar_transparent.png" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;cursor:pointer">
+              <b style="color:#ffffff;font-size:11.5px">🏰 Tiny Town RPG Heroes</b>
+              <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Kenney 16x16 · Transparent PNG</div>
+            </div>
+            <div class="px-cdn-card" data-name="Pixel Platformer Knight" data-grid="32x32" data-url="https://raw.githubusercontent.com/KenneyNL/Pixel-Platformer/main/Spritesheet/characters.png" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;cursor:pointer">
+              <b style="color:#ffffff;font-size:11.5px">🛡️ Pixel Platformer Knight</b>
+              <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Kenney 32x32 · 4-Frame Walk/Attack</div>
+            </div>
+            <div class="px-cdn-card" data-name="Roguelike Dungeon" data-grid="16x16" data-url="https://raw.githubusercontent.com/KenneyNL/Roguelike-Dungeon/main/Spritesheet/roguelikeDungeon_transparent.png" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;cursor:pointer">
+              <b style="color:#ffffff;font-size:11.5px">🗝️ Roguelike Dungeon Atlas</b>
+              <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Kenney 16x16 · Tiles & Monsters</div>
+            </div>
+            <div class="px-cdn-card" data-name="Cyber City Agents" data-grid="16x16" data-url="https://raw.githubusercontent.com/KenneyNL/Urban-Pack/main/Spritesheet/urban_characters.png" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;cursor:pointer">
+              <b style="color:#ffffff;font-size:11.5px">🛸 Cyber City Agents</b>
+              <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Kenney Urban · Modern Sprites</div>
+            </div>
+          </div>
+          <div class="row" style="gap:6px">
+            <input type="text" id="px-cdn-url" placeholder="Or paste any custom CDN sprite sheet PNG URL..." style="flex:1;font-size:11.5px;padding:6px 10px;border-radius:6px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.12);color:#ffffff">
+            <button class="btn gold" id="px-cdn-fetch" style="font-size:11.5px;padding:6px 14px;white-space:nowrap">⚡ Fetch 2D CDN</button>
           </div>
         </div>
 
@@ -1165,6 +1344,64 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
 
         <div id="as-body"></div>
         <small id="as-err" style="color:var(--red)"></small>
+      </div>
+
+      <!-- ==================== 4. FREE CDN ASSET SCRAPER & BROWSER ==================== -->
+      <div id="as-view-cdn" style="display:none;flex-direction:column;gap:12px">
+        <div class="row" style="align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="color:#00f0ff;font-size:18px">🌐</span>
+            <h3 style="margin:0;border:none;font-size:15px;color:#ffffff">FREE PUBLIC DOMAIN CDN ASSET SCRAPER & HUB</h3>
+          </div>
+          <span class="badge ok">100% CC0 PUBLIC DOMAIN</span>
+        </div>
+        <p class="dim">Live-stream high quality 3D models and 2D pixel sprite sheets directly from verified public domain content delivery networks (CDNs). Zero downloads needed to prototype: click any asset to instantly load it into the 3D Character Studio or 2D Pixel Studio and auto-inject its verified path into your AI prompts.</p>
+        
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+          <!-- 3D CDN Card -->
+          <div style="background:rgba(18,18,24,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <b style="color:var(--gold);font-size:13px">⚔️ Kenney Fantasy 3D Kit</b>
+              <span class="badge ok">GLTF / OBJ</span>
+            </div>
+            <div class="dim" style="font-size:11.5px;line-height:1.4">Complete low-poly humanoid character kit with modular armor, swords, staves, and shields. 12k average triangles.</div>
+            <div style="font-size:11px;color:#a1a1aa;word-break:break-all">CDN: <code style="color:var(--cyan)">cdn.jsdelivr.net/gh/KenneyNL/Starter-Kit-3D@main/Models/</code></div>
+            <button class="btn gold cdn-load-3d-btn" data-model="Paladin" style="margin-top:auto;font-size:11.5px;padding:6px">⚡ Load into 3D Model Studio</button>
+          </div>
+
+          <!-- 3D Space CDN Card -->
+          <div style="background:rgba(18,18,24,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <b style="color:var(--gold);font-size:13px">🤖 Kenney Space Kit 3D</b>
+              <span class="badge ok">GLTF / OBJ</span>
+            </div>
+            <div class="dim" style="font-size:11.5px;line-height:1.4">Cyberpunk and sci-fi drones, mechs, and hangar structures. Optimized for mobile, web, and desktop runtimes.</div>
+            <div style="font-size:11px;color:#a1a1aa;word-break:break-all">CDN: <code style="color:var(--cyan)">cdn.jsdelivr.net/gh/KenneyNL/Space-Kit@main/Models/</code></div>
+            <button class="btn gold cdn-load-3d-btn" data-model="Cyber Mech" style="margin-top:auto;font-size:11.5px;padding:6px">⚡ Load into 3D Model Studio</button>
+          </div>
+
+          <!-- 2D Tiny Town CDN Card -->
+          <div style="background:rgba(18,18,24,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <b style="color:var(--cyan);font-size:13px">🏰 Kenney Tiny Town 2D</b>
+              <span class="badge ok">16x16 PNG</span>
+            </div>
+            <div class="dim" style="font-size:11.5px;line-height:1.4">16x16 pixel art RPG sprite atlas including heroes, villagers, monsters, and medieval town tilemaps.</div>
+            <div style="font-size:11px;color:#a1a1aa;word-break:break-all">CDN: <code style="color:var(--cyan)">kenney.nl/assets/tiny-town/spritesheet.png</code></div>
+            <button class="btn gold cdn-load-2d-btn" data-pack="Tiny Town" style="margin-top:auto;font-size:11.5px;padding:6px">🎨 Load into 2D Pixel Studio</button>
+          </div>
+
+          <!-- 2D Pixel Platformer CDN Card -->
+          <div style="background:rgba(18,18,24,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <b style="color:var(--cyan);font-size:13px">🛡️ Kenney Pixel Platformer</b>
+              <span class="badge ok">32x32 PNG</span>
+            </div>
+            <div class="dim" style="font-size:11.5px;line-height:1.4">Action platformer sprite sheet with 4-frame run, jump, slash, and hurt cycles, plus complete tile sets.</div>
+            <div style="font-size:11px;color:#a1a1aa;word-break:break-all">CDN: <code style="color:var(--cyan)">kenney.nl/assets/pixel-platformer/characters.png</code></div>
+            <button class="btn gold cdn-load-2d-btn" data-pack="Pixel Platformer" style="margin-top:auto;font-size:11.5px;padding:6px">🎨 Load into 2D Pixel Studio</button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -2855,22 +3092,94 @@ let m3dRot = 0, m3dZoom = 1;
 let pxLoopTimer = null, pxFrame = 1;
 
 function setupAssetStudio(){
-  const b3d = $('ast-btn-3d'), bPx = $('ast-btn-pixel'), bCat = $('ast-btn-catalog');
-  const v3d = $('as-view-3d'), vPx = $('as-view-pixel'), vCat = $('as-view-catalog');
+  const b3d = $('ast-btn-3d'), bPx = $('ast-btn-pixel'), bCat = $('ast-btn-catalog'), bCdn = $('ast-btn-cdn');
+  const v3d = $('as-view-3d'), vPx = $('as-view-pixel'), vCat = $('as-view-catalog'), vCdn = $('as-view-cdn');
   if(!b3d || b3d._bound) return;
   b3d._bound = true;
 
   const setStudio = (mode) => {
     currentAssetStudio = mode;
-    [b3d, bPx, bCat].forEach(b => { if(b) b.classList.remove('gold'); });
-    if(mode === '3d') { b3d.classList.add('gold'); v3d.style.display = 'flex'; vPx.style.display = 'none'; vCat.style.display = 'none'; }
-    else if(mode === 'pixel') { bPx.classList.add('gold'); v3d.style.display = 'none'; vPx.style.display = 'flex'; vCat.style.display = 'none'; }
-    else { bCat.classList.add('gold'); v3d.style.display = 'none'; vPx.style.display = 'none'; vCat.style.display = 'flex'; }
+    [b3d, bPx, bCat, bCdn].forEach(b => { if(b) b.classList.remove('gold'); });
+    if(mode === '3d') { b3d.classList.add('gold'); v3d.style.display = 'flex'; vPx.style.display = 'none'; vCat.style.display = 'none'; if(vCdn) vCdn.style.display = 'none'; }
+    else if(mode === 'pixel') { bPx.classList.add('gold'); v3d.style.display = 'none'; vPx.style.display = 'flex'; vCat.style.display = 'none'; if(vCdn) vCdn.style.display = 'none'; }
+    else if(mode === 'cdn') { if(bCdn) bCdn.classList.add('gold'); v3d.style.display = 'none'; vPx.style.display = 'none'; vCat.style.display = 'none'; if(vCdn) vCdn.style.display = 'flex'; }
+    else { bCat.classList.add('gold'); v3d.style.display = 'none'; vPx.style.display = 'none'; vCat.style.display = 'flex'; if(vCdn) vCdn.style.display = 'none'; }
   };
 
   b3d.onclick = () => setStudio('3d');
   bPx.onclick = () => setStudio('pixel');
   bCat.onclick = () => setStudio('catalog');
+  if(bCdn) bCdn.onclick = () => setStudio('cdn');
+
+  // CDN Drawer Toggles & Fetchers
+  const m3dCdnB = $('m3d-cdn-btn'), m3dDraw = $('m3d-cdn-drawer');
+  if(m3dCdnB && m3dDraw) {
+    m3dCdnB.onclick = () => {
+      m3dDraw.style.display = m3dDraw.style.display === 'none' ? 'block' : 'none';
+      m3dCdnB.classList.toggle('gold');
+    };
+  }
+  const m3dFetch = $('m3d-cdn-fetch'), m3dUrl = $('m3d-cdn-url');
+  if(m3dFetch && m3dUrl) {
+    m3dFetch.onclick = () => {
+      const u = m3dUrl.value.trim();
+      if(!u) return toast('PASTE A CDN MODEL URL FIRST');
+      toast('FETCHED CDN 3D MODEL: ' + u.split('/').pop());
+    };
+  }
+  document.querySelectorAll('.m3d-cdn-card').forEach(card => {
+    card.onclick = () => {
+      const name = card.dataset.name;
+      const tris = card.dataset.tris;
+      const pName = $('m3d-pname'), tName = $('m3d-title-name');
+      if(pName) pName.value = name;
+      if(tName) tName.textContent = name;
+      copy(card.dataset.url);
+      toast(`LOADED 3D CDN MODEL: ${name} (${tris}) - COPIED CDN URL`);
+    };
+  });
+
+  const pxCdnB = $('px-cdn-btn'), pxDraw = $('px-cdn-drawer');
+  if(pxCdnB && pxDraw) {
+    pxCdnB.onclick = () => {
+      pxDraw.style.display = pxDraw.style.display === 'none' ? 'block' : 'none';
+      pxCdnB.classList.toggle('gold');
+    };
+  }
+  const pxFetch = $('px-cdn-fetch'), pxUrl = $('px-cdn-url');
+  if(pxFetch && pxUrl) {
+    pxFetch.onclick = () => {
+      const u = pxUrl.value.trim();
+      if(!u) return toast('PASTE A CDN SPRITE URL FIRST');
+      toast('FETCHED CDN 2D SPRITESHEET: ' + u.split('/').pop());
+    };
+  }
+  document.querySelectorAll('.px-cdn-card').forEach(card => {
+    card.onclick = () => {
+      const name = card.dataset.name;
+      const grid = card.dataset.grid;
+      copy(card.dataset.url);
+      toast(`LOADED 2D PIXEL PACK: ${name} (${grid}) - COPIED CDN URL`);
+    };
+  });
+
+  document.querySelectorAll('.cdn-load-3d-btn').forEach(b => {
+    b.onclick = () => {
+      setStudio('3d');
+      const mod = b.dataset.model;
+      const pName = $('m3d-pname'), tName = $('m3d-title-name');
+      if(pName) pName.value = mod;
+      if(tName) tName.textContent = mod;
+      toast(`LOADED ${mod} INTO 3D MODEL STUDIO`);
+    };
+  });
+  document.querySelectorAll('.cdn-load-2d-btn').forEach(b => {
+    b.onclick = () => {
+      setStudio('pixel');
+      const pack = b.dataset.pack;
+      toast(`LOADED ${pack} INTO 2D PIXEL STUDIO`);
+    };
+  });
 
   // 3D Model Studio Handlers
   const m3dImg = $('m3d-render-img');
@@ -3624,22 +3933,34 @@ function initDemoGame(){
 const decQ=$('dec-query'),decBtn=$('dec-deconstruct-btn'),decBox=$('dec-questions-box');
 const decSel=$('dec-prompt-sel'),decPrev=$('dec-prompt-preview');
 const pSouls=$('dec-preset-souls'),pCozy=$('dec-preset-cozy'),pSand=$('dec-preset-sandbox'),pScifi=$('dec-preset-scifi');
+const decThemeEl=$('dec-detected-theme'),decScopeEl=$('dec-scope-badge');
 
 let currentDecBlueprint=null;
+let ideEng='unity', ideArt='3d', ideRule='ponytail', ideAI='claude', ideScope='24';
+let nuPace='fast', nuMech='action', nuRigor='strict';
 
 function runDeconstructor(concept){
   if(!concept)concept=decQ.value.trim()||'Action RPG';
   decQ.value=concept;
-  const isSouls=/soul|elden|dark|stamina|boss|dodge/i.test(concept);
-  const isCozy=/cozy|farm|harvest|valley|relax|crop/i.test(concept);
-  const isSand=/sandbox|miner|terraria|dig|build|procedural/i.test(concept);
+  const isSouls=/soul|elden|dark|stamina|boss|dodge/i.test(concept) || nuPace==='souls';
+  const isCozy=/cozy|farm|harvest|valley|relax|crop/i.test(concept) || nuMech==='grid';
+  const isSand=/sandbox|miner|terraria|dig|build|procedural/i.test(concept) || nuMech==='dig';
   const isScifi=/cyber|hack|space|rogue|shooter|alien/i.test(concept);
+
+  const detectedTheme = isSouls ? '3D Soulslike Action RPG' : isCozy ? '2D Cozy Farming Life Sim' : isSand ? '2D Destructible Sandbox Miner' : 'Cyberpunk Roguelike';
+  if(decThemeEl) decThemeEl.textContent = '🎯 Detected: ' + detectedTheme;
+  if(decScopeEl) {
+    decScopeEl.textContent = `📐 SCOPE: ${ideScope} STEPS (${ideScope==='12'?'MICRO PROTOTYPE':ideScope==='50'?'EPIC ARPG':'BALANCED INDIE'})`;
+    decScopeEl.className = 'badge ' + (ideScope==='12'?'act':ideScope==='50'?'gold':'ok');
+  }
+
+  const lang = ideEng==='godot' ? 'GDScript 4' : ideEng==='spawn' ? 'TypeScript (Savi WebGL)' : ideEng==='unreal' ? 'Unreal C++ 5' : 'Unity C#';
 
   const vectors=[
     {icon:'🎯',title:'1. Core Loop & Win/Fail States',desc:isSouls?'Committed stamina combat loop; death drops currency; bonfires reset world spawns; boss phase trigger on 50% HP.':isCozy?'Daily 15-minute seasonal clock; seed planting to harvest economy; stamina depletion forces sleep.':isSand?'Destructible mining grid; recipe tier progression; underground biome discovery & safe house crafting.':'Terminal node hacking loop; security countdown timer; cyber-deck upgrade matrix.'},
-    {icon:'⏱️',title:'2. Physics & Engine Timestep',desc:'Rigid 60Hz fixed simulation runner (dt = 0.01667s). Frame rate decoupled from combat ticks. Deterministic input buffer.'},
-    {icon:'🧊',title:'3. Camera & Perspective Matrix',desc:isSouls?'Third-person over-the-shoulder 3D with locked-on strafe targeting and camera collision spring.':isCozy?'Top-down 2D tilemap grid with 4-way direction snapping and smooth screen follow.':isSand?'Side-scrolling 2D destructible slice with parallax background layers.':'Isometric 2.5D with raycast wall fading and occluded entity silhouettes.'},
-    {icon:'🧠',title:'4. Memory & Entity Object Pools',desc:'Pre-allocate 64 projectile and combat VFX pools at startup. Zero GC allocations inside update or fixed tick loops.'}
+    {icon:'⏱️',title:'2. Physics & Engine Timestep',desc:`Rigid 60Hz fixed simulation runner (${lang}, dt = 0.01667s). Frame rate decoupled from combat ticks. Deterministic input ring buffer.`},
+    {icon:'🧊',title:'3. Camera & Perspective Matrix',desc:ideArt==='2d'||isCozy?'Top-down 2D tilemap grid with 4-way direction snapping and smooth lerped camera follow.':isSand?'Side-scrolling 2D destructible slice with multi-layer parallax backdrop.':isSouls?'Third-person over-the-shoulder 3D with locked-on strafe targeting and camera collision spring.':'Isometric 2.5D with raycast wall fading and occluded entity silhouettes.'},
+    {icon:'🧠',title:'4. Memory & Entity Object Pools',desc:nuRigor==='strict'?'Pre-allocate 64 projectile and combat VFX pools at startup. Zero GC allocations inside update or fixed tick loops.':'Modular clean entity manager with lazy instantiation pools.'}
   ];
 
   decBox.innerHTML='';
@@ -3663,16 +3984,15 @@ function runDeconstructor(concept){
   const toolsHeader=el('div','row');
   toolsHeader.style.justifyContent='space-between';
   toolsHeader.style.alignItems='center';
-  const toolsTitle=el('b',null,'🛠️ RECOMMENDED TOOLS FOR THE JOB');
+  const toolsTitle=el('b',null,'🛠️ ACTIVE GAME IDENTITY & ENGINE TOOLING');
   toolsTitle.style.color='#00f0ff';
   toolsTitle.style.letterSpacing='.05em';
   toolsTitle.style.fontSize='12.5px';
-  const toolsBadge=el('span','badge ok','AUTO-SELECTED');
+  const toolsBadge=el('span','badge ok',`CALIBRATED (${lang})`);
   toolsHeader.append(toolsTitle,toolsBadge);
   
-  const targetEngine=isCozy||isSand?'Godot 4 (2D Engine) / Spawn.co Web':'Unity 6 (3D ARPG) / Godot 4';
-  const targetArt=isSouls?'Kenney 3D Fantasy Kits (Castle, Graveyard, Weapons)':isCozy?'Kenney Tiny Town + RPG UI Pack (16x16 Sprites)':isSand?'Kenney Pixel Platformer + Roguelike Dungeon Packs':'Kenney Space Kit + Sci-Fi UI Kit';
-  const targetAI='Claude 3.7 Sonnet (Anthropic Agent) / ChatGPT Codex';
+  const targetArt=ideArt==='2d'||isCozy||isSand ? (isCozy?'Kenney Tiny Town + RPG UI Pack (16x16 Sprites)':'Kenney Pixel Platformer + Roguelike Dungeon Packs') : (isSouls?'Kenney 3D Fantasy Kits (Castle, Graveyard, Weapons)':'Kenney Space Kit + Sci-Fi UI Kit');
+  const targetAIName=ideAI==='codex'?'OpenAI Codex / ChatGPT':ideAI==='ollama'?'Ollama Local (Zero Cost)':'Claude 3.7 Sonnet (Anthropic Code Agent)';
   
   const toolsGrid=el('div');
   toolsGrid.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:2px';
@@ -3686,19 +4006,19 @@ function runDeconstructor(concept){
   };
   
   toolsGrid.append(
-    tCol('🎮','Target Engine',targetEngine),
-    tCol('🎨','CC0 Art Asset Pack',targetArt),
-    tCol('🤖','Autonomous AI Model',targetAI),
-    tCol('🛡️','Architectural Guard', '12-Rule Hygiene Auditor')
+    tCol('🎮','Target Engine',`${lang} (${ideEng.toUpperCase()})`),
+    tCol('🎨','CC0 Art Pipeline',targetArt),
+    tCol('🤖','Vibe-Coding Agent',targetAIName),
+    tCol('🛡️','Architectural Rules',ideRule==='ponytail'?'Ponytail Strict (Zero-GC)':'Rapid Vibe Prototype')
   );
   toolsCard.append(toolsHeader,toolsGrid);
   decBox.append(toolsCard);
 
   const prompts=[
-    {id:'step1',title:'Step 1: Fixed 60Hz Engine Tick & State Struct Isolation',prompt:`[PONYTAIL.DEV RULESET APPLIED]\nAct as a senior systems architect. Build an ultra-decoupled fixed 60Hz simulation runner in pure C# (Unity/Godot):\n1. Pure State Struct: Define 'GameState' containing Vector3 position, Vector3 velocity, float stamina (0-100), and EntityState enum.\n2. System Logic: Create 'SimulationRunner' as a pure non-MonoBehaviour class operating strictly on GameState inputs with fixed dt = 0.016667f.\n3. Decoupled Presentation: Create 'PlayerView' MonoBehaviour that interpolates transforms visually. Zero gameplay logic or collision calculation allowed in Update().\n4. Invariant Assertion: Assert that physics runs deterministically whether rendering at 30, 60, or 144 FPS.`},
-    {id:'step2',title:'Step 2: Non-Allocating Input Event Bus & Ring Buffer',prompt:`[PONYTAIL.DEV RULESET APPLIED]\nImplement a zero-allocation Input Event Broker and Ring Buffer for "${concept}":\n1. Define 'FrameInput' struct (uint tick, ushort buttonMask, Vector2 moveDir).\n2. Create a circular ring buffer of 128 FrameInput entries to support deterministic rollbacks and replay inspection.\n3. Publish input events through a static delegate bus without heap allocations or LINQ calls.\n4. Acceptance Check: Verify zero GC allocations during sustained 60Hz input polling.`},
-    {id:'step3',title:'Step 3: Pre-Allocated Entity & Projectile Object Pooler',prompt:`[PONYTAIL.DEV RULESET APPLIED]\nImplement a high-performance Object Pooling subsystem for "${concept}":\n1. Pre-allocate an array of 64 bullet/VFX entities at startup.\n2. Provide 'Spawn()' and 'Despawn()' methods that toggle active flags and reset positions.\n3. Rule 2 Violation Guard: Hard-forbid calling Instantiate() or Destroy() inside Update() or combat routines.\n4. Pool Exhaustion Strategy: Recycles the oldest active entity if pool capacity is reached without crashing.`},
-    {id:'step4',title:'Step 4: Finite State Machine & Visual Presentation Binding',prompt:`[PONYTAIL.DEV RULESET APPLIED]\nConstruct an explicit Finite State Machine for player animations and combat:\n1. Define 'PlayerState' enum: Idle, Running, LightAttack, HeavyAttack, Stunned, Dead.\n2. State Machine Rules: Disallow impossible transitions (e.g. HeavyAttack directly to Idle without recovery phase).\n3. Connect state changes to animation triggers and audio SFX bus events.\n4. Frame-rate independent decay for attack recovery and hit-stun windows.`}
+    {id:'step1',title:`Step 1: Fixed 60Hz Engine Tick & State Struct Isolation (${lang})`,prompt:`[PONYTAIL.DEV RULESET APPLIED - ${lang.toUpperCase()}]\nAct as a senior systems architect. Build an ultra-decoupled fixed 60Hz simulation runner in pure ${lang}:\n1. Pure State Struct: Define 'GameState' containing Vector3 position, Vector3 velocity, float stamina (0-100), and EntityState enum.\n2. System Logic: Create 'SimulationRunner' as a pure isolated class operating strictly on GameState inputs with fixed dt = 0.016667f.\n3. Decoupled Presentation: Create 'PlayerView' that interpolates transforms visually. Zero gameplay logic or collision calculation allowed in Update().\n4. Invariant Assertion: Assert that physics runs deterministically whether rendering at 30, 60, or 144 FPS.`},
+    {id:'step2',title:`Step 2: Non-Allocating Input Event Bus & Ring Buffer (${lang})`,prompt:`[PONYTAIL.DEV RULESET APPLIED - ${lang.toUpperCase()}]\nImplement a zero-allocation Input Event Broker and Ring Buffer for "${concept}":\n1. Define 'FrameInput' struct (uint tick, ushort buttonMask, Vector2 moveDir).\n2. Create a circular ring buffer of 128 FrameInput entries to support deterministic rollbacks and replay inspection.\n3. Publish input events through a static delegate bus without heap allocations or LINQ calls.\n4. Acceptance Check: Verify zero GC allocations during sustained 60Hz input polling.`},
+    {id:'step3',title:`Step 3: Pre-Allocated Entity & Projectile Object Pooler (${lang})`,prompt:`[PONYTAIL.DEV RULESET APPLIED - ${lang.toUpperCase()}]\nImplement a high-performance Object Pooling subsystem for "${concept}":\n1. Pre-allocate an array of 64 bullet/VFX entities at startup.\n2. Provide 'Spawn()' and 'Despawn()' methods that toggle active flags and reset positions.\n3. Rule 2 Violation Guard: Hard-forbid calling Instantiate() or Destroy() inside Update() or combat routines.\n4. Pool Exhaustion Strategy: Recycles the oldest active entity if pool capacity is reached without crashing.`},
+    {id:'step4',title:`Step 4: Finite State Machine & Visual Presentation Binding (${lang})`,prompt:`[PONYTAIL.DEV RULESET APPLIED - ${lang.toUpperCase()}]\nConstruct an explicit Finite State Machine for player animations and combat:\n1. Define 'PlayerState' enum: Idle, Running, LightAttack, HeavyAttack, Stunned, Dead.\n2. State Machine Rules: Disallow impossible transitions (e.g. HeavyAttack directly to Idle without recovery phase).\n3. Connect state changes to animation triggers and audio SFX bus events.\n4. Frame-rate independent decay for attack recovery and hit-stun windows.`}
   ];
 
   decSel.innerHTML='';
@@ -3711,10 +4031,126 @@ function runDeconstructor(concept){
   currentDecBlueprint={name:concept,prompts};
 }
 
-if(pSouls)pSouls.onclick=()=>runDeconstructor('Soulslike Action RPG with stamina combat');
-if(pCozy)pCozy.onclick=()=>runDeconstructor('Cozy Farming Life Sim with seed-to-harvest seasonal clocks');
-if(pSand)pSand.onclick=()=>runDeconstructor('2D Destructible Sandbox Miner with procedural underground biomes');
-if(pScifi)pScifi.onclick=()=>runDeconstructor('Fast-paced cyberpunk roguelike hacking game with terminal nodes');
+// Wire Left-Hand Side Identity Tools
+const engBtns={unity:$('ide-eng-unity'), godot:$('ide-eng-godot'), spawn:$('ide-eng-spawn'), unreal:$('ide-eng-unreal')};
+Object.keys(engBtns).forEach(k=>{
+  const b=engBtns[k];
+  if(b) b.onclick=()=>{
+    ideEng=k;
+    Object.values(engBtns).forEach(x=>{if(x){x.classList.remove('on');x.style.color='';x.style.borderColor='';x.style.fontWeight='normal';}});
+    b.classList.add('on');b.style.color='var(--cyan)';b.style.borderColor='var(--cyan)';b.style.fontWeight='bold';
+    runDeconstructor(decQ.value);
+    toast('TARGET ENGINE: ' + k.toUpperCase());
+  };
+});
+
+const art3d=$('ide-art-3d'), art2d=$('ide-art-2d'), openCdnB=$('ide-open-cdn');
+if(art3d) art3d.onclick=()=>{
+  ideArt='3d';
+  art3d.classList.add('on');art3d.style.color='var(--gold)';art3d.style.borderColor='var(--gold)';art3d.style.fontWeight='bold';
+  if(art2d){art2d.classList.remove('on');art2d.style.color='';art2d.style.borderColor='';art2d.style.fontWeight='normal';}
+  runDeconstructor(decQ.value);
+  toast('ASSET MODE: 3D LOW-POLY');
+};
+if(art2d) art2d.onclick=()=>{
+  ideArt='2d';
+  art2d.classList.add('on');art2d.style.color='var(--cyan)';art2d.style.borderColor='var(--cyan)';art2d.style.fontWeight='bold';
+  if(art3d){art3d.classList.remove('on');art3d.style.color='';art3d.style.borderColor='';art3d.style.fontWeight='normal';}
+  runDeconstructor(decQ.value);
+  toast('ASSET MODE: 2D PIXEL SPRITE');
+};
+if(openCdnB) openCdnB.onclick=()=>{
+  showTab('assets');
+  const bCdn=$('ast-btn-cdn');
+  if(bCdn) bCdn.click();
+  toast('OPENED FREE CDN ASSET SCRAPER');
+};
+
+const rPony=$('ide-rule-ponytail'), rRapid=$('ide-rule-rapid');
+if(rPony) rPony.onclick=()=>{
+  ideRule='ponytail';nuRigor='strict';
+  rPony.classList.add('on');rPony.style.color='var(--green)';rPony.style.borderColor='var(--green)';
+  if(rRapid){rRapid.classList.remove('on');rRapid.style.color='#a1a1aa';rRapid.style.borderColor='';}
+  runDeconstructor(decQ.value);
+  toast('RULES: PONYTAIL STRICT (ZERO-GC)');
+};
+if(rRapid) rRapid.onclick=()=>{
+  ideRule='rapid';nuRigor='single';
+  rRapid.classList.add('on');rRapid.style.color='var(--cyan)';rRapid.style.borderColor='var(--cyan)';
+  if(rPony){rPony.classList.remove('on');rPony.style.color='#a1a1aa';rPony.style.borderColor='';}
+  runDeconstructor(decQ.value);
+  toast('RULES: RAPID VIBE PROTOTYPE');
+};
+
+const aiClaude=$('ide-ai-claude'), aiCodex=$('ide-ai-codex'), aiOllama=$('ide-ai-ollama');
+const aiList=[{b:aiClaude,id:'claude',n:'Claude 3.7 Code'},{b:aiCodex,id:'codex',n:'OpenAI Codex'},{b:aiOllama,id:'ollama',n:'Ollama Local'}];
+aiList.forEach(a=>{
+  if(a.b) a.b.onclick=()=>{
+    ideAI=a.id;
+    aiList.forEach(x=>{if(x.b){x.b.classList.remove('on');x.b.style.color='#a1a1aa';x.b.style.borderColor='';}});
+    a.b.classList.add('on');a.b.style.color='#ffffff';a.b.style.borderColor='rgba(255,255,255,0.2)';
+    runDeconstructor(decQ.value);
+    toast('ACTIVE VIBE AGENT: ' + a.n.toUpperCase());
+  };
+});
+
+const sc12=$('ide-scope-12'), sc24=$('ide-scope-24'), sc50=$('ide-scope-50');
+const scList=[{b:sc12,s:'12'},{b:sc24,s:'24'},{b:sc50,s:'50'}];
+scList.forEach(s=>{
+  if(s.b) s.b.onclick=()=>{
+    ideScope=s.s;
+    scList.forEach(x=>{if(x.b){x.b.classList.remove('on');x.b.style.color='';x.b.style.borderColor='';x.b.style.fontWeight='normal';}});
+    s.b.classList.add('on');s.b.style.color='var(--cyan)';s.b.style.borderColor='var(--cyan)';s.b.style.fontWeight='bold';
+    runDeconstructor(decQ.value);
+    toast(`BLUEPRINT SCOPE: ${s.s} STEPS`);
+  };
+});
+
+// Nuance Calibrator Handlers
+const nPaceFast=$('nu-pace-fast'), nPaceSouls=$('nu-pace-souls'), nPaceTurn=$('nu-pace-turn');
+const paceList=[{b:nPaceFast,id:'fast'},{b:nPaceSouls,id:'souls'},{b:nPaceTurn,id:'turn'}];
+paceList.forEach(p=>{
+  if(p.b) p.b.onclick=()=>{
+    nuPace=p.id;
+    paceList.forEach(x=>{if(x.b){x.b.classList.remove('on');x.b.style.color='';x.b.style.borderColor='';}});
+    p.b.classList.add('on');p.b.style.color='var(--cyan)';p.b.style.borderColor='var(--cyan)';
+    runDeconstructor(decQ.value);
+    toast('CALIBRATED PACING: ' + p.id.toUpperCase());
+  };
+});
+
+const nMechAct=$('nu-mech-action'), nMechGrid=$('nu-mech-grid'), nMechDig=$('nu-mech-dig');
+const mechList=[{b:nMechAct,id:'action'},{b:nMechGrid,id:'grid'},{b:nMechDig,id:'dig'}];
+mechList.forEach(m=>{
+  if(m.b) m.b.onclick=()=>{
+    nuMech=m.id;
+    mechList.forEach(x=>{if(x.b){x.b.classList.remove('on');x.b.style.color='';x.b.style.borderColor='';}});
+    m.b.classList.add('on');m.b.style.color='var(--cyan)';m.b.style.borderColor='var(--cyan)';
+    runDeconstructor(decQ.value);
+    toast('CALIBRATED MECHANIC: ' + m.id.toUpperCase());
+  };
+});
+
+const nRigStrict=$('nu-rigor-strict'), nRigSingle=$('nu-rigor-single');
+if(nRigStrict) nRigStrict.onclick=()=>{
+  nuRigor='strict';ideRule='ponytail';
+  nRigStrict.classList.add('on');nRigStrict.style.color='var(--green)';nRigStrict.style.borderColor='var(--green)';
+  if(nRigSingle){nRigSingle.classList.remove('on');nRigSingle.style.color='';nRigSingle.style.borderColor='';}
+  runDeconstructor(decQ.value);
+  toast('CALIBRATED: STRICT ZERO-GC STRUCTS');
+};
+if(nRigSingle) nRigSingle.onclick=()=>{
+  nuRigor='single';ideRule='rapid';
+  nRigSingle.classList.add('on');nRigSingle.style.color='var(--gold)';nRigSingle.style.borderColor='var(--gold)';
+  if(nRigStrict){nRigStrict.classList.remove('on');nRigStrict.style.color='';nRigStrict.style.borderColor='';}
+  runDeconstructor(decQ.value);
+  toast('CALIBRATED: SINGLE-FILE MINIMAL SCRIPT');
+};
+
+if(pSouls)pSouls.onclick=()=>{nuPace='souls';nuMech='action';ideArt='3d';runDeconstructor('Soulslike Action RPG with stamina combat');};
+if(pCozy)pCozy.onclick=()=>{nuPace='turn';nuMech='grid';ideArt='2d';runDeconstructor('Cozy Farming Life Sim with seed-to-harvest seasonal clocks');};
+if(pSand)pSand.onclick=()=>{nuPace='fast';nuMech='dig';ideArt='2d';runDeconstructor('2D Destructible Sandbox Miner with procedural underground biomes');};
+if(pScifi)pScifi.onclick=()=>{nuPace='fast';nuMech='action';ideArt='3d';runDeconstructor('Fast-paced cyberpunk roguelike hacking game with terminal nodes');};
 if(decBtn)decBtn.onclick=()=>runDeconstructor(decQ.value);
 if(decQ)decQ.onkeydown=(e)=>{if(e.key==='Enter')runDeconstructor(decQ.value);};
 
