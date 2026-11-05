@@ -183,11 +183,11 @@ namespace QueensDomainLauncher
 
             if (File.Exists(edge))
             {
-                Process.Start(edge, "--app=\\"" + url + "\\"");
+                Process.Start(edge, "--app=\\"" + url + "\\" --window-size=1440,880");
             }
             else if (File.Exists(chrome))
             {
-                Process.Start(chrome, "--app=\\"" + url + "\\"");
+                Process.Start(chrome, "--app=\\"" + url + "\\" --window-size=1440,880");
             }
             else
             {
