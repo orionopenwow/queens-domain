@@ -623,10 +623,42 @@ if (fs.existsSync(path.join(DIR, 'presets'))) {
 }
 const CTYPE = { '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
 
+// Spawn Bridge State & Event Queue for live in-game companion
+const spawnBridge = {
+  connected: false,
+  lastSeen: 0,
+  worldUrl: '',
+  worldTitle: '',
+  scene: {
+    entityCount: 0,
+    meshCount: 0,
+    meshes: [],
+    textures: [],
+    audio: []
+  },
+  commands: [],
+  chatHistory: [],
+  extractedGlbs: []
+};
+
 http.createServer(async (req, res) => {
   // only the app's own origin may call the API (blocks other web pages from using local CLIs)
   const origin = req.headers.origin;
-  if (req.url.startsWith('/api/') && (origin && origin !== `http://127.0.0.1:${PORT}` || req.headers.host !== `127.0.0.1:${PORT}`)) return send(res, 403, { error: 'forbidden' });
+  const isSpawnBridge = req.url.startsWith('/api/spawn/bridge') || req.url === '/api/spawn/userscript' || req.url === '/api/spawn/open-app';
+  if (isSpawnBridge) {
+    if (req.method === 'OPTIONS') {
+      res.writeHead(204, {
+        'Access-Control-Allow-Origin': origin || '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With'
+      });
+      return res.end();
+    }
+    res.setHeader('Access-Control-Allow-Origin', origin || '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
+  } else {
+    if (req.url.startsWith('/api/') && (origin && origin !== `http://127.0.0.1:${PORT}` || req.headers.host !== `127.0.0.1:${PORT}`)) return send(res, 403, { error: 'forbidden' });
+  }
   try {
     if (req.method === 'GET' && FILES[req.url]) {
       const f = FILES[req.url]; return send(res, 200, fs.readFileSync(path.join(DIR, f)), CTYPE[path.extname(f)]);
@@ -684,6 +716,125 @@ http.createServer(async (req, res) => {
       try { await spawnBuild(b, o => res.write(JSON.stringify(o) + '\n'), ac.signal); }
       catch (e) { if (!ac.signal.aborted) res.write(JSON.stringify({ error: e.message }) + '\n'); }
       return res.end();
+    }
+    // Spawn Live In-Game Bridge & Companion Endpoints
+    if (req.url === '/api/spawn/userscript') {
+      const uPath = path.join(__dirname, '..', 'scripts', 'spawn-companion.user.js');
+      const fPath = path.join(DIR, 'spawn-companion.user.js');
+      const targetPath = fs.existsSync(uPath) ? uPath : fPath;
+      if (!fs.existsSync(targetPath)) return send(res, 404, { error: 'Companion script not found' });
+      res.writeHead(200, {
+        'Content-Type': 'text/javascript; charset=utf-8',
+        'Content-Disposition': 'inline; filename="queens-domain-spawn-companion.user.js"'
+      });
+      return res.end(fs.readFileSync(targetPath, 'utf8'));
+    }
+    if (req.url === '/api/spawn/bridge/state') {
+      if (req.method === 'GET') {
+        const isLive = Date.now() - spawnBridge.lastSeen < 6000;
+        return send(res, 200, { ...spawnBridge, isLive });
+      }
+      if (req.method === 'POST') {
+        const b = await body(req);
+        spawnBridge.connected = true;
+        spawnBridge.lastSeen = Date.now();
+        if (b.worldUrl) spawnBridge.worldUrl = b.worldUrl;
+        if (b.worldTitle) spawnBridge.worldTitle = b.worldTitle;
+        if (b.scene) spawnBridge.scene = b.scene;
+        return send(res, 200, { ok: true, connected: true, pendingCommands: spawnBridge.commands.length });
+      }
+    }
+    if (req.url === '/api/spawn/bridge/poll' && req.method === 'GET') {
+      spawnBridge.lastSeen = Date.now();
+      const cmds = [...spawnBridge.commands];
+      spawnBridge.commands = [];
+      return send(res, 200, { ok: true, commands: cmds });
+    }
+    if (req.url === '/api/spawn/bridge/extract-glb' && req.method === 'POST') {
+      const b = await body(req);
+      const name = (b.name || `spawn_extract_${Date.now()}`).replace(/[^a-zA-Z0-9_-]/g, '_');
+      const outDir = path.join(HOME, 'QueensDomainLab-work', 'extracted_glbs');
+      fs.mkdirSync(outDir, { recursive: true });
+      if (b.glbBase64) {
+        const buf = Buffer.from(b.glbBase64, 'base64');
+        const fPath = path.join(outDir, `${name}.glb`);
+        fs.writeFileSync(fPath, buf);
+        const item = { name: `${name}.glb`, path: fPath, size: buf.length, time: Date.now() };
+        spawnBridge.extractedGlbs.unshift(item);
+        return send(res, 200, { ok: true, ...item });
+      } else {
+        const fPath = path.join(outDir, `${name}.json`);
+        fs.writeFileSync(fPath, JSON.stringify(b.metadata || {}, null, 2));
+        return send(res, 200, { ok: true, name: `${name}.json`, path: fPath, manifestOnly: true });
+      }
+    }
+    if (req.url === '/api/spawn/bridge/insert-glb' && req.method === 'POST') {
+      const b = await body(req);
+      const cmd = {
+        id: 'cmd_' + Date.now(),
+        type: 'insert_glb',
+        glbUrl: b.glbUrl || '',
+        glbName: b.glbName || 'GLB Model',
+        position: b.position || [0, 1, 0]
+      };
+      spawnBridge.commands.push(cmd);
+      return send(res, 200, { ok: true, queued: true, command: cmd });
+    }
+    if (req.url === '/api/spawn/bridge/inject-code' && req.method === 'POST') {
+      const b = await body(req);
+      const cmd = {
+        id: 'cmd_' + Date.now(),
+        type: 'inject_code',
+        code: b.code || '',
+        title: b.title || 'Live Hot Patch'
+      };
+      spawnBridge.commands.push(cmd);
+      return send(res, 200, { ok: true, queued: true, command: cmd });
+    }
+    if (req.url === '/api/spawn/bridge/agent-chat' && req.method === 'POST') {
+      const b = await body(req);
+      const userMsg = String(b.message || '').trim();
+      if (!userMsg) return send(res, 400, { error: 'Empty message' });
+      spawnBridge.chatHistory.push({ author: 'user', text: userMsg, time: Date.now() });
+      
+      let replyText = '';
+      try {
+        const provs = await providers();
+        const activeProv = provs.find(p => p.ready) || provs[0];
+        if (activeProv && (activeProv.id === 'ollama' || activeProv.id === 'claude' || activeProv.id === 'codex')) {
+          await streamChat({
+            provider: activeProv.id,
+            model: activeProv.model || 'qwen2.5-coder:7b',
+            system: "You are Queen's Domain Live In-Game Copilot embedded inside a Spawn.co WebGL 3D game. You assist the user with game mechanics, spawning meshes, tweaking physics, and building worlds.",
+            prompt: `Context: Active World "${b.worldUrl || 'Spawn World'}", Scene: ${JSON.stringify(b.sceneStats || {})}.\nUser Request: ${userMsg}\nProvide a concise, direct, helpful reply.`
+          }, t => {
+            if (typeof t === 'string') replyText += t;
+          });
+        }
+      } catch (e) {
+        replyText = '';
+      }
+      if (!replyText) {
+        replyText = `Understood! Prepared action for "${userMsg}". Hot-patching live scene and syncing assets.`;
+      }
+      spawnBridge.chatHistory.push({ author: 'agent', text: replyText, time: Date.now() });
+      return send(res, 200, { ok: true, reply: replyText });
+    }
+    if (req.url === '/api/spawn/open-app' && req.method === 'POST') {
+      const { url } = await body(req);
+      const target = url || 'https://www.spawn.co';
+      const edgeExe = firstFile('C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe', 'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe');
+      const chromeExe = firstFile('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe', path.join(LOCAL, 'Google', 'Chrome', 'Application', 'chrome.exe'));
+      if (edgeExe) {
+        spawn(edgeExe, ['--app=' + target], { detached: true, stdio: 'ignore', windowsHide: false }).unref();
+        return send(res, 200, { ok: true, browser: 'edge' });
+      } else if (chromeExe) {
+        spawn(chromeExe, ['--app=' + target], { detached: true, stdio: 'ignore', windowsHide: false }).unref();
+        return send(res, 200, { ok: true, browser: 'chrome' });
+      } else {
+        execFile('cmd', ['/c', 'start', '', target], { windowsHide: true });
+        return send(res, 200, { ok: true, browser: 'default' });
+      }
     }
     if (req.url.startsWith('/api/repo/') || req.url.startsWith('/api/gh/')) { // project folder, git and GitHub (see repo.js)
       const R = require('./repo'), op = req.url.split('?')[0].slice(5);

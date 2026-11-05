@@ -92,8 +92,33 @@ namespace QueensDomainLauncher
                 }
             }
 
+            // Parse launcher command arguments
+            bool spawnMode = false;
+            string spawnUrl = "https://www.spawn.co";
+
+            foreach (string arg in args)
+            {
+                if (arg == "--spawn" || arg == "-s")
+                {
+                    spawnMode = true;
+                }
+                else if (arg.StartsWith("--spawn-url="))
+                {
+                    spawnMode = true;
+                    spawnUrl = arg.Substring("--spawn-url=".Length).Trim();
+                }
+            }
+
             // Launch browser in app mode
-            LaunchBrowser("http://127.0.0.1:47831/");
+            if (spawnMode)
+            {
+                LaunchBrowser("http://127.0.0.1:47831/?tab=spawnbrowser");
+                LaunchBrowser(spawnUrl);
+            }
+            else
+            {
+                LaunchBrowser("http://127.0.0.1:47831/");
+            }
         }
 
         static bool IsPortInUse(int port)

@@ -613,6 +613,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
   <!-- PLATFORM Section -->
   <div class="sb-section-title">PLATFORM</div>
   <button id="sb-agent-connect" class="sb-btn"><span>🤖 Plug AI Agents</span></button>
+  <button data-t="spawnbrowser" id="sb-spawnbrowser" class="sb-btn" style="color:var(--cyan)"><span>🌐 Spawn Live Studio</span><span class="badge ok" style="font-size:8px;padding:1px 4px;margin-left:auto">LIVE</span></button>
   <button data-t="demo" id="sb-demo" class="sb-btn"><span>🎮 Demo & Tool Lab</span></button>
   <button id="sb-guide" class="sb-btn"><span>🎓 Academy & Guide</span></button>
   <button id="sb-newproj" class="sb-btn sb-btn-new"><span>+ New Project</span></button>
@@ -660,6 +661,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
     </div>
     <div style="display:flex;align-items:center;gap:6px">
       <button class="btn on" data-t="projects" id="top-btn-projects" style="font-size:11px;padding:4px 12px;font-weight:bold">PROJECTS</button>
+      <button class="btn" data-t="spawnbrowser" id="top-btn-spawn-browser" style="font-size:11px;padding:4px 12px;font-weight:bold;color:var(--cyan);border-color:rgba(0,240,255,0.3)">🎮 SPAWN BROWSER</button>
       <button class="btn" data-t="settings" id="top-btn-settings" style="font-size:11px;padding:4px 12px;font-weight:bold">SETTINGS</button>
       <button class="btn sb-btn-dev" data-t="devconsole" id="top-btn-dev" style="font-size:11px;padding:4px 12px;font-weight:bold">★ DEV CONSOLE</button>
     </div>
@@ -1933,6 +1935,58 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
           </div>
 
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPAWN LIVE STUDIO & IN-APP BROWSER TAB -->
+  <section class="tab" id="t-spawnbrowser">
+    <div style="display:flex;flex-direction:column;gap:10px;height:100%;padding:12px 18px;max-width:1380px;margin:0 auto">
+      
+      <!-- Top Browser Toolbar -->
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;background:rgba(12,14,20,0.95);backdrop-filter:blur(20px);border:1px solid rgba(0,240,255,0.25);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.6)">
+        <div style="display:flex;align-items:center;gap:6px">
+          <button class="icon-btn" id="spawn-nav-reload" title="Reload Game Frame" style="padding:6px 9px;font-size:12px">🔄</button>
+          <button class="btn" id="spawn-nav-link-token" title="Auto-Link Spawn API Token from Code Page" style="font-size:11px;padding:5px 10px;font-weight:bold;color:var(--gold);border-color:rgba(251,191,36,0.3)">🔑 Link Token</button>
+        </div>
+
+        <!-- Address Bar -->
+        <div style="flex:1;display:flex;align-items:center;background:rgba(6,8,12,0.9);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:3px 8px;gap:6px">
+          <span style="font-size:12px;color:var(--cyan)">🌐</span>
+          <input id="spawn-nav-url" value="https://www.spawn.co" placeholder="https://www.spawn.co/play/..." style="flex:1;background:transparent;border:none;color:#ffffff;font-size:12px;outline:none;font-family:monospace">
+          <button class="btn" id="spawn-nav-go" style="padding:3px 10px;font-size:11px;font-weight:bold">Go ➔</button>
+        </div>
+
+        <!-- Action Tools & Agent Hook -->
+        <div style="display:flex;align-items:center;gap:6px">
+          <span id="spawn-nav-agent-hook" class="badge no" style="font-size:10px;padding:3px 8px;display:flex;align-items:center;gap:5px" title="In-Game Tampermonkey Agent Bridge Status">
+            <span id="spawn-hook-dot" style="width:7px;height:7px;border-radius:50%;background:#f43f5e;display:inline-block"></span>
+            <span id="spawn-hook-text">Agent Hook (Offline)</span>
+          </span>
+          <button class="btn" id="spawn-btn-extract-glb" title="Extract 3D GLB mesh from running Spawn scene" style="padding:5px 9px;font-size:11px;font-weight:bold;color:var(--cyan)">📦 Extract GLB</button>
+          <button class="btn" id="spawn-btn-insert-glb" title="Insert 3D GLB model from Queen's Domain library into Spawn" style="padding:5px 9px;font-size:11px;font-weight:bold;color:var(--gold)">📥 Insert GLB</button>
+          <button class="btn" id="spawn-btn-inject-code" title="Hot-patch engine TypeScript/JavaScript live into game" style="padding:5px 9px;font-size:11px;font-weight:bold;color:#34d399">⚡ Inject Code</button>
+          <button class="btn" id="spawn-btn-tampermonkey" title="Install 1-Click Tampermonkey Companion Userscript" style="padding:5px 9px;font-size:11px;font-weight:bold">📜 Userscript</button>
+          <button class="btn" id="spawn-nav-popout" title="Pop out into borderless desktop app window" style="padding:5px 9px;font-size:11px;font-weight:bold;background:rgba(255,255,255,0.06)">↗ Pop Out</button>
+        </div>
+      </div>
+
+      <!-- Live Bridge Drawer & Quick Status Bar -->
+      <div id="spawn-bridge-drawer" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 12px;background:rgba(18,20,28,0.7);border:1px solid rgba(255,255,255,0.06);border-radius:8px;font-size:11.5px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span>🎮 <b>Active World:</b> <span id="spawn-bridge-world-name" style="color:var(--cyan)">https://www.spawn.co</span></span>
+          <span>📦 <b>Scene Meshes:</b> <span id="spawn-bridge-mesh-count" style="color:var(--gold)">0</span></span>
+          <span>⚡ <b>Agent Bridge:</b> <span id="spawn-bridge-status-detail" style="color:#a1a1aa">Waiting for in-game heartbeat</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <button class="icon-btn" id="spawn-btn-bridge-refresh" title="Refresh Live State" style="padding:2px 7px;font-size:11px">🔄 Sync State</button>
+        </div>
+      </div>
+
+      <!-- Embedded Browser Viewport -->
+      <div style="flex:1;width:100%;height:calc(100vh - 190px);min-height:550px;position:relative;background:#05070c;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden">
+        <iframe id="spawn-browser-frame" src="https://www.spawn.co" style="width:100%;height:100%;border:none;background:#000000" allow="accelerometer; autoplay; camera; encrypted-media; fullscreen; geolocation; gyroscope; microphone; midi; xr-spatial-tracking; clipboard-read; clipboard-write"></iframe>
       </div>
 
     </div>
@@ -5340,6 +5394,193 @@ if (updateBtn) {
 
 setTimeout(() => checkForUpdates(false), 3000);
 setInterval(() => checkForUpdates(false), 600000);
+
+// ---------- Spawn Live Studio & Companion Agent Bridge ----------
+const topBtnSpawnBrowser = $('top-btn-spawn-browser');
+const sbSpawnBrowser = $('sb-spawnbrowser');
+const spawnFrame = $('spawn-browser-frame');
+const spawnUrlInput = $('spawn-nav-url');
+const spawnNavGo = $('spawn-nav-go');
+const spawnNavReload = $('spawn-nav-reload');
+const spawnNavLinkToken = $('spawn-nav-link-token');
+const spawnNavAgentHook = $('spawn-nav-agent-hook');
+const spawnHookDot = $('spawn-hook-dot');
+const spawnHookText = $('spawn-hook-text');
+const spawnBtnExtractGlb = $('spawn-btn-extract-glb');
+const spawnBtnInsertGlb = $('spawn-btn-insert-glb');
+const spawnBtnInjectCode = $('spawn-btn-inject-code');
+const spawnBtnTampermonkey = $('spawn-btn-tampermonkey');
+const spawnNavPopout = $('spawn-nav-popout');
+const spawnBtnBridgeRefresh = $('spawn-btn-bridge-refresh');
+const spawnBridgeWorldName = $('spawn-bridge-world-name');
+const spawnBridgeMeshCount = $('spawn-bridge-mesh-count');
+const spawnBridgeStatusDetail = $('spawn-bridge-status-detail');
+
+if (topBtnSpawnBrowser) topBtnSpawnBrowser.onclick = () => showTab('spawnbrowser');
+if (sbSpawnBrowser) sbSpawnBrowser.onclick = () => showTab('spawnbrowser');
+
+if (spawnNavGo && spawnFrame && spawnUrlInput) {
+  spawnNavGo.onclick = () => {
+    let url = spawnUrlInput.value.trim();
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    spawnUrlInput.value = url;
+    spawnFrame.src = url;
+    toast('NAVIGATING TO ' + url);
+  };
+  spawnUrlInput.onkeydown = (e) => {
+    if (e.key === 'Enter') spawnNavGo.click();
+  };
+}
+
+if (spawnNavReload && spawnFrame) {
+  spawnNavReload.onclick = () => {
+    spawnFrame.src = spawnFrame.src;
+    toast('RELOADED SPAWN FRAME');
+  };
+}
+
+if (spawnNavLinkToken) {
+  spawnNavLinkToken.onclick = async () => {
+    const raw = prompt("Paste the build prompt or token (sbk_... or sak_...) from your Spawn.co world's Code page:", "");
+    if (!raw) return;
+    try {
+      const res = await fetch('/api/spawn/connect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: raw })
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || 'Connection failed');
+      toast('🔑 CONNECTED TO SPAWN: ' + (data.hint || 'LINKED'));
+      if (data.worlds && data.worlds.length && spawnUrlInput && spawnFrame) {
+        const wUrl = data.worlds[0].playUrl || `https://www.spawn.co/play/${data.worlds[0].address}`;
+        spawnUrlInput.value = wUrl;
+        spawnFrame.src = wUrl;
+      }
+    } catch (err) {
+      toast('SPAWN CONNECT ERROR: ' + err.message);
+    }
+  };
+}
+
+if (spawnBtnExtractGlb) {
+  spawnBtnExtractGlb.onclick = async () => {
+    toast('📦 REQUESTING GLB EXTRACTION FROM SCENE...');
+    try {
+      await fetch('/api/spawn/bridge/insert-glb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'extract_glb', name: 'spawn_extracted_' + Date.now() })
+      });
+      toast('COMMAND QUEUED: IN-GAME COMPANION WILL EXPORT MESH');
+    } catch (e) {
+      toast('EXTRACTION REQUEST FAILED: ' + e.message);
+    }
+  };
+}
+
+if (spawnBtnInsertGlb) {
+  spawnBtnInsertGlb.onclick = async () => {
+    const curChar = (typeof ASSET_SLOTS !== 'undefined' && ASSET_SLOTS.char) ? ASSET_SLOTS.char.options[ASSET_SLOTS.char.active] : null;
+    const name = curChar ? curChar.name : "Queen's Domain Guardian [3D Mesh]";
+    toast('📥 QUEUING INSERTION FOR: ' + name);
+    try {
+      await fetch('/api/spawn/bridge/insert-glb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ glbName: name, position: [0, 1, 0] })
+      });
+      toast('MODEL QUEUED: IN-GAME COMPANION WILL SPAWN MESH');
+    } catch (e) {
+      toast('INSERTION FAILED: ' + e.message);
+    }
+  };
+}
+
+if (spawnBtnInjectCode) {
+  spawnBtnInjectCode.onclick = async () => {
+    const code = prompt("Enter JavaScript/TypeScript code to inject live into the active Spawn game engine:", "console.log('Queen\\'s Domain Hot Patch Injected');");
+    if (!code) return;
+    try {
+      await fetch('/api/spawn/bridge/inject-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code, title: 'User Hot-Patch' })
+      });
+      toast('⚡ CODE HOT-PATCH QUEUED FOR IN-GAME ENGINE');
+    } catch (e) {
+      toast('HOT-PATCH FAILED: ' + e.message);
+    }
+  };
+}
+
+if (spawnBtnTampermonkey) {
+  spawnBtnTampermonkey.onclick = () => {
+    window.open('/api/spawn/userscript', '_blank');
+    toast('📜 OPENED USERSCRIPT INSTALL (Click Install in Tampermonkey)');
+  };
+}
+
+if (spawnNavPopout) {
+  spawnNavPopout.onclick = async () => {
+    const url = spawnUrlInput ? spawnUrlInput.value.trim() : 'https://www.spawn.co';
+    toast('↗ OPENING POP-OUT APP WINDOW...');
+    try {
+      const res = await fetch('/api/spawn/open-app', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      });
+      const j = await res.json();
+      if (!j.ok) window.open(url, '_blank');
+    } catch (e) {
+      window.open(url, '_blank');
+    }
+  };
+}
+
+async function updateSpawnBridgeState() {
+  try {
+    const res = await fetch('/api/spawn/bridge/state');
+    if (!res.ok) return;
+    const data = await res.json();
+    const isLive = !!data.isLive;
+
+    if (spawnNavAgentHook && spawnHookDot && spawnHookText) {
+      spawnNavAgentHook.className = 'badge ' + (isLive ? 'ok' : 'no');
+      spawnHookDot.style.background = isLive ? '#10b981' : '#f43f5e';
+      spawnHookDot.style.boxShadow = isLive ? '0 0 8px #10b981' : 'none';
+      spawnHookText.textContent = isLive ? 'Agent Hook (LIVE)' : 'Agent Hook (Offline)';
+    }
+
+    if (spawnBridgeWorldName && data.worldUrl) {
+      spawnBridgeWorldName.textContent = data.worldTitle || data.worldUrl;
+    }
+    if (spawnBridgeMeshCount && data.scene) {
+      spawnBridgeMeshCount.textContent = `${data.scene.meshCount || 0} (${data.scene.entityCount || 0} entities)`;
+    }
+    if (spawnBridgeStatusDetail) {
+      spawnBridgeStatusDetail.textContent = isLive ? 'Connected & Synchronized' : 'Waiting for in-game heartbeat';
+      spawnBridgeStatusDetail.style.color = isLive ? '#10b981' : '#a1a1aa';
+    }
+  } catch (e) {}
+}
+
+if (spawnBtnBridgeRefresh) {
+  spawnBtnBridgeRefresh.onclick = () => {
+    updateSpawnBridgeState();
+    toast('SYNCHRONIZED BRIDGE STATE');
+  };
+}
+
+// Auto-check bridge status
+setInterval(updateSpawnBridgeState, 2500);
+
+// Auto-open Spawn tab if URL query ?tab=spawnbrowser
+const initialParams = new URLSearchParams(window.location.search);
+if (initialParams.get('tab') === 'spawnbrowser') {
+  setTimeout(() => showTab('spawnbrowser'), 100);
+}
 
 document.querySelector('[data-t=projects]').addEventListener('click',()=>{if(!wz)showWiz(false);renderProjects()});
 
