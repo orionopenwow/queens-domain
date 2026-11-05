@@ -618,7 +618,10 @@ const tplDir = () => process.env.QD_TPL_DIR || path.join(LOCAL, 'QueensDomainLab
 const send = (res, code, obj, type = 'application/json') => { res.writeHead(code, { 'Content-Type': type }); res.end(type === 'application/json' ? JSON.stringify(obj) : obj); };
 const FILES = { '/': 'index.html', '/index.html': 'index.html', '/icon.png': 'icon.png', '/wizard.js': 'wizard.js', '/platforms.js': 'platforms.js', '/templates.js': 'templates.js', '/assets.js': 'assets.js', '/fonts/fonts.css': 'fonts/fonts.css' };
 for (const f of fs.readdirSync(path.join(DIR, 'fonts'))) if (f.endsWith('.woff2')) FILES['/fonts/' + f] = 'fonts/' + f;
-const CTYPE = { '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2' };
+if (fs.existsSync(path.join(DIR, 'presets'))) {
+  for (const f of fs.readdirSync(path.join(DIR, 'presets'))) FILES['/presets/' + f] = 'presets/' + f;
+}
+const CTYPE = { '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
 
 http.createServer(async (req, res) => {
   // only the app's own origin may call the API (blocks other web pages from using local CLIs)
