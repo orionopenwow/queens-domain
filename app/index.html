@@ -400,6 +400,116 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
   </div>
 </div>
 
+<!-- AGENT & LOCAL LLM CONNECTOR MODAL -->
+<div id="agent-modal" style="display:none;position:fixed;inset:0;z-index:99;background:rgba(1,5,14,.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px;overflow-y:auto">
+  <div style="background:radial-gradient(ellipse at 50% 0%,#0c254e 0%,#030914 100%);border:2px solid var(--gold);box-shadow:0 0 0 1px #000,0 0 30px rgba(31,120,224,.5),0 12px 40px rgba(0,0,0,.85);border-radius:14px;padding:22px 28px;max-width:840px;width:100%;color:var(--text);display:flex;flex-direction:column;gap:14px;animation:bootGlow .4s ease-out">
+    
+    <div style="display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(212,174,69,.4);padding-bottom:12px">
+      <div style="width:14px;height:14px;background:var(--gold);box-shadow:0 0 10px var(--gold);transform:rotate(45deg)"></div>
+      <div>
+        <h2 style="color:var(--gold);margin:0;font-size:17px;letter-spacing:.16em;text-transform:uppercase;border:none">PLUG IN AI AGENTS & LOCAL LLMS</h2>
+        <small style="color:var(--dim);font-size:11px;letter-spacing:.12em">100% LOCAL DESKTOP APP // ZERO CLOUD REQUIREMENT // USE YOUR OWN APIS & OFFLINE MODELS</small>
+      </div>
+      <button class="btn" id="am-close" style="margin-left:auto;padding:5px 14px;font-size:12px">Close ✖</button>
+    </div>
+
+    <div class="dim" style="font-size:12.5px;line-height:1.45;background:#030c1c;padding:10px 14px;border:1px solid #14407f;border-radius:8px">
+      Queen's Domain does not run on a remote server: it is a <b>100% sovereign desktop studio</b> running locally on your PC (<code style="color:var(--cyan)">127.0.0.1</code>). You can plug in official CLI agents, commercial API keys, or run completely offline with free local models.
+    </div>
+
+    <!-- 4 Connection Cards Grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:12px">
+      
+      <!-- Card 1: Claude Code Agent -->
+      <div class="action-card" style="cursor:default">
+        <div class="action-card-title" style="color:#d5b8ff">
+          <span>🟣 Claude (Anthropic Agent)</span>
+          <span class="badge ok" style="margin-left:auto">AGENT MODE</span>
+        </div>
+        <div class="action-card-desc">
+          Official Anthropic Claude 3.7 / 3.5 Sonnet. Enables full autonomous coding agent mode with tools to write and edit game scripts directly on disk.
+        </div>
+        <div class="row" style="margin-top:6px">
+          <input type="password" id="am-key-claude" placeholder="Paste Anthropic API Key (sk-ant-...)" style="flex:1;font-size:12px">
+          <button class="btn gold" id="am-save-claude" style="font-size:12px">Save Key</button>
+        </div>
+        <div class="row" style="margin-top:4px">
+          <button class="btn" id="am-login-claude" style="font-size:11px;flex:1">Sign in with Claude CLI</button>
+          <button class="btn" id="am-use-claude" style="font-size:11px;color:var(--cyan)">Set as Active Agent</button>
+        </div>
+      </div>
+
+      <!-- Card 2: OpenAI / Codex -->
+      <div class="action-card" style="cursor:default">
+        <div class="action-card-title" style="color:#8dffac">
+          <span>🟢 OpenAI / ChatGPT Codex</span>
+          <span class="badge ok" style="margin-left:auto">FAST SYNTHESIS</span>
+        </div>
+        <div class="action-card-desc">
+          Connect GPT-4o, o3-mini, or ChatGPT Codex desktop CLI. Generates high-velocity blueprint logic and code audits with strict schema following.
+        </div>
+        <div class="row" style="margin-top:6px">
+          <input type="password" id="am-key-openai" placeholder="Paste OpenAI Key (sk-proj-...)" style="flex:1;font-size:12px">
+          <button class="btn gold" id="am-save-openai" style="font-size:12px">Save Key</button>
+        </div>
+        <div class="row" style="margin-top:4px">
+          <button class="btn" id="am-login-openai" style="font-size:11px;flex:1">Sign in with Codex</button>
+          <button class="btn" id="am-use-openai" style="font-size:11px;color:var(--cyan)">Set as Active Agent</button>
+        </div>
+      </div>
+
+      <!-- Card 3: Ollama 100% Free Local -->
+      <div class="action-card" style="cursor:default">
+        <div class="action-card-title" style="color:#ffe28a">
+          <span>🦙 Ollama (100% Offline & Free)</span>
+          <span class="badge" style="margin-left:auto;color:var(--gold);border-color:var(--gold)">ZERO API KEY</span>
+        </div>
+        <div class="action-card-desc">
+          Runs directly on your CPU/GPU with no internet connection required. Download Llama 3.2, DeepSeek-Coder, or Qwen 2.5 Coder for private local dev.
+        </div>
+        <div class="row" style="margin-top:6px">
+          <select id="am-sel-ollama" style="flex:1;font-size:12px"></select>
+          <button class="btn gold" id="am-use-ollama" style="font-size:12px">Use Local</button>
+        </div>
+        <div class="row" style="margin-top:4px">
+          <button class="btn" id="am-pull-ollama" style="font-size:11px;flex:1">Pull Qwen 2.5 Coder</button>
+          <button class="btn" id="am-get-ollama" style="font-size:11px">Get Ollama</button>
+        </div>
+      </div>
+
+      <!-- Card 4: Custom Local or OpenAI-Compatible Endpoint -->
+      <div class="action-card" style="cursor:default">
+        <div class="action-card-title" style="color:#7ab3f5">
+          <span>🔌 Custom Local / OpenAI Endpoint</span>
+          <span class="badge" style="margin-left:auto;color:var(--cyan);border-color:var(--cyan)">FLEXIBLE</span>
+        </div>
+        <div class="action-card-desc">
+          Connect LM Studio, vLLM, TextGen WebUI, LocalAI, or any custom API on your local network or server.
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-top:6px">
+          <input type="text" id="am-custom-url" placeholder="Endpoint URL (e.g. http://127.0.0.1:1234/v1)" style="font-size:12px">
+          <div class="row">
+            <input type="text" id="am-custom-model" placeholder="Model ID" style="flex:1;font-size:12px">
+            <input type="password" id="am-custom-key" placeholder="Optional Key" style="flex:1;font-size:12px">
+          </div>
+          <div class="row" style="margin-top:2px">
+            <button class="btn" id="am-test-custom" style="font-size:11px;flex:1">Ping Endpoint</button>
+            <button class="btn gold" id="am-save-custom" style="font-size:11px">Save & Connect</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Status / Notification Footer -->
+    <div style="display:flex;align-items:center;gap:10px;margin-top:4px;border-top:1px solid rgba(212,174,69,.25);padding-top:10px">
+      <span class="mono" id="am-status" style="font-size:12px;color:var(--cyan)">Ready to connect agents</span>
+      <button class="btn" id="am-open-settings" style="margin-left:auto;font-size:12px">Advanced Model Matrix ➔</button>
+    </div>
+
+  </div>
+</div>
+
 <header>
   <svg class="logo" viewBox="0 0 40 40"><polygon points="20,2 38,20 20,38 2,20" fill="#0a2550" stroke="#d4ae45" stroke-width="2"/><polygon points="20,9 31,20 20,31 9,20" fill="#1f78e0" stroke="#6fd3ff"/><polygon points="20,15 25,20 20,25 15,20" fill="#d4ae45"/></svg>
   <div><h1>QUEEN'S DOMAIN</h1><small>ARPG ARCHITECTURE LAB // VIBE-CODING FRAMEWORK</small></div>
@@ -411,6 +521,7 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
     <span title="Loaded model" style="font-size:14px"><i class="gem" style="background:#c9a8ff;box-shadow:0 0 6px #9a6bff"></i><b id="r-model">NO MODEL</b></span>
   </div>
   <div class="header-actions" id="hdr-desktop-ctrls">
+    <button class="icon-btn gold" id="btn-agent-connect" title="Plug in Claude, Codex, Local Ollama or Custom API" style="border-color:var(--gold);color:var(--gold);font-weight:700">🤖 Plug AI Agent</button>
     <button class="icon-btn" id="btn-help" title="Open Game Architecture Guide & Academy (?)">❓ Guide</button>
     <button class="icon-btn" id="btn-fs-toggle" title="Toggle Desktop Fullscreen (F11)">⛶ Fullscreen</button>
     <button class="icon-btn" id="btn-reload" title="Refresh Interface (Ctrl+R)">🔄</button>
@@ -419,6 +530,8 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
 
 <div id="shell">
 <nav id="nav">
+  <button id="sb-agent-connect" style="color:var(--gold);border:1px solid rgba(212,174,69,.5);margin-bottom:2px">🤖 Plug AI Agents</button>
+  <button data-t="demo" id="sb-demo" style="color:var(--green);border:1px solid rgba(65,224,96,.4);margin-bottom:4px">🎮 Demo & Tool Lab</button>
   <button id="sb-guide" style="color:#d5e6fb;border:1px solid #14407f;margin-bottom:4px">🎓 Academy & Guide</button>
   <button id="sb-newproj">+ New project</button>
   <button data-t="projects" class="on">Projects</button>
@@ -875,6 +988,103 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
       <h3 style="color:var(--gold);margin-top:14px">4. Intuited 25 Facets & Features Roadmap Matrix</h3>
       <p class="dim">Next-generation architectural blueprints intuited for AI Game Studio expansion.</p>
       <div id="dc-features" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:8px;max-height:360px;overflow-y:auto;padding-right:4px"></div>
+    </div>
+  </section>
+
+  <!-- PLAYABLE TECH DEMO & TOOL LAB -->
+  <section class="tab" id="t-demo">
+    <div class="frame page" style="max-width:1050px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+        <div style="width:14px;height:14px;background:var(--green);box-shadow:0 0 10px var(--green);transform:rotate(45deg)"></div>
+        <h2 style="margin:0;border:none">QUEEN'S REALM // PLAYABLE ARCHITECTURAL PROTOTYPE</h2>
+        <span class="badge ok" style="margin-left:auto;border-radius:12px">LIVE CANVAS DEMO</span>
+      </div>
+
+      <p class="dim" style="margin-top:0">
+        Interact with a live playable prototype that embodies the <b>12 Architectural Guardrails</b> (Fixed 60Hz Timestep, Object Pooling, Decoupled Web Audio SFX), and discover how creation tools (Blender, Pixelorama, Audacity, LMMS) harmonize into the prompt generation pipeline.
+      </p>
+
+      <!-- Demo Control Bar -->
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:#030b1a;border:1px solid #143e77;border-radius:8px;padding:8px 14px;flex-wrap:wrap">
+        <div class="row" style="gap:6px">
+          <span style="font-size:12px;color:var(--gold);font-weight:700">ART MODE:</span>
+          <button class="btn gold" id="demo-mode-pixel" style="font-size:11px;padding:4px 10px">👾 Retro Pixel 16x16</button>
+          <button class="btn" id="demo-mode-hd" style="font-size:11px;padding:4px 10px">🎨 Modern HD Vector</button>
+        </div>
+
+        <div class="row" style="gap:6px">
+          <span style="font-size:12px;color:var(--cyan);font-weight:700">SIMULATION:</span>
+          <button class="btn gold" id="demo-loop-fixed" style="font-size:11px;padding:4px 10px">⏱️ 60Hz Fixed Timestep</button>
+          <button class="btn" id="demo-loop-variable" style="font-size:11px;padding:4px 10px">⚠️ Variable DeltaTime</button>
+        </div>
+
+        <div class="row" style="gap:6px">
+          <button class="btn" id="demo-sfx-toggle" style="font-size:11px;padding:4px 10px">🔊 Web Audio SFX [ON]</button>
+        </div>
+      </div>
+
+      <!-- Playable Canvas Stage -->
+      <div style="position:relative;margin:12px auto;text-align:center">
+        <canvas id="demo-canvas" width="640" height="340" style="background:#010712;border:2px solid var(--blue);border-radius:8px;box-shadow:0 0 25px rgba(0,0,0,.85);display:block;margin:0 auto;cursor:crosshair"></canvas>
+        <div style="display:flex;align-items:center;justify-content:center;gap:18px;margin-top:8px;font-family:'Share Tech Mono',monospace;font-size:12.5px;color:var(--dim)">
+          <span id="demo-stat-fps" style="color:var(--green)">FPS: 60</span>
+          <span>·</span>
+          <span id="demo-stat-entities" style="color:var(--cyan)">Active Entities: 4</span>
+          <span>·</span>
+          <span id="demo-stat-pools" style="color:var(--gold)">Pooled Entities: 32</span>
+          <span>·</span>
+          <span id="demo-stat-allocs" style="color:var(--green)">Hot-path GC: 0 KB/s</span>
+        </div>
+        <small class="dim" style="display:block;margin-top:4px">Controls: <b>[W,A,S,D] / Arrow Keys</b> to Move &nbsp;·&nbsp; <b>[Spacebar]</b> Sword Slash &nbsp;·&nbsp; Click canvas to focus</small>
+      </div>
+
+      <!-- Unified Tool Integration Guide -->
+      <div style="margin-top:20px;border-top:1px solid #14407f;padding-top:14px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <h3 style="margin:0;color:var(--gold);font-size:15px;letter-spacing:.12em">THE UNIFIED CREATION TOOLCHAIN // HOW TOOLS SYNERGIZE</h3>
+          <span class="badge ok" style="margin-left:auto">FREE & OPEN SOURCE</span>
+        </div>
+        <p class="dim" style="font-size:12.5px;line-height:1.4;margin-top:0">
+          In Queen's Domain, software tools are not isolated islands. Every external tool connects directly to your project's <code>assets/</code> folder, and Queen's Domain automatically writes prompt instructions referencing those exact assets:
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:10px">
+          
+          <div class="action-card" style="cursor:default">
+            <div class="action-card-title">🧊 Blender (3D Modeling & Sprites)</div>
+            <div class="action-card-desc">
+              Model low-poly weapons, props, and environment kits. Use Blender's camera rig to render 8-directional 2D sprite sheets or export <code>.glb</code> meshes directly to your project folder.
+            </div>
+            <button class="btn" id="tool-blender-link" style="margin-top:auto;font-size:11px">Launch / Download Blender</button>
+          </div>
+
+          <div class="action-card" style="cursor:default">
+            <div class="action-card-title">🎨 Pixelorama / Aseprite (2D Art)</div>
+            <div class="action-card-desc">
+              Draw 16x16 or 32x32 tilesets, player walk cycles, and combat slashes. Save textures and frame tags to <code>assets/sprites/</code> for automatic AI sprite prompt injection.
+            </div>
+            <button class="btn" id="tool-pixel-link" style="margin-top:auto;font-size:11px">Launch / Download Pixelorama</button>
+          </div>
+
+          <div class="action-card" style="cursor:default">
+            <div class="action-card-title">🔊 Audacity & LMMS (Audio & OST)</div>
+            <div class="action-card-desc">
+              Synthesize 8-bit laser sweeps, metal sword clashes, and loopable chiptune soundtracks. Export OGG/WAV audio packs to <code>assets/audio/</code>.
+            </div>
+            <button class="btn" id="tool-audio-link" style="margin-top:auto;font-size:11px">Get Audacity / LMMS</button>
+          </div>
+
+          <div class="action-card" style="cursor:default">
+            <div class="action-card-title">🕹️ Spawn.co / Unity / Godot</div>
+            <div class="action-card-desc">
+              The destination engines. Feed Queen's Domain synthesized prompts to Claude Code or Codex to assemble the assets, physics, state machines, and HUD into a shipping game.
+            </div>
+            <button class="btn gold" id="tool-engine-link" style="margin-top:auto;font-size:11px">Open Engine Matrix</button>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 </main>
@@ -2714,6 +2924,236 @@ if(fsBtn){
   document.addEventListener('fullscreenchange', () => {
     fsBtn.textContent = document.fullscreenElement ? '⤓ Windowed' : '⛶ Fullscreen';
   });
+}
+
+// ---------- AI Agent & Local LLM Connector Modal ----------
+const agModal=$('agent-modal'),bAgHdr=$('btn-agent-connect'),bAgSb=$('sb-agent-connect'),amClose=$('am-close');
+const openAgentModal=()=>{if(agModal)agModal.style.display='flex';amFillOllama()};
+const closeAgentModal=()=>{if(agModal)agModal.style.display='none'};
+if(bAgHdr)bAgHdr.onclick=openAgentModal;
+if(bAgSb)bAgSb.onclick=openAgentModal;
+if(amClose)amClose.onclick=closeAgentModal;
+
+$('am-save-claude').onclick=async()=>{
+  const k=$('am-key-claude').value.trim();if(!k)return toast('PASTE ANTHROPIC KEY FIRST');
+  await api('/api/keys',{provider:'claude',key:k});KEYS['claude']=true;
+  $('am-status').textContent='Anthropic Claude API key saved locally.';toast('CLAUDE KEY SAVED');
+};
+$('am-login-claude').onclick=()=>api('/api/auth/login',{provider:'claude'});
+$('am-use-claude').onclick=()=>{
+  $('ch-prov').value='claude';chatProv();closeAgentModal();toast('ACTIVE AGENT: CLAUDE');
+};
+
+$('am-save-openai').onclick=async()=>{
+  const k=$('am-key-openai').value.trim();if(!k)return toast('PASTE OPENAI KEY FIRST');
+  await api('/api/keys',{provider:'codex',key:k});KEYS['codex']=true;
+  $('am-status').textContent='OpenAI API key saved locally.';toast('OPENAI KEY SAVED');
+};
+$('am-login-openai').onclick=()=>api('/api/auth/login',{provider:'codex'});
+$('am-use-openai').onclick=()=>{
+  $('ch-prov').value='codex';chatProv();closeAgentModal();toast('ACTIVE AGENT: OPENAI CODEX');
+};
+
+async function amFillOllama(){
+  const sel=$('am-sel-ollama');if(!sel)return;sel.innerHTML='';
+  try{
+    const provs=await api('/api/system');
+    const ol=P.find(x=>x.id==='ollama');
+    if(ol&&ol.models&&ol.models.length){
+      ol.models.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;sel.appendChild(o)});
+      $('am-status').textContent=`Ollama detected with ${ol.models.length} local model(s).`;
+    }else{
+      const o=document.createElement('option');o.value='';o.textContent='No local models found';sel.appendChild(o);
+    }
+  }catch(e){}
+}
+$('am-use-ollama').onclick=()=>{
+  const sel=$('am-sel-ollama');if(!sel||!sel.value)return toast('NO OLLAMA MODEL SELECTED');
+  $('ch-prov').value='ollama';chatProv();$('ch-model').value=sel.value;closeAgentModal();toast('ACTIVE LOCAL MODEL: '+sel.value.toUpperCase());
+};
+$('am-pull-ollama').onclick=async()=>{
+  $('am-status').textContent='Pulling qwen2.5-coder:7b locally...';toast('PULLING MODEL IN BACKGROUND');
+  await api('/api/ollama/pull',{name:'qwen2.5-coder:7b'}).catch(e=>({error:e.message}));amFillOllama();
+};
+$('am-get-ollama').onclick=()=>api('/api/open',{url:'https://ollama.com/download'});
+
+$('am-test-custom').onclick=async()=>{
+  const u=$('am-custom-url').value.trim();if(!u)return toast('ENTER ENDPOINT URL');
+  $('am-status').textContent='Pinging custom endpoint '+u+'...';
+  try{
+    const r=await fetch(u.replace(/\/$/,'')+'/models',{signal:AbortSignal.timeout(3000)});
+    if(r.ok){$('am-status').textContent='✔ Endpoint responded 200 OK!';toast('ENDPOINT ONLINE')}
+    else{$('am-status').textContent='Endpoint reachable (status '+r.status+').'}
+  }catch(e){$('am-status').textContent='Ping failed: '+e.message}
+};
+$('am-save-custom').onclick=()=>{
+  const u=$('am-custom-url').value.trim(),m=$('am-custom-model').value.trim();
+  if(!u)return toast('SPECIFY ENDPOINT URL');
+  ls.set('qd.custom_url',u);ls.set('qd.custom_model',m);toast('CUSTOM ENDPOINT SAVED');closeAgentModal();
+};
+$('am-open-settings').onclick=()=>{closeAgentModal();document.querySelector('nav [data-t=settings]').click()};
+
+// ---------- Interactive Playable Demo & Tool Lab ----------
+const sbDemo=$('sb-demo');
+if(sbDemo)sbDemo.onclick=()=>{showTab('demo');initDemoGame()};
+
+$('tool-blender-link').onclick=()=>api('/api/open',{url:'https://www.blender.org/download/'});
+$('tool-pixel-link').onclick=()=>api('/api/open',{url:'https://orama-interactive.itch.io/pixelorama'});
+$('tool-audio-link').onclick=()=>api('/api/open',{url:'https://www.audacityteam.org/'});
+$('tool-engine-link').onclick=()=>document.querySelector('nav [data-t=settings]').click();
+
+let demoArtMode='pixel',demoSimMode='fixed',demoSfxOn=true,demoInitialized=false;
+let audioCtx=null;
+function playSynthSfx(type){
+  if(!demoSfxOn)return;
+  try{
+    if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended')audioCtx.resume();
+    const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+    osc.connect(gain);gain.connect(audioCtx.destination);const now=audioCtx.currentTime;
+    if(type==='slash'){
+      osc.type='sawtooth';osc.frequency.setValueAtTime(600,now);osc.frequency.exponentialRampToValueAtTime(80,now+0.15);
+      gain.gain.setValueAtTime(0.15,now);gain.gain.linearRampToValueAtTime(0,now+0.15);
+      osc.start(now);osc.stop(now+0.15);
+    }else if(type==='hit'){
+      osc.type='square';osc.frequency.setValueAtTime(180,now);osc.frequency.exponentialRampToValueAtTime(40,now+0.12);
+      gain.gain.setValueAtTime(0.2,now);gain.gain.linearRampToValueAtTime(0,now+0.12);
+      osc.start(now);osc.stop(now+0.12);
+    }else if(type==='step'){
+      osc.type='triangle';osc.frequency.setValueAtTime(140,now);gain.gain.setValueAtTime(0.04,now);
+      gain.gain.linearRampToValueAtTime(0,now+0.05);osc.start(now);osc.stop(now+0.05);
+    }
+  }catch(e){}
+}
+
+const btnModePixel=$('demo-mode-pixel'),btnModeHd=$('demo-mode-hd');
+const btnLoopFixed=$('demo-loop-fixed'),btnLoopVar=$('demo-loop-variable');
+const btnSfxToggle=$('demo-sfx-toggle');
+
+btnModePixel.onclick=()=>{demoArtMode='pixel';btnModePixel.classList.add('gold');btnModeHd.classList.remove('gold');toast('DEMO ART: 16x16 RETRO PIXEL')};
+btnModeHd.onclick=()=>{demoArtMode='hd';btnModeHd.classList.add('gold');btnModePixel.classList.remove('gold');toast('DEMO ART: MODERN HD VECTOR')};
+btnLoopFixed.onclick=()=>{demoSimMode='fixed';btnLoopFixed.classList.add('gold');btnLoopVar.classList.remove('gold');toast('PHYSICS TICK: 60Hz FIXED TIMESTEP (DETERMINISTIC)')};
+btnLoopVar.onclick=()=>{demoSimMode='variable';btnLoopVar.classList.add('gold');btnLoopFixed.classList.remove('gold');toast('PHYSICS TICK: VARIABLE DELTA (SIMULATING JITTER)')};
+btnSfxToggle.onclick=()=>{demoSfxOn=!demoSfxOn;btnSfxToggle.textContent=demoSfxOn?'🔊 Web Audio SFX [ON]':'🔇 Web Audio SFX [MUTED]';toast(demoSfxOn?'SFX UNMUTED':'SFX MUTED')};
+
+function initDemoGame(){
+  if(demoInitialized)return;
+  demoInitialized=true;
+  const canvas=$('demo-canvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const keys={};
+  window.addEventListener('keydown',e=>{
+    if($('t-demo')&&$('t-demo').classList.contains('on')){
+      if(['w','a','s','d','ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key)){
+        keys[e.key.toLowerCase()]=true;if(e.key===' ')e.preventDefault();
+      }
+    }
+  });
+  window.addEventListener('keyup',e=>{delete keys[e.key.toLowerCase()]});
+
+  const hero={x:320,y:170,dir:1,attacking:0,stepTimer:0,hp:100,stamina:100};
+  const enemies=[
+    {x:180,y:100,vx:1,vy:0,hp:40,maxHp:40,active:true},
+    {x:460,y:110,vx:-1,vy:0.5,hp:40,maxHp:40,active:true},
+    {x:240,y:250,vx:0.8,vy:-0.8,hp:40,maxHp:40,active:true}
+  ];
+
+  let frameCount=0,lastFpsUpdate=performance.now();
+
+  function gameLoop(now){
+    const demoTab=$('t-demo');
+    if(demoTab&&demoTab.classList.contains('on')){
+      frameCount++;
+      if(now-lastFpsUpdate>=1000){
+        $('demo-stat-fps').textContent=`FPS: ${frameCount}`;
+        frameCount=0;lastFpsUpdate=now;
+      }
+      let dx=0,dy=0;
+      if(keys['w']||keys['arrowup'])dy-=1;
+      if(keys['s']||keys['arrowdown'])dy+=1;
+      if(keys['a']||keys['arrowleft']){dx-=1;hero.dir=-1}
+      if(keys['d']||keys['arrowright']){dx+=1;hero.dir=1}
+      const speed=2.4;
+      if(dx||dy){
+        hero.x=Math.max(30,Math.min(610,hero.x+dx*speed));
+        hero.y=Math.max(30,Math.min(310,hero.y+dy*speed));
+        hero.stepTimer++;if(hero.stepTimer%18===0)playSynthSfx('step');
+      }
+      if(keys[' ']&&hero.attacking<=0&&hero.stamina>=15){
+        hero.attacking=14;hero.stamina=Math.max(0,hero.stamina-15);playSynthSfx('slash');
+        enemies.forEach(en=>{
+          if(!en.active)return;
+          const dist=Math.hypot((hero.x+hero.dir*28)-en.x,hero.y-en.y);
+          if(dist<42){
+            en.hp-=20;playSynthSfx('hit');en.x+=hero.dir*18;
+            if(en.hp<=0){en.active=false;setTimeout(()=>{en.active=true;en.hp=en.maxHp;en.x=80+Math.random()*480;en.y=80+Math.random()*180},2500)}
+          }
+        });
+      }
+      if(hero.attacking>0)hero.attacking--;
+      if(hero.stamina<100)hero.stamina=Math.min(100,hero.stamina+0.35);
+
+      enemies.forEach(en=>{
+        if(!en.active)return;en.x+=en.vx*0.75;en.y+=en.vy*0.75;
+        if(en.x<50||en.x>590)en.vx*=-1;if(en.y<50||en.y>290)en.vy*=-1;
+      });
+
+      ctx.clearRect(0,0,640,340);
+      const tileSize=demoArtMode==='pixel'?32:40;
+      for(let tx=0;tx<640;tx+=tileSize){
+        for(let ty=0;ty<340;ty+=tileSize){
+          ctx.fillStyle=((tx/tileSize+ty/tileSize)%2===0)?'#051329':'#030c1c';
+          ctx.fillRect(tx,ty,tileSize,tileSize);
+          ctx.strokeStyle='rgba(31,120,224,0.08)';ctx.strokeRect(tx,ty,tileSize,tileSize);
+        }
+      }
+
+      enemies.forEach(en=>{
+        if(!en.active)return;
+        if(demoArtMode==='pixel'){
+          ctx.fillStyle='#ff4a3d';ctx.fillRect(en.x-10,en.y-10,20,20);
+          ctx.fillStyle='#fff';ctx.fillRect(en.x-5,en.y-6,3,3);ctx.fillRect(en.x+2,en.y-6,3,3);
+        }else{
+          ctx.save();ctx.shadowColor='#ff4a3d';ctx.shadowBlur=10;ctx.fillStyle='#ff4a3d';
+          ctx.beginPath();ctx.arc(en.x,en.y,11,0,Math.PI*2);ctx.fill();ctx.restore();
+        }
+        ctx.fillStyle='#01050e';ctx.fillRect(en.x-12,en.y-18,24,3);
+        ctx.fillStyle='#ff4a3d';ctx.fillRect(en.x-12,en.y-18,24*(en.hp/en.maxHp),3);
+      });
+
+      if(demoArtMode==='pixel'){
+        ctx.fillStyle='#1f78e0';ctx.fillRect(hero.x-10,hero.y-14,20,24);
+        ctx.fillStyle='#d4ae45';ctx.fillRect(hero.x-7,hero.y-18,14,6);
+        ctx.fillStyle='#6fd3ff';ctx.fillRect(hero.x+(hero.dir*6),hero.y-4,4,12);
+      }else{
+        ctx.save();ctx.shadowColor='#6fd3ff';ctx.shadowBlur=12;ctx.fillStyle='#1f78e0';
+        ctx.beginPath();ctx.arc(hero.x,hero.y-4,13,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='#d4ae45';ctx.beginPath();ctx.arc(hero.x,hero.y-10,7,0,Math.PI*2);ctx.fill();
+        ctx.restore();
+      }
+
+      if(hero.attacking>0){
+        ctx.save();
+        ctx.strokeStyle=demoArtMode==='pixel'?'#ffe28a':'#6fd3ff';
+        ctx.lineWidth=demoArtMode==='pixel'?3:5;
+        if(demoArtMode==='hd'){ctx.shadowColor='#6fd3ff';ctx.shadowBlur=15}
+        ctx.beginPath();
+        const startA=hero.dir===1?-Math.PI/3:(4*Math.PI)/3;
+        const endA=hero.dir===1?Math.PI/3:(2*Math.PI)/3;
+        ctx.arc(hero.x+hero.dir*14,hero.y-4,28,startA,endA,hero.dir===-1);
+        ctx.stroke();ctx.restore();
+      }
+
+      ctx.fillStyle='rgba(0,0,0,0.65)';ctx.fillRect(16,14,140,36);
+      ctx.strokeStyle='#14407f';ctx.strokeRect(16,14,140,36);
+      ctx.fillStyle='#0a2244';ctx.fillRect(22,20,128,8);
+      ctx.fillStyle='#41e060';ctx.fillRect(22,20,128*(hero.hp/100),8);
+      ctx.fillStyle='#0a2244';ctx.fillRect(22,32,128,8);
+      ctx.fillStyle='#d4ae45';ctx.fillRect(22,32,128*(hero.stamina/100),8);
+    }
+    requestAnimationFrame(gameLoop);
+  }
+  requestAnimationFrame(gameLoop);
 }
 
 const relBtn = $('btn-reload');
