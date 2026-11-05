@@ -140,6 +140,13 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .toggle-pill{background:#04101f;border:1px solid #143e77;padding:4px 10px;border-radius:14px;cursor:pointer;user-select:none}
 .toggle-pill input{cursor:pointer;accent-color:var(--gold)}
 
+/* Animated Intro Modal & Education Academy */
+@keyframes bootGlow{0%{transform:scale(0.95);opacity:0;filter:brightness(1.5) drop-shadow(0 0 20px var(--cyan))}50%{transform:scale(1.01);opacity:.95}100%{transform:scale(1);opacity:1;filter:none}}
+.edu-card{background:#030b18;border:1px solid #14407f;border-radius:8px;padding:12px 14px;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.edu-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.6),0 0 10px rgba(212,174,69,.25)}
+.edu-card b{color:#fff;font-size:13.5px;display:flex;align-items:center;gap:6px}
+.edu-card span{color:var(--dim);font-size:12px;line-height:1.4}
+
 .btn-cancel-bar{width:100%;padding:8px 16px;background:linear-gradient(180deg,#0b2246 0%,#041126 100%);border:1px solid #1c4b88;border-radius:6px;color:#7ab3f5;font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .15s}
 .btn-cancel-bar:hover{background:linear-gradient(180deg,#123366 0%,#061935 100%);border-color:var(--cyan);color:#fff;box-shadow:0 0 12px rgba(31,120,224,.4)}
 
@@ -311,14 +318,85 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
 </style>
 </head>
 <body>
-<div id="welcome" style="display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.7);align-items:center;justify-content:center">
-  <div style="background:var(--panel);border:2px solid var(--gold);padding:22px 28px;max-width:520px;color:var(--text)">
-    <h2 style="color:var(--gold);margin-bottom:10px">Welcome, Executor</h2>
-    <p>This app turns a few questions into a step-by-step plan of AI prompts for building a game. Nothing is set up yet, and that is fine.</p>
-    <p style="margin-top:8px"><b>1.</b> Open <b>Settings</b> to see what is installed. The install buttons set up Claude Code, Codex, or a free local model for you.</p>
-    <p style="margin-top:8px"><b>2.</b> Still in Settings, the <b>Template Lab</b> makes game templates (like "Dark Souls") with the model you picked.</p>
-    <p style="margin-top:8px"><b>3.</b> Then go to <b>Projects</b> and start a new one. The "Queen's Domain" sample project is there to look at.</p>
-    <div style="margin-top:16px;display:flex;gap:10px"><button class="btn gold" id="wl-set">Open Settings</button><button class="btn" id="wl-ok">Got it</button></div>
+<div id="welcome" style="display:none;position:fixed;inset:0;z-index:99;background:rgba(1,5,14,.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px;overflow-y:auto">
+  <div style="background:radial-gradient(ellipse at 50% 0%,#0c254e 0%,#030914 100%);border:2px solid var(--gold);box-shadow:0 0 0 1px #000,0 0 30px rgba(31,120,224,.5),0 12px 40px rgba(0,0,0,.85);border-radius:14px;padding:22px 28px;max-width:820px;width:100%;color:var(--text);display:flex;flex-direction:column;gap:14px;animation:bootGlow .4s ease-out">
+    
+    <!-- Top Header -->
+    <div style="display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(212,174,69,.4);padding-bottom:12px">
+      <svg class="logo" viewBox="0 0 40 40" style="width:34px;height:34px"><polygon points="20,2 38,20 20,38 2,20" fill="#0a2550" stroke="#d4ae45" stroke-width="2"/><polygon points="20,9 31,20 20,31 9,20" fill="#1f78e0" stroke="#6fd3ff"/><polygon points="20,15 25,20 20,25 15,20" fill="#d4ae45"/></svg>
+      <div>
+        <h2 style="color:var(--gold);margin:0;font-size:17px;letter-spacing:.16em;text-transform:uppercase;border:none">QUEEN'S DOMAIN // ARCHITECTURE ONBOARDING & ACADEMY</h2>
+        <small style="color:var(--dim);font-size:11px;letter-spacing:.12em">AUTONOMOUS VIBE-CODING ENGINE // HOW TO BUILD COMPLETE GAMES WITHOUT TECH DEBT</small>
+      </div>
+      <button class="btn" id="wl-ok" style="margin-left:auto;padding:5px 14px;font-size:12px">Got It ✖</button>
+    </div>
+
+    <!-- Infographic Pipeline Banner -->
+    <div class="infographic-flow" style="margin:0">
+      <div class="infographic-step">🎮 <b>1. Game Concept Sliders</b></div>
+      <div class="infographic-arrow">➔</div>
+      <div class="infographic-step">📐 <b>2. 9-50 Modular Steps</b></div>
+      <div class="infographic-arrow">➔</div>
+      <div class="infographic-step">🤖 <b>3. AI Generates Code</b></div>
+      <div class="infographic-arrow">➔</div>
+      <div class="infographic-step">🛡️ <b>4. 12-Rule Code Auditor</b></div>
+      <div class="infographic-arrow">➔</div>
+      <div class="infographic-step">🚀 <b>5. Shipped Game!</b></div>
+    </div>
+
+    <!-- 1-Click Launchpad: Get a Project Started -->
+    <div>
+      <div style="font-size:12.5px;letter-spacing:.14em;color:var(--gold);font-weight:700;margin-bottom:8px">⚡ GET A PROJECT STARTED IMMEDIATELY</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px">
+        <button class="btn gold" id="wl-start-qd" style="padding:10px;text-align:left;display:flex;flex-direction:column;gap:3px">
+          <b>👑 Queen's Domain Preset</b>
+          <span style="font-size:11px;opacity:.85">50-step retro ARPG blueprint</span>
+        </button>
+        <button class="btn" id="wl-start-wiz" style="padding:10px;text-align:left;display:flex;flex-direction:column;gap:3px">
+          <b style="color:var(--cyan)">📐 Custom Questionnaire</b>
+          <span style="font-size:11px;color:var(--dim)">3-min sliders for your own game</span>
+        </button>
+        <button class="btn" id="wl-start-souls" style="padding:10px;text-align:left;display:flex;flex-direction:column;gap:3px">
+          <b style="color:#fff">🗡️ 1-Click Soulslike ARPG</b>
+          <span style="font-size:11px;color:var(--dim)">32-step stamina combat blueprint</span>
+        </button>
+        <button class="btn" id="wl-start-stardew" style="padding:10px;text-align:left;display:flex;flex-direction:column;gap:3px">
+          <b style="color:#fff">🌾 1-Click Cozy Farm Sim</b>
+          <span style="font-size:11px;color:var(--dim)">24-step tilemap crop sim</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Education Academy Cards: Understanding Game Architecture & AI Prompting -->
+    <div>
+      <div style="font-size:12.5px;letter-spacing:.14em;color:var(--cyan);font-weight:700;margin-bottom:8px">🎓 GAME ARCHITECTURE & AI PROMPTING ACADEMY</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:8px">
+        <div class="edu-card">
+          <b>⚡ Lesson 1: The Context Window Trap</b>
+          <span>Asking AI for "a whole game" blows token context, hallucinates nonexistent APIs, and produces unmaintainable spaghetti. Queen's Domain solves this: prompts are synthesized one self-contained layer at a time with strict acceptance checks.</span>
+        </div>
+        <div class="edu-card">
+          <b>🛡️ Lesson 2: The 12 Architectural Guardrails</b>
+          <span>Game code fails from silent memory churn and spaghetti state. The engine enforces 12 rules: Zero hidden singletons, explicit memory pools, decoupled event buses, and zero GC allocations in hot update loops.</span>
+        </div>
+        <div class="edu-card">
+          <b>⏱️ Lesson 3: Frame-Rate Decoupling</b>
+          <span>Never multiply variable deltaTime into gameplay logic. Physics and state machines must run on fixed timesteps (`fixedDeltaTime`) so gameplay is deterministic whether running at 30 FPS or 144 FPS.</span>
+        </div>
+        <div class="edu-card">
+          <b>🎨 Lesson 4: CC0 Assets & AI Auto-Injection</b>
+          <span>Instead of generic colored squares, the Asset Studio automatically selects matching 2D spritesheets, 3D modular kits, and SFX from Kenney, injecting concrete file paths into your prompt instructions.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Action Row -->
+    <div style="display:flex;align-items:center;gap:10px;margin-top:6px;border-top:1px solid rgba(212,174,69,.25);padding-top:12px">
+      <button class="btn" id="wl-set" style="font-size:12px">⚙️ Configure AI Models & API Keys</button>
+      <span class="dim" style="font-size:12px">Press [?] anytime to reopen this Academy</span>
+      <button class="btn gold" id="wl-launch" style="margin-left:auto;padding:8px 20px;font-size:13px;font-weight:700">Enter Studio ➔</button>
+    </div>
+
   </div>
 </div>
 
@@ -333,6 +411,7 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
     <span title="Loaded model" style="font-size:14px"><i class="gem" style="background:#c9a8ff;box-shadow:0 0 6px #9a6bff"></i><b id="r-model">NO MODEL</b></span>
   </div>
   <div class="header-actions" id="hdr-desktop-ctrls">
+    <button class="icon-btn" id="btn-help" title="Open Game Architecture Guide & Academy (?)">❓ Guide</button>
     <button class="icon-btn" id="btn-fs-toggle" title="Toggle Desktop Fullscreen (F11)">⛶ Fullscreen</button>
     <button class="icon-btn" id="btn-reload" title="Refresh Interface (Ctrl+R)">🔄</button>
   </div>
@@ -340,6 +419,7 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
 
 <div id="shell">
 <nav id="nav">
+  <button id="sb-guide" style="color:#d5e6fb;border:1px solid #14407f;margin-bottom:4px">🎓 Academy & Guide</button>
   <button id="sb-newproj">+ New project</button>
   <button data-t="projects" class="on">Projects</button>
   <button data-t="assets" id="sb-assets" style="display:flex;align-items:center;justify-content:space-between;color:var(--gold);border:1px solid rgba(212,174,69,.4);margin-top:2px"><span>🎨 Asset Studio</span><span class="badge act" style="padding:1px 5px;font-size:10px;border-radius:3px">A</span></button>
@@ -1351,8 +1431,20 @@ async function tlReady(p){const R=$('tl-ready');R.innerHTML='';let ok=true;
   $('tl-make').disabled=!ok||tlBusy}
 let tlBusy=false,tlAbort=null;
 $('tl-prov').onchange=tlProv;
-(()=>{const w=$('welcome');if(ls.get('qd.welcomed'))return;w.style.display='flex';
-  const close=()=>{w.style.display='none';ls.set('qd.welcomed','1')};$('wl-ok').onclick=close;$('wl-set').onclick=()=>{close();document.querySelector('nav [data-t=settings]').click()}})();
+function openWelcome(){const w=$('welcome');if(w)w.style.display='flex'}
+function closeWelcome(){const w=$('welcome');if(w){w.style.display='none';ls.set('qd.welcomed','1')}}
+const wOk=$('wl-ok'),wSet=$('wl-set'),wLch=$('wl-launch');
+if(wOk)wOk.onclick=closeWelcome;
+if(wLch)wLch.onclick=closeWelcome;
+if(wSet)wSet.onclick=()=>{closeWelcome();document.querySelector('nav [data-t=settings]').click()};
+const wQd=$('wl-start-qd');if(wQd)wQd.onclick=()=>{closeWelcome();openProject('qd');toast("LAUNCHED QUEEN'S DOMAIN BLUEPRINT")};
+const wWiz=$('wl-start-wiz');if(wWiz)wWiz.onclick=()=>{closeWelcome();document.querySelector('nav [data-t=projects]').click();$('pj-new').click()};
+const wSouls=$('wl-start-souls');if(wSouls)wSouls.onclick=()=>{closeWelcome();const tpl=TEMPLATES.find(t=>t.id==='souls');if(tpl){const a=JSON.parse(JSON.stringify(DEFAULTS));applyTemplate(a,tpl);a.name='Elden Soulslike ARPG';const id='p'+Date.now();store.list.push({id,name:a.name,profile:a,template:'souls',folder:'',done:[],cur:1});save();openProject(id);toast('BLUEPRINT GENERATED: '+a.name.toUpperCase())}};
+const wStardew=$('wl-start-stardew');if(wStardew)wStardew.onclick=()=>{closeWelcome();const tpl=TEMPLATES.find(t=>t.id==='stardew');if(tpl){const a=JSON.parse(JSON.stringify(DEFAULTS));applyTemplate(a,tpl);a.name='Harvest Valley Cozy Sim';const id='p'+Date.now();store.list.push({id,name:a.name,profile:a,template:'stardew',folder:'',done:[],cur:1});save();openProject(id);toast('BLUEPRINT GENERATED: '+a.name.toUpperCase())}};
+const bHelp=$('btn-help'),sbG=$('sb-guide');
+if(bHelp)bHelp.onclick=openWelcome;
+if(sbG)sbG.onclick=openWelcome;
+(()=>{const w=$('welcome');if(w&&!ls.get('qd.welcomed'))w.style.display='flex'})();
 document.querySelector('nav [data-t=settings]').addEventListener('click',()=>setTimeout(tlFill,50));setTimeout(tlFill,4000);
 $('tl-make').onclick=async()=>{
   const game=$('tl-game').value.trim();if(!game)return toast('NAME A GAME');
@@ -2635,10 +2727,23 @@ document.addEventListener('keydown', e => {
     e.preventDefault();
     if(fsBtn) fsBtn.click();
   }
+  if(e.key === '?' && !e.target.matches('textarea,input,select')){
+    e.preventDefault();
+    openWelcome();
+  }
+  if((e.key === 'a' || e.key === 'A') && !e.target.matches('textarea,input,select') && !e.ctrlKey && !e.altKey && !e.metaKey){
+    e.preventDefault();
+    showTab('assets');
+    toast('ASSET STUDIO SHORTCUT [A]');
+  }
   if(e.key === 'Escape'){
     const insp = $('as-sheet-inspector');
     if(insp && insp.style.display !== 'none'){
       insp.style.display = 'none';
+    }
+    const w = $('welcome');
+    if(w && w.style.display !== 'none'){
+      closeWelcome();
     }
     if(wz && wz.i >= 0){
       showWiz(false);
