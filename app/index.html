@@ -14,7 +14,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{background:radial-gradient(circle at 50% 0%,#1a1a24 0%,var(--bg) 80%);color:var(--text);
+body{background:#04070a url('forest_bg.svg') center/cover no-repeat fixed;color:var(--text);
   font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;
   background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(0,0,0,.6) 100%)}
@@ -302,6 +302,26 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
   .zen-zone-active {
     border-color: #00f0ff !important;
     background: rgba(0,240,255,0.08) !important;
+  }
+
+  .glass-card {
+    background: rgba(10, 14, 22, 0.65) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  }
+  .glass-subcard {
+    background: rgba(8, 12, 18, 0.6) !important;
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  }
+  #top-menu-btn:hover {
+    border-color: rgba(0, 240, 255, 0.6) !important;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-1px);
   }
 </style>
 </head>
@@ -601,7 +621,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
     <div class="frame page">
       <div id="pj-list">
         <!-- Unified Minimalist Autonomous Game Studio Card (Matching Mockup) -->
-        <div class="explainer-hero" id="pj-explainer" style="max-width:1040px;margin:16px auto 24px;background:rgba(12,14,20,0.95);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:26px 30px;box-shadow:0 30px 80px rgba(0,0,0,0.85),inset 0 1px 0 rgba(255,255,255,0.1);position:relative;transition:all .3s ease">
+        <div class="explainer-hero" id="pj-explainer" class="glass-card" style="max-width:1040px;margin:16px auto 24px;background:rgba(10,14,22,0.68);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:26px 30px;box-shadow:0 30px 80px rgba(0,0,0,0.85),inset 0 1px 0 rgba(255,255,255,0.1);position:relative;transition:all .3s ease">
 
           <!-- Hidden button for toggle compatibility -->
           <button id="btn-zen-fold" style="display:none">Toggle</button>
@@ -712,7 +732,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
               
               <!-- Left Column: INSPIRATION & ASSET DROP CANVAS -->
-              <div id="asset-drop-canvas-panel" style="background:rgba(10,12,18,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column">
+              <div id="asset-drop-canvas-panel" class="glass-subcard" style="background:rgba(8,12,18,0.58);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
                   <b style="font-size:12.5px;color:#ffffff;letter-spacing:.02em">Inspiration &amp; Asset Canvas</b>
                   <span class="badge ok" style="font-size:9px">DROP / LINK ACTIVE</span>
@@ -801,7 +821,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
               </div>
 
               <!-- Right Column: Ever-Evolving Game Prompt (LIVE) -->
-              <div style="background:rgba(10,12,18,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column">
+              <div class="glass-subcard" style="background:rgba(8,12,18,0.58);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
                   <b style="font-size:12.5px;color:#ffffff;letter-spacing:.02em">Ever-Evolving Game Prompt (LIVE)</b>
                   <span class="badge act" style="font-size:9px">● LIVE SYNC</span>
