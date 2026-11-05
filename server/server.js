@@ -720,8 +720,17 @@ http.createServer(async (req, res) => {
         }
         if (req.url === '/api/dev/upload' && req.method === 'POST') {
           const { repo, isPrivate, description } = await body(req);
-          const result = await devWiz.uploadToGithub(repo || 'ai-game-studio', isPrivate !== false, description);
+          const result = await devWiz.uploadToGithub(repo || 'queens-domain', isPrivate !== false, description);
           return send(res, 200, result);
+        }
+        if (req.url === '/api/dev/autopilot' && req.method === 'POST') {
+          const { message } = await body(req);
+          const out = execFileSync(process.execPath, [path.join(__dirname, '..', 'scripts', 'autopilot.js'), message || ''], { encoding: 'utf8' });
+          return send(res, 200, { ok: true, output: out });
+        }
+        if (req.url === '/api/dev/release' && req.method === 'POST') {
+          const out = execFileSync(process.execPath, [path.join(__dirname, '..', 'scripts', 'build-release.js')], { encoding: 'utf8' });
+          return send(res, 200, { ok: true, output: out });
         }
       } catch (err) {
         return send(res, 200, { error: err.message });
@@ -732,8 +741,19 @@ http.createServer(async (req, res) => {
       return send(res, 200, (j?.data || []).filter(m => m.id.endsWith(':free')).map(m => m.id).sort());
     }
     if (req.url === '/api/open' && req.method === 'POST') { // only well-known key/download pages
-      const { url } = await body(req);
+      const { url, devMode } = await body(req);
       if (!/^https:\/\/([\w-]+\.)*(aistudio\.google\.com|platform\.moonshot\.ai|openrouter\.ai|ollama\.com|lmstudio\.ai|unity\.com|godotengine\.org|unrealengine\.com|roblox\.com|gamemaker\.io|nodejs\.org|construct\.net|spawn\.co|rosebud\.ai|git-scm\.com|cli\.github\.com|github\.com|visualstudio\.microsoft\.com|blender\.org|krita\.org|gimp\.org|inkscape\.org|audacityteam\.org|lmms\.io|blockbench\.net|meshy\.ai|kenney\.nl|sfxr\.me|beepbox\.co|ephtracy\.github\.io|quaternius\.com|opengameart\.org|freesound\.org|polyhaven\.com|gemini\.google\.com|mapeditor\.org|orama-interactive\.itch\.io)\//.test(url + '/')) return send(res, 400, { error: 'blocked' });
+      if (devMode) {
+        const chromeExe = firstFile('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe', path.join(LOCAL, 'Google', 'Chrome', 'Application', 'chrome.exe'));
+        const edgeExe = firstFile('C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe', 'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe');
+        if (chromeExe) {
+          execFile(chromeExe, ['--auto-open-devtools-for-tabs', '--start-maximized', url], { windowsHide: false });
+          return send(res, 200, { ok: true, devMode: true, browser: 'chrome' });
+        } else if (edgeExe) {
+          execFile(edgeExe, ['--auto-open-devtools-for-tabs', '--start-maximized', url], { windowsHide: false });
+          return send(res, 200, { ok: true, devMode: true, browser: 'edge' });
+        }
+      }
       execFile('cmd', ['/c', 'start', '', url], { windowsHide: true }); return send(res, 200, { ok: true });
     }
     if (req.url.startsWith('/api/authstatus')) { // is the installed tool signed in?

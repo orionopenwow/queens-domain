@@ -129,6 +129,17 @@ textarea.code{min-height:170px}
   letter-spacing:.15em;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
 .toast.show{opacity:1}
 
+/* Range slider styling */
+input[type=range]{-webkit-appearance:none;width:100%;background:transparent;height:24px;cursor:pointer}
+input[type=range]:focus{outline:none}
+input[type=range]::-webkit-slider-runnable-track{width:100%;height:8px;background:linear-gradient(90deg,#0a2144,#0f3a7a);border:1px solid #1f78e0;border-radius:4px;box-shadow:inset 0 1px 3px rgba(0,0,0,.6)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:18px;width:18px;border-radius:50%;background:radial-gradient(circle,#ffe28a,#d4ae45);border:2px solid #000;box-shadow:0 0 10px var(--gold);cursor:pointer;margin-top:-5px;transition:transform .1s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.slider-card{background:linear-gradient(180deg,#07152b 0%,#030914 100%);border:1px solid #14407f;border-radius:10px;padding:12px 16px;margin:6px 0;display:flex;flex-direction:column;gap:8px}
+.slider-val{font-size:13px;color:var(--gold);display:flex;justify-content:space-between;align-items:center}
+.toggle-pill{background:#04101f;border:1px solid #143e77;padding:4px 10px;border-radius:14px;cursor:pointer;user-select:none}
+.toggle-pill input{cursor:pointer;accent-color:var(--gold)}
+
 /* generic page panels */
 .page{max-width:980px;width:100%;margin:0 auto;padding:18px 22px;overflow-y:auto;gap:12px;display:flex;flex-direction:column}
 pre{background:#010712;border:1px solid var(--blue);color:var(--green);padding:12px;font-family:'Share Tech Mono',Consolas,monospace;font-size:13px;white-space:pre-wrap;line-height:1.45}
@@ -484,8 +495,10 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
         </div>
       </div>
       <div class="cmd">
-        <button class="btn" id="c-copy">Copy Prompt</button>
+        <button class="btn" id="c-copy">📋 Copy Prompt</button>
+        <button class="btn" id="c-spawn-dev" style="background:linear-gradient(180deg,#14498c,#0b2850);border-color:#3892ff;color:#cce4ff" title="Copies prompt and opens world in Chrome with Developer Tools open">🚀 Spawn in Chrome Dev</button>
         <button class="btn" id="c-spawn">Build in Spawn</button>
+        <label class="toggle-pill" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--cyan);margin:0 4px;cursor:pointer"><input type="checkbox" id="chk-spawn-devmode" checked> DevMode</label>
         <button class="btn green" id="c-done">Mark Complete</button>
         <button class="btn gold" id="c-next">Next Step &raquo;</button>
       </div>
@@ -655,10 +668,12 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
         <small id="dc-reponote" class="dim">Default recommended: ai-game-studio. Automatically initializes git, commits project files, creates remote via GitHub CLI (gh), and pushes to main.</small>
       </div>
 
-      <h3 style="color:var(--gold);margin-top:14px">3. Security Audit & Invariant Test Suite</h3>
+      <h3 style="color:var(--gold);margin-top:14px">3. Security Audit, Invariant Test Suite & Autopilot Engine</h3>
       <div class="row" style="flex-wrap:wrap;gap:8px">
         <button class="btn" id="dc-auditbtn">🛡️ Run Security Audit</button>
         <button class="btn green" id="dc-runtests">⚡ Run Test Suite</button>
+        <button class="btn gold" id="dc-autopilotbtn">🚀 Autopilot Milestone Sync</button>
+        <button class="btn" id="dc-releasebtn" style="background:linear-gradient(180deg,#3b226e,#1b0d3d);border-color:#9a6bff;color:#e6d6ff">📦 Build .exe & Zip Release</button>
         <button class="btn" id="dc-clearbtn">Clear Terminal</button>
       </div>
       <textarea id="dc-terminal" class="mono code" rows="10" readonly spellcheck="false" placeholder="Dev Console terminal output and upload stream will appear here..."></textarea>
@@ -1652,8 +1667,10 @@ function buildInSpawn(prompt){
   if(spBusy){toast('A BUILD IS ALREADY RUNNING');return}
   spStep=cur;const sv=spSavi();
   if(sv.mode!=='off'){ // Savi has no program door: copy the step (with the wisp limit) and open the world so it is one paste
-    navigator.clipboard.writeText((sv.n?'Wisps: send out at most '+sv.n+', fewer if the task is small; run independent parts side by side.':'Wisps: decide how many to send out (1 to 8, never more) from the size of this task: one for a small edit, more for bigger work that can run side by side.')+'\n\n'+String(prompt)).then(()=>toast('COPIED: PASTE IT INTO SAVI'),()=>toast('COPY FAILED: USE COPY PROMPT'));
-    spUrl=w.playUrl;$('sp-play').click();
+    const dev = isSpawnDevMode();
+    navigator.clipboard.writeText((sv.n?'Wisps: send out at most '+sv.n+', fewer if the task is small; run independent parts side by side.':'Wisps: decide how many to send out (1 to 8, never more) from the size of this task: one for a small edit, more for bigger work that can run side by side.')+'\n\n'+String(prompt)).then(()=>toast('COPIED: PASTE IT INTO SAVI' + (dev ? ' (CHROME DEV)' : '')),()=>toast('COPY FAILED: USE COPY PROMPT'));
+    spUrl=w.playUrl;
+    api('/api/open', { url: spUrl, devMode: dev });
     if(sv.mode==='only'){spNext(true,'Copied for Savi ('+(sv.n?'up to '+sv.n:'auto 1-8')+' wisps). Paste it in her chat; press Continue when she is done.');return}}
   spSync();$('sp-prompt').value=String(prompt);spGo()}
 function spSaviAll(){try{return JSON.parse(ls.get('qd.spsavi')||'{}')}catch(e){return {}}} // functions, not const: bridgeStrip may run before this line
@@ -1666,7 +1683,7 @@ function spNext(ok,msg){ // after a build: green = Continue to the next step, re
   $('bb-next').style.display='';$('bb-msg').textContent=msg;$('bb-msg').style.color=ok?'var(--green)':'var(--red)';
   $('bb-play').style.display=ok&&spUrl?'':'none';$('bb-cont').style.display=ok&&!last?'':'none';$('bb-fix').style.display=ok?'none':'';spWhy=ok?'':msg;
   if(ok){done.add(spStep);save();render()}}
-$('bb-play').onclick=()=>spUrl&&api('/api/open',{url:spUrl});
+$('bb-play').onclick=()=>spUrl&&api('/api/open',{url:spUrl, devMode: isSpawnDevMode()});
 $('bb-cont').onclick=()=>{$('bb-next').style.display='none';go(spStep+1);buildInSpawn(promptFor(cur))};
 $('bb-fix').onclick=()=>{const s=spStep;$('bb-next').style.display='none';buildInSpawn('The last attempt at the step below did not work: '+spWhy+'\nLook at the files in this world, find what is wrong, fix it, and keep everything that already works.\n\n'+promptFor(s))};
 const spMap=()=>{try{return JSON.parse(ls.get('qd.spworld')||'{}')}catch(e){return {}}}; // which Spawn world each project builds into
@@ -1738,12 +1755,37 @@ $('sp-go').onclick=spGo;$('sp-stop').onclick=()=>spAbort&&spAbort.abort();
 $('sp-prov').onchange=()=>chatModels('sp-prov','sp-model').then(()=>{spEff();spReady()});$('sp-model').onchange=spReady;
 $('sp-world').onchange=()=>{$('sp-newbox').style.display=$('sp-world').value?'none':'';const m=spMap();m[$('sp-proj').value]=$('sp-world').value;ls.set('qd.spworld',JSON.stringify(m));spReady()};
 $('sp-proj').onchange=()=>{loadProject($('sp-proj').value);render();const m=spMap()[$('sp-proj').value];if(m&&SP.worlds.some(x=>x.playUrl===m))$('sp-world').value=m;$('sp-newbox').style.display=$('sp-world').value?'none':'';spReady()};
+const isSpawnDevMode = () => ls.get('qd.spawn_devmode') !== '0';
+
+function launchSpawnDev(promptText){
+  const w = spWorldFor(store.active);
+  const prompt = promptText || (STEPS && STEPS[cur - 1] ? promptFor(cur) : '');
+  if (!prompt) { toast('NO PROMPT TO COPY'); return; }
+  const dev = isSpawnDevMode();
+  navigator.clipboard.writeText(String(prompt)).then(
+    () => toast('COPIED PROMPT · OPENING SPAWN' + (dev ? ' (CHROME DEV)' : '')),
+    () => toast('OPENING SPAWN' + (dev ? ' (CHROME DEV)' : ''))
+  );
+  const targetUrl = w ? w.playUrl : 'https://www.spawn.co/';
+  api('/api/open', { url: targetUrl, devMode: dev });
+}
+
 $('sp-step').onclick=()=>{if(STEPS&&STEPS[cur-1])$('sp-prompt').value=String(promptFor(cur));else toast('NO STEP SELECTED')};
 $('c-spawn').onclick=()=>{if(!STEPS||!STEPS[cur-1]){toast('NO STEP SELECTED');return}buildInSpawn(promptFor(cur))};
+$('c-spawn-dev').onclick=()=>launchSpawnDev();
+
+const chkSpawnDev = $('chk-spawn-devmode');
+if(chkSpawnDev){
+  chkSpawnDev.checked = isSpawnDevMode();
+  chkSpawnDev.onchange = () => {
+    ls.set('qd.spawn_devmode', chkSpawnDev.checked ? '1' : '0');
+    toast('CHROME DEV MODE ' + (chkSpawnDev.checked ? 'ENABLED' : 'DISABLED'));
+  };
+}
 spStatus(); // load the link state at start so every page knows it
 renderProjects(); // Projects is the page the app opens on
 $('sp-get').onclick=()=>api('/api/open',{url:'https://www.spawn.co/settings/tokens'});
-$('sp-play').onclick=()=>spUrl&&api('/api/open',{url:spUrl});
+$('sp-play').onclick=()=>spUrl&&api('/api/open',{url:spUrl, devMode: isSpawnDevMode()});
 $('sp-link-btn').onclick=async()=>{
   const t=$('sp-token').value.trim();if(!t)return;
   const clog=m=>{const d=el('div',null,new Date().toLocaleTimeString()+'  '+m);$('sp-clog').append(d);$('sp-clog').scrollTop=1e9};
@@ -1829,6 +1871,25 @@ function wzQ(w,q,a,next,first){
     if(q.auto){const g=el('button','btn','Auto-generate from my answers');g.title='Writes this from your earlier answers (genre, sub-genre, multiplayer, budget, devices...). You can edit it after.';
       g.onclick=()=>{if(inp.value.trim()&&!confirm('Replace what you typed?'))return;a[q.id]=autoText(q.id,a);renderWiz()};w.append(g)}}
   else if(q.type==='connect')wzConnect(w,a);
+  else if(['scope','difficulty','perf'].includes(q.id)&&q.options&&q.options.length>2){
+    const curIdx=Math.max(0,q.options.findIndex(o=>o.id===a[q.id]));
+    const card=el('div','slider-card');
+    const hdr=el('div','slider-val');
+    const curOpt=q.options[curIdx]||q.options[0];
+    hdr.innerHTML=`<span>SELECTED: <b style="color:#fff">${curOpt.label}</b></span><span class="badge ok">${curIdx+1}/${q.options.length}</span>`;
+    const desc=el('div','dim',curOpt.desc||'');
+    desc.style.fontSize='12.5px';
+    const slider=document.createElement('input');
+    slider.type='range';slider.min='0';slider.max=String(q.options.length-1);slider.value=String(curIdx);
+    slider.oninput=()=>{
+      const opt=q.options[+slider.value];
+      a[q.id]=opt.id;
+      hdr.innerHTML=`<span>SELECTED: <b style="color:#fff">${opt.label}</b></span><span class="badge ok">${+slider.value+1}/${q.options.length}</span>`;
+      desc.textContent=opt.desc||'';
+      const est=w.querySelector('.wzest');if(est)est.textContent=`Estimated steps: ${generate(a).length}`;
+    };
+    card.append(hdr,slider,desc);w.append(card);
+  }
   else{if(q.id==='platform'&&Date.now()-ENGT>8000)engScan().then(()=>wz&&WZP[wz.i]&&WZP[wz.i].ids.includes('platform')&&renderWiz()); // fresh scan whenever this question opens
     const grid=el('div','tiles');q.options.forEach(o=>{
       const why=blocked(q.id,o,a),on=q.type==='multi'?a[q.id].includes(o.id):a[q.id]===o.id,t=el('div','tile'+(on?' sel':'')+(why?' off':''));
@@ -2225,6 +2286,30 @@ $('dc-auditbtn').onclick=async()=>{
     toast('SECURITY AUDIT COMPLETE');
   }catch(e){term.value+=`[ERROR] ${e.message}\n`}
   finally{$('dc-auditbtn').disabled=false;term.scrollTop=term.scrollHeight}
+};
+
+$('dc-autopilotbtn').onclick=async()=>{
+  const term=$('dc-terminal');
+  term.value+='\n[AUTOPILOT] Starting Automated Concept Milestone Sync...\n';
+  $('dc-autopilotbtn').disabled=true;
+  try{
+    const res=await api('/api/dev/autopilot',{message:'milestone: Autonomous concept upgrade & UI streamline'});
+    term.value+=res.output||res.error||'Autopilot finished\n';
+    toast(res.ok?'AUTOPILOT SYNC COMPLETE':'AUTOPILOT FAILED');
+  }catch(e){term.value+=`[ERROR] ${e.message}\n`}
+  finally{$('dc-autopilotbtn').disabled=false;term.scrollTop=term.scrollHeight}
+};
+
+$('dc-releasebtn').onclick=async()=>{
+  const term=$('dc-terminal');
+  term.value+='\n[RELEASE] Compiling QueensDomain.exe and packaging GitHub Release (.zip + .exe)...\n';
+  $('dc-releasebtn').disabled=true;
+  try{
+    const res=await api('/api/dev/release',{});
+    term.value+=res.output||res.error||'Release finished\n';
+    toast(res.ok?'RELEASE PUBLISHED TO GITHUB':'RELEASE FAILED');
+  }catch(e){term.value+=`[ERROR] ${e.message}\n`}
+  finally{$('dc-releasebtn').disabled=false;term.scrollTop=term.scrollHeight}
 };
 
 $('dc-clearbtn').onclick=()=>{$('dc-terminal').value=''};

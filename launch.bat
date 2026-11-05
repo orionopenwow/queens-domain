@@ -1,12 +1,19 @@
 @echo off
 setlocal enabledelayedexpansion
-title AI Game Studio Launcher
+title QueensDomain Launcher
 
 echo ===================================================
-echo   AI GAME STUDIO // ZERO-DEPENDENCY LAUNCHER
+echo   QUEEN'S DOMAIN // ARCHITECTURE ENGINE
 echo ===================================================
 
-:: Determine script root and project root
+:: If compiled native exe exists, run it directly
+if exist "%~dp0QueensDomain.exe" (
+  echo [INFO] Starting native QueensDomain.exe...
+  start "" "%~dp0QueensDomain.exe"
+  exit /b 0
+)
+
+:: Otherwise check scripts/launcher.ps1
 if exist "%~dp0scripts\launcher.ps1" (
   set "PROJECT_ROOT=%~dp0"
   set "LAUNCHER=%~dp0scripts\launcher.ps1"
@@ -14,18 +21,15 @@ if exist "%~dp0scripts\launcher.ps1" (
   set "PROJECT_ROOT=%~dp0ai-game-studio-main"
   set "LAUNCHER=%~dp0ai-game-studio-main\scripts\launcher.ps1"
 ) else (
-  echo [ERROR] Could not find scripts\launcher.ps1!
+  echo [ERROR] Could not find launcher files!
   pause
   exit /b 1
 )
 
-echo [INFO] Launching app via %LAUNCHER%...
-
-:: Execute the launcher script in background
+echo [INFO] Launching app via PowerShell launcher...
 powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "%LAUNCHER%"
 
 if %ERRORLEVEL% neq 0 (
-  echo [WARN] PowerShell windowed launcher had an error code %ERRORLEVEL%.
   echo [INFO] Starting fallback server directly...
   cd /d "%PROJECT_ROOT%"
   start "" node server\server.js
@@ -33,4 +37,4 @@ if %ERRORLEVEL% neq 0 (
   start "" http://127.0.0.1:47831/
 )
 
-echo [OK] AI Game Studio launched.
+echo [OK] Queen's Domain launched.
