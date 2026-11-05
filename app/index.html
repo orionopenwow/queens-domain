@@ -621,54 +621,75 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
     <div class="frame page">
       <div id="pj-list">
         <!-- Unified Minimalist Autonomous Game Studio Card (Matching Mockup) -->
-        <div class="explainer-hero" id="pj-explainer" class="glass-card" style="max-width:1040px;margin:16px auto 24px;background:rgba(10,14,22,0.68);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:26px 30px;box-shadow:0 30px 80px rgba(0,0,0,0.85),inset 0 1px 0 rgba(255,255,255,0.1);position:relative;transition:all .3s ease">
+        <div class="explainer-hero glass-card" id="pj-explainer" style="max-width:1220px;margin:14px auto 22px;background:rgba(8,12,18,0.72);backdrop-filter:blur(32px) saturate(190%);-webkit-backdrop-filter:blur(32px) saturate(190%);border:1px solid rgba(255,255,255,0.09);border-radius:22px;padding:26px 32px;box-shadow:0 30px 80px rgba(0,0,0,0.75),inset 0 1px 0 rgba(255,255,255,0.14);position:relative;transition:all .3s ease">
 
           <!-- Hidden button for toggle compatibility -->
           <button id="btn-zen-fold" style="display:none">Toggle</button>
 
-          <!-- CENTRAL BLANK SQUARE HERO -->
-          <div id="zen-hero-square" style="text-align:center;max-width:820px;margin:0 auto 16px">
-            <h1 style="font-size:28px;font-weight:800;color:#ffffff;letter-spacing:-.025em;margin:0 0 8px">What kind of game would you like to create?</h1>
-            <p style="font-size:13px;color:#a1a1aa;line-height:1.45;margin:0 auto 18px;max-width:680px">Describe your game vision in the chat bar below, or drop inspiration (images, Pinterest/Sketchfab links, 3D models .glb) to dynamically unfold your architecture.</p>
+          <!-- PROMINENT PROMPT COMMAND CENTER (Clean-Cut Landscape Header) -->
+          <div id="zen-hero-square" style="text-align:center;max-width:980px;margin:0 auto 16px">
+            
+            <div style="display:inline-flex;align-items:center;gap:8px;padding:4px 16px;background:rgba(0,240,255,0.08);border:1px solid rgba(0,240,255,0.3);border-radius:20px;font-size:11.5px;font-weight:700;color:#00f0ff;letter-spacing:.04em;margin-bottom:10px;box-shadow:0 0 14px rgba(0,240,255,0.12)">
+              <span style="font-size:13px">✨</span> START TYPING A GAME IDEA, GENRE, OR MECHANICS
+            </div>
 
-            <!-- Main Chat / Prompt Input Bar -->
-            <div style="position:relative;max-width:860px;margin:0 auto 12px">
-              <span style="position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#00f0ff;font-size:18px;pointer-events:none;filter:drop-shadow(0 0 6px rgba(0,240,255,0.6))">✨</span>
-              <input id="dec-query" placeholder="What game would you like to create? (e.g. '3D Low-Poly Souls with stamina combat' or '2D Cozy Farm Sim')..." style="width:100%;padding:14px 110px 14px 48px;background:rgba(8,10,14,0.94);border:1.5px solid rgba(0,240,255,0.35);border-radius:12px;color:#ffffff;font-size:14px;outline:none;box-shadow:0 0 20px rgba(0,240,255,0.1),inset 0 0 12px rgba(0,0,0,0.6);transition:all .2s ease">
-              <div style="position:absolute;right:10px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px">
-                <button id="zen-attach-btn" title="Attach 3D Model, Concept Art, or Audio" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#ffffff;border-radius:6px;padding:5px 9px;font-size:12px;cursor:pointer">📎 Drop</button>
-                <button id="zen-clear-btn" title="Clear and Reset to Zen Blank Square" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#a1a1aa;border-radius:6px;padding:5px 9px;font-size:12px;cursor:pointer">✕</button>
+            <h1 style="font-size:29px;font-weight:800;color:#ffffff;letter-spacing:-.025em;margin:0 0 8px">What kind of game would you like to create?</h1>
+            
+            <p style="font-size:13.5px;color:#cbd5e1;line-height:1.45;margin:0 auto 18px;max-width:760px">
+              Type anything you want to create below — from a quick genre keyword (e.g. <i>"Soulslike"</i>, <i>"Cozy Farm Sim"</i>, <i>"Voxel Miner"</i>) to a full concept. Watch the architecture engine auto-detect your systems, match CC0 assets, and compile your prompt live as you type.
+            </p>
+
+            <!-- Main High-Prominence Chat / Prompt Input Bar -->
+            <div style="position:relative;max-width:980px;margin:0 auto 12px">
+              <span style="position:absolute;left:20px;top:50%;transform:translateY(-50%);color:#00f0ff;font-size:20px;pointer-events:none;filter:drop-shadow(0 0 8px rgba(0,240,255,0.7))">✨</span>
+              
+              <input id="dec-query" placeholder="Start typing a game idea, genre, theme, mechanics, or whatever you want to create..." style="width:100%;padding:17px 125px 17px 56px;background:rgba(6,9,14,0.92);border:2px solid rgba(0,240,255,0.45);border-radius:14px;color:#ffffff;font-size:15px;font-weight:600;outline:none;box-shadow:0 0 28px rgba(0,240,255,0.16),inset 0 0 16px rgba(0,0,0,0.7);transition:all .2s ease">
+              
+              <div style="position:absolute;right:12px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px">
+                <button id="zen-attach-btn" title="Attach 3D Model, Concept Art, or Audio" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);color:#ffffff;border-radius:6px;padding:6px 11px;font-size:12px;font-weight:bold;cursor:pointer;transition:all .15s ease">📎 Drop Art</button>
+                <button id="zen-clear-btn" title="Clear and Reset" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);color:#a1a1aa;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;transition:all .15s ease">✕</button>
               </div>
               <input type="file" id="zen-file-input" style="display:none" multiple accept=".glb,.gltf,.obj,.fbx,.png,.jpg,.jpeg,.webp,.svg,.wav,.mp3,.ogg,.txt,.md,.json,.zip">
             </div>
 
-            <!-- Drag & Drop Inspiration Zone Inside Blank Square -->
-            <div id="zen-drop-zone" style="max-width:860px;margin:0 auto 12px;padding:12px 18px;background:rgba(255,255,255,0.02);border:1.5px dashed rgba(255,255,255,0.12);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;transition:all .2s ease">
-              <span style="font-size:20px">🔮</span>
+            <!-- Clickable Instant Inspiration Sparks Bar -->
+            <div id="inspiration-sparks-bar" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;max-width:980px;margin:0 auto 12px">
+              <span style="font-size:11px;font-weight:bold;color:#71717a;margin-right:4px">Instant Sparks:</span>
+              <button class="insp-spark-pill" data-idea="3D Low-Poly Souls with stamina combat and dark castle" style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.25);color:#fbbf24;border-radius:14px;padding:3px 10px;font-size:11px;cursor:pointer;transition:all .15s ease">⚔️ 3D Souls</button>
+              <button class="insp-spark-pill" data-idea="2D Pixel Art RPG with 16x16 tiles and village NPCs" style="background:rgba(0,240,255,0.08);border:1px solid rgba(0,240,255,0.25);color:#00f0ff;border-radius:14px;padding:3px 10px;font-size:11px;cursor:pointer;transition:all .15s ease">✦ 2D Pixel RPG</button>
+              <button class="insp-spark-pill" data-idea="2D Cozy Farm Sim with daily seasonal clock and crop economy" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#10b981;border-radius:14px;padding:3px 10px;font-size:11px;cursor:pointer;transition:all .15s ease">🌾 Cozy Farm</button>
+              <button class="insp-spark-pill" data-idea="2D Destructible Sandbox Miner with underground mining tiers" style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.25);color:#a855f7;border-radius:14px;padding:3px 10px;font-size:11px;cursor:pointer;transition:all .15s ease">⛏️ Sandbox Miner</button>
+              <button class="insp-spark-pill" data-idea="Cyberpunk Roguelike with terminal hacking and drone combat" style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);color:#38bdf8;border-radius:14px;padding:3px 10px;font-size:11px;cursor:pointer;transition:all .15s ease">🌆 Cyberpunk</button>
+              <button class="insp-spark-pill" data-idea="Survival Horror with scarce ammo and flashlight raycasts" style="background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.25);color:#f43f5e;border-radius:14px;padding:3px 10px;font-size:11px;cursor:pointer;transition:all .15s ease">🧟 Survival Horror</button>
+            </div>
+
+            <!-- Drag & Drop Inspiration Pad (Landscape Format) -->
+            <div id="zen-drop-zone" style="max-width:980px;margin:0 auto 10px;padding:11px 18px;background:rgba(255,255,255,0.02);border:1.5px dashed rgba(255,255,255,0.12);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;transition:all .2s ease">
+              <span style="font-size:18px">🔮</span>
               <div style="text-align:left">
-                <div style="font-size:12px;font-weight:700;color:#ffffff">Drag &amp; Drop Inspiration Anywhere Here</div>
+                <div style="font-size:12px;font-weight:700;color:#ffffff">Drag &amp; Drop Inspiration Anywhere Into This Studio</div>
                 <div style="font-size:10.5px;color:#a1a1aa">Drop 3D models (.glb), pixel sprites, concept images, sound FX, or paste web links to auto-detect</div>
               </div>
               <span class="badge ok" style="font-size:9.5px;margin-left:auto">Auto-Detect ON</span>
             </div>
 
             <!-- Detected Inspiration Chips Bar -->
-            <div id="zen-detected-chips" style="display:none;flex-wrap:wrap;justify-content:center;gap:8px;max-width:860px;margin:0 auto 12px"></div>
+            <div id="zen-detected-chips" style="display:none;flex-wrap:wrap;justify-content:center;gap:8px;max-width:980px;margin:0 auto 10px"></div>
           </div>
 
-          <!-- DYNAMIC UNFOLDED HUB (Unfolds when typing or dropping inspiration) -->
+          <!-- DYNAMIC UNFOLDED HUB (Unfolds and builds the experience as user types) -->
           <div id="studio-unfolded-hub" style="display:none;opacity:0;transform:translateY(12px);transition:opacity .35s ease, transform .35s ease">
             
-            <!-- Sleek Modern Status Bar (Replacing the bulky header when unfolded) -->
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.15);border-radius:8px;margin-bottom:14px;font-size:11.5px">
-              <div style="display:flex;align-items:center;gap:8px">
-                <span style="color:#00f0ff">✦</span>
+            <!-- Live Detection Banner & Engine Selector (Sleek Landscape Bar) -->
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(0,240,255,0.04);border:1px solid rgba(0,240,255,0.18);border-radius:10px;margin-bottom:14px;font-size:12px;box-shadow:0 4px 16px rgba(0,0,0,0.3)">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="color:#00f0ff;font-size:14px">🎯</span>
                 <span id="dec-detected-theme" style="font-weight:700;color:#00f0ff">🎯 Detected: 3D Soulslike Action RPG</span>
                 <span id="dec-scope-badge" class="badge ok" style="font-size:9.5px">📐 SCOPE: 24 STEPS</span>
               </div>
               <div style="display:flex;align-items:center;gap:10px">
-                <span style="color:#a1a1aa">Target Engine:</span>
-                <select id="engine-quick-select" style="background:rgba(8,10,14,0.9);border:1px solid rgba(255,255,255,0.15);color:#ffffff;border-radius:6px;padding:3px 8px;font-size:11.5px;font-weight:bold;outline:none">
+                <span style="color:#a1a1aa;font-weight:bold;font-size:11.5px">Target Engine:</span>
+                <select id="engine-quick-select" style="background:rgba(8,12,18,0.92);border:1px solid rgba(255,255,255,0.15);color:#ffffff;border-radius:6px;padding:4px 10px;font-size:11.5px;font-weight:bold;outline:none">
                   <option value="unity">Unity C# (Deterministic 60Hz)</option>
                   <option value="godot">Godot 4 (GDScript / C#)</option>
                   <option value="unreal">Unreal Engine 5 (C++ / Blueprints)</option>
@@ -677,12 +698,12 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
               </div>
             </div>
 
-            <!-- Inspiration & Game Presets (TALLER CARDS WITH FULL BACKGROUND IMAGES) -->
+            <!-- Inspiration & Game Presets (4 Wide Landscape Cards with Full Background Images) -->
             <div style="margin-bottom:14px">
-              <div style="font-size:11.5px;font-weight:bold;color:#a1a1aa;margin-bottom:8px">Inspiration &amp; Game Presets (1-Click Fill &amp; Local DB Search)</div>
+              <div style="font-size:11.5px;font-weight:bold;color:#a1a1aa;margin-bottom:8px">Inspiration Presets (1-Click Fill &amp; Local DB Search)</div>
               
               <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px" id="insp-cards-grid">
-                <!-- Card 1: 2D Pixel RPG (Full Background Image) -->
+                <!-- Card 1: 2D Pixel RPG -->
                 <div class="cg-insp-card" id="dec-preset-pixel" style="background:linear-gradient(180deg, rgba(10,12,18,0.65) 0%, rgba(10,12,18,0.92) 100%), url('presets/pixel_tilesheet.svg') center/cover no-repeat;border:1px solid rgba(0,240,255,0.22);border-radius:10px;padding:14px;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:all .2s ease;box-shadow:0 4px 14px rgba(0,0,0,0.5)">
                   <div>
                     <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px;text-shadow:0 1px 3px rgba(0,0,0,0.8)"><span>✦</span> 2D Pixel Art RPG</b>
@@ -693,7 +714,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
                   </div>
                 </div>
 
-                <!-- Card 2: 3D Soulslike (Full Background Image) -->
+                <!-- Card 2: 3D Soulslike -->
                 <div class="cg-insp-card" id="dec-preset-souls" style="background:linear-gradient(180deg, rgba(10,12,18,0.65) 0%, rgba(10,12,18,0.92) 100%), url('presets/souls.svg') center/cover no-repeat;border:1px solid rgba(251,191,36,0.3);border-radius:10px;padding:14px;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:all .2s ease;box-shadow:0 4px 14px rgba(0,0,0,0.5)">
                   <div>
                     <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px;text-shadow:0 1px 3px rgba(0,0,0,0.8)"><span>⚔️</span> 3D Low-Poly Souls</b>
@@ -704,7 +725,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
                   </div>
                 </div>
 
-                <!-- Card 3: Cozy Farm Sim (Full Background Image) -->
+                <!-- Card 3: Cozy Farm Sim -->
                 <div class="cg-insp-card" id="dec-preset-cozy" style="background:linear-gradient(180deg, rgba(10,12,18,0.65) 0%, rgba(10,12,18,0.92) 100%), url('presets/cozy.svg') center/cover no-repeat;border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:14px;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:all .2s ease;box-shadow:0 4px 14px rgba(0,0,0,0.5)">
                   <div>
                     <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px;text-shadow:0 1px 3px rgba(0,0,0,0.8)"><span>🌾</span> 2D Cozy Farm Sim</b>
@@ -715,7 +736,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
                   </div>
                 </div>
 
-                <!-- Card 4: 2D Sandbox Miner (Full Background Image) -->
+                <!-- Card 4: 2D Sandbox Miner -->
                 <div class="cg-insp-card" id="dec-preset-sandbox" style="background:linear-gradient(180deg, rgba(10,12,18,0.65) 0%, rgba(10,12,18,0.92) 100%), url('presets/sandbox.svg') center/cover no-repeat;border:1px solid rgba(168,85,247,0.3);border-radius:10px;padding:14px;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:all .2s ease;box-shadow:0 4px 14px rgba(0,0,0,0.5)">
                   <div>
                     <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px;text-shadow:0 1px 3px rgba(0,0,0,0.8)"><span>⛏️</span> 2D Sandbox Miner</b>
@@ -728,11 +749,11 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
               </div>
             </div>
 
-            <!-- Split Lower Section (Left: Inspiration & Asset Drop Canvas | Right: Live Prompt Dock) -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
+            <!-- Balanced Dual Column Landscape Dock -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
               
               <!-- Left Column: INSPIRATION & ASSET DROP CANVAS -->
-              <div id="asset-drop-canvas-panel" class="glass-subcard" style="background:rgba(8,12,18,0.58);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column">
+              <div id="asset-drop-canvas-panel" class="glass-subcard" style="background:rgba(8,12,18,0.58);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:15px;display:flex;flex-direction:column">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
                   <b style="font-size:12.5px;color:#ffffff;letter-spacing:.02em">Inspiration &amp; Asset Canvas</b>
                   <span class="badge ok" style="font-size:9px">DROP / LINK ACTIVE</span>
@@ -821,7 +842,7 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
               </div>
 
               <!-- Right Column: Ever-Evolving Game Prompt (LIVE) -->
-              <div class="glass-subcard" style="background:rgba(8,12,18,0.58);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column">
+              <div class="glass-subcard" style="background:rgba(8,12,18,0.58);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:15px;display:flex;flex-direction:column">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
                   <b style="font-size:12.5px;color:#ffffff;letter-spacing:.02em">Ever-Evolving Game Prompt (LIVE)</b>
                   <span class="badge act" style="font-size:9px">● LIVE SYNC</span>
@@ -4776,6 +4797,20 @@ const zenDetectedChips = $('zen-detected-chips');
 const zenFileInput = $('zen-file-input');
 const zenAttachBtn = $('zen-attach-btn');
 const zenClearBtn = $('zen-clear-btn');
+
+// Clickable Instant Inspiration Spark Pills
+document.querySelectorAll('.insp-spark-pill').forEach(btn => {
+  btn.onclick = () => {
+    const idea = btn.getAttribute('data-idea');
+    if (decQ && idea) {
+      decQ.value = idea;
+      setStudioUnfolded(true);
+      runDeconstructor(idea);
+      toast('LOADED SPARK: ' + btn.textContent.trim().toUpperCase());
+    }
+  };
+});
+
 const zenFoldBtn = $('btn-zen-fold');
 
 let detectedInspirations = [];
