@@ -22,42 +22,47 @@ button{font:inherit;color:inherit;cursor:pointer}
 ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:#020611}
 ::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--gold2),var(--gold));border:2px solid #020611}
 
-/* Protoss frame: gold-rimmed blue panel with chamfered corners */
-.frame{position:relative;background:linear-gradient(180deg,var(--panel2),var(--panel));
-  border:2px solid var(--gold);box-shadow:inset 0 0 0 2px #04101f,inset 0 0 0 3px var(--blue),0 0 14px rgba(31,120,224,.35);
-  clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0 calc(100% - 14px),0 14px)}
-.frame>h2,.title{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+/* Sleek, rounded sci-fi glassmorphism frame */
+.frame{position:relative;background:linear-gradient(180deg,rgba(10,29,58,.94),rgba(5,13,28,.98));
+  border:1px solid rgba(212,174,69,.5);border-radius:14px;
+  box-shadow:0 12px 36px rgba(0,0,0,.7),0 0 20px rgba(31,120,224,.22),inset 0 1px 0 rgba(111,211,255,.18);
+  backdrop-filter:blur(8px)}
+.frame>h2,.title{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 
 /* top resource bar */
-header{display:flex;align-items:center;gap:18px;padding:8px 16px;border-bottom:2px solid var(--gold);
-  background:linear-gradient(180deg,#0d2347,#050d1c);box-shadow:0 2px 14px rgba(31,120,224,.4)}
+header{display:flex;align-items:center;gap:16px;padding:8px 18px;border-bottom:1px solid rgba(212,174,69,.4);
+  background:linear-gradient(180deg,#0d2347,#050d1c);box-shadow:0 2px 16px rgba(0,0,0,.6)}
 .logo{width:38px;height:38px;flex:none}
 header h1{font-size:20px;letter-spacing:.25em;color:var(--gold);text-shadow:0 0 8px rgba(212,174,69,.5)}
 header small{display:block;font-size:11px;letter-spacing:.18em;color:var(--dim)}
-.res{margin-left:auto;display:flex;gap:22px;font-family:'Share Tech Mono',monospace;font-size:19px;color:var(--green);text-shadow:0 0 6px rgba(65,224,96,.5)}
-.res span{display:flex;align-items:center;gap:7px;min-width:0}
+.header-actions{display:flex;gap:6px;align-items:center;margin-left:8px;border-left:1px solid rgba(212,174,69,.25);padding-left:10px}
+.icon-btn{background:#041021;border:1px solid #143e77;border-radius:6px;color:var(--cyan);padding:4px 8px;font-size:11.5px;cursor:pointer;transition:all .15s}
+.icon-btn:hover{border-color:var(--gold);color:#fff;background:#0d2850}
+.res{margin-left:auto;display:flex;gap:18px;font-family:'Share Tech Mono',monospace;font-size:18px;color:var(--green);text-shadow:0 0 6px rgba(65,224,96,.5)}
+.res span{display:flex;align-items:center;gap:7px;min-width:0;padding:2px 8px;background:rgba(2,7,18,.6);border:1px solid rgba(31,120,224,.3);border-radius:20px}
 .res{min-width:0;flex-wrap:wrap;justify-content:flex-end}
 .res b{max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.gem{width:16px;height:16px;transform:rotate(45deg);background:linear-gradient(135deg,#9fe6ff,#1f78e0);box-shadow:0 0 6px var(--cyan)}
+.gem{width:14px;height:14px;transform:rotate(45deg);background:linear-gradient(135deg,#9fe6ff,#1f78e0);box-shadow:0 0 6px var(--cyan)}
 .gem.g{background:linear-gradient(135deg,#9dffb0,#13923a);box-shadow:0 0 6px var(--green)}
 .gem.s{background:linear-gradient(135deg,#ffe28a,#9c7415);box-shadow:0 0 6px var(--gold)}
 
-/* left sidebar (Claude Code layout, SC1 colours) */
+/* left sidebar */
 #shell{flex:1;min-height:0;display:flex}
-nav{width:210px;flex:none;display:flex;flex-direction:column;gap:3px;padding:10px 8px;overflow:auto;border-right:2px solid var(--gold2);background:linear-gradient(180deg,#06122a,#030812)}
-nav button{text-align:left;padding:8px 12px;background:transparent;border:1px solid transparent;
-  letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-size:13px;color:var(--dim)}
-nav button:hover{color:var(--cyan);background:#0a1d3a}
-nav button.on{background:linear-gradient(90deg,#14407f,#0a2550);color:#fff;border-color:var(--gold2);border-left:3px solid var(--gold);text-shadow:0 0 6px var(--cyan)}
-nav #sb-newproj{border:1px solid var(--gold);color:var(--gold);text-align:center;margin-bottom:8px}
+nav{width:230px;flex:none;display:flex;flex-direction:column;gap:4px;padding:12px 10px;overflow-y:auto;border-right:1px solid rgba(212,174,69,.3);background:linear-gradient(180deg,#06122a,#020612)}
+nav button{text-align:left;padding:9px 12px;background:transparent;border:1px solid transparent;border-radius:8px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:700;font-size:13px;color:var(--dim);transition:all .15s ease}
+nav button:hover{color:var(--cyan);background:#091d3b;border-color:#133c75}
+nav button.on{background:linear-gradient(90deg,#18488f,#0a2654);color:#fff;border-color:var(--gold);box-shadow:0 0 12px rgba(31,120,224,.35),inset 0 1px 0 rgba(111,211,255,.2)}
+nav #sb-newproj{border:1px solid var(--gold);border-radius:8px;color:var(--gold);text-align:center;margin-bottom:8px;background:linear-gradient(180deg,#241c08,#100d04)}
+nav #sb-newproj:hover{background:linear-gradient(180deg,#3b2f0e,#1c1706);box-shadow:0 0 14px rgba(212,174,69,.5)}
 nav h3{font-size:11px;letter-spacing:.2em;color:var(--gold2);margin:14px 4px 4px;font-weight:400}
 nav .sbrow{display:flex}nav .sbrow .sbp{flex:1;min-width:0}nav .sbx{padding:8px;visibility:hidden}nav .sbrow:hover .sbx{visibility:visible}nav .sbx:hover{color:var(--red)}
 nav .sbp{text-transform:none;letter-spacing:0;font-weight:400;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 main{flex:1;min-width:0;min-height:0;padding:10px 16px 14px;display:flex;flex-direction:column;gap:8px}
-#phead{border:1px solid var(--blue);background:#030a18;padding:8px 12px;display:flex;flex-direction:column;gap:6px}
-#ptabs{display:flex;gap:4px;flex-wrap:wrap}#ptabs button{padding:6px 12px;background:#0a1d3a;border:1px solid #0f2c57;color:#8fb4e0;cursor:pointer;font:inherit;letter-spacing:.06em}
-#ptabs button:hover{color:#fff}#ptabs button.on{background:linear-gradient(180deg,#2c66bd,#0f3470);color:#fff;border-color:var(--gold)}
+#phead{border:1px solid var(--blue);border-radius:10px;background:#030a18;padding:8px 12px;display:flex;flex-direction:column;gap:6px}
+#ptabs{display:flex;gap:4px;flex-wrap:wrap}#ptabs button{padding:6px 12px;background:#0a1d3a;border:1px solid #0f2c57;border-radius:6px;color:#8fb4e0;cursor:pointer;font:inherit;letter-spacing:.06em;transition:all .15s}
+#ptabs button:hover{color:#fff;border-color:var(--cyan)}#ptabs button.on{background:linear-gradient(180deg,#2c66bd,#0f3470);color:#fff;border-color:var(--gold)}
 #phead #d-conn{margin:0!important}
 .tab{display:none}.tab.on{display:grid;flex:1;min-height:0}
 
@@ -65,13 +70,15 @@ main{flex:1;min-width:0;min-height:0;padding:10px 16px 14px;display:flex;flex-di
 #t-steps{grid-template-columns:350px 1fr;gap:14px}
 .col{display:flex;flex-direction:column;min-height:0;padding:14px 14px 12px;gap:10px}
 .platform{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.btn{background:linear-gradient(180deg,#123a73,#082049);border:1px solid var(--blue);color:var(--cyan);
-  padding:7px 10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;font-size:13px;
-  box-shadow:inset 0 0 0 1px #04101f;transition:.12s}
-.btn:hover{background:linear-gradient(180deg,#1b5aa8,#0c2d63);box-shadow:0 0 10px var(--blue);color:#fff}
-.btn.on{border-color:var(--gold);color:var(--gold);background:linear-gradient(180deg,#2a2a10,#13130a);box-shadow:0 0 8px rgba(212,174,69,.5)}
-.btn.gold{border-color:var(--gold);color:var(--gold)}
-.btn.green{border-color:var(--green);color:var(--green)}
+.btn{background:linear-gradient(180deg,#14407f,#0a2550);border:1px solid var(--blue);border-radius:8px;color:var(--cyan);
+  padding:7px 14px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;font-size:13px;
+  box-shadow:0 2px 6px rgba(0,0,0,.4),inset 0 1px 0 rgba(111,211,255,.2);transition:all .15s ease}
+.btn:hover{background:linear-gradient(180deg,#1f5cb0,#0e336e);box-shadow:0 0 12px var(--blue),0 2px 8px rgba(0,0,0,.5);color:#fff;transform:translateY(-1px)}
+.btn.on{border-color:var(--gold);color:var(--gold);background:linear-gradient(180deg,#382d0e,#191406);box-shadow:0 0 10px rgba(212,174,69,.45)}
+.btn.gold{border-color:var(--gold);color:var(--gold);background:linear-gradient(180deg,#382d0e,#191406)}
+.btn.gold:hover{background:linear-gradient(180deg,#524213,#251e09);box-shadow:0 0 14px rgba(212,174,69,.6);color:#fff}
+.btn.green{border-color:var(--green);color:var(--green);background:linear-gradient(180deg,#0e381b,#071a0c)}
+.btn.green:hover{background:linear-gradient(180deg,#155428,#0b2b14);box-shadow:0 0 14px rgba(65,224,96,.6);color:#fff}
 .btn:disabled{opacity:.45;cursor:wait}
 /* minimap */
 .minimap{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;padding:4px;background:#000;border:2px solid var(--blue);flex:none}
@@ -288,12 +295,17 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
     <span title="Target engine"><i class="gem s"></i><b id="r-plat">UNITY</b></span>
     <span title="Loaded model" style="font-size:14px"><i class="gem" style="background:#c9a8ff;box-shadow:0 0 6px #9a6bff"></i><b id="r-model">NO MODEL</b></span>
   </div>
+  <div class="header-actions" id="hdr-desktop-ctrls">
+    <button class="icon-btn" id="btn-fs-toggle" title="Toggle Desktop Fullscreen (F11)">⛶ Fullscreen</button>
+    <button class="icon-btn" id="btn-reload" title="Refresh Interface">⟳</button>
+  </div>
 </header>
 
 <div id="shell">
 <nav id="nav">
   <button id="sb-newproj">+ New project</button>
   <button data-t="projects" class="on">Projects</button>
+  <button data-t="assets" id="sb-assets" style="color:var(--gold);border:1px solid rgba(212,174,69,.4);margin-top:2px">🎨 Asset Studio</button>
   <button data-t="settings">Settings</button>
   <button data-t="devconsole" id="sb-devconsole" style="color:var(--cyan);border:1px solid #14407f;margin-top:2px">★ Dev Console</button>
   <div id="nav-old" style="display:none"><button data-t="chat"></button><button data-t="spawn"></button><button data-t="steps"></button><button data-t="audit"></button><button data-t="agents"></button><button data-t="handoff"></button><button data-t="repo"></button><button data-t="assets"></button><button data-t="devconsole"></button></div>
@@ -320,8 +332,38 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
   <section class="tab on" id="t-projects">
     <div class="frame page">
       <div id="pj-list">
-        <div class="row"><h2 style="flex:1">Your projects</h2><button class="btn gold" id="pj-new" style="padding:10px 20px">+ New project</button></div>
-        <p>Start a new project (a few questions build your step-by-step plan), or open one below. Opening a project takes you to its step-by-step prompts. Queen's Domain is built in as a preset.</p>
+        <!-- Hero Explainer Banner -->
+        <div class="explainer-hero" id="pj-explainer" style="background:radial-gradient(ellipse at 50% 0%,#0f2e5c 0%,#051124 100%);border:1px solid rgba(212,174,69,.5);border-radius:14px;padding:22px 26px;margin-bottom:16px;box-shadow:0 8px 32px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,226,138,.25)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="width:14px;height:14px;background:var(--gold);box-shadow:0 0 10px var(--gold);transform:rotate(45deg)"></div>
+            <h2 style="font-size:18px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin:0;border:none">WHAT IS QUEEN'S DOMAIN ARCHITECTURE ENGINE?</h2>
+            <span class="badge ok" style="margin-left:auto;border-radius:12px">AUTONOMOUS VIBE-CODING</span>
+          </div>
+          <p style="color:#d5e6fb;font-size:14.5px;line-height:1.6;margin-bottom:14px">
+            <strong>Vibe-coding a game fails when you ask an AI for "the whole game" at once.</strong> Context windows blow up, platforms misconfigure, and code hallucinates.
+            Queen's Domain solves this: answer guided design questions about your game idea, and the engine synthesizes an <strong>engineered, step-by-step modular blueprint</strong>. Feed each verified prompt to your chosen model (Claude Code, ChatGPT Codex, Ollama, Godot, Unity, or Spawn.co), audit the result against 12 architectural rules, and ship complete games without technical debt.
+          </p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:12px">
+            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:12px 14px">
+              <div style="color:var(--cyan);font-weight:700;font-size:13px;letter-spacing:.08em;margin-bottom:4px">1. BLUEPRINT ARCHITECTURE</div>
+              <div class="dim" style="font-size:12.5px;line-height:1.4">Generates dynamic 9 to 50 step roadmaps calibrated to your engine (Unity, Godot, Unreal, Spawn, Phaser, Three.js) and PC hardware limits.</div>
+            </div>
+            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:12px 14px">
+              <div style="color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.08em;margin-bottom:4px">2. STEP-BY-STEP PROMPTING</div>
+              <div class="dim" style="font-size:12.5px;line-height:1.4">Copy self-contained, context-rich prompts into Claude Code, Codex, or local Ollama models. Each step builds precisely on what came before.</div>
+            </div>
+            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:12px 14px">
+              <div style="color:var(--green);font-weight:700;font-size:13px;letter-spacing:.08em;margin-bottom:4px">3. 12-RULE PASS/FAIL AUDITOR</div>
+              <div class="dim" style="font-size:12.5px;line-height:1.4">Paste the AI's generated code into the Auditor to verify memory management, state isolation, asset bounds, and receive an instant fix prompt.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="align-items:center;margin-bottom:8px">
+          <h2 style="flex:1;border:none;margin:0">Active Game Blueprints</h2>
+          <button class="btn gold" id="pj-new" style="padding:10px 22px;border-radius:8px">+ Create New Project</button>
+        </div>
+        <p class="dim" style="margin-bottom:12px">Open any project below to view its step-by-step prompts, run the AI auditor, import matching asset packs, or push commits to GitHub.</p>
         <div class="pjgrid" id="pj-grid"></div>
       </div>
       <div id="pj-wiz" style="display:none"></div>
@@ -461,11 +503,43 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
     </div>
   </section>
 
-  <!-- REPO -->
+  <!-- ASSET SHEET STUDIO -->
   <section class="tab" id="t-assets">
     <div class="frame page">
-      <h2>Asset Browser</h2>
-      <p class="dim">Free packs that fit this project's art style, vibe, genre and view. Press Open page, download the zip there, then press Import: the pack is unzipped into your project's assets folder. Kenney's packs are CC0 (free for any use); the site asks for an optional donation.</p>
+      <div class="row" style="align-items:center">
+        <h2 style="flex:1;border:none;margin:0">🎨 ISOLATED ASSET SHEET STUDIO</h2>
+        <div class="row" style="gap:6px">
+          <button class="btn gold" id="as-filter-all">All Sheets</button>
+          <button class="btn" id="as-filter-2d">2D Sprites</button>
+          <button class="btn" id="as-filter-3d">3D Kits</button>
+          <button class="btn" id="as-filter-audio">Audio SFX</button>
+        </div>
+      </div>
+      <p class="dim">Inspect, isolate, and import modular asset sheets directly into your project's <code>assets/&lt;pack&gt;/</code> directory. Every imported sheet is automatically injected into your step-by-step game prompts. All packs are free CC0 public domain by Kenney.</p>
+
+      <!-- Isolated Asset Sheet Inspector Modal/Panel -->
+      <div id="as-sheet-inspector" class="selpanel" style="display:none;border-color:var(--gold);background:radial-gradient(circle at 50% 0%,#0a1f3d,#030a17);border-radius:12px;padding:18px;margin:8px 0">
+        <div class="row" style="align-items:center;margin-bottom:10px">
+          <b id="asi-title" style="font-size:17px;color:var(--gold)">ASSET SHEET INSPECTOR</b>
+          <span id="asi-dim" class="badge ok" style="border-radius:12px">2D SPRITESHEET</span>
+          <button class="btn" id="asi-close" style="margin-left:auto;padding:3px 12px">Close Sheet ✖</button>
+        </div>
+        <div class="row" style="align-items:stretch;gap:16px;flex-wrap:wrap">
+          <div id="asi-canvas" style="flex:1;min-width:280px;height:160px;background:#01050e;border:1px solid #143e77;border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(31,120,224,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(31,120,224,.15) 1px,transparent 1px);background-size:20px 20px"></div>
+            <div id="asi-badges" style="position:relative;display:flex;flex-wrap:wrap;gap:8px;padding:14px;justify-content:center"></div>
+          </div>
+          <div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px">
+            <div id="asi-specs" class="mono" style="font-size:12.5px;color:var(--cyan);line-height:1.5"></div>
+            <div id="asi-prompt" class="mono" style="font-size:12px;background:#010712;padding:8px;border-radius:6px;border:1px solid #143e77;color:var(--text)"></div>
+            <div class="row" style="margin-top:auto">
+              <button class="btn" id="asi-openpage">Open Kenney Page</button>
+              <button class="btn gold" id="asi-importbtn">Import Sheet to Project</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div id="as-body"></div>
       <small id="as-err" style="color:var(--red)"></small>
     </div>
@@ -1452,15 +1526,29 @@ function openProject(id){loadProject(id);render();document.querySelector('nav [d
 function renderProjects(){
   sbProj();try{designBanner()}catch(e){}
   const g=$('pj-grid');g.innerHTML='';
-  const card=(p,steps,d)=>{const c=el('div','pjcard'+(store.active===p.id?' act':''));
-    c.append(el('b',null,p.name+(p.preset?'  (PRESET)':'')),el('div','dim',p.preset?'Slow-paced retro ARPG blueprint. Unity or Spawn.co.':`${pickOpt(PLATFORMS,p.profile.platform).label} · ${p.profile.dim} · ${pickOpt(GENRES,p.profile.genre).label}${p.profile.sub!=='none'?' + '+pickOpt(SUBS,p.profile.sub).label:''}`),
-      el('div','pjn',`${d} / ${steps} steps done`),el('div','dim',spTag(p.id)));
-    const bar=el('div','pjbar');const fill=el('i');fill.style.width=Math.round(100*d/steps)+'%';bar.append(fill);c.append(bar);
-    const row=el('div','row');const o=el('button','btn gold',d?'Continue':'Open');o.onclick=()=>openProject(p.id);row.append(o);
-    if(!p.preset){const u=el('button','btn','Duplicate');u.onclick=()=>{store.list.push({...JSON.parse(JSON.stringify(p)),id:'p'+Date.now(),name:p.name+' (copy)'});ls.set('qd.projects',JSON.stringify(store));renderProjects()};row.append(u);
-      const x=el('button','btn','Delete');x.style.cssText='border-color:var(--red);color:var(--red)';
-      x.onclick=()=>{if(confirm(`Delete "${p.name}" and its progress?`)){store.list=store.list.filter(y=>y.id!==p.id);if(store.active===p.id)loadProject('qd');ls.set('qd.projects',JSON.stringify(store));render();renderProjects()}};row.append(x)}
-    c.append(row);g.append(c)};
+  const card=(p,steps,d)=>{
+    const c=el('div','pjcard'+(store.active===p.id?' act':''));
+    const pct=Math.round(100*d/steps)||0;
+    const topRow=el('div','row');topRow.style.alignItems='center';
+    topRow.append(el('b',null,p.name+(p.preset?' (PRESET)':'')),el('span','badge '+(pct===100?'ok':pct>0?'act':'no'),pct+'% COMPLETE'));
+    c.append(topRow);
+    const platInfo=p.preset?`Unity / Spawn.co · 2D/3D · Action RPG`:`${pickOpt(PLATFORMS,p.profile.platform).label} · ${p.profile.dim} · ${pickOpt(GENRES,p.profile.genre).label}${p.profile.sub!=='none'?' + '+pickOpt(SUBS,p.profile.sub).label:''}`;
+    c.append(el('div','dim',platInfo),el('div','pjn',`${d} / ${steps} steps completed · ${spTag(p.id)}`));
+    const bar=el('div','pjbar');const fill=el('i');fill.style.width=pct+'%';bar.append(fill);c.append(bar);
+    const row=el('div','row');
+    const o=el('button','btn gold',d?'Continue Step '+(d+1):'Start Blueprint');
+    o.onclick=()=>openProject(p.id);row.append(o);
+    if(!p.preset){
+      const u=el('button','btn','Duplicate');
+      u.onclick=()=>{store.list.push({...JSON.parse(JSON.stringify(p)),id:'p'+Date.now(),name:p.name+' (copy)'});ls.set('qd.projects',JSON.stringify(store));renderProjects()};
+      const x=el('button','btn','Delete');
+      x.style.cssText='border-color:var(--red);color:var(--red)';
+      x.onclick=()=>{if(confirm(`Delete "${p.name}" and its progress?`)){store.list=store.list.filter(y=>y.id!==p.id);if(store.active===p.id)loadProject('qd');ls.set('qd.projects',JSON.stringify(store));render();renderProjects()}};
+      row.append(u,x);
+    }
+    c.append(row);
+    g.append(c);
+  };
   card(QD,50,store.qd.done.length);
   store.list.forEach(p=>card(p,generate(p.profile).length,p.done.length));
 }
@@ -1790,20 +1878,190 @@ document.addEventListener('keydown',e=>{ // Enter = Next in the New Project ques
   if(e.key!=='Enter'||e.shiftKey||!wz||e.target.matches('textarea,button,select,a'))return;
   const b=$('pj-wiz').querySelector('.wznav .gold');if(b&&!b.disabled){e.preventDefault();b.click()}});
 // ---------- Assets tab: packs that fit the project (catalog and matching are in assets.js) ----------
+let asFilter = 'all';
+
+function setupAssetFilters(){
+  const fAll=$('as-filter-all'), f2d=$('as-filter-2d'), f3d=$('as-filter-3d'), fa=$('as-filter-audio');
+  if(!fAll||fAll._bound) return;
+  fAll._bound = true;
+  const setF = (f, btn) => {
+    asFilter = f;
+    [fAll, f2d, f3d, fa].forEach(b => b && b.classList.remove('gold'));
+    btn.classList.add('gold');
+    assetsRender();
+  };
+  fAll.onclick = () => setF('all', fAll);
+  f2d.onclick = () => setF('2d', f2d);
+  f3d.onclick = () => setF('3d', f3d);
+  fa.onclick = () => setF('audio', fa);
+  $('asi-close').onclick = () => { $('as-sheet-inspector').style.display = 'none'; };
+}
+
+function openSheetInspector(k, f, p, have){
+  const insp = $('as-sheet-inspector');
+  insp.style.display = '';
+  $('asi-title').textContent = k.label.toUpperCase();
+  
+  const isAudio = /sound|audio|music|jingles/i.test(k.slug || k.label);
+  const is3D = /kit|3d/i.test(k.slug || k.label);
+  $('asi-dim').textContent = isAudio ? 'AUDIO SFX PACK' : (is3D ? '3D MODULAR KIT' : '2D SPRITESHEET');
+  $('asi-dim').className = 'badge ' + (isAudio ? 'dim' : (is3D ? 'warn' : 'ok'));
+  
+  const badgesBox = $('asi-badges');
+  badgesBox.innerHTML = '';
+  const tags = (k.what + ' ' + (k.why || '')).split(/[,\s]+/).filter(w => w.length > 3).slice(0, 8);
+  tags.forEach(tg => {
+    const bg = el('span', 'badge', tg.toUpperCase());
+    bg.style.cssText = 'background:rgba(31,120,224,.2);border:1px solid #14407f;color:#cde0ff;font-size:11px;padding:3px 8px;border-radius:4px';
+    badgesBox.append(bg);
+  });
+  
+  $('asi-specs').innerHTML = `<b>FORMAT:</b> ${isAudio ? 'OGG / WAV (16-bit) / CC0' : is3D ? 'GLTF / OBJ / Textures / CC0' : 'PNG Atlas / Tilemap 16x16 / CC0'}<br>` +
+    `<b>ISOLATED PATH:</b> <span style="color:var(--gold)">assets/${k.slug || 'pack'}/</span><br>` +
+    `<b>ORIGIN:</b> CC0 Public Domain by Kenney.nl`;
+    
+  $('asi-prompt').textContent = `// Injected into prompt context:\n"Uses asset pack ${k.label} (${k.what}) for game art & mechanics."`;
+  
+  const op = $('asi-openpage');
+  op.onclick = () => api('/api/open', {url: k.url});
+  
+  const imp = $('asi-importbtn');
+  if(!k.slug){
+    imp.style.display = 'none';
+  } else {
+    imp.style.display = '';
+    const isImp = have.has(k.slug);
+    imp.textContent = isImp ? '✓ Sheet Imported' : 'Import Sheet to Project';
+    imp.disabled = !f || isImp;
+    imp.onclick = async () => {
+      imp.disabled = true;
+      const j = await api('/api/assets/import', {slug: k.slug, label: k.label, folder: f}).catch(e => ({error: String(e.message || e)}));
+      imp.disabled = !f;
+      if(j.error){ $('as-err').textContent = j.error; return; }
+      $('as-err').textContent = '';
+      imp.textContent = '✓ Sheet Imported';
+      toast('IMPORTED ' + k.label.toUpperCase());
+      const ps = p.packs = (p.packs || []).filter(x => x.slug !== k.slug);
+      ps.push({slug: k.slug, label: k.label});
+      STEPS = generate(p);
+      save();
+      assetsRender();
+    };
+  }
+  insp.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+}
+
 function assetsRender(){
+  setupAssetFilters();
   const b=$('as-body');if(!b||!PJ)return;b.innerHTML='';$('as-err').textContent='';
-  if(PJ.preset){b.append(el('div','dim','This built-in project has no questionnaire answers, so there is nothing to match. Make a project with New Project.'));return}
-  const p=PJ.profile,v=vibeOf(p),f=PJ.folder||p.folder;
-  b.append(el('div','mono','Matching: '+pickOpt(ARTS,p.art).label+' art, '+(v?pickOpt(VIBES,v).label+' vibe, ':'')+pickOpt(GENRES,p.genre).label+', '+p.dim));
-  if(!f)b.append(el('div','dim','No project folder yet: Import needs one. Make it on the Repo tab.'));
-  const have=new Set((p.packs||[]).map(x=>x.slug)),row=(k)=>{const r=el('div','row'),t=el('div');t.style.flex='1';t.append(el('b',null,k.label),el('div','dim',k.what+(k.why?'  -  '+k.why:'')));r.append(t);
-    const o=el('button','btn','Open page');o.onclick=()=>api('/api/open',{url:k.url});r.append(o);
-    if(k.slug){const i=el('button','btn gold',have.has(k.slug)?'Imported':'Import');i.disabled=!f;i.onclick=async()=>{i.disabled=true;const j=await api('/api/assets/import',{slug:k.slug,label:k.label,folder:f}).catch(e=>({error:String(e.message||e)}));i.disabled=!f;
-      if(j.error){$('as-err').textContent=j.error;return}$('as-err').textContent='';i.textContent='Imported';toast('IMPORTED '+k.label.toUpperCase());
-      const ps=p.packs=(p.packs||[]).filter(x=>x.slug!==k.slug);ps.push({slug:k.slug,label:k.label});STEPS=generate(p);save()}; /* the profile remembers it, so every prompt names the pack */r.append(i)}
-    b.append(r)};
-  for(const g of assetsFor(p)){b.append(el('h3',null,g.title));g.packs.forEach(row)}
-  b.append(el('h3',null,'More sites'));ASSET_SITES.filter(x=>x.dims.includes(p.dim)).forEach(x=>row({label:x.label,what:x.what,url:x.url}));
+  if(PJ.preset){
+    b.append(el('div','dim','This built-in project has no questionnaire answers, so there is nothing to match. Make a project with New Project.'));
+    return;
+  }
+  const p=PJ.profile, v=vibeOf(p), f=PJ.folder||p.folder;
+  
+  const metaBar = el('div', 'row');
+  metaBar.style.cssText = 'gap:12px;align-items:center;padding:8px 12px;background:#030c1c;border:1px solid #143e77;border-radius:8px;margin-bottom:12px';
+  metaBar.innerHTML = `<span class="mono" style="color:var(--cyan);font-size:13px">Matching: <b>${pickOpt(ARTS,p.art).label}</b> art &nbsp;·&nbsp; <b>${(v?pickOpt(VIBES,v).label:'Default')}</b> vibe &nbsp;·&nbsp; <b>${pickOpt(GENRES,p.genre).label}</b> &nbsp;·&nbsp; <b>${p.dim}</b></span>`;
+  if(!f) metaBar.innerHTML += `<span class="badge warn" style="margin-left:auto">No folder yet: create one on Repo tab</span>`;
+  b.append(metaBar);
+
+  const have = new Set((p.packs || []).map(x => x.slug));
+  const groups = assetsFor(p);
+
+  groups.forEach(g => {
+    let packs = g.packs;
+    if(asFilter === '2d') packs = packs.filter(x => !/kit|3d|sound|audio|music/i.test(x.slug || x.label));
+    else if(asFilter === '3d') packs = packs.filter(x => /kit|3d/i.test(x.slug || x.label));
+    else if(asFilter === 'audio') packs = packs.filter(x => /sound|audio|music|jingles/i.test(x.slug || x.label));
+    if(!packs.length) return;
+
+    b.append(el('h3', null, g.title + ` (${packs.length})`));
+    const grid = el('div');
+    grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin-bottom:16px';
+
+    packs.forEach(k => {
+      const isAudio = /sound|audio|music|jingles/i.test(k.slug || k.label);
+      const is3D = /kit|3d/i.test(k.slug || k.label);
+      const card = el('div', 'pjc');
+      card.style.cssText = 'padding:14px;display:flex;flex-direction:column;gap:8px;background:linear-gradient(180deg,#0a1b35 0%,#040d1e 100%);border:1px solid #14407f;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.4)';
+
+      const hdr = el('div', 'row');
+      hdr.style.alignItems = 'center';
+      const title = el('b', null, k.label);
+      title.style.color = '#fff';
+      const badge = el('span', 'badge ' + (isAudio ? 'dim' : is3D ? 'warn' : 'ok'), isAudio ? 'AUDIO' : is3D ? '3D KIT' : '2D SHEET');
+      badge.style.fontSize = '10px';
+      badge.style.marginLeft = 'auto';
+      hdr.append(title, badge);
+
+      const preview = el('div');
+      preview.style.cssText = 'height:60px;background:#010712;border:1px solid rgba(31,120,224,.3);border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden';
+      preview.innerHTML = `<div style="position:absolute;inset:0;background-image:linear-gradient(rgba(31,120,224,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(31,120,224,.1) 1px,transparent 1px);background-size:12px 12px"></div><span class="mono" style="font-size:11px;color:#6ba3e8;position:relative;letter-spacing:.08em">${isAudio ? '♫ AUDIO STREAM' : '⬡ MODULAR ATLAS'}</span>`;
+
+      const desc = el('div', 'dim', k.what + (k.why ? ' — ' + k.why : ''));
+      desc.style.fontSize = '12px';
+      desc.style.lineHeight = '1.4';
+      desc.style.flex = '1';
+
+      const acts = el('div', 'row');
+      acts.style.marginTop = 'auto';
+      acts.style.gap = '6px';
+
+      const isoBtn = el('button', 'btn', '🔍 Isolate');
+      isoBtn.style.padding = '5px 9px';
+      isoBtn.style.fontSize = '12px';
+      isoBtn.onclick = () => openSheetInspector(k, f, p, have);
+
+      const openBtn = el('button', 'btn', 'Page');
+      openBtn.style.padding = '5px 8px';
+      openBtn.style.fontSize = '12px';
+      openBtn.onclick = () => api('/api/open', {url: k.url});
+
+      acts.append(isoBtn, openBtn);
+
+      if(k.slug){
+        const isImp = have.has(k.slug);
+        const impBtn = el('button', 'btn ' + (isImp ? '' : 'gold'), isImp ? '✓ Added' : 'Import');
+        impBtn.style.padding = '5px 10px';
+        impBtn.style.fontSize = '12px';
+        impBtn.disabled = !f || isImp;
+        impBtn.onclick = async () => {
+          impBtn.disabled = true;
+          const j = await api('/api/assets/import', {slug: k.slug, label: k.label, folder: f}).catch(e => ({error: String(e.message || e)}));
+          impBtn.disabled = !f;
+          if(j.error){ $('as-err').textContent = j.error; return; }
+          $('as-err').textContent = '';
+          impBtn.textContent = '✓ Added';
+          toast('IMPORTED ' + k.label.toUpperCase());
+          const ps = p.packs = (p.packs || []).filter(x => x.slug !== k.slug);
+          ps.push({slug: k.slug, label: k.label});
+          STEPS = generate(p);
+          save();
+          assetsRender();
+        };
+        acts.append(impBtn);
+      }
+
+      card.append(hdr, preview, desc, acts);
+      grid.append(card);
+    });
+    b.append(grid);
+  });
+
+  if(asFilter === 'all' || asFilter === '2d'){
+    b.append(el('h3', null, 'External Game Asset Repositories'));
+    const siteRow = el('div', 'row');
+    siteRow.style.flexWrap = 'wrap';
+    siteRow.style.gap = '8px';
+    ASSET_SITES.filter(x => x.dims.includes(p.dim)).forEach(x => {
+      const sb = el('button', 'btn', x.label + ' ↗');
+      sb.title = x.what;
+      sb.onclick = () => api('/api/open', {url: x.url});
+      siteRow.append(sb);
+    });
+    b.append(siteRow);
+  }
 }
 function toolsSettings(){const b=$('s-tools');if(!b)return;b.innerHTML='';b.append(toolsBox(TOOLS.filter(t=>t.kind==='art'),'Free art tools'),toolsBox(TOOLS.filter(t=>t.kind==='sound'),'Free sound tools'))}
 // ---------- Repo tab: project folder, local commits, GitHub ----------
@@ -1970,6 +2228,47 @@ $('dc-auditbtn').onclick=async()=>{
 };
 
 $('dc-clearbtn').onclick=()=>{$('dc-terminal').value=''};
+
+// ---------- Desktop Wrapper Mode & Global Shortcuts ----------
+const fsBtn = $('btn-fs-toggle');
+if(fsBtn){
+  fsBtn.onclick = () => {
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(()=>{});
+      fsBtn.textContent = '⤓ Windowed';
+    } else {
+      document.exitFullscreen().catch(()=>{});
+      fsBtn.textContent = '⛶ Fullscreen';
+    }
+  };
+  document.addEventListener('fullscreenchange', () => {
+    fsBtn.textContent = document.fullscreenElement ? '⤓ Windowed' : '⛶ Fullscreen';
+  });
+}
+
+const relBtn = $('btn-reload');
+if(relBtn) relBtn.onclick = () => window.location.reload();
+
+const sbAssets = $('sb-assets');
+if(sbAssets) sbAssets.onclick = () => showTab('assets');
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'F11'){
+    e.preventDefault();
+    if(fsBtn) fsBtn.click();
+  }
+  if(e.key === 'Escape'){
+    const insp = $('as-sheet-inspector');
+    if(insp && insp.style.display !== 'none'){
+      insp.style.display = 'none';
+    }
+    if(wz && wz.i >= 0){
+      showWiz(false);
+      wz = null;
+      renderProjects();
+    }
+  }
+});
 
 document.querySelector('[data-t=projects]').addEventListener('click',()=>{if(!wz)showWiz(false);renderProjects()});
 
