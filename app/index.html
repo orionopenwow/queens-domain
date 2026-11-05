@@ -442,60 +442,54 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
   flex-direction: column;
 }
 
-/* Preset Cards with Rich Gameplay Picture Headers */
+/* Compact Sleek Preset Sprite Cards */
 .cg-insp-card {
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  transition: all .2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all .18s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  min-height: 48px;
+  box-sizing: border-box;
 }
 .cg-insp-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: rgba(0, 240, 255, 0.4);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.55), 0 0 14px rgba(0,240,255,0.18);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5), 0 0 10px rgba(0,240,255,0.15);
 }
 .cg-insp-card.active-preset {
   border-color: var(--gold) !important;
   background: rgba(251, 191, 36, 0.05) !important;
-  box-shadow: 0 0 16px rgba(251, 191, 36, 0.25) !important;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.22) !important;
 }
 
-.insp-banner {
-  height: 66px;
-  width: 100%;
-  position: relative;
+.insp-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
   overflow: hidden;
   background: #090b10;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  flex: none;
+  position: relative;
 }
-.insp-banner img {
+.insp-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .3s ease;
-  filter: contrast(1.05) brightness(0.92);
+  transition: transform .25s ease;
+  filter: contrast(1.05) brightness(0.95);
 }
-.cg-insp-card:hover .insp-banner img {
-  transform: scale(1.06);
-  filter: contrast(1.1) brightness(1.02);
-}
-.insp-hud-tag {
-  position: absolute;
-  bottom: 4px;
-  right: 5px;
-  background: rgba(0,0,0,0.82);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 4px;
-  padding: 1px 6px;
-  font-size: 8.5px;
-  font-family: monospace;
-  color: #e4e4e7;
-  letter-spacing: .02em;
+.cg-insp-card:hover .insp-thumb img {
+  transform: scale(1.1);
+  filter: contrast(1.1) brightness(1.05);
 }
 
 /* Drag and Drop Asset Ingestion */
@@ -917,112 +911,88 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
             </div>
 
             <!-- 4 Preset Cards Grid -->
-            <div id="insp-cards-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px">
+            <div id="insp-cards-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px">
               <!-- Card 1: 2D Pixel RPG -->
               <div class="cg-insp-card" id="dec-preset-pixel" data-cat="rpg retro">
-                <div class="insp-banner">
+                <div class="insp-thumb">
                   <img src="presets/pixel_hero.svg" alt="2D Pixel RPG">
-                  <span class="insp-hud-tag">❤ 3/3 · LV 1</span>
                 </div>
-                <div style="padding:8px 10px;flex:1;display:flex;flex-direction:column;justify-content:space-between">
-                  <div>
-                    <b style="font-size:11.5px;color:#ffffff;display:flex;align-items:center;gap:4px"><span>✦</span> 2D Pixel RPG</b>
-                    <div style="font-size:10px;color:#a1a1aa;margin:3px 0 5px;line-height:1.3">16x16 tiles, retro walk cycle, village NPCs</div>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+                    <b style="font-size:11px;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">✦ 2D Pixel RPG</b>
+                    <span class="badge ok" style="font-size:8px;padding:1px 4px">Tiny Town</span>
                   </div>
-                  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
-                    <span class="badge ok" style="font-size:8.5px">Tiny Town</span>
-                    <span class="badge" style="font-size:8px;color:#a1a1aa">Jam ~12</span>
-                  </div>
+                  <div style="font-size:9.5px;color:#a1a1aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin-top:2px">16x16 tiles, hero walk cycle, village NPCs</div>
                 </div>
               </div>
 
               <!-- Card 2: 3D Soulslike -->
               <div class="cg-insp-card" id="dec-preset-souls" data-cat="rpg action">
-                <div class="insp-banner">
+                <div class="insp-thumb">
                   <img src="presets/souls.svg" alt="3D Souls">
-                  <span class="insp-hud-tag">STAM ▓▓▓░ · PARRY</span>
                 </div>
-                <div style="padding:8px 10px;flex:1;display:flex;flex-direction:column;justify-content:space-between">
-                  <div>
-                    <b style="font-size:11.5px;color:#ffffff;display:flex;align-items:center;gap:4px"><span>⚔️</span> 3D Souls-Like</b>
-                    <div style="font-size:10px;color:#a1a1aa;margin:3px 0 5px;line-height:1.3">Shoulder camera, stamina combat, dark castle</div>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+                    <b style="font-size:11px;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">⚔️ 3D Souls-Like</b>
+                    <span class="badge act" style="font-size:8px;padding:1px 4px">Castle Kit</span>
                   </div>
-                  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
-                    <span class="badge act" style="font-size:8.5px">Castle Kit</span>
-                    <span class="badge" style="font-size:8px;color:#a1a1aa">Indie ~32</span>
-                  </div>
+                  <div style="font-size:9.5px;color:#a1a1aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin-top:2px">Shoulder camera, stamina combat, dark castle</div>
                 </div>
               </div>
 
               <!-- Card 3: Cozy Farm Sim -->
               <div class="cg-insp-card" id="dec-preset-cozy" data-cat="cozy">
-                <div class="insp-banner">
+                <div class="insp-thumb">
                   <img src="presets/cozy.svg" alt="Cozy Farm">
-                  <span class="insp-hud-tag">☀️ 10:45 AM · 🌾84%</span>
                 </div>
-                <div style="padding:8px 10px;flex:1;display:flex;flex-direction:column;justify-content:space-between">
-                  <div>
-                    <b style="font-size:11.5px;color:#ffffff;display:flex;align-items:center;gap:4px"><span>🌾</span> 2D Cozy Farm</b>
-                    <div style="font-size:10px;color:#a1a1aa;margin:3px 0 5px;line-height:1.3">15-min clock, seed-to-harvest crop economy</div>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+                    <b style="font-size:11px;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">🌾 2D Cozy Farm</b>
+                    <span class="badge ok" style="font-size:8px;padding:1px 4px">Tiny Town</span>
                   </div>
-                  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
-                    <span class="badge ok" style="font-size:8.5px">Tiny Town</span>
-                    <span class="badge" style="font-size:8px;color:#a1a1aa">Indie ~24</span>
-                  </div>
+                  <div style="font-size:9.5px;color:#a1a1aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin-top:2px">15-min clock, seed-to-harvest crop economy</div>
                 </div>
               </div>
 
               <!-- Card 4: 2D Sandbox Miner -->
               <div class="cg-insp-card" id="dec-preset-sandbox" data-cat="sand action">
-                <div class="insp-banner">
+                <div class="insp-thumb">
                   <img src="presets/sandbox.svg" alt="Sandbox Miner">
-                  <span class="insp-hud-tag">⛏️ -142m · TI</span>
                 </div>
-                <div style="padding:8px 10px;flex:1;display:flex;flex-direction:column;justify-content:space-between">
-                  <div>
-                    <b style="font-size:11.5px;color:#ffffff;display:flex;align-items:center;gap:4px"><span>⛏️</span> 2D Sandbox Miner</b>
-                    <div style="font-size:10px;color:#a1a1aa;margin:3px 0 5px;line-height:1.3">Destructible voxel slice, mining tiers & safehouse</div>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+                    <b style="font-size:11px;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">⛏️ 2D Sandbox Miner</b>
+                    <span class="badge no" style="font-size:8px;padding:1px 4px">Dungeon</span>
                   </div>
-                  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
-                    <span class="badge no" style="font-size:8.5px">Dungeon Pack</span>
-                    <span class="badge" style="font-size:8px;color:#a1a1aa">Jam ~16</span>
-                  </div>
+                  <div style="font-size:9.5px;color:#a1a1aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin-top:2px">Destructible voxel slice, underground mining</div>
                 </div>
               </div>
 
               <!-- Card 5: Cyberpunk Roguelike -->
               <div class="cg-insp-card" id="dec-preset-scifi" data-cat="rpg action">
-                <div class="insp-banner">
+                <div class="insp-thumb">
                   <img src="presets/scifi.svg" alt="Cyberpunk Roguelike">
-                  <span class="insp-hud-tag">SHIELD 100% · ⚡HACK</span>
                 </div>
-                <div style="padding:8px 10px;flex:1;display:flex;flex-direction:column;justify-content:space-between">
-                  <div>
-                    <b style="font-size:11.5px;color:#ffffff;display:flex;align-items:center;gap:4px"><span>🤖</span> Cyber Roguelike</b>
-                    <div style="font-size:10px;color:#a1a1aa;margin:3px 0 5px;line-height:1.3">Isometric neon hacking nodes & drone combat</div>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+                    <b style="font-size:11px;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">🤖 Cyber Roguelike</b>
+                    <span class="badge ok" style="font-size:8px;padding:1px 4px">Station</span>
                   </div>
-                  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
-                    <span class="badge ok" style="font-size:8.5px">Space Station</span>
-                    <span class="badge" style="font-size:8px;color:#a1a1aa">Indie ~28</span>
-                  </div>
+                  <div style="font-size:9.5px;color:#a1a1aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin-top:2px">Isometric neon hacking nodes & drone combat</div>
                 </div>
               </div>
 
               <!-- Card 6: Survival Horror -->
               <div class="cg-insp-card" id="dec-preset-horror" data-cat="action rpg">
-                <div class="insp-banner">
+                <div class="insp-thumb">
                   <img src="presets/guardian_model.jpg" alt="Survival Horror">
-                  <span class="insp-hud-tag">SANITY 42% · 🔦68%</span>
                 </div>
-                <div style="padding:8px 10px;flex:1;display:flex;flex-direction:column;justify-content:space-between">
-                  <div>
-                    <b style="font-size:11.5px;color:#ffffff;display:flex;align-items:center;gap:4px"><span>🕯️</span> Survival Horror</b>
-                    <div style="font-size:10px;color:#a1a1aa;margin:3px 0 5px;line-height:1.3">Scarce ammo, flashlight raycasts & sanity</div>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+                    <b style="font-size:11px;color:#ffffff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">🕯️ Survival Horror</b>
+                    <span class="badge act" style="font-size:8px;padding:1px 4px">Crypt</span>
                   </div>
-                  <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
-                    <span class="badge act" style="font-size:8.5px">Castle / Crypt</span>
-                    <span class="badge" style="font-size:8px;color:#a1a1aa">Indie ~30</span>
-                  </div>
+                  <div style="font-size:9.5px;color:#a1a1aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin-top:2px">Scarce ammo, flashlight raycasts & sanity</div>
                 </div>
               </div>
             </div>
