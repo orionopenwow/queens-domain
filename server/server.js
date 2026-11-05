@@ -621,7 +621,7 @@ for (const f of fs.readdirSync(path.join(DIR, 'fonts'))) if (f.endsWith('.woff2'
 if (fs.existsSync(path.join(DIR, 'presets'))) {
   for (const f of fs.readdirSync(path.join(DIR, 'presets'))) FILES['/presets/' + f] = 'presets/' + f;
 }
-const CTYPE = { '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
+const CTYPE = { '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
 
 http.createServer(async (req, res) => {
   // only the app's own origin may call the API (blocks other web pages from using local CLIs)
