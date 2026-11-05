@@ -140,6 +140,9 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .toggle-pill{background:#04101f;border:1px solid #143e77;padding:4px 10px;border-radius:14px;cursor:pointer;user-select:none}
 .toggle-pill input{cursor:pointer;accent-color:var(--gold)}
 
+.btn-cancel-bar{width:100%;padding:8px 16px;background:linear-gradient(180deg,#0b2246 0%,#041126 100%);border:1px solid #1c4b88;border-radius:6px;color:#7ab3f5;font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .15s}
+.btn-cancel-bar:hover{background:linear-gradient(180deg,#123366 0%,#061935 100%);border-color:var(--cyan);color:#fff;box-shadow:0 0 12px rgba(31,120,224,.4)}
+
 /* Infographics, Action Suggestion Cards & Templates */
 .infographic-flow{display:flex;align-items:center;justify-content:space-between;gap:8px;background:radial-gradient(ellipse at 50% 0%,#0f2e5c 0%,#030a16 100%);border:1px solid #1f78e0;border-radius:12px;padding:14px 18px;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(111,211,255,.25);flex-wrap:wrap}
 .infographic-step{display:flex;align-items:center;gap:8px;background:#041022;border:1px solid #14407f;padding:8px 12px;border-radius:8px;font-size:12.5px;color:#d5e6fb;font-weight:600}
@@ -331,7 +334,7 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
   </div>
   <div class="header-actions" id="hdr-desktop-ctrls">
     <button class="icon-btn" id="btn-fs-toggle" title="Toggle Desktop Fullscreen (F11)">⛶ Fullscreen</button>
-    <button class="icon-btn" id="btn-reload" title="Refresh Interface">⟳</button>
+    <button class="icon-btn" id="btn-reload" title="Refresh Interface (Ctrl+R)">🔄</button>
   </div>
 </header>
 
@@ -339,7 +342,7 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
 <nav id="nav">
   <button id="sb-newproj">+ New project</button>
   <button data-t="projects" class="on">Projects</button>
-  <button data-t="assets" id="sb-assets" style="color:var(--gold);border:1px solid rgba(212,174,69,.4);margin-top:2px">🎨 Asset Studio</button>
+  <button data-t="assets" id="sb-assets" style="display:flex;align-items:center;justify-content:space-between;color:var(--gold);border:1px solid rgba(212,174,69,.4);margin-top:2px"><span>🎨 Asset Studio</span><span class="badge act" style="padding:1px 5px;font-size:10px;border-radius:3px">A</span></button>
   <button data-t="settings">Settings</button>
   <button data-t="devconsole" id="sb-devconsole" style="color:var(--cyan);border:1px solid #14407f;margin-top:2px">★ Dev Console</button>
   <div id="nav-old" style="display:none"><button data-t="chat"></button><button data-t="spawn"></button><button data-t="steps"></button><button data-t="audit"></button><button data-t="agents"></button><button data-t="handoff"></button><button data-t="repo"></button><button data-t="assets"></button><button data-t="devconsole"></button></div>
@@ -2100,9 +2103,33 @@ function wzPreset(w,id,a){const p=presetOf(id);w.append(el('div','wzq',p.title),
 function renderWiz(){
   const a=wz.a,Q=QUESTIONS,w=$('pj-wiz');w.innerHTML='';fixAnswers(a);
   if(!wz.mode){
-    w.append(el('h2',null,'New Game Architecture Wizard'));
+    const titleHdr = el('h2', null, 'NEW PROJECT');
+    titleHdr.style.cssText = 'color:var(--gold);font-size:18px;letter-spacing:.15em;text-transform:uppercase;border-bottom:1px solid rgba(212,174,69,.4);padding-bottom:8px;margin-bottom:12px';
+    w.append(titleHdr);
 
+    w.append(
+      el('div', 'wzq', 'How deep do you want to go?'),
+      el('div', 'dim', 'You can switch later and keep every answer. Anything you skip is filled in smartly from your other answers.')
+    );
+
+    const g = el('div', 'tiles');
+    g.style.cssText = 'display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0';
+    MODES.forEach(m => {
+      const t = el('div', 'tile');
+      t.append(el('b', null, m.label), el('span', null, m.time + '. ' + m.desc));
+      t.onclick = () => { wz.mode = m.id; wz.i = 0; renderWiz(); };
+      g.append(t);
+    });
+    w.append(g);
+
+    // Full-width sleek cancel bar spanning across matching wireframe
+    const c = el('button', 'btn-cancel-bar', 'CANCEL');
+    c.onclick = () => { showWiz(false); wz = null; };
+    w.append(c);
+
+    // Infographic workflow flow
     const flow = el('div', 'infographic-flow');
+    flow.style.marginTop = '16px';
     flow.innerHTML = `
       <div class="infographic-step">🎯 <b>1. Select Depth or Template</b></div>
       <div class="infographic-arrow">➔</div>
@@ -2114,23 +2141,10 @@ function renderWiz(){
     `;
     w.append(flow);
 
-    w.append(el('div','wzq','How deep do you want to configure your blueprint?'),
-             el('div','dim','Pick a question depth or start instantly from a pre-configured 1-click template below. Anything skipped is filled in with battle-tested defaults.'));
-
-    const g=el('div','tiles');
-    MODES.forEach(m=>{
-      const t=el('div','tile');
-      const icon = m.id === 'norm' ? '⚡ ' : (m.id === 'hell' ? '🔥 ' : '💀 ');
-      t.append(el('b',null, icon + m.label), el('span',null, m.time + ' · ' + m.desc));
-      t.onclick=()=>{wz.mode=m.id;wz.i=0;renderWiz()};
-      g.append(t);
-    });
-    w.append(g);
-
-    // 1-Click Starter Templates section
-    const tplHdr = el('div','wzq','⚡ OR LAUNCH FROM A PRE-CONFIGURED BLUEPRINT (1-CLICK)');
-    tplHdr.style.marginTop = '20px';
-    const tplSub = el('div','dim','Skip all questions and immediately synthesize an engineered, production-ready roadmap:');
+    // 1-Click Starter Templates section (Individual Buttons & Status Text Assets)
+    const tplHdr = el('div', 'wzq', '⚡ OR LAUNCH FROM A PRE-CONFIGURED BLUEPRINT (1-CLICK)');
+    tplHdr.style.marginTop = '16px';
+    const tplSub = el('div', 'dim', 'Skip all questions and immediately synthesize an engineered, production-ready roadmap:');
     w.append(tplHdr, tplSub);
 
     const tplGrid = el('div', 'template-grid');
@@ -2167,11 +2181,6 @@ function renderWiz(){
       tplGrid.append(tc);
     });
     w.append(tplGrid);
-
-    const c=el('button','btn','Cancel');
-    c.style.marginTop = '12px';
-    c.onclick=()=>{showWiz(false);wz=null};
-    w.append(c);
     return;
   }
   autoFill(a,wz.mode);const pages=pagesOf(wz.mode,a),n=pages.length;WZP=pages;
