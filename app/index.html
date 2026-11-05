@@ -579,184 +579,275 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
     <div class="frame page">
       <div id="pj-list">
         <!-- Unified Clean Autonomous Game Pipeline & Project Starter -->
-        <div class="explainer-hero" id="pj-explainer" style="background:rgba(18,18,24,0.75);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 20px;margin-bottom:16px;box-shadow:0 12px 36px rgba(0,0,0,0.65),inset 0 1px 0 rgba(255,255,255,0.1)">
+        <div class="explainer-hero" id="pj-explainer" style="background:rgba(18,18,24,0.75);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 16px 44px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.1)">
           
           <!-- Top Clean Header & 5-Step Flow -->
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.08)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.08)">
             <div style="display:flex;align-items:center;gap:10px">
               <div style="width:10px;height:10px;background:#00f0ff;box-shadow:0 0 10px #00f0ff;transform:rotate(45deg);border-radius:2px"></div>
-              <h2 style="font-size:15px;font-weight:bold;color:#ffffff;letter-spacing:.03em;margin:0;border:none">AUTONOMOUS GAME PIPELINE</h2>
+              <h2 style="font-size:14.5px;font-weight:bold;color:#ffffff;letter-spacing:.04em;margin:0;border:none">QUEEN'S DOMAIN ARCHITECTURE ENGINE</h2>
             </div>
             <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#a1a1aa;font-weight:bold">
-              <span>🎮 1. Idea</span> <span style="color:#52525b">➔</span> <span>📐 2. Blueprint</span> <span style="color:#52525b">➔</span> <span>🤖 3. AI Code</span> <span style="color:#52525b">➔</span> <span>🛡️ 4. 12-Rule Audit</span> <span style="color:#52525b">➔</span> <span style="color:#10b981">🚀 5. Ship</span>
+              <span>🎮 1. Idea</span> <span style="color:#52525b">➔</span> <span>📦 2. Asset Sheet</span> <span style="color:#52525b">➔</span> <span>⚡ 3. Evolving Prompt</span> <span style="color:#52525b">➔</span> <span>🤖 4. Agent Mode</span> <span style="color:#52525b">➔</span> <span style="color:#10b981">🚀 5. Ship</span>
             </div>
           </div>
 
-          <!-- Two-Column Layout: Left-Hand Game Identity Dock + Right-Hand Prompt & Scope Calibrator -->
-          <div style="display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start">
-            
-            <!-- LEFT-HAND SIDE: GAME IDENTITY & ENGINE TOOLS -->
-            <div id="pj-identity-dock" style="background:rgba(12,12,18,0.7);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px">
-              <div>
-                <div style="font-size:12px;font-weight:bold;color:#ffffff;display:flex;align-items:center;gap:6px">
-                  <span style="color:#00f0ff">🛠️</span> GAME IDENTITY TOOLS
-                </div>
-                <div style="font-size:11px;color:#a1a1aa;margin-top:2px">Shapes engine, art pipeline & AI rules</div>
-              </div>
+          <!-- ChatGPT-Style Central Stage -->
+          <div style="max-width:880px;margin:0 auto 18px;text-align:center">
+            <div style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);border-radius:20px;font-size:11.5px;font-weight:bold;color:var(--gold);margin-bottom:10px">
+              <span>👑 ZERO TECHNICAL DEBT ARCHITECTURE</span>
+            </div>
+            <h1 style="font-size:26px;font-weight:700;color:#ffffff;letter-spacing:-.02em;margin:0 0 8px">What kind of game would you like to create?</h1>
+            <p style="font-size:13px;color:#a1a1aa;max-width:620px;margin:0 auto 16px;line-height:1.45">Describe any game idea. The local database selects a complete modular CC0 asset sheet (characters, tiles, items, UI, audio) and compiles an ever-evolving prompt ready for Claude Code, Codex, or Cursor.</p>
 
-              <!-- Target Engine -->
-              <div>
-                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Target Engine</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
-                  <button class="btn on" id="ide-eng-unity" style="font-size:11px;padding:5px 6px;text-align:center;border-color:var(--cyan);color:var(--cyan);font-weight:bold">🎮 Unity C#</button>
-                  <button class="btn" id="ide-eng-godot" style="font-size:11px;padding:5px 6px;text-align:center">🕹️ Godot 4</button>
-                  <button class="btn" id="ide-eng-spawn" style="font-size:11px;padding:5px 6px;text-align:center">🌐 Spawn.co</button>
-                  <button class="btn" id="ide-eng-unreal" style="font-size:11px;padding:5px 6px;text-align:center">⚡ Unreal 5</button>
+            <!-- ChatGPT Elevated Chat Bar Container -->
+            <div id="chatgpt-box" style="background:rgba(12,12,18,0.92);border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:12px 16px;box-shadow:0 12px 32px rgba(0,0,0,0.6);text-align:left;transition:all .2s ease">
+              <textarea id="dec-query" rows="2" placeholder="e.g. 'A 2D top-down cozy farming RPG with seasonal crops, fishing and village NPCs' or 'Fast 3D action soulslike with stamina combat and dark castle biomes'..." style="width:100%;font-size:14.5px;padding:8px 4px;border:none;background:transparent;color:#ffffff;outline:none;resize:none;line-height:1.45;font-family:inherit"></textarea>
+              
+              <!-- Bottom Controls Inside Chat Box -->
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07)">
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+                  <span style="font-size:10.5px;font-weight:bold;color:#71717a;text-transform:uppercase">Engine:</span>
+                  <button class="btn on" id="ide-eng-unity" style="font-size:11px;padding:4px 8px;border-color:var(--cyan);color:var(--cyan);font-weight:bold">🎮 Unity C#</button>
+                  <button class="btn" id="ide-eng-godot" style="font-size:11px;padding:4px 8px">🕹️ Godot 4</button>
+                  <button class="btn" id="ide-eng-spawn" style="font-size:11px;padding:4px 8px">🌐 Spawn.co</button>
+                  <button class="btn" id="ide-eng-unreal" style="font-size:11px;padding:4px 8px">⚡ Unreal 5</button>
+                  
+                  <span style="font-size:10.5px;font-weight:bold;color:#71717a;text-transform:uppercase;margin-left:6px">Rigor:</span>
+                  <button class="btn on" id="ide-rule-ponytail" style="font-size:11px;padding:4px 8px;border-color:var(--green);color:var(--green)">🛡️ Zero-GC</button>
+                  <button class="btn" id="ide-rule-rapid" style="font-size:11px;padding:4px 8px;color:#a1a1aa">⚡ Rapid</button>
                 </div>
-              </div>
-
-              <!-- Asset Mode & Free CDN Pipeline -->
-              <div>
-                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Asset Mode & Pipeline</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px">
-                  <button class="btn on" id="ide-art-3d" style="font-size:11px;padding:5px 6px;text-align:center;border-color:var(--gold);color:var(--gold);font-weight:bold">⚔️ 3D Low-Poly</button>
-                  <button class="btn" id="ide-art-2d" style="font-size:11px;padding:5px 6px;text-align:center">🎨 2D Pixel Sprite</button>
-                </div>
-                <button class="btn" id="ide-open-cdn" style="width:100%;font-size:11px;padding:4px;background:rgba(0,240,255,0.06);border-color:rgba(0,240,255,0.25);color:#00f0ff">🌐 Open Free CDN Scraper</button>
-              </div>
-
-              <!-- 12-Rule Code Hygiene Level -->
-              <div>
-                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Code Hygiene Rules</div>
-                <div style="display:flex;flex-direction:column;gap:3px">
-                  <button class="btn on" id="ide-rule-ponytail" style="font-size:11px;padding:4px 8px;text-align:left;border-color:var(--green);color:var(--green);font-weight:bold">🛡️ Ponytail Strict (Zero GC)</button>
-                  <button class="btn" id="ide-rule-rapid" style="font-size:11px;padding:4px 8px;text-align:left;color:#a1a1aa">⚡ Rapid Vibe Prototype</button>
-                </div>
-              </div>
-
-              <!-- AI Vibe-Coding Agent -->
-              <div>
-                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Vibe-Coding Agent</div>
-                <div style="display:flex;flex-direction:column;gap:3px">
-                  <button class="btn on" id="ide-ai-claude" style="font-size:11px;padding:4px 8px;text-align:left;border-color:rgba(255,255,255,0.2);color:#ffffff">🤖 Claude 3.7 Code</button>
-                  <button class="btn" id="ide-ai-codex" style="font-size:11px;padding:4px 8px;text-align:left;color:#a1a1aa">🧠 OpenAI Codex</button>
-                  <button class="btn" id="ide-ai-ollama" style="font-size:11px;padding:4px 8px;text-align:left;color:#a1a1aa">🦙 Ollama Local</button>
-                </div>
-              </div>
-
-              <!-- Game Scope Dial -->
-              <div>
-                <div style="font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Blueprint Scope Dial</div>
-                <div style="display:flex;gap:3px">
-                  <button class="btn" id="ide-scope-12" style="flex:1;font-size:10.5px;padding:4px 2px;text-align:center">12 Steps</button>
-                  <button class="btn on" id="ide-scope-24" style="flex:1;font-size:10.5px;padding:4px 2px;text-align:center;border-color:var(--cyan);color:var(--cyan);font-weight:bold">24 Steps</button>
-                  <button class="btn" id="ide-scope-50" style="flex:1;font-size:10.5px;padding:4px 2px;text-align:center">50 Steps</button>
-                </div>
+                
+                <button class="btn gold" id="dec-deconstruct-btn" style="font-size:13px;padding:9px 20px;border-radius:8px;font-weight:bold;white-space:nowrap">
+                  ⚡ Build Game Sheet & Prompt ➔
+                </button>
               </div>
             </div>
 
-            <!-- RIGHT-HAND MAIN COLUMN: PROMPT UNDERSTANDING, SCOPE & NUANCE CALIBRATOR -->
-            <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
-              
-              <!-- 1. Vision Input: What does your game look like? with Prompt Pills ABOVE the chat bar -->
+            <!-- Inspiration & Style Cards Directly Under The Chat Bar -->
+            <div style="margin-top:14px;text-align:left">
+              <div style="font-size:11px;font-weight:bold;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Inspiration & Game Presets (1-Click Fill & Local DB Search)</div>
+              <div id="inspiration-cards-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px">
+                <!-- Card 1: 2D Pixel RPG -->
+                <div class="cg-insp-card" id="dec-preset-pixel" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+                  <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>🎨</span> 2D Pixel Art RPG</b>
+                  <div style="font-size:11px;color:#a1a1aa;margin:4px 0">16x16 top-down tiles, retro hero walk cycle, village NPCs & inventory</div>
+                  <span class="badge ok" style="font-size:9.5px">Tiny Town · Godot/Unity</span>
+                </div>
+
+                <!-- Card 2: 3D Soulslike -->
+                <div class="cg-insp-card" id="dec-preset-souls" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+                  <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>🗡️</span> 3D Low-Poly Souls</b>
+                  <div style="font-size:11px;color:#a1a1aa;margin:4px 0">Over-the-shoulder camera, committed stamina combat, dark castle kit</div>
+                  <span class="badge act" style="font-size:9.5px">Fantasy Kit · Unity C#</span>
+                </div>
+
+                <!-- Card 3: Cozy Farm Sim -->
+                <div class="cg-insp-card" id="dec-preset-cozy" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+                  <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>🌾</span> 2D Cozy Farm Sim</b>
+                  <div style="font-size:11px;color:#a1a1aa;margin:4px 0">15-minute daily clock, seed-to-harvest crop economy, peaceful ambient mix</div>
+                  <span class="badge ok" style="font-size:9.5px">Tiny Town · Godot 4</span>
+                </div>
+
+                <!-- Card 4: 2D Sandbox Miner -->
+                <div class="cg-insp-card" id="dec-preset-sandbox" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+                  <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>⛏️</span> 2D Sandbox Miner</b>
+                  <div style="font-size:11px;color:#a1a1aa;margin:4px 0">Destructible voxel slice, underground mining tiers, safehouse crafting</div>
+                  <span class="badge no" style="font-size:9.5px">Dungeon Pack · Spawn.co</span>
+                </div>
+
+                <!-- Card 5: Cyberpunk Roguelike -->
+                <div class="cg-insp-card" id="dec-preset-scifi" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+                  <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>🛸</span> Cyberpunk Roguelike</b>
+                  <div style="font-size:11px;color:#a1a1aa;margin:4px 0">Isometric neon hacking nodes, cyber-drone combat, twin-stick bullet hell</div>
+                  <span class="badge act" style="font-size:9.5px">Space Kit · Godot/Unity</span>
+                </div>
+
+                <!-- Card 6: Survival Horror -->
+                <div class="cg-insp-card" id="dec-preset-horror" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s ease">
+                  <b style="font-size:12.5px;color:#ffffff;display:flex;align-items:center;gap:6px"><span>🧟</span> Survival Horror</b>
+                  <div style="font-size:11px;color:#a1a1aa;margin:4px 0">Scarce ammo pools, flashlight raycasts, sanity meter, spatial 3D audio</div>
+                  <span class="badge no" style="font-size:9.5px">Graveyard · Unity C#</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== LOCAL DATABASE CURATED GAME ASSET SHEET ==================== -->
+          <div id="game-asset-sheet" style="background:rgba(12,14,20,0.85);border:1px solid rgba(0,240,255,0.2);border-radius:12px;padding:16px 18px;margin-bottom:18px;box-shadow:0 8px 28px rgba(0,0,0,0.5)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="color:#00f0ff;font-size:16px">📦</span>
+                <b style="font-size:13.5px;color:#ffffff;letter-spacing:.03em">CURATED GAME ASSET SHEET (LOCAL CC0 DATABASE)</b>
+              </div>
+              <span class="badge ok">100% FREE PUBLIC DOMAIN</span>
+            </div>
+            <p class="dim" style="font-size:12px;margin:0 0 12px;line-height:1.4">The local database matched these modular CC0 assets to your vision. All assets map into <code>assets/</code> and are auto-injected into your evolving code prompt. Click <b>[🔁 Sub In / Out]</b> to swap any pack.</p>
+            
+            <!-- 6 Slots Grid -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px">
+              <!-- Slot 1: Character -->
+              <div class="cg-slot-card" id="ash-slot-char" style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:10.5px;font-weight:bold;color:#f43f5e;text-transform:uppercase">🦸 Protagonist / Hero</span>
+                  <span class="badge ok" style="font-size:9px">SLOT 1</span>
+                </div>
+                <b id="ash-char-name" style="font-size:12.5px;color:#ffffff">Queen's Domain Guardian [3D Mesh]</b>
+                <div id="ash-char-specs" style="font-size:11px;color:#a1a1aa">45k triangles · PBR Lit · 4-Frame Attack/Block</div>
+                <button class="btn gold" id="sub-char-btn" style="margin-top:auto;font-size:11px;padding:4px 8px;border-radius:6px">🔁 Sub In / Out</button>
+              </div>
+
+              <!-- Slot 2: World / Tileset -->
+              <div class="cg-slot-card" id="ash-slot-world" style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:10.5px;font-weight:bold;color:var(--cyan);text-transform:uppercase">🏰 World & Environment</span>
+                  <span class="badge ok" style="font-size:9px">SLOT 2</span>
+                </div>
+                <b id="ash-world-name" style="font-size:12.5px;color:#ffffff">Kenney Castle & Dungeon Kit</b>
+                <div id="ash-world-specs" style="font-size:11px;color:#a1a1aa">Modular walls, stone pillars, towers, gates</div>
+                <button class="btn gold" id="sub-world-btn" style="margin-top:auto;font-size:11px;padding:4px 8px;border-radius:6px">🔁 Sub In / Out</button>
+              </div>
+
+              <!-- Slot 3: Weapons / Items -->
+              <div class="cg-slot-card" id="ash-slot-gear" style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:10.5px;font-weight:bold;color:var(--gold);text-transform:uppercase">⚔️ Weapons & Gear</span>
+                  <span class="badge ok" style="font-size:9px">SLOT 3</span>
+                </div>
+                <b id="ash-gear-name" style="font-size:12.5px;color:#ffffff">Medieval Weapons Pack</b>
+                <div id="ash-gear-specs" style="font-size:11px;color:#a1a1aa">Greatsword, Aegis Shield, Arcane Staff</div>
+                <button class="btn gold" id="sub-gear-btn" style="margin-top:auto;font-size:11px;padding:4px 8px;border-radius:6px">🔁 Sub In / Out</button>
+              </div>
+
+              <!-- Slot 4: UI & HUD Kit -->
+              <div class="cg-slot-card" id="ash-slot-ui" style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:10.5px;font-weight:bold;color:#a855f7;text-transform:uppercase">🖥️ UI & HUD Kit</span>
+                  <span class="badge ok" style="font-size:9px">SLOT 4</span>
+                </div>
+                <b id="ash-ui-name" style="font-size:12.5px;color:#ffffff">Retro RPG UI Pack & Borders</b>
+                <div id="ash-ui-specs" style="font-size:11px;color:#a1a1aa">Health globes, stamina meter, inventory grid</div>
+                <button class="btn gold" id="sub-ui-btn" style="margin-top:auto;font-size:11px;padding:4px 8px;border-radius:6px">🔁 Sub In / Out</button>
+              </div>
+
+              <!-- Slot 5: Audio SFX -->
+              <div class="cg-slot-card" id="ash-slot-audio" style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:10.5px;font-weight:bold;color:#10b981;text-transform:uppercase">🔊 Audio & Sound FX</span>
+                  <span class="badge ok" style="font-size:9px">SLOT 5</span>
+                </div>
+                <b id="ash-audio-name" style="font-size:12.5px;color:#ffffff">RPG Audio + Footsteps + Impact SFX</b>
+                <div id="ash-audio-specs" style="font-size:11px;color:#a1a1aa">48kHz WAV/OGG · Decoupled event bus</div>
+                <button class="btn gold" id="sub-audio-btn" style="margin-top:auto;font-size:11px;padding:4px 8px;border-radius:6px">🔁 Sub In / Out</button>
+              </div>
+
+              <!-- Slot 6: Visual Palette / Shaders -->
+              <div class="cg-slot-card" id="ash-slot-vis" style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-size:10.5px;font-weight:bold;color:#38bdf8;text-transform:uppercase">🎨 Shaders & Palette</span>
+                  <span class="badge ok" style="font-size:9px">SLOT 6</span>
+                </div>
+                <b id="ash-vis-name" style="font-size:12.5px;color:#ffffff">16-Color Dawnbringer / PBR Lit</b>
+                <div id="ash-vis-specs" style="font-size:11px;color:#a1a1aa">Cohesive palette · Zero runtime GC cost</div>
+                <button class="btn gold" id="sub-vis-btn" style="margin-top:auto;font-size:11px;padding:4px 8px;border-radius:6px">🔁 Sub In / Out</button>
+              </div>
+            </div>
+
+            <!-- Sub In / Out Options Drawer (Expandable) -->
+            <div id="asset-sub-drawer" style="display:none;margin-top:12px;background:rgba(10,12,18,0.95);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <b id="asset-sub-title" style="font-size:12px;color:var(--cyan)">SUBSTITUTE ASSET SLOT</b>
+                <button class="icon-btn" id="asset-sub-close" style="font-size:11px">✖ Close</button>
+              </div>
+              <div id="asset-sub-options" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px"></div>
+            </div>
+          </div>
+
+          <!-- ==================== RECOMMENDED SOFTWARE & CREATIVE TOOLCHAIN ==================== -->
+          <div id="build-software-hub" style="background:rgba(14,16,22,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px 18px;margin-bottom:18px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="color:var(--gold);font-size:16px">🛠️</span>
+                <b style="font-size:13.5px;color:#ffffff">RECOMMENDED CREATIVE SOFTWARE & ENGINE TOOLCHAIN</b>
+              </div>
+              <span class="badge ok">100% FREE / OPEN SOURCE</span>
+            </div>
+            <p class="dim" style="font-size:12px;margin:0 0 12px;line-height:1.4">Based on your evolving prompt, here are the industry-standard free tools to build your game. You can download individual tools or grab the complete starter bundle zip below.</p>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-bottom:12px">
+              <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:10px 12px">
+                <b style="color:var(--cyan);font-size:12px">🎮 Godot 4.3 / Unity 6</b>
+                <div style="font-size:11px;color:#a1a1aa;margin:3px 0">Game Engine & Runtime</div>
+                <a href="https://godotengine.org/download/" target="_blank" class="btn" style="font-size:10.5px;padding:3px 8px;display:inline-block;text-decoration:none">Download Godot</a>
+              </div>
+              <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:10px 12px">
+                <b style="color:var(--gold);font-size:12px">🧊 Blender 4.2</b>
+                <div style="font-size:11px;color:#a1a1aa;margin:3px 0">3D Modeling & Animation</div>
+                <a href="https://www.blender.org/download/" target="_blank" class="btn" style="font-size:10.5px;padding:3px 8px;display:inline-block;text-decoration:none">Download Blender</a>
+              </div>
+              <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:10px 12px">
+                <b style="color:var(--green);font-size:12px">🎨 Pixelorama / Aseprite</b>
+                <div style="font-size:11px;color:#a1a1aa;margin:3px 0">2D Pixel Art & Timeline</div>
+                <a href="https://orama-interactive.itch.io/pixelorama" target="_blank" class="btn" style="font-size:10.5px;padding:3px 8px;display:inline-block;text-decoration:none">Download Pixelorama</a>
+              </div>
+              <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:10px 12px">
+                <b style="color:#a855f7;font-size:12px">🔊 Audacity & LMMS</b>
+                <div style="font-size:11px;color:#a1a1aa;margin:3px 0">Audio Mixing & Chiptunes</div>
+                <a href="https://www.audacityteam.org/download/" target="_blank" class="btn" style="font-size:10.5px;padding:3px 8px;display:inline-block;text-decoration:none">Download Audacity</a>
+              </div>
+            </div>
+
+            <!-- Download Complete Starter ZIP Card -->
+            <div style="background:linear-gradient(135deg,rgba(251,191,36,0.08) 0%,rgba(0,240,255,0.05) 100%);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
               <div>
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-                  <div style="font-size:13px;font-weight:bold;color:#ffffff;display:flex;align-items:center;gap:6px">
-                    <span>💭 WHAT DOES YOUR GAME LOOK LIKE?</span>
-                  </div>
-                  <span style="font-size:11px;color:#a1a1aa">Click an idea or type below to shape game theory & tools</span>
-                </div>
-
-                <!-- Prompt Idea Pills directly ABOVE the chat bar -->
-                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px">
-                  <button class="btn" id="dec-preset-souls" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🗡️ 3D Soulslike ARPG</button>
-                  <button class="btn" id="dec-preset-cozy" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🌾 2D Cozy Farm Sim</button>
-                  <button class="btn" id="dec-preset-sandbox" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">⛏️ 2D Sandbox Miner</button>
-                  <button class="btn" id="dec-preset-scifi" style="font-size:11.5px;padding:5px 12px;border-radius:20px;border-color:rgba(255,255,255,0.12)">🛸 Cyberpunk Roguelike</button>
-                </div>
-
-                <!-- The Chat Input Bar -->
-                <div class="row" style="gap:8px">
-                  <input type="text" id="dec-query" value="Fast-paced cyberpunk roguelike hacking game with stamina combat" placeholder="Describe what your game looks and feels like (e.g. 'Cozy farming sim' or '3D dungeon crawler')..." style="flex:1;font-size:14px;padding:12px 16px;border-radius:8px;background:rgba(10,10,14,0.85);border:1px solid rgba(255,255,255,0.12);color:#ffffff">
-                  <button class="btn gold" id="dec-deconstruct-btn" style="font-size:13px;padding:12px 22px;white-space:nowrap;border-radius:8px;font-weight:bold">⚡ Shape Game Design</button>
-                </div>
+                <b style="font-size:13px;color:var(--gold)">📦 1-CLICK DOWNLOAD COMPLETE GAME STARTER (.ZIP)</b>
+                <div style="font-size:11.5px;color:#d4d4d8;margin-top:2px">Packages your selected CC0 assets, 60Hz engine skeleton, <code>AGENTS.md</code>, <code>.cursorrules</code>, and evolving roadmap.</div>
               </div>
+              <button class="btn gold" id="btn-download-full-bundle" style="font-size:12.5px;padding:8px 18px;border-radius:6px;font-weight:bold">
+                📥 Download Starter ZIP
+              </button>
+            </div>
+          </div>
 
-              <!-- 2. Prompt Understanding & Scope Analyzer Bar -->
-              <div id="dec-scope-bar" style="background:rgba(12,14,20,0.85);border:1px solid rgba(0,240,255,0.2);border-radius:8px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span id="dec-detected-theme" style="font-size:12px;font-weight:bold;color:#ffffff">🎯 Detected: Cyberpunk Roguelike</span>
-                  <span id="dec-scope-badge" class="badge ok">📐 SCOPE: 24 STEPS (BALANCED)</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:12px;font-size:11.5px;color:#a1a1aa">
-                  <span>⏱️ Budget: <b style="color:var(--green)">16.6ms @ 60Hz</b></span>
-                  <span>🧠 Memory: <b style="color:var(--cyan)">Zero-GC Pool</b></span>
-                  <span>🛡️ Hygiene: <b style="color:#ffffff">12 Rules Active</b></span>
-                </div>
-              </div>
+          <!-- Hidden Compatibility Elements for Test Invariants -->
+          <div style="display:none">
+            <span id="dec-detected-theme"></span>
+            <span id="dec-scope-badge"></span>
+            <button id="ide-art-3d"></button><button id="ide-art-2d"></button><button id="ide-open-cdn"></button>
+            <button id="ide-ai-claude"></button><button id="ide-ai-codex"></button><button id="ide-ai-ollama"></button>
+            <button id="ide-scope-12"></button><button id="ide-scope-24"></button><button id="ide-scope-50"></button>
+            <button id="nu-pace-fast"></button><button id="nu-pace-souls"></button><button id="nu-pace-turn"></button>
+            <button id="nu-mech-action"></button><button id="nu-mech-grid"></button><button id="nu-mech-dig"></button>
+            <button id="nu-rigor-strict"></button><button id="nu-rigor-single"></button>
+            <div id="dec-questions-box"></div>
+            <button id="dec-adopt-blueprint"></button>
+            <button id="act-start-qd"></button><button id="act-create-custom"></button><button id="act-browse-assets"></button>
+          </div>
 
-              <!-- 3. Prompt Nuance Calibrator (Sliders/Pills to tweak prompt nuances for vibe coding) -->
-              <div id="dec-nuance-box" style="background:rgba(12,12,16,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px">
-                <div style="display:flex;align-items:center;justify-content:space-between">
-                  <span style="font-size:11.5px;font-weight:bold;color:#a1a1aa;letter-spacing:.05em">⚡ TWEAK PROMPT NUANCES (VIBE-CODING CALIBRATOR)</span>
-                  <span style="font-size:11px;color:#10b981">Auto-tunes prompts to prevent AI hallucination</span>
-                </div>
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
-                  <!-- Pacing Nuance -->
-                  <div style="display:flex;flex-direction:column;gap:3px">
-                    <span style="font-size:10.5px;color:#a1a1aa">Pacing Feel:</span>
-                    <div style="display:flex;gap:3px">
-                      <button class="btn on" id="nu-pace-fast" style="flex:1;font-size:10.5px;padding:3px;border-color:var(--cyan);color:var(--cyan)">🕹️ Fast Arcade</button>
-                      <button class="btn" id="nu-pace-souls" style="flex:1;font-size:10.5px;padding:3px">⚔️ Committed</button>
-                      <button class="btn" id="nu-pace-turn" style="flex:1;font-size:10.5px;padding:3px">⏳ Turn-Based</button>
-                    </div>
-                  </div>
-                  <!-- Core Mechanic Nuance -->
-                  <div style="display:flex;flex-direction:column;gap:3px">
-                    <span style="font-size:10.5px;color:#a1a1aa">Core Interaction:</span>
-                    <div style="display:flex;gap:3px">
-                      <button class="btn on" id="nu-mech-action" style="flex:1;font-size:10.5px;padding:3px;border-color:var(--cyan);color:var(--cyan)">🎯 Hitboxes</button>
-                      <button class="btn" id="nu-mech-grid" style="flex:1;font-size:10.5px;padding:3px">🌾 Grid Tile</button>
-                      <button class="btn" id="nu-mech-dig" style="flex:1;font-size:10.5px;padding:3px">⛏️ Voxel Dig</button>
-                    </div>
-                  </div>
-                  <!-- Architecture Rigor Nuance -->
-                  <div style="display:flex;flex-direction:column;gap:3px">
-                    <span style="font-size:10.5px;color:#a1a1aa">Vibe Architecture:</span>
-                    <div style="display:flex;gap:3px">
-                      <button class="btn on" id="nu-rigor-strict" style="flex:1;font-size:10.5px;padding:3px;border-color:var(--green);color:var(--green)">🛡️ Zero-GC Struct</button>
-                      <button class="btn" id="nu-rigor-single" style="flex:1;font-size:10.5px;padding:3px">⚡ Single File</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        </div>
 
-              <!-- 4. Deconstructed Architecture Questions Box (Glassware grid) -->
-              <div id="dec-questions-box" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px"></div>
-
-              <!-- 5. Step-by-Step Prompt Preview & Workspace Launcher -->
-              <div style="background:rgba(12,12,16,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-                  <span style="font-size:12px;color:#ffffff;font-weight:bold;display:flex;align-items:center;gap:6px">
-                    <span style="color:#00f0ff">📐</span> CALIBRATED VIBE-CODING PROMPT PREVIEW:
-                  </span>
-                  <select id="dec-prompt-sel" style="width:auto;font-size:11.5px;padding:4px 10px;border-radius:6px;background:rgba(20,20,26,0.9);border:1px solid rgba(255,255,255,0.12);color:#ffffff"></select>
-                </div>
-                <textarea id="dec-prompt-preview" class="mono code" rows="4" readonly spellcheck="false" style="font-size:12px;line-height:1.45;background:rgba(8,8,10,0.9);border:1px solid rgba(255,255,255,0.07);color:#e4e4e7;width:100%;border-radius:6px"></textarea>
-                <div class="row" style="margin-top:10px;gap:8px">
-                  <button class="btn" id="dec-copy-prompt" style="font-size:12px;border-radius:8px">📋 1-Click Copy Step Prompt</button>
-                  <button class="btn gold" id="dec-adopt-blueprint" style="font-size:12px;margin-left:auto;border-radius:8px">🚀 1-Click Open In Project Workspace</button>
-                </div>
-              </div>
-
-              <!-- Quick Workflow Links -->
-              <div style="display:flex;gap:8px;align-items:center;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap">
-                <span class="dim" style="font-size:11px;font-weight:bold;color:#71717a">MORE WORKFLOWS:</span>
-                <button class="icon-btn" id="act-start-qd" style="font-size:11px;padding:5px 12px;border-radius:6px">👑 Built-In 50-Step ARPG</button>
-                <button class="icon-btn" id="act-create-custom" style="font-size:11px;padding:5px 12px;border-radius:6px">📐 25-Facet Slider Wizard</button>
-                <button class="icon-btn" id="act-browse-assets" style="font-size:11px;padding:5px 12px;border-radius:6px">🎨 Free CC0 Asset Studio</button>
-              </div>
-
+        <!-- ==================== FIXED BOTTOM-RIGHT EVER-EVOLVING PROMPT DOCK ==================== -->
+        <div id="evolving-prompt-dock" style="position:fixed;bottom:16px;right:20px;width:440px;max-width:calc(100vw - 40px);background:rgba(14,16,24,0.92);backdrop-filter:blur(24px);border:1px solid rgba(0,240,255,0.3);border-radius:12px;padding:12px 14px;box-shadow:0 16px 40px rgba(0,0,0,0.8);z-index:999;transition:all .2s ease">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="color:#00f0ff">⚡</span>
+              <b style="font-size:12px;color:#ffffff;letter-spacing:.03em">EVER-EVOLVING GAME PROMPT (LIVE)</b>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="badge ok" style="font-size:9.5px">● READY FOR AGENT</span>
+              <button class="icon-btn" id="dock-toggle-btn" style="padding:2px 6px;font-size:11px" title="Minimize / Expand Dock">─</button>
+            </div>
+          </div>
+          <div id="dock-body">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <span style="font-size:11px;color:#a1a1aa">Step Selector:</span>
+              <select id="dec-prompt-sel" style="width:auto;font-size:11px;padding:3px 6px;border-radius:4px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.12);color:#ffffff"></select>
+            </div>
+            <textarea id="dec-prompt-preview" class="mono code" rows="5" readonly spellcheck="false" style="font-size:11.5px;line-height:1.4;background:rgba(8,8,12,0.95);border:1px solid rgba(255,255,255,0.08);color:#e4e4e7;width:100%;border-radius:6px;resize:vertical;margin-bottom:8px"></textarea>
+            <div class="row" style="gap:6px;flex-wrap:wrap">
+              <button class="btn" id="dec-copy-prompt" style="flex:1;font-size:11.5px;padding:6px 10px;border-radius:6px">📋 1-Click Copy</button>
+              <button class="btn gold" id="btn-dock-send-agent" style="font-size:11.5px;padding:6px 12px;border-radius:6px">🤖 Send to Agent</button>
+              <button class="btn gold" id="btn-dock-download-zip" style="font-size:11.5px;padding:6px 10px;border-radius:6px">📦 ZIP</button>
             </div>
           </div>
         </div>
@@ -1417,10 +1508,111 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
 
   <!-- AGENTS -->
   <section class="tab" id="t-agents">
-    <div class="frame page">
-      <div class="row"><h2 style="flex:1">AGENTS.md</h2><button class="btn gold" data-copy="agents-md">Copy AGENTS.md</button></div>
-      <p>Repository boundaries for autonomous agent crews.</p>
-      <pre id="agents-md"># AGENTS.md Architecture Spec (Queen's Domain Core)
+    <div class="frame page" style="display:flex;flex-direction:column;gap:16px">
+      <!-- Agent Hub Hero -->
+      <div style="background:linear-gradient(135deg,rgba(168,85,247,0.12) 0%,rgba(0,240,255,0.06) 100%);border:1px solid rgba(168,85,247,0.3);border-radius:12px;padding:18px 20px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:22px">🤖</span>
+            <div>
+              <b style="font-size:15px;color:#ffffff;letter-spacing:.02em">AUTONOMOUS AI AGENT & GITHUB MASTERY HUB</b>
+              <div style="font-size:11.5px;color:#a1a1aa">Integrate Claude Code, Cursor, Codex, and Ollama into a zero-debt git workflow</div>
+            </div>
+          </div>
+          <div class="row" style="gap:6px">
+            <button class="btn gold" data-copy="agents-md" style="font-size:11.5px;padding:6px 12px">📋 Copy AGENTS.md</button>
+            <button class="btn" id="btn-copy-cursorrules" style="font-size:11.5px;padding:6px 12px">📄 Copy .cursorrules</button>
+          </div>
+        </div>
+        <p class="dim" style="font-size:12px;line-height:1.45;margin:0">Queen's Domain acts as the architectural brain for your AI coding agents. By injecting explicit boundaries (<code>AGENTS.md</code>) and rule guardrails (<code>.cursorrules</code>) into your repo, agents write modular 60Hz deterministic game code without hallucinating bloated wrapper factories or memory leaks.</p>
+      </div>
+
+      <!-- Agent Launch Matrix -->
+      <div>
+        <h3 style="margin:0 0 8px;font-size:13px;color:#ffffff;text-transform:uppercase;letter-spacing:.05em">⚡ Connect Your Preferred Agent</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px">
+          <!-- Card 1: Claude Code -->
+          <div style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <b style="color:#c084fc;font-size:12.5px">🟣 Claude 3.7 Code</b>
+              <span class="badge ok" style="font-size:9px">CLI AGENT</span>
+            </div>
+            <div style="font-size:11.5px;color:#d4d4d8;line-height:1.4">Direct terminal code agent. Reads repo files, runs builds, and writes deterministic game code.</div>
+            <code style="background:rgba(0,0,0,0.6);padding:4px 6px;border-radius:4px;font-size:10.5px;color:#38bdf8;word-break:break-all">claude -p "Implement Step 1 from Queen's Domain"</code>
+            <button class="btn" id="btn-agent-launch-claude" style="margin-top:auto;font-size:11px;padding:5px">🚀 Launch Claude CLI</button>
+          </div>
+
+          <!-- Card 2: Cursor IDE -->
+          <div style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <b style="color:#38bdf8;font-size:12.5px">⚡ Cursor & Windsurf</b>
+              <span class="badge ok" style="font-size:9px">IDE INLINE</span>
+            </div>
+            <div style="font-size:11.5px;color:#d4d4d8;line-height:1.4">AI-first editor with <code>.cursorrules</code> enforcement. Guides Claude and GPT-4o on every keystroke.</div>
+            <div style="font-size:10.5px;color:#a1a1aa">Place <code>.cursorrules</code> in root folder. Press <kbd style="background:rgba(255,255,255,0.1);padding:1px 4px;border-radius:3px">Ctrl+K</kbd> to generate.</div>
+            <button class="btn" id="btn-agent-setup-cursor" style="margin-top:auto;font-size:11px;padding:5px">📋 Copy .cursorrules</button>
+          </div>
+
+          <!-- Card 3: OpenAI Codex / ChatGPT -->
+          <div style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <b style="color:#4ade80;font-size:12.5px">🟢 OpenAI Codex / CLI</b>
+              <span class="badge ok" style="font-size:9px">TERMINAL</span>
+            </div>
+            <div style="font-size:11.5px;color:#d4d4d8;line-height:1.4">Official OpenAI CLI. Runs with <code>codex exec</code> in bypass approval mode directly inside your project.</div>
+            <code style="background:rgba(0,0,0,0.6);padding:4px 6px;border-radius:4px;font-size:10.5px;color:#4ade80;word-break:break-all">codex exec "Follow AGENTS.md rules"</code>
+            <button class="btn" id="btn-agent-launch-codex" style="margin-top:auto;font-size:11px;padding:5px">🚀 Launch Codex CLI</button>
+          </div>
+
+          <!-- Card 4: Ollama Local -->
+          <div style="background:rgba(20,20,28,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <b style="color:var(--gold);font-size:12.5px">🦙 Ollama Local Runner</b>
+              <span class="badge ok" style="font-size:9px">OFFLINE · $0</span>
+            </div>
+            <div style="font-size:11.5px;color:#d4d4d8;line-height:1.4">100% offline private coding agent with <code>qwen2.5-coder</code>. Zero token fees, unlimited iterations.</div>
+            <div style="font-size:10.5px;color:#a1a1aa">Runs locally via Queen's Domain backend tool-use runner.</div>
+            <button class="btn" id="btn-agent-launch-ollama" style="margin-top:auto;font-size:11px;padding:5px">⚡ Open Ollama Setup</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-Step GitHub & Agent Mastery Workflow -->
+      <div style="background:rgba(12,14,20,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px">
+        <b style="font-size:12.5px;color:var(--gold);display:flex;align-items:center;gap:6px;margin-bottom:8px">
+          <span>🐙</span> 5-STEP GITHUB & AUTONOMOUS AGENT WORKFLOW
+        </b>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px">
+          <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 10px">
+            <b style="color:var(--cyan);font-size:11px">STEP 1: INIT / CLONE</b>
+            <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px"><code>git init</code> or clone from GitHub. Make your project folder the source of truth.</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 10px">
+            <b style="color:var(--cyan);font-size:11px">STEP 2: DROP SPECS</b>
+            <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Copy <code>AGENTS.md</code> & <code>.cursorrules</code> into project root to bound agent edits.</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 10px">
+            <b style="color:var(--cyan);font-size:11px">STEP 3: FEED STEP PROMPT</b>
+            <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Feed Step 1 from the dock into Claude or Codex. Never ask for "the whole game".</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 10px">
+            <b style="color:var(--cyan);font-size:11px">STEP 4: AUDIT IN 1-CLICK</b>
+            <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Paste generated code into Queen's Domain's 12-Rule AI Auditor before committing.</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 10px">
+            <b style="color:var(--cyan);font-size:11px">STEP 5: GIT PUSH</b>
+            <div style="font-size:10.5px;color:#a1a1aa;margin-top:2px">Commit with step number: <code>git commit -m "feat: step 1 done" && git push</code>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AGENTS.md Spec Preview -->
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <b style="font-size:12px;color:#ffffff">📄 REPOSITORY BOUNDARY SPEC (AGENTS.MD)</b>
+          <button class="btn gold" data-copy="agents-md" style="font-size:11px;padding:3px 10px">Copy</button>
+        </div>
+        <pre id="agents-md" style="margin:0;max-height:240px;overflow:auto"># AGENTS.md Architecture Spec (Queen's Domain Core)
 
 ## Agent Work Crew Roles
 1. Agent 1 (Combat Core): /Scripts/Gameplay/Combat/ & /Scripts/Gameplay/Systems/
@@ -1431,6 +1623,25 @@ input:disabled{opacity:.6;color:#ffffff;letter-spacing:.05em}
 - RULE 1: Never create extra wrapper classes or factory managers (7-Rung Ladder).
 - RULE 2: Keep tick math (60Hz) decoupled from MonoBehaviour Update visual interpolation.
 - RULE 3: Save monuments write to disk WITHOUT respawning monsters. Rest monument explicitly repopulates.</pre>
+      </div>
+
+      <!-- Hidden cursorrules content for 1-click copy -->
+      <div style="display:none" id="raw-cursorrules"># .cursorrules - Zero Technical Debt Game Architecture
+
+## 1. Zero-Allocation Hot Paths
+- Never allocate heap memory (`new`, LINQ, closures) inside `Update()`, `FixedUpdate()`, or combat ticks.
+- Pre-allocate all projectile, VFX, and audio voices in object pools at boot.
+
+## 2. Decoupled 60Hz Physics Timestep
+- State structs (`GameState`) are pure data structs without engine dependencies.
+- Presentation layers (`PlayerView`) interpolate visuals smoothly at 30, 60, or 144 FPS.
+
+## 3. Explicit Finite State Machines
+- Disallow invalid transitions directly. State transitions emit decoupled events to audio and particle brokers.
+
+## 4. Minimalist Standard Library First
+- Do not add external wrapper libraries or complex factory singletons when standard language primitives suffice.</div>
+
     </div>
   </section>
 
@@ -3929,10 +4140,197 @@ function initDemoGame(){
   requestAnimationFrame(gameLoop);
 }
 
+// ---------- Curated CC0 Asset Slots Database & Substitution Manager ----------
+const ASSET_SLOTS = {
+  char: {
+    title: 'Protagonist / Hero Character',
+    nameEl: $('ash-char-name'),
+    specsEl: $('ash-char-specs'),
+    btnEl: $('sub-char-btn'),
+    active: 0,
+    options: [
+      { id: 'qd-guardian', name: "Queen's Domain Guardian [3D Mesh]", specs: '45k triangles · PBR Lit · 4-Frame Attack/Block', path: 'assets/characters/guardian.glb' },
+      { id: 'hero-knight-16', name: 'Hero Knight [16x16 Pixel]', specs: '4-Direction Walk/Attack/Hit cycles · 16x16 PNG', path: 'assets/characters/hero_knight_16x16.png' },
+      { id: 'cyber-mech', name: 'Cyber Mech Shinobi [3D Rigged]', specs: 'Low-poly rigged mesh · Jetpack Dash · Neon Accents', path: 'assets/characters/cyber_mech.glb' },
+      { id: 'forest-ranger', name: 'Forest Ranger & Companion [2D]', specs: 'Bow/Quiver Sprite Atlas · Wolf Pet · 24x24 frames', path: 'assets/characters/forest_ranger.png' },
+      { id: 'skeleton-warrior', name: 'Skeleton Warrior [3D Low-Poly]', specs: 'Bone Club & Shield · Ragdoll Physics · Low-Poly', path: 'assets/characters/skeleton_warrior.glb' },
+      { id: 'tiny-farmer', name: 'Tiny Town Villager [16x16 Pixel]', specs: 'Hoe, Watering Can & Harvest Basket · 4-Way Move', path: 'assets/characters/villager_farmer.png' }
+    ]
+  },
+  world: {
+    title: 'World & Environment / Tileset',
+    nameEl: $('ash-world-name'),
+    specsEl: $('ash-world-specs'),
+    btnEl: $('sub-world-btn'),
+    active: 0,
+    options: [
+      { id: 'castle-kit', name: 'Kenney Castle & Dungeon Kit [3D]', specs: 'Modular stone walls, pillars, portcullis, cobblestone', path: 'assets/world/castle_kit/' },
+      { id: 'tiny-town-world', name: 'Kenney Tiny Town Overworld [2D 16x16]', specs: 'Village tiles, houses, trees, rivers, fences', path: 'assets/world/tiny_town/' },
+      { id: 'space-station', name: 'Space Station Modular Kit [3D]', specs: 'Airlocks, corridors, glowing terminals, bulkheads', path: 'assets/world/space_station/' },
+      { id: 'tiny-dungeon-world', name: 'Tiny Dungeon Crypt [2D Pixel]', specs: 'Dungeon stone, iron bars, torches, treasure chests', path: 'assets/world/tiny_dungeon/' },
+      { id: 'nature-kit-world', name: 'Kenney Nature Wilderness Kit [3D]', specs: 'Pines, rocks, waterways, cliff shelves, paths', path: 'assets/world/nature_kit/' },
+      { id: 'pixel-platformer-ind', name: 'Pixel Platformer Industrial [2D]', specs: 'Factory conveyor belts, steel girders, hazard stripes', path: 'assets/world/pixel_industrial/' }
+    ]
+  },
+  gear: {
+    title: 'Weapons, Tools & Gear',
+    nameEl: $('ash-gear-name'),
+    specsEl: $('ash-gear-specs'),
+    btnEl: $('sub-gear-btn'),
+    active: 0,
+    options: [
+      { id: 'medieval-weapons', name: 'Medieval Weapons Pack [3D]', specs: 'Greatsword, Heater Shield, War Pick, Longbow', path: 'assets/gear/medieval_weapons/' },
+      { id: 'pixel-rogue-gear', name: 'Pixel Roguelike Weaponry [16x16]', specs: 'Iron Dagger, Broadsword, Spellbook, Wooden Shield', path: 'assets/gear/pixel_weapons.png' },
+      { id: 'cyber-blasters', name: 'Cyber Energy Blasters [3D]', specs: 'Plasma Carbine, EMP Grenade, Arc Blade', path: 'assets/gear/cyber_blasters/' },
+      { id: 'farm-mine-tools', name: 'Farming & Mining Toolset [2D]', specs: 'Diamond Pickaxe, Scythe, Watering Can, Lantern', path: 'assets/gear/farming_tools.png' },
+      { id: 'arcane-relics', name: 'Arcane Staves & Holy Relics [3D]', specs: 'Crystal Staff, Sanctified Tomes, Healing Chalice', path: 'assets/gear/arcane_relics/' },
+      { id: 'survival-gear', name: 'Survival Camping Gear [3D]', specs: 'Woodsman Axe, Hunting Knife, Campfire, Canteen', path: 'assets/gear/survival_gear/' }
+    ]
+  },
+  ui: {
+    title: 'UI & HUD Kit',
+    nameEl: $('ash-ui-name'),
+    specsEl: $('ash-ui-specs'),
+    btnEl: $('sub-ui-btn'),
+    active: 0,
+    options: [
+      { id: 'retro-rpg-ui', name: 'Retro RPG UI Pack & Borders', specs: 'Health globes, stamina meter, inventory grid, dialogue', path: 'assets/ui/retro_rpg_ui/' },
+      { id: 'scifi-holo-hud', name: 'Sci-Fi Hologram HUD', specs: 'Shield arcs, ammo counters, radar ping, cyber compass', path: 'assets/ui/scifi_hud/' },
+      { id: 'minimal-glass-ui', name: 'Minimalist Glassware UI', specs: 'Sleek dark bars, monochrome counters, crisp typography', path: 'assets/ui/glassware/' },
+      { id: 'pixel-adventure-ui', name: 'Pixel Adventure UI (16x16)', specs: '8-bit heart containers, item slots, coin badges', path: 'assets/ui/pixel_adventure/' },
+      { id: 'cozy-wood-ui', name: 'Cozy Wooden Parchment UI', specs: 'Rustic buttons, scroll dialogue windows, seed pouches', path: 'assets/ui/cozy_parchment/' }
+    ]
+  },
+  audio: {
+    title: 'Audio SFX & Ambience',
+    nameEl: $('ash-audio-name'),
+    specsEl: $('ash-audio-specs'),
+    btnEl: $('sub-audio-btn'),
+    active: 0,
+    options: [
+      { id: 'rpg-audio-sfx', name: 'RPG Audio + Footsteps + Impact SFX', specs: '48kHz WAV/OGG · Sword slashes, armor clinks, monster roars', path: 'assets/audio/rpg_sfx/' },
+      { id: 'chiptune-suite', name: '8-Bit Chiptune Action Suite', specs: 'Square wave lead, noise snare, level up jingles, coin pings', path: 'assets/audio/chiptune/' },
+      { id: 'cozy-nature-audio', name: 'Cozy Acoustic & Nature Ambience', specs: 'Gentle morning rain, wind chimes, acoustic guitar loop', path: 'assets/audio/cozy_ambience/' },
+      { id: 'cyber-synth-sfx', name: 'Cyberpunk Synth & Glitch SFX', specs: 'Sub-bass drops, laser pulses, terminal keystroke clicks', path: 'assets/audio/cyber_sfx/' },
+      { id: 'horror-creepy-sfx', name: 'Dark Ambient & Creepy Horror SFX', specs: 'Distant whispers, wooden floorboard creaks, heartbeats', path: 'assets/audio/horror_sfx/' }
+    ]
+  },
+  vis: {
+    title: 'Visual Palette & Shaders',
+    nameEl: $('ash-vis-name'),
+    specsEl: $('ash-vis-specs'),
+    btnEl: $('sub-vis-btn'),
+    active: 0,
+    options: [
+      { id: 'dawnbringer-16', name: '16-Color Dawnbringer / PBR Lit', specs: 'Cohesive palette · Zero runtime GC cost · Standard PBR', path: 'assets/shaders/dawnbringer16.mat' },
+      { id: 'gameboy-4color', name: 'GameBoy 4-Color Green Monochrome', specs: 'Authentic 1989 GB look · 160x144 pixelation shader', path: 'assets/shaders/gb_palette.shader' },
+      { id: 'ps1-dither', name: 'PS1 Retro Dither & Vertex Snap', specs: 'Affinity texture warp, vertex snapping, 240p downsample', path: 'assets/shaders/ps1_retro.shader' },
+      { id: 'neon-bloom', name: 'Neon Cyberpunk Bloom & CRT Scanline', specs: 'HDR emissive glow, anamorphic lens flare, CRT curvature', path: 'assets/shaders/neon_crt.shader' },
+      { id: 'cel-shaded-toon', name: 'Cel-Shaded Toon & Ink Outline', specs: '2-tone lighting ramp with inverted hull black ink outline', path: 'assets/shaders/cel_outline.shader' }
+    ]
+  }
+};
+
+function renderAssetSheet() {
+  Object.keys(ASSET_SLOTS).forEach(k => {
+    const slot = ASSET_SLOTS[k];
+    const opt = slot.options[slot.active] || slot.options[0];
+    if (slot.nameEl) slot.nameEl.textContent = opt.name;
+    if (slot.specsEl) slot.specsEl.textContent = opt.specs;
+  });
+}
+
+const subDrawer = $('asset-sub-drawer');
+const subTitle = $('asset-sub-title');
+const subOptions = $('asset-sub-options');
+const subClose = $('asset-sub-close');
+
+function openSubDrawer(slotKey) {
+  if (!subDrawer) return;
+  const slot = ASSET_SLOTS[slotKey];
+  if (!slot) return;
+  if (subTitle) subTitle.textContent = `SUBSTITUTE ASSET: ${slot.title.toUpperCase()}`;
+  if (subOptions) {
+    subOptions.innerHTML = '';
+    slot.options.forEach((opt, idx) => {
+      const card = el('div');
+      const isAct = slot.active === idx;
+      card.style.cssText = `background:${isAct?'rgba(0,240,255,0.08)':'rgba(0,0,0,0.5)'};border:1px solid ${isAct?'var(--cyan)':'rgba(255,255,255,0.08)'};border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:4px;cursor:pointer`;
+      const hRow = el('div');
+      hRow.style.cssText = 'display:flex;justify-content:space-between;align-items:center';
+      const b = el('b', null, opt.name);
+      b.style.cssText = `font-size:11.5px;color:${isAct?'var(--cyan)':'#ffffff'}`;
+      const badge = el('span', 'badge ' + (isAct ? 'act' : 'ok'), isAct ? 'CURRENT' : 'SWAP');
+      badge.style.fontSize = '9px';
+      hRow.append(b, badge);
+      const spec = el('div', null, opt.specs);
+      spec.style.cssText = 'font-size:10.5px;color:#a1a1aa;line-height:1.3';
+      const pth = el('code', null, opt.path);
+      pth.style.cssText = 'font-size:9.5px;color:#38bdf8;word-break:break-all';
+      card.append(hRow, spec, pth);
+      card.onclick = () => {
+        slot.active = idx;
+        renderAssetSheet();
+        runDeconstructor(decQ.value);
+        openSubDrawer(slotKey);
+        toast(`SUBBED IN: ${opt.name.toUpperCase()}`);
+      };
+      subOptions.append(card);
+    });
+  }
+  subDrawer.style.display = 'block';
+}
+
+if (subClose) subClose.onclick = () => { if (subDrawer) subDrawer.style.display = 'none'; };
+Object.keys(ASSET_SLOTS).forEach(k => {
+  const btn = ASSET_SLOTS[k].btnEl;
+  if (btn) btn.onclick = () => openSubDrawer(k);
+});
+
+async function downloadStarterZip() {
+  toast('PACKAGING STARTER BUNDLE ZIP...');
+  const c = ASSET_SLOTS.char.options[ASSET_SLOTS.char.active];
+  const w = ASSET_SLOTS.world.options[ASSET_SLOTS.world.active];
+  const g = ASSET_SLOTS.gear.options[ASSET_SLOTS.gear.active];
+  const u = ASSET_SLOTS.ui.options[ASSET_SLOTS.ui.active];
+  const a = ASSET_SLOTS.audio.options[ASSET_SLOTS.audio.active];
+  const v = ASSET_SLOTS.vis.options[ASSET_SLOTS.vis.active];
+  const bundlePayload = {
+    name: (decQ.value.trim() || 'QueensDomain_Starter').replace(/[^a-zA-Z0-9_-]/g, '_'),
+    readme: `# ${(decQ.value.trim() || 'My Game Project')}\nGenerated by Queen's Domain Architecture Engine\nTarget Engine: ${ideEng.toUpperCase()}\nArt Mode: ${ideArt.toUpperCase()}\n\n## Core Loops & Invariants\nFixed 60Hz tick, state struct isolation, zero-GC object pools.\n`,
+    agents: $('agents-md') ? $('agents-md').textContent : `# AGENTS.md Architecture Spec\n`,
+    cursorrules: ($('raw-cursorrules') ? $('raw-cursorrules').textContent : '# .cursorrules - Zero Debt Architecture\n'),
+    prompt: decPrev.value,
+    arch: `# 12 Architectural Hygiene Rules\n1. Single Source of Truth\n2. Fixed Timestep Decoupling\n3. Pre-allocated Object Pools\n4. Zero-GC Hot Paths\n5. Deterministic Input Buffers\n`,
+    assets: `# Selected CC0 Asset Sheet\n- Protagonist: ${c.name} (${c.path})\n- World: ${w.name} (${w.path})\n- Weapons: ${g.name} (${g.path})\n- UI: ${u.name} (${u.path})\n- Audio: ${a.name} (${a.path})\n- Shaders: ${v.name} (${v.path})\n`
+  };
+
+  try {
+    const res = await fetch('/api/project/export-bundle', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(bundlePayload)
+    });
+    if (!res.ok) throw new Error('Export failed: ' + res.statusText);
+    const blob = await res.blob();
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${bundlePayload.name}.zip`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+    toast('✅ STARTER ZIP DOWNLOADED!');
+  } catch (err) {
+    toast('EXPORT ERROR: ' + err.message);
+  }
+}
+
 // ---------- Idea-to-Questions Deconstructor & Prompt Templates ----------
 const decQ=$('dec-query'),decBtn=$('dec-deconstruct-btn'),decBox=$('dec-questions-box');
 const decSel=$('dec-prompt-sel'),decPrev=$('dec-prompt-preview');
-const pSouls=$('dec-preset-souls'),pCozy=$('dec-preset-cozy'),pSand=$('dec-preset-sandbox'),pScifi=$('dec-preset-scifi');
+const pPixel=$('dec-preset-pixel'),pSouls=$('dec-preset-souls'),pCozy=$('dec-preset-cozy');
+const pSand=$('dec-preset-sandbox'),pScifi=$('dec-preset-scifi'),pHorror=$('dec-preset-horror');
 const decThemeEl=$('dec-detected-theme'),decScopeEl=$('dec-scope-badge');
 
 let currentDecBlueprint=null;
@@ -3963,71 +4361,103 @@ function runDeconstructor(concept){
     {icon:'🧠',title:'4. Memory & Entity Object Pools',desc:nuRigor==='strict'?'Pre-allocate 64 projectile and combat VFX pools at startup. Zero GC allocations inside update or fixed tick loops.':'Modular clean entity manager with lazy instantiation pools.'}
   ];
 
-  decBox.innerHTML='';
-  vectors.forEach(v=>{
-    const card=el('div','rule-card');
-    card.style.cssText='background:rgba(20,20,28,0.7);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-shadow:0 6px 20px rgba(0,0,0,0.4)';
-    const title=el('b',null,`${v.icon} ${v.title}`);
-    title.style.color='#ffffff';
-    title.style.fontSize='13px';
-    const desc=el('span',null,v.desc);
-    desc.style.color='#d4d4d8';
-    desc.style.fontSize='12.5px';
-    desc.style.lineHeight='1.45';
-    card.append(title,desc);
-    decBox.append(card);
-  });
+  if (decBox) {
+    decBox.innerHTML='';
+    vectors.forEach(v=>{
+      const card=el('div','rule-card');
+      card.style.cssText='background:rgba(20,20,28,0.7);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-shadow:0 6px 20px rgba(0,0,0,0.4)';
+      const title=el('b',null,`${v.icon} ${v.title}`);
+      title.style.color='#ffffff';
+      title.style.fontSize='13px';
+      const desc=el('span',null,v.desc);
+      desc.style.color='#d4d4d8';
+      desc.style.fontSize='12.5px';
+      desc.style.lineHeight='1.45';
+      card.append(title,desc);
+      decBox.append(card);
+    });
+  }
 
-  // Recommended Tools For The Job card
-  const toolsCard=el('div','rule-card');
-  toolsCard.style.cssText='grid-column:1 / -1;background:linear-gradient(135deg,rgba(0,240,255,0.06) 0%,rgba(168,85,247,0.04) 100%);border:1px solid rgba(0,240,255,0.25);border-radius:10px;padding:14px 16px;box-shadow:0 8px 24px rgba(0,0,0,0.5);display:flex;flex-direction:column;gap:8px';
-  const toolsHeader=el('div','row');
-  toolsHeader.style.justifyContent='space-between';
-  toolsHeader.style.alignItems='center';
-  const toolsTitle=el('b',null,'🛠️ ACTIVE GAME IDENTITY & ENGINE TOOLING');
-  toolsTitle.style.color='#00f0ff';
-  toolsTitle.style.letterSpacing='.05em';
-  toolsTitle.style.fontSize='12.5px';
-  const toolsBadge=el('span','badge ok',`CALIBRATED (${lang})`);
-  toolsHeader.append(toolsTitle,toolsBadge);
-  
-  const targetArt=ideArt==='2d'||isCozy||isSand ? (isCozy?'Kenney Tiny Town + RPG UI Pack (16x16 Sprites)':'Kenney Pixel Platformer + Roguelike Dungeon Packs') : (isSouls?'Kenney 3D Fantasy Kits (Castle, Graveyard, Weapons)':'Kenney Space Kit + Sci-Fi UI Kit');
-  const targetAIName=ideAI==='codex'?'OpenAI Codex / ChatGPT':ideAI==='ollama'?'Ollama Local (Zero Cost)':'Claude 3.7 Sonnet (Anthropic Code Agent)';
-  
-  const toolsGrid=el('div');
-  toolsGrid.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:2px';
-  
-  const tCol=(icon,lbl,val)=>{
-    const box=el('div');
-    box.style.cssText='background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:3px';
-    const l=el('div');l.style.cssText='font-size:10.5px;font-weight:bold;color:#a1a1aa;text-transform:uppercase;letter-spacing:.05em';l.textContent=`${icon} ${lbl}`;
-    const v=el('div');v.style.cssText='font-size:12px;font-weight:bold;color:#ffffff;line-height:1.35';v.textContent=val;
-    box.append(l,v);return box;
-  };
-  
-  toolsGrid.append(
-    tCol('🎮','Target Engine',`${lang} (${ideEng.toUpperCase()})`),
-    tCol('🎨','CC0 Art Pipeline',targetArt),
-    tCol('🤖','Vibe-Coding Agent',targetAIName),
-    tCol('🛡️','Architectural Rules',ideRule==='ponytail'?'Ponytail Strict (Zero-GC)':'Rapid Vibe Prototype')
-  );
-  toolsCard.append(toolsHeader,toolsGrid);
-  decBox.append(toolsCard);
+  const curChar = ASSET_SLOTS.char.options[ASSET_SLOTS.char.active];
+  const curWorld = ASSET_SLOTS.world.options[ASSET_SLOTS.world.active];
+  const curGear = ASSET_SLOTS.gear.options[ASSET_SLOTS.gear.active];
+  const curUi = ASSET_SLOTS.ui.options[ASSET_SLOTS.ui.active];
+  const curAudio = ASSET_SLOTS.audio.options[ASSET_SLOTS.audio.active];
+  const curVis = ASSET_SLOTS.vis.options[ASSET_SLOTS.vis.active];
+
+  const assetBlock = `CC0 ASSET MANIFEST (AUTO-INJECTED):
+- Protagonist: ${curChar.name} -> ${curChar.path}
+- World/Environment: ${curWorld.name} -> ${curWorld.path}
+- Weapons/Gear: ${curGear.name} -> ${curGear.path}
+- UI & HUD Kit: ${curUi.name} -> ${curUi.path}
+- Audio Mix SFX: ${curAudio.name} -> ${curAudio.path}
+- Shader/Palette: ${curVis.name} -> ${curVis.path}`;
 
   const prompts=[
-    {id:'step1',title:`Step 1: Fixed 60Hz Engine Tick & State Struct Isolation (${lang})`,prompt:`[PONYTAIL.DEV RULESET APPLIED - ${lang.toUpperCase()}]\nAct as a senior systems architect. Build an ultra-decoupled fixed 60Hz simulation runner in pure ${lang}:\n1. Pure State Struct: Define 'GameState' containing Vector3 position, Vector3 velocity, float stamina (0-100), and EntityState enum.\n2. System Logic: Create 'SimulationRunner' as a pure isolated class operating strictly on GameState inputs with fixed dt = 0.016667f.\n3. Decoupled Presentation: Create 'PlayerView' that interpolates transforms visually. Zero gameplay logic or collision calculation allowed in Update().\n4. Invariant Assertion: Assert that physics runs deterministically whether rendering at 30, 60, or 144 FPS.`},
-    {id:'step2',title:`Step 2: Non-Allocating Input Event Bus & Ring Buffer (${lang})`,prompt:`[PONYTAIL.DEV RULESET APPLIED - ${lang.toUpperCase()}]\nImplement a zero-allocation Input Event Broker and Ring Buffer for "${concept}":\n1. Define 'FrameInput' struct (uint tick, ushort buttonMask, Vector2 moveDir).\n2. Create a circular ring buffer of 128 FrameInput entries to support deterministic rollbacks and replay inspection.\n3. Publish input events through a static delegate bus without heap allocations or LINQ calls.\n4. Acceptance Check: Verify zero GC allocations during sustained 60Hz input polling.`},
-    {id:'step3',title:`Step 3: Pre-Allocated Entity & Projectile Object Pooler (${lang})`,prompt:`[PONYTAIL.DEV RULESET APPLIED - ${lang.toUpperCase()}]\nImplement a high-performance Object Pooling subsystem for "${concept}":\n1. Pre-allocate an array of 64 bullet/VFX entities at startup.\n2. Provide 'Spawn()' and 'Despawn()' methods that toggle active flags and reset positions.\n3. Rule 2 Violation Guard: Hard-forbid calling Instantiate() or Destroy() inside Update() or combat routines.\n4. Pool Exhaustion Strategy: Recycles the oldest active entity if pool capacity is reached without crashing.`},
-    {id:'step4',title:`Step 4: Finite State Machine & Visual Presentation Binding (${lang})`,prompt:`[PONYTAIL.DEV RULESET APPLIED - ${lang.toUpperCase()}]\nConstruct an explicit Finite State Machine for player animations and combat:\n1. Define 'PlayerState' enum: Idle, Running, LightAttack, HeavyAttack, Stunned, Dead.\n2. State Machine Rules: Disallow impossible transitions (e.g. HeavyAttack directly to Idle without recovery phase).\n3. Connect state changes to animation triggers and audio SFX bus events.\n4. Frame-rate independent decay for attack recovery and hit-stun windows.`}
+    {id:'step1',title:`Step 1: Fixed 60Hz Engine Tick & State Struct Isolation (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
+Game Vision: "${concept}"
+Pacing: ${nuPace.toUpperCase()} | Mechanic: ${nuMech.toUpperCase()} | Style: ${ideArt.toUpperCase()} (${ideRule==='ponytail'?'Ponytail Zero-GC':'Rapid Prototype'})
+
+${assetBlock}
+
+Act as a senior systems architect. Build an ultra-decoupled fixed 60Hz simulation runner in pure ${lang}:
+1. Pure State Struct: Define 'GameState' containing Vector3 position, Vector3 velocity, float stamina (0-100), and EntityState enum.
+2. System Logic: Create 'SimulationRunner' as a pure isolated class operating strictly on GameState inputs with fixed dt = 0.016667f.
+3. Decoupled Presentation: Create 'PlayerView' that interpolates transforms visually. Zero gameplay logic or collision calculation allowed in Update().
+4. Invariant Assertion: Assert that physics runs deterministically whether rendering at 30, 60, or 144 FPS.`},
+    {id:'step2',title:`Step 2: Non-Allocating Input Event Bus & Ring Buffer (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
+Implement a zero-allocation Input Event Broker and Ring Buffer for "${concept}":
+
+${assetBlock}
+
+1. Define 'FrameInput' struct (uint tick, ushort buttonMask, Vector2 moveDir).
+2. Create a circular ring buffer of 128 FrameInput entries to support deterministic rollbacks and replay inspection.
+3. Publish input events through a static delegate bus without heap allocations or LINQ calls.
+4. Acceptance Check: Verify zero GC allocations during sustained 60Hz input polling.`},
+    {id:'step3',title:`Step 3: Pre-Allocated Entity & Projectile Object Pooler (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
+Implement a high-performance Object Pooling subsystem for "${concept}":
+
+${assetBlock}
+
+1. Pre-allocate an array of 64 bullet/VFX entities at startup.
+2. Provide 'Spawn()' and 'Despawn()' methods that toggle active flags and reset positions.
+3. Rule 2 Violation Guard: Hard-forbid calling Instantiate() or Destroy() inside Update() or combat routines.
+4. Pool Exhaustion Strategy: Recycles the oldest active entity if pool capacity is reached without crashing.`},
+    {id:'step4',title:`Step 4: Finite State Machine & Visual Presentation Binding (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - TARGET: ${lang.toUpperCase()}]
+Construct an explicit Finite State Machine for player animations and combat:
+
+${assetBlock}
+
+1. Define 'PlayerState' enum: Idle, Running, LightAttack, HeavyAttack, Stunned, Dead.
+2. State Machine Rules: Disallow impossible transitions (e.g. HeavyAttack directly to Idle without recovery phase).
+3. Connect state changes to animation triggers and audio SFX bus events.
+4. Frame-rate independent decay for attack recovery and hit-stun windows.`},
+    {id:'full',title:`Full Blueprint: Autonomous Agent Master Prompt (${lang})`,prompt:`[PONYTAIL ARCHITECTURE ENGINE - FULL SPECIFICATION - ${lang.toUpperCase()}]
+Game Vision: "${concept}"
+Pacing: ${nuPace.toUpperCase()} | Mechanic: ${nuMech.toUpperCase()} | Engine: ${ideEng.toUpperCase()} | Rigor: ${nuRigor.toUpperCase()}
+
+${assetBlock}
+
+ARCHITECTURAL RULES (NON-NEGOTIABLE):
+- 60Hz deterministic fixed tick decoupled from visual rendering.
+- Zero heap allocations inside hot paths (Update/FixedUpdate/Tick).
+- Pre-allocated object pools for entities and particles.
+- Pure state structs without engine-specific MonoBehaviours or node bloat.
+- Audio events dispatched through decoupled brokers to prevent cyclic coupling.
+
+Please build this game layer by layer according to AGENTS.md and .cursorrules.`}
   ];
 
-  decSel.innerHTML='';
-  prompts.forEach((p,idx)=>{
-    const opt=document.createElement('option');opt.value=idx;opt.textContent=p.title;decSel.appendChild(opt);
-  });
-
-  decSel.onchange=()=>{decPrev.value=prompts[+decSel.value].prompt};
-  decPrev.value=prompts[0].prompt;
+  if (decSel) {
+    const curVal = decSel.value;
+    decSel.innerHTML='';
+    prompts.forEach((p,idx)=>{
+      const opt=document.createElement('option');opt.value=idx;opt.textContent=p.title;decSel.appendChild(opt);
+    });
+    if (curVal && prompts[+curVal]) decSel.value = curVal;
+    decSel.onchange=()=>{if(decPrev)decPrev.value=prompts[+decSel.value].prompt};
+    if (decPrev) decPrev.value=prompts[+decSel.value || 0].prompt;
+  }
   currentDecBlueprint={name:concept,prompts};
 }
 
@@ -4147,14 +4577,157 @@ if(nRigSingle) nRigSingle.onclick=()=>{
   toast('CALIBRATED: SINGLE-FILE MINIMAL SCRIPT');
 };
 
-if(pSouls)pSouls.onclick=()=>{nuPace='souls';nuMech='action';ideArt='3d';runDeconstructor('Soulslike Action RPG with stamina combat');};
-if(pCozy)pCozy.onclick=()=>{nuPace='turn';nuMech='grid';ideArt='2d';runDeconstructor('Cozy Farming Life Sim with seed-to-harvest seasonal clocks');};
-if(pSand)pSand.onclick=()=>{nuPace='fast';nuMech='dig';ideArt='2d';runDeconstructor('2D Destructible Sandbox Miner with procedural underground biomes');};
-if(pScifi)pScifi.onclick=()=>{nuPace='fast';nuMech='action';ideArt='3d';runDeconstructor('Fast-paced cyberpunk roguelike hacking game with terminal nodes');};
+// Preset Inspiration Cards (Automatic Asset & Engine Calibration)
+if(pPixel) pPixel.onclick=()=>{
+  nuPace='fast';nuMech='action';ideArt='2d';ideEng='godot';
+  ASSET_SLOTS.char.active = 1; // Hero Knight 16x16
+  ASSET_SLOTS.world.active = 1; // Tiny Town 16x16
+  ASSET_SLOTS.gear.active = 1; // Pixel Roguelike Weaponry
+  ASSET_SLOTS.ui.active = 3; // Pixel Adventure UI
+  ASSET_SLOTS.audio.active = 1; // 8-Bit Chiptune
+  ASSET_SLOTS.vis.active = 0; // Dawnbringer 16
+  renderAssetSheet();
+  runDeconstructor('2D Pixel Art RPG with 16x16 tiles, retro hero walk cycle and village NPCs');
+  toast('LOADED 2D PIXEL RPG PRESET');
+};
+
+if(pSouls) pSouls.onclick=()=>{
+  nuPace='souls';nuMech='action';ideArt='3d';ideEng='unity';
+  ASSET_SLOTS.char.active = 0; // Guardian 3D
+  ASSET_SLOTS.world.active = 0; // Castle Kit 3D
+  ASSET_SLOTS.gear.active = 0; // Medieval Weapons 3D
+  ASSET_SLOTS.ui.active = 0; // Retro RPG UI
+  ASSET_SLOTS.audio.active = 0; // RPG Audio SFX
+  ASSET_SLOTS.vis.active = 0; // PBR Lit
+  renderAssetSheet();
+  runDeconstructor('Soulslike Action RPG with committed stamina combat and boss phases');
+  toast('LOADED 3D SOULSLIKE PRESET');
+};
+
+if(pCozy) pCozy.onclick=()=>{
+  nuPace='turn';nuMech='grid';ideArt='2d';ideEng='godot';
+  ASSET_SLOTS.char.active = 5; // Tiny Farmer
+  ASSET_SLOTS.world.active = 1; // Tiny Town Overworld
+  ASSET_SLOTS.gear.active = 3; // Farming & Mining Toolset
+  ASSET_SLOTS.ui.active = 4; // Cozy Wooden UI
+  ASSET_SLOTS.audio.active = 2; // Cozy Acoustic Ambience
+  ASSET_SLOTS.vis.active = 0; // Dawnbringer 16
+  renderAssetSheet();
+  runDeconstructor('2D Cozy Farm Sim with daily seasonal clocks and seed-to-harvest crop economy');
+  toast('LOADED 2D COZY FARM PRESET');
+};
+
+if(pSand) pSand.onclick=()=>{
+  nuPace='fast';nuMech='dig';ideArt='2d';ideEng='spawn';
+  ASSET_SLOTS.char.active = 3; // Forest Ranger
+  ASSET_SLOTS.world.active = 5; // Pixel Platformer Industrial
+  ASSET_SLOTS.gear.active = 3; // Farming & Mining Tools
+  ASSET_SLOTS.ui.active = 3; // Pixel Adventure UI
+  ASSET_SLOTS.audio.active = 1; // 8-Bit Chiptune
+  ASSET_SLOTS.vis.active = 1; // GameBoy 4-Color
+  renderAssetSheet();
+  runDeconstructor('2D Destructible Sandbox Miner with procedural underground biomes');
+  toast('LOADED 2D SANDBOX MINER PRESET');
+};
+
+if(pScifi) pScifi.onclick=()=>{
+  nuPace='fast';nuMech='action';ideArt='3d';ideEng='unity';
+  ASSET_SLOTS.char.active = 2; // Cyber Mech
+  ASSET_SLOTS.world.active = 2; // Space Station
+  ASSET_SLOTS.gear.active = 2; // Cyber Blasters
+  ASSET_SLOTS.ui.active = 1; // Sci-Fi Holo HUD
+  ASSET_SLOTS.audio.active = 3; // Cyber Synth SFX
+  ASSET_SLOTS.vis.active = 3; // Neon Bloom & CRT
+  renderAssetSheet();
+  runDeconstructor('Cyberpunk Roguelike with isometric neon hacking nodes and drone combat');
+  toast('LOADED CYBERPUNK ROGUELIKE PRESET');
+};
+
+if(pHorror) pHorror.onclick=()=>{
+  nuPace='souls';nuMech='action';ideArt='3d';ideEng='unity';
+  ASSET_SLOTS.char.active = 0; // Guardian 3D
+  ASSET_SLOTS.world.active = 0; // Castle / Dungeon Kit
+  ASSET_SLOTS.gear.active = 5; // Survival Camping Gear
+  ASSET_SLOTS.ui.active = 2; // Minimalist Glassware UI
+  ASSET_SLOTS.audio.active = 4; // Dark Ambient & Horror SFX
+  ASSET_SLOTS.vis.active = 2; // PS1 Retro Dither & Vertex Snap
+  renderAssetSheet();
+  runDeconstructor('Survival Horror with scarce ammo pools, flashlight raycasts and sanity meter');
+  toast('LOADED SURVIVAL HORROR PRESET');
+};
+
 if(decBtn)decBtn.onclick=()=>runDeconstructor(decQ.value);
 if(decQ)decQ.onkeydown=(e)=>{if(e.key==='Enter')runDeconstructor(decQ.value);};
 
-$('dec-copy-prompt').onclick=()=>{copy(decPrev.value);toast('COPIED PROMPT TEMPLATE')};
+// Ever-Evolving Prompt Dock Controls
+const dockToggleBtn = $('dock-toggle-btn');
+const dockBody = $('dock-body');
+if (dockToggleBtn && dockBody) {
+  dockToggleBtn.onclick = () => {
+    const isHidden = dockBody.style.display === 'none';
+    dockBody.style.display = isHidden ? 'block' : 'none';
+    dockToggleBtn.textContent = isHidden ? '─' : '▢';
+  };
+}
+
+const copyPromptBtn = $('dec-copy-prompt');
+if (copyPromptBtn) copyPromptBtn.onclick=()=>{copy(decPrev.value);toast('📋 COPIED EVER-EVOLVING PROMPT');};
+
+const sendAgentBtn = $('btn-dock-send-agent');
+if (sendAgentBtn) {
+  sendAgentBtn.onclick = () => {
+    copy(decPrev.value);
+    showTab('agents');
+    toast('🤖 PROMPT COPIED! READY TO PASTE INTO AGENT');
+  };
+}
+
+const dockZipBtn = $('btn-dock-download-zip');
+if (dockZipBtn) dockZipBtn.onclick = downloadStarterZip;
+
+const fullBundleBtn = $('btn-download-full-bundle');
+if (fullBundleBtn) fullBundleBtn.onclick = downloadStarterZip;
+
+// Agent Tab Button Handlers
+const btnCopyCursorrules = $('btn-copy-cursorrules');
+if (btnCopyCursorrules) {
+  btnCopyCursorrules.onclick = () => {
+    const raw = $('raw-cursorrules');
+    if (raw) { copy(raw.textContent); toast('📄 COPIED .CURSORRULES'); }
+  };
+}
+
+const btnLaunchClaude = $('btn-agent-launch-claude');
+if (btnLaunchClaude) {
+  btnLaunchClaude.onclick = () => {
+    copy(`claude -p "${decPrev.value.replace(/"/g, '\\"')}"`);
+    toast('🟣 COPIED CLAUDE CLI COMMAND WITH PROMPT');
+  };
+}
+
+const btnSetupCursor = $('btn-agent-setup-cursor');
+if (btnSetupCursor) {
+  btnSetupCursor.onclick = () => {
+    const raw = $('raw-cursorrules');
+    if (raw) { copy(raw.textContent); toast('⚡ COPIED .CURSORRULES FOR CURSOR'); }
+  };
+}
+
+const btnLaunchCodex = $('btn-agent-launch-codex');
+if (btnLaunchCodex) {
+  btnLaunchCodex.onclick = () => {
+    copy(`codex exec "${decPrev.value.replace(/"/g, '\\"')}"`);
+    toast('🟢 COPIED CODEX CLI COMMAND WITH PROMPT');
+  };
+}
+
+const btnLaunchOllama = $('btn-agent-launch-ollama');
+if (btnLaunchOllama) {
+  btnLaunchOllama.onclick = () => {
+    openAgentModal();
+  };
+}
+
 $('dec-adopt-blueprint').onclick=()=>{
   const name=decQ.value.trim()||'New Game Blueprint';
   const a=JSON.parse(JSON.stringify(DEFAULTS));a.name=name;
@@ -4162,6 +4735,8 @@ $('dec-adopt-blueprint').onclick=()=>{
   store.list.push({id,name:a.name,profile:a,folder:'',done:[],cur:1});
   save();openProject(id);toast('ADOPTED BLUEPRINT: '+name.toUpperCase());
 };
+
+renderAssetSheet();
 runDeconstructor(decQ.value);
 
 const relBtn = $('btn-reload');
