@@ -594,119 +594,66 @@ textarea:focus,input:focus{border-color:var(--gold);box-shadow:0 0 8px rgba(220,
   <section class="tab on" id="t-projects">
     <div class="frame page">
       <div id="pj-list">
-        <!-- Hero Explainer Banner & Infographics -->
-        <div class="explainer-hero" id="pj-explainer" style="background:linear-gradient(180deg,#241c15 0%,#18120e 100%);border:1px solid #544131;border-radius:12px;padding:18px 20px;margin-bottom:14px;box-shadow:0 8px 30px rgba(0,0,0,.6),inset 0 1px 0 rgba(245,207,156,.15)">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-            <div style="width:12px;height:12px;background:var(--gold);box-shadow:0 0 8px var(--gold);transform:rotate(45deg);border-radius:2px"></div>
-            <h2 style="font-size:16px;font-weight:bold;color:var(--gold);text-transform:uppercase;margin:0;border:none">AUTONOMOUS VIBE-CODING PIPELINE</h2>
-            <span class="badge ok" style="margin-left:auto;border-radius:20px;padding:2px 10px">ZERO TECHNICAL DEBT</span>
-          </div>
-
-          <!-- 5-Step Workflow Infographic -->
-          <div class="infographic-flow">
-            <div class="infographic-step">🎮 <b>1. Game Idea</b></div>
-            <div class="infographic-arrow">➔</div>
-            <div class="infographic-step">📐 <b>2. Modular Blueprint</b></div>
-            <div class="infographic-arrow">➔</div>
-            <div class="infographic-step">🤖 <b>3. AI Code</b> (Claude / Codex)</div>
-            <div class="infographic-arrow">➔</div>
-            <div class="infographic-step">🛡️ <b>4. 12-Rule Auditor</b></div>
-            <div class="infographic-arrow">➔</div>
-            <div class="infographic-step">🚀 <b>5. Shipped Game!</b></div>
-          </div>
-
-          <!-- 3 Bite-Sized Cards -->
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:10px">
-            <div style="background:#1c1510;border:1px solid #3d2f23;border-radius:8px;padding:10px 12px">
-              <div style="color:var(--cyan);font-weight:bold;font-size:12.5px;margin-bottom:3px">⚡ WHY IT WORKS</div>
-              <div class="dim" style="font-size:12px;line-height:1.4">Asking AI for "the whole game" blows context. Queen's Domain divides your game into self-contained, ordered prompts that build layer by layer.</div>
+        <!-- Unified Clean Autonomous Game Pipeline & Project Starter -->
+        <div class="explainer-hero" id="pj-explainer" style="background:linear-gradient(180deg,#241c15 0%,#18120e 100%);border:1px solid #544131;border-radius:12px;padding:16px 20px;margin-bottom:14px;box-shadow:0 6px 24px rgba(0,0,0,.6),inset 0 1px 0 rgba(245,207,156,.15)">
+          
+          <!-- Top Clean Header & 5-Step Flow -->
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(220,179,123,.2)">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:10px;height:10px;background:var(--gold);box-shadow:0 0 8px var(--gold);transform:rotate(45deg);border-radius:2px"></div>
+              <h2 style="font-size:15px;font-weight:bold;color:var(--gold);letter-spacing:.03em;margin:0;border:none">AUTONOMOUS GAME PIPELINE</h2>
             </div>
-            <div style="background:#1c1510;border:1px solid #3d2f23;border-radius:8px;padding:10px 12px">
-              <div style="color:var(--gold);font-weight:bold;font-size:12.5px;margin-bottom:3px">💻 ENGINE-AWARE PROMPTS</div>
-              <div class="dim" style="font-size:12px;line-height:1.4">Prompts are tailored to your chosen platform: C# for Unity, GDScript for Godot 4, Blueprints for Unreal 5, or TypeScript for Spawn.co & WebGL.</div>
-            </div>
-            <div style="background:#1c1510;border:1px solid #3d2f23;border-radius:8px;padding:10px 12px">
-              <div style="color:var(--green);font-weight:bold;font-size:12.5px;margin-bottom:3px">🛡️ 12-RULE CODE HYGIENE</div>
-              <div class="dim" style="font-size:12px;line-height:1.4">Paste AI code into the Auditor to catch memory leaks, update loops, and state coupling before marking steps complete.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Start Your Game Vision // 1-Click Game Blueprint Creator -->
-        <div style="background:linear-gradient(180deg,#241c15 0%,#18120e 100%);border:1px solid #544131;border-radius:12px;padding:16px 20px;margin-bottom:16px;box-shadow:0 6px 24px rgba(0,0,0,.7)">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
-            <span style="font-size:16px">⚡</span>
-            <b style="color:var(--gold);font-size:14px;font-weight:bold;text-transform:uppercase">START A GAME PROJECT // WHAT WILL YOUR GAME BE?</b>
-            <span class="badge ok" style="margin-left:auto;border-radius:20px;padding:2px 10px">1-CLICK BLUEPRINT</span>
-          </div>
-          <p class="dim" style="font-size:12.5px;line-height:1.45;margin:0 0 10px 0">
-            Define your vision below. Queen's Domain immediately combines your target engine, CC0 art assets, and systems into an engineered step-by-step prompt roadmap:
-          </p>
-
-          <!-- 1-Click Starter Preset Chips -->
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
-            <button class="btn" id="dec-preset-souls" style="font-size:11.5px;padding:4px 10px">🗡️ 3D Soulslike ARPG</button>
-            <button class="btn" id="dec-preset-cozy" style="font-size:11.5px;padding:4px 10px">🌾 2D Cozy Farm Sim</button>
-            <button class="btn" id="dec-preset-sandbox" style="font-size:11.5px;padding:4px 10px">⛏️ 2D Sandbox Miner</button>
-            <button class="btn" id="dec-preset-scifi" style="font-size:11.5px;padding:4px 10px">🛸 Cyberpunk Rogue-Shooter</button>
-          </div>
-
-          <!-- Vision Input Bar (1-Button Action Flow) -->
-          <div class="row" style="margin-bottom:12px;gap:8px">
-            <input type="text" id="dec-query" value="Fast-paced cyberpunk roguelike hacking game with stamina combat" placeholder="What will your game be? e.g. 'Cozy fishing RPG' or 'Isometric dungeon crawler'..." style="flex:1;font-size:13.5px;padding:10px 14px;border-radius:8px">
-            <button class="btn gold" id="dec-deconstruct-btn" style="font-size:13px;padding:10px 18px;white-space:nowrap;border-radius:8px">⚡ Build Game Blueprint</button>
-          </div>
-
-          <!-- Combined Tools In Proper Place (Infographic Bar) -->
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-bottom:14px">
-            <div style="background:#1c1510;border:1px solid #382c22;border-radius:6px;padding:6px 10px;font-size:12px;display:flex;align-items:center;gap:6px">
-              <span>🎨</span> <span style="color:#fff;font-weight:bold">CC0 Art:</span> <span class="dim">Kenney Sprites & Kits</span>
-            </div>
-            <div style="background:#1c1510;border:1px solid #382c22;border-radius:6px;padding:6px 10px;font-size:12px;display:flex;align-items:center;gap:6px">
-              <span>⚙️</span> <span style="color:#fff;font-weight:bold">Engine:</span> <span class="dim">Unity / Godot / Spawn</span>
-            </div>
-            <div style="background:#1c1510;border:1px solid #382c22;border-radius:6px;padding:6px 10px;font-size:12px;display:flex;align-items:center;gap:6px">
-              <span>🤖</span> <span style="color:#fff;font-weight:bold">Prompting:</span> <span class="dim">Claude / Codex / Ollama</span>
-            </div>
-            <div style="background:#1c1510;border:1px solid #382c22;border-radius:6px;padding:6px 10px;font-size:12px;display:flex;align-items:center;gap:6px">
-              <span>🛡️</span> <span style="color:#fff;font-weight:bold">Auditor:</span> <span class="dim">12 Architectural Rules</span>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--dim);font-weight:bold">
+              <span>🎮 1. Idea</span> ➔ <span>📐 2. Blueprint</span> ➔ <span>🤖 3. AI Code</span> ➔ <span>🛡️ 4. 12-Rule Audit</span> ➔ <span style="color:var(--green)">🚀 5. Ship</span>
             </div>
           </div>
 
-          <!-- Deepened Architecture Questions Box -->
-          <div style="font-size:12px;font-weight:bold;color:var(--cyan);margin-bottom:6px">ARCHITECTURAL VECTORS // WHAT THE BLUEPRINT CALIBRATES:</div>
-          <div id="dec-questions-box" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px;margin-bottom:14px"></div>
+          <!-- Vision Input: What will your game be? -->
+          <div style="margin-bottom:10px">
+            <div style="font-size:13px;font-weight:bold;color:var(--text);margin-bottom:6px">What will your game be?</div>
+            <div class="row" style="gap:8px">
+              <input type="text" id="dec-query" value="Fast-paced cyberpunk roguelike hacking game with stamina combat" placeholder="Describe your game idea (e.g. 'Cozy farming sim' or '3D dungeon crawler')..." style="flex:1;font-size:14px;padding:10px 14px;border-radius:8px">
+              <button class="btn gold" id="dec-deconstruct-btn" style="font-size:13px;padding:10px 20px;white-space:nowrap;border-radius:8px">⚡ Build Game Blueprint</button>
+            </div>
+          </div>
 
-          <!-- Prompt Template Inspector -->
-          <div style="border-top:1px solid #382c22;padding-top:12px">
+          <!-- 2D / 3D & Art Style Preset Chips & Tool Badges -->
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+            <span class="dim" style="font-size:11.5px;font-weight:bold;margin-right:2px">STYLE PACKS:</span>
+            <button class="btn" id="dec-preset-souls" style="font-size:11.5px;padding:4px 10px">🗡️ 3D Soulslike</button>
+            <button class="btn" id="dec-preset-cozy" style="font-size:11.5px;padding:4px 10px">🌾 2D Cozy Farm</button>
+            <button class="btn" id="dec-preset-sandbox" style="font-size:11.5px;padding:4px 10px">⛏️ 2D Sandbox</button>
+            <button class="btn" id="dec-preset-scifi" style="font-size:11.5px;padding:4px 10px">🛸 Cyberpunk</button>
+            <span style="flex:1"></span>
+            <div style="display:flex;gap:4px;font-size:11px;color:var(--dim)">
+              <span style="padding:2px 8px;background:#18120d;border:1px solid #382c22;border-radius:12px">🎨 Kenney CC0 Art</span>
+              <span style="padding:2px 8px;background:#18120d;border:1px solid #382c22;border-radius:12px">⚙️ Unity / Godot / Spawn</span>
+              <span style="padding:2px 8px;background:#18120d;border:1px solid #382c22;border-radius:12px">🛡️ 12-Rule Auditor</span>
+            </div>
+          </div>
+
+          <!-- Deconstructed Architecture Questions Box (Compact grid) -->
+          <div id="dec-questions-box" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:6px;margin-bottom:12px"></div>
+
+          <!-- Step-by-Step Prompt Preview & Workspace Launcher -->
+          <div style="background:#15100c;border:1px solid #382c22;border-radius:8px;padding:10px 12px;margin-bottom:10px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-              <span style="font-size:12.5px;color:var(--gold);font-weight:bold">PRE-ENGINEERED STEP PROMPT TEMPLATE:</span>
-              <select id="dec-prompt-sel" style="width:auto;font-size:12px;padding:4px 8px;border-radius:6px"></select>
+              <span style="font-size:12px;color:var(--gold);font-weight:bold">STEP-BY-STEP PROMPT PREVIEW:</span>
+              <select id="dec-prompt-sel" style="width:auto;font-size:11.5px;padding:3px 8px;border-radius:6px"></select>
             </div>
-            <textarea id="dec-prompt-preview" class="mono code" rows="6" readonly spellcheck="false" style="font-size:12px;line-height:1.45;background:#100d0a;border:1px solid #382c22;color:var(--text);width:100%;border-radius:6px"></textarea>
-            <div class="row" style="margin-top:8px">
-              <button class="btn" id="dec-copy-prompt" style="font-size:12.5px;border-radius:8px">📋 1-Click Copy Step Prompt</button>
-              <button class="btn gold" id="dec-adopt-blueprint" style="font-size:12.5px;margin-left:auto;border-radius:8px">🚀 1-Click Open In Project Workspace</button>
+            <textarea id="dec-prompt-preview" class="mono code" rows="4" readonly spellcheck="false" style="font-size:12px;line-height:1.45;background:#0d0a08;border:1px solid #2e2319;color:var(--text);width:100%;border-radius:6px"></textarea>
+            <div class="row" style="margin-top:8px;gap:8px">
+              <button class="btn" id="dec-copy-prompt" style="font-size:12px;border-radius:8px">📋 1-Click Copy Step Prompt</button>
+              <button class="btn gold" id="dec-adopt-blueprint" style="font-size:12px;margin-left:auto;border-radius:8px">🚀 1-Click Open In Project Workspace</button>
             </div>
           </div>
-        </div>
 
-        <!-- Suggested Next Actions -->
-        <div style="margin-bottom:14px">
-          <div style="font-size:12px;font-weight:bold;color:var(--gold);margin-bottom:6px">MORE OPTIONS & WORKFLOWS</div>
-          <div class="action-suggest-grid">
-            <div class="action-card" id="act-start-qd">
-              <div class="action-card-title">👑 Queen's Domain Built-In Preset</div>
-              <div class="action-card-desc">Jump straight into the 50-step retro ARPG blueprint for Unity and Spawn.co.</div>
-            </div>
-            <div class="action-card" id="act-create-custom">
-              <div class="action-card-title">📐 Deep Slider Questionnaire</div>
-              <div class="action-card-desc">Answer 10 to 25 detailed slider questions to fine-tune every facet of game physics and budget.</div>
-            </div>
-            <div class="action-card" id="act-browse-assets">
-              <div class="action-card-title">🎨 Free CC0 Asset Sheet Studio</div>
-              <div class="action-card-desc">Inspect, isolate, and import 2D spritesheets, 3D modular kits, and SFX packs.</div>
-            </div>
+          <!-- Quick Workflow Links -->
+          <div style="display:flex;gap:8px;align-items:center;padding-top:8px;border-top:1px solid rgba(220,179,123,.15);flex-wrap:wrap">
+            <span class="dim" style="font-size:11px;font-weight:bold">MORE WORKFLOWS:</span>
+            <button class="icon-btn" id="act-start-qd" style="font-size:11px;padding:4px 10px;border-radius:6px">👑 Built-In 50-Step ARPG</button>
+            <button class="icon-btn" id="act-create-custom" style="font-size:11px;padding:4px 10px;border-radius:6px">📐 25-Facet Slider Wizard</button>
+            <button class="icon-btn" id="act-browse-assets" style="font-size:11px;padding:4px 10px;border-radius:6px">🎨 Free CC0 Asset Studio</button>
           </div>
         </div>
 
