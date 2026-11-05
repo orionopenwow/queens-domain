@@ -140,6 +140,29 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .toggle-pill{background:#04101f;border:1px solid #143e77;padding:4px 10px;border-radius:14px;cursor:pointer;user-select:none}
 .toggle-pill input{cursor:pointer;accent-color:var(--gold)}
 
+/* Infographics, Action Suggestion Cards & Templates */
+.infographic-flow{display:flex;align-items:center;justify-content:space-between;gap:8px;background:radial-gradient(ellipse at 50% 0%,#0f2e5c 0%,#030a16 100%);border:1px solid #1f78e0;border-radius:12px;padding:14px 18px;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(111,211,255,.25);flex-wrap:wrap}
+.infographic-step{display:flex;align-items:center;gap:8px;background:#041022;border:1px solid #14407f;padding:8px 12px;border-radius:8px;font-size:12.5px;color:#d5e6fb;font-weight:600}
+.infographic-step b{color:var(--gold)}
+.infographic-arrow{color:var(--cyan);font-weight:700;font-size:15px;text-shadow:0 0 8px var(--cyan)}
+
+.action-suggest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0}
+.action-card{background:linear-gradient(180deg,#0a1b38 0%,#040c1a 100%);border:1px solid #14407f;border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .15s;display:flex;flex-direction:column;gap:6px}
+.action-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.6),0 0 10px rgba(212,174,69,.3)}
+.action-card-title{font-size:13.5px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px}
+.action-card-desc{font-size:12px;color:var(--dim);line-height:1.4}
+
+.template-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:10px 0}
+.template-card{background:linear-gradient(180deg,#091a35 0%,#030914 100%);border:1px solid #14407f;border-radius:10px;padding:14px;cursor:pointer;transition:all .15s;display:flex;flex-direction:column;gap:8px}
+.template-card:hover{border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 6px 20px rgba(31,120,224,.35)}
+.template-card b{color:#fff;font-size:15px}
+
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin:12px 0}
+.rule-card{background:#030c1c;border:1px solid #14407f;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.rule-card b{font-size:13px;color:var(--gold)}
+.rule-card span{font-size:12px;color:var(--dim);line-height:1.35}
+.rule-code{font-family:'Share Tech Mono',monospace;font-size:11px;background:#01050e;padding:4px 8px;border-radius:4px;border:1px solid #0f2c57;color:var(--cyan);margin-top:2px}
+
 /* generic page panels */
 .page{max-width:980px;width:100%;margin:0 auto;padding:18px 22px;overflow-y:auto;gap:12px;display:flex;flex-direction:column}
 pre{background:#010712;border:1px solid var(--blue);color:var(--green);padding:12px;font-family:'Share Tech Mono',Consolas,monospace;font-size:13px;white-space:pre-wrap;line-height:1.45}
@@ -343,29 +366,59 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
   <section class="tab on" id="t-projects">
     <div class="frame page">
       <div id="pj-list">
-        <!-- Hero Explainer Banner -->
-        <div class="explainer-hero" id="pj-explainer" style="background:radial-gradient(ellipse at 50% 0%,#0f2e5c 0%,#051124 100%);border:1px solid rgba(212,174,69,.5);border-radius:14px;padding:22px 26px;margin-bottom:16px;box-shadow:0 8px 32px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,226,138,.25)">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        <!-- Hero Explainer Banner & Infographics -->
+        <div class="explainer-hero" id="pj-explainer" style="background:radial-gradient(ellipse at 50% 0%,#0f2e5c 0%,#051124 100%);border:1px solid rgba(212,174,69,.5);border-radius:14px;padding:20px 24px;margin-bottom:16px;box-shadow:0 8px 32px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,226,138,.25)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
             <div style="width:14px;height:14px;background:var(--gold);box-shadow:0 0 10px var(--gold);transform:rotate(45deg)"></div>
-            <h2 style="font-size:18px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin:0;border:none">WHAT IS QUEEN'S DOMAIN ARCHITECTURE ENGINE?</h2>
-            <span class="badge ok" style="margin-left:auto;border-radius:12px">AUTONOMOUS VIBE-CODING</span>
+            <h2 style="font-size:17px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin:0;border:none">AUTONOMOUS VIBE-CODING ARCHITECTURE PIPELINE</h2>
+            <span class="badge ok" style="margin-left:auto;border-radius:12px">ZERO TECHNICAL DEBT</span>
           </div>
-          <p style="color:#d5e6fb;font-size:14.5px;line-height:1.6;margin-bottom:14px">
-            <strong>Vibe-coding a game fails when you ask an AI for "the whole game" at once.</strong> Context windows blow up, platforms misconfigure, and code hallucinates.
-            Queen's Domain solves this: answer guided design questions about your game idea, and the engine synthesizes an <strong>engineered, step-by-step modular blueprint</strong>. Feed each verified prompt to your chosen model (Claude Code, ChatGPT Codex, Ollama, Godot, Unity, or Spawn.co), audit the result against 12 architectural rules, and ship complete games without technical debt.
-          </p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:12px">
-            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:12px 14px">
-              <div style="color:var(--cyan);font-weight:700;font-size:13px;letter-spacing:.08em;margin-bottom:4px">1. BLUEPRINT ARCHITECTURE</div>
-              <div class="dim" style="font-size:12.5px;line-height:1.4">Generates dynamic 9 to 50 step roadmaps calibrated to your engine (Unity, Godot, Unreal, Spawn, Phaser, Three.js) and PC hardware limits.</div>
+
+          <!-- 5-Step Workflow Infographic -->
+          <div class="infographic-flow">
+            <div class="infographic-step">🎮 <b>1. Game Idea</b> (Sliders)</div>
+            <div class="infographic-arrow">➔</div>
+            <div class="infographic-step">📐 <b>2. Modular Blueprint</b> (9-50 Steps)</div>
+            <div class="infographic-arrow">➔</div>
+            <div class="infographic-step">🤖 <b>3. AI Code</b> (Claude/Codex/Spawn)</div>
+            <div class="infographic-arrow">➔</div>
+            <div class="infographic-step">🛡️ <b>4. 12-Rule Auditor</b></div>
+            <div class="infographic-arrow">➔</div>
+            <div class="infographic-step">🚀 <b>5. Shipped Game!</b></div>
+          </div>
+
+          <!-- 3 Bite-Sized Cards -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:10px">
+            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:10px 12px">
+              <div style="color:var(--cyan);font-weight:700;font-size:12.5px;letter-spacing:.06em;margin-bottom:3px">⚡ WHY IT WORKS</div>
+              <div class="dim" style="font-size:12px;line-height:1.35">Asking AI for "a whole game" blows context and hallucinates APIs. Queen's Domain divides your game into self-contained, ordered prompts that build layer by layer.</div>
             </div>
-            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:12px 14px">
-              <div style="color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.08em;margin-bottom:4px">2. STEP-BY-STEP PROMPTING</div>
-              <div class="dim" style="font-size:12.5px;line-height:1.4">Copy self-contained, context-rich prompts into Claude Code, Codex, or local Ollama models. Each step builds precisely on what came before.</div>
+            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:10px 12px">
+              <div style="color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.06em;margin-bottom:3px">💻 ENGINE-AWARE PROMPTS</div>
+              <div class="dim" style="font-size:12px;line-height:1.35">Prompts are tailored to your chosen platform: C# for Unity, GDScript for Godot 4, Blueprints for Unreal 5, or declarative specs for Spawn.co & Rosebud.</div>
             </div>
-            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:12px 14px">
-              <div style="color:var(--green);font-weight:700;font-size:13px;letter-spacing:.08em;margin-bottom:4px">3. 12-RULE PASS/FAIL AUDITOR</div>
-              <div class="dim" style="font-size:12.5px;line-height:1.4">Paste the AI's generated code into the Auditor to verify memory management, state isolation, asset bounds, and receive an instant fix prompt.</div>
+            <div style="background:#030b1a;border:1px solid #143e77;border-radius:10px;padding:10px 12px">
+              <div style="color:var(--green);font-weight:700;font-size:12.5px;letter-spacing:.06em;margin-bottom:3px">🛡️ 12-RULE CODE HYGIENE</div>
+              <div class="dim" style="font-size:12px;line-height:1.35">Paste the AI's generated code into the Auditor to catch memory leaks, state coupling, and floating update loops before marking steps complete.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggested Next Actions -->
+        <div style="margin-bottom:14px">
+          <div style="font-size:13px;letter-spacing:.12em;color:var(--gold);font-weight:700;margin-bottom:6px">SUGGESTED ACTIONS // WHAT TO DO NEXT</div>
+          <div class="action-suggest-grid">
+            <div class="action-card" id="act-start-qd">
+              <div class="action-card-title">👑 Launch Queen's Domain Preset</div>
+              <div class="action-card-desc">Jump straight into the built-in 50-step retro ARPG blueprint for Unity and Spawn.co.</div>
+            </div>
+            <div class="action-card" id="act-create-custom">
+              <div class="action-card-title">📐 Create Custom Game Blueprint</div>
+              <div class="action-card-desc">Answer a 3-minute slider questionnaire to engineer a custom 9-to-50 step plan for your own game.</div>
+            </div>
+            <div class="action-card" id="act-browse-assets">
+              <div class="action-card-title">🎨 Pick Free CC0 Asset Sheets</div>
+              <div class="action-card-desc">Explore 2D spritesheets, 3D modular kits, and SFX that automatically inject into your game prompts.</div>
             </div>
           </div>
         </div>
@@ -508,11 +561,69 @@ textarea:focus,input:focus{box-shadow:0 0 0 1px var(--cyan),0 0 10px var(--blue)
   <!-- AUDITOR -->
   <section class="tab" id="t-audit">
     <div class="frame page">
-      <h2>Global Gemini Auditor</h2>
-      <p>Audit any snippet against the full blueprint and the Ponytail 7-Rung Decision Ladder.</p>
-      <textarea id="g-code" rows="16" spellcheck="false" placeholder="Paste any C# script or Savi spec here..."></textarea>
-      <div class="row"><button class="btn" id="g-run" style="flex:1;padding:12px">Run Full System Audit</button><span id="g-status" class="mono" style="color:var(--dim)">Ready</span></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+        <div style="width:12px;height:12px;background:var(--green);box-shadow:0 0 10px var(--green);transform:rotate(45deg)"></div>
+        <h2 style="margin:0;border:none">12-RULE ARCHITECTURAL AUDITOR</h2>
+        <span class="badge ok" style="margin-left:auto;border-radius:12px">AUTOMATED CODE SANITY</span>
+      </div>
+
+      <!-- Infographic Flow -->
+      <div class="infographic-flow">
+        <div class="infographic-step">🤖 <b>1. AI Writes Code</b> (C#, JS, GDScript)</div>
+        <div class="infographic-arrow">➔</div>
+        <div class="infographic-step">📋 <b>2. Paste in Auditor</b></div>
+        <div class="infographic-arrow">➔</div>
+        <div class="infographic-step">⚖️ <b>3. Checks 12 Rules</b> (Zero GC, Singletons)</div>
+        <div class="infographic-arrow">➔</div>
+        <div class="infographic-step">🛠️ <b>4. Get Instant Fix Prompt</b></div>
+      </div>
+
+      <p class="dim" style="margin-top:0">Audit any AI-generated game script against Queen's Domain 12 Architectural Guardrails and the Ponytail 7-Rung Decision Ladder.</p>
+
+      <div class="row" style="gap:8px;margin-bottom:8px">
+        <button class="btn" id="audit-sample-bad" style="font-size:12px">⚠️ Load Sample Violating Code</button>
+        <button class="btn" id="audit-sample-good" style="font-size:12px">✅ Load Clean Engineered Code</button>
+        <button class="btn" id="audit-clear" style="font-size:12px;margin-left:auto">Clear</button>
+      </div>
+
+      <textarea id="g-code" rows="12" spellcheck="false" placeholder="Paste any C# script, GDScript, or web game code here to audit..."></textarea>
+      <div class="row"><button class="btn gold" id="g-run" style="flex:1;padding:12px;font-size:14px">Run Full System Audit</button><span id="g-status" class="mono" style="color:var(--dim)">Ready</span></div>
       <div class="result" id="g-res"></div>
+
+      <!-- 12 Architectural Rules Visual Cheatsheet -->
+      <h3 style="margin-top:20px;border-bottom:1px solid #14407f;padding-bottom:6px">The 12 Architecture Rules Cheatsheet</h3>
+      <div class="rule-grid">
+        <div class="rule-card">
+          <b>1. Zero Singletons</b>
+          <span>Pass dependencies through constructors or Service Locator. Never use GameManager.Instance.</span>
+          <div class="rule-code">Avoid: Player.Instance.TakeDamage()</div>
+        </div>
+        <div class="rule-card">
+          <b>2. Memory Object Pooling</b>
+          <span>Pre-allocate bullets, VFX, and enemies. Never Instantiate() or Destroy() in update loops.</span>
+          <div class="rule-code">Avoid: Instantiate(bulletPrefab, pos, rot)</div>
+        </div>
+        <div class="rule-card">
+          <b>3. Explicit State Machines</b>
+          <span>Game state, player animations, and UI screens must be discrete enums with enter/exit hooks.</span>
+          <div class="rule-code">Use: enum State { Idle, Run, Attack }</div>
+        </div>
+        <div class="rule-card">
+          <b>4. Zero Hot-Path GC Allocations</b>
+          <span>No LINQ (.Where, .ToList), string concatenation (+), or new T[] inside Update() or Tick().</span>
+          <div class="rule-code">Avoid: "Score: " + score (in Update)</div>
+        </div>
+        <div class="rule-card">
+          <b>5. Decoupled Event Bus</b>
+          <span>Use decoupled listeners for damage, inventory, and audio triggers without tight coupling.</span>
+          <div class="rule-code">Use: Events.OnPlayerDied?.Invoke()</div>
+        </div>
+        <div class="rule-card">
+          <b>6. Frame-Rate Decoupled Physics</b>
+          <span>All movement and collisions use fixed delta time. Never multiply variable dt in fixed logic.</span>
+          <div class="rule-code">Use: Time.fixedDeltaTime in FixedUpdate</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1514,6 +1625,44 @@ $('a-run').onclick=()=>runAudit($('a-code'),$('a-status'),$('a-res'),$('a-run'),
   ()=>`Audit for STEP ${cur}: ${STEPS[cur-1].t}. Task given to the AI: ${promptFor(cur)}\nTarget: ${targetLabel()}`);
 $('g-run').onclick=()=>runAudit($('g-code'),$('g-status'),$('g-res'),$('g-run'),
   ()=>`Global audit against the full blueprint of "${PJ.name}". Target: ${targetLabel()}`);
+$('audit-sample-bad').onclick=()=>{
+  $('g-code').value=`public class PlayerController : MonoBehaviour {
+    void Update() {
+        // VIOLATION 1: Hot-path GC string concatenation
+        Debug.Log("Current Health: " + GameManager.Instance.health);
+        
+        // VIOLATION 2: Instantiating in Update loop without pool
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Instantiate(Resources.Load("Bullet"), transform.position, Quaternion.identity);
+        }
+    }
+}`;
+  toast('LOADED FLAWED CODE SAMPLE');
+};
+$('audit-sample-good').onclick=()=>{
+  $('g-code').value=`public class PlayerMovement : MonoBehaviour {
+    [SerializeField] private PlayerConfig _config;
+    [SerializeField] private BulletPool _pool;
+    
+    private void FixedUpdate() {
+        // CLEAN: Decoupled fixed delta time physics
+        Vector2 vel = _moveInput * _config.Speed * Time.fixedDeltaTime;
+        _rb.MovePosition(_rb.position + vel);
+    }
+    
+    public void Fire() {
+        // CLEAN: Pre-allocated object pool
+        var bullet = _pool.Get();
+        bullet.Spawn(transform.position);
+    }
+}`;
+  toast('LOADED CLEAN CODE SAMPLE');
+};
+$('audit-clear').onclick=()=>{
+  $('g-code').value='';
+  $('g-res').innerHTML='';
+  $('g-status').textContent='Ready';
+};
 
 // ---------- projects tab + new-project wizard ----------
 let wz=null;
@@ -1541,6 +1690,13 @@ function openProject(id){loadProject(id);render();document.querySelector('nav [d
 function renderProjects(){
   sbProj();try{designBanner()}catch(e){}
   const g=$('pj-grid');g.innerHTML='';
+
+  // Wire up suggested action cards
+  const aQd = $('act-start-qd'), aCust = $('act-create-custom'), aAss = $('act-browse-assets');
+  if(aQd) aQd.onclick = () => openProject('qd');
+  if(aCust) aCust.onclick = () => $('pj-new').click();
+  if(aAss) aAss.onclick = () => showTab('assets');
+
   const card=(p,steps,d)=>{
     const c=el('div','pjcard'+(store.active===p.id?' act':''));
     const pct=Math.round(100*d/steps)||0;
@@ -1564,8 +1720,43 @@ function renderProjects(){
     c.append(row);
     g.append(c);
   };
+
   card(QD,50,store.qd.done.length);
   store.list.forEach(p=>card(p,generate(p.profile).length,p.done.length));
+
+  // Starter blueprint cards so screen is never an empty void
+  const starters = [
+    { id: 'souls', name: 'Elden Soulslike ARPG', dim: '3D', genre: 'Action RPG', steps: '32 Steps', desc: 'Committed stamina combat, dodge rolls, bonfire checkpoints & boss phases.' },
+    { id: 'stardew', name: 'Harvest Valley Cozy Sim', dim: '2D', genre: 'Cozy Farming', steps: '24 Steps', desc: 'Tilemap crop grid, seasonal clock, inventory management & stamina loops.' },
+    { id: 'terraria', name: 'Core Delver 2D Sandbox', dim: '2D', genre: 'Survival Sandbox', steps: '28 Steps', desc: 'Procedural destructible mining, crafting trees & underground biomes.' }
+  ];
+
+  starters.forEach(st => {
+    if(store.list.some(p => p.template === st.id)) return;
+    const sc = el('div', 'pjcard');
+    sc.style.cssText = 'border-style:dashed;border-color:#1c4b88;background:linear-gradient(180deg,#061329 0%,#020814 100%)';
+    const topRow = el('div', 'row');
+    topRow.style.alignItems = 'center';
+    topRow.append(el('b', null, st.name), el('span', 'badge', '1-CLICK TEMPLATE'));
+    const info = el('div', 'dim', `${st.dim} · ${st.genre} · ${st.steps}`);
+    const desc = el('div', 'dim', st.desc);
+    desc.style.fontSize = '12px';
+    const btn = el('button', 'btn gold', '⚡ Create ' + st.genre + ' Blueprint');
+    btn.onclick = () => {
+      const tpl = TEMPLATES.find(t => t.id === st.id);
+      if(!tpl) return;
+      const a = JSON.parse(JSON.stringify(DEFAULTS));
+      applyTemplate(a, tpl);
+      a.name = st.name;
+      const id = 'p' + Date.now();
+      store.list.push({ id, name: a.name, profile: a, template: st.id, folder: '', done: [], cur: 1 });
+      save();
+      openProject(id);
+      toast('BLUEPRINT GENERATED: ' + a.name.toUpperCase());
+    };
+    sc.append(topRow, info, desc, btn);
+    g.append(sc);
+  });
 }
 $('sb-newproj').onclick=()=>{document.querySelector('nav [data-t=projects]').click();$('pj-new').click()};
 $('sp-newproj').onclick=()=>{document.querySelector('nav [data-t=projects]').click();$('pj-new').click();toast('NEW PROJECT: ANSWER, THEN LINK IT IN SPAWN BRIDGE')};
@@ -1908,9 +2099,81 @@ function wzPreset(w,id,a){const p=presetOf(id);w.append(el('div','wzq',p.title),
   p.options.forEach(o=>{const why=o.set.dim?blocked('dim',{id:o.set.dim,label:o.set.dim},a):'',on=presetOn(o,a),t=el('div','tile'+(on?' sel':'')+(why?' off':''));t.append(el('b',null,o.label),el('span',null,why||o.desc||''));if(!why)t.onclick=()=>{applyPreset(o,a);renderWiz()};grid.append(t)});w.append(grid)}
 function renderWiz(){
   const a=wz.a,Q=QUESTIONS,w=$('pj-wiz');w.innerHTML='';fixAnswers(a);
-  if(!wz.mode){w.append(el('h2',null,'New Project'),el('div','wzq','How deep do you want to go?'),el('div','dim','You can switch later and keep every answer. Anything you skip is filled in smartly from your other answers.'));
-    const g=el('div','tiles');MODES.forEach(m=>{const t=el('div','tile');t.append(el('b',null,m.label),el('span',null,m.time+'. '+m.desc));t.onclick=()=>{wz.mode=m.id;wz.i=0;renderWiz()};g.append(t)});w.append(g);
-    const c=el('button','btn','Cancel');c.onclick=()=>{showWiz(false);wz=null};w.append(c);return}
+  if(!wz.mode){
+    w.append(el('h2',null,'New Game Architecture Wizard'));
+
+    const flow = el('div', 'infographic-flow');
+    flow.innerHTML = `
+      <div class="infographic-step">🎯 <b>1. Select Depth or Template</b></div>
+      <div class="infographic-arrow">➔</div>
+      <div class="infographic-step">🎛️ <b>2. Fine-tune Sliders</b></div>
+      <div class="infographic-arrow">➔</div>
+      <div class="infographic-step">⚡ <b>3. Synthesize Step Prompts</b></div>
+      <div class="infographic-arrow">➔</div>
+      <div class="infographic-step">🚀 <b>4. AI Build & Spawn</b></div>
+    `;
+    w.append(flow);
+
+    w.append(el('div','wzq','How deep do you want to configure your blueprint?'),
+             el('div','dim','Pick a question depth or start instantly from a pre-configured 1-click template below. Anything skipped is filled in with battle-tested defaults.'));
+
+    const g=el('div','tiles');
+    MODES.forEach(m=>{
+      const t=el('div','tile');
+      const icon = m.id === 'norm' ? '⚡ ' : (m.id === 'hell' ? '🔥 ' : '💀 ');
+      t.append(el('b',null, icon + m.label), el('span',null, m.time + ' · ' + m.desc));
+      t.onclick=()=>{wz.mode=m.id;wz.i=0;renderWiz()};
+      g.append(t);
+    });
+    w.append(g);
+
+    // 1-Click Starter Templates section
+    const tplHdr = el('div','wzq','⚡ OR LAUNCH FROM A PRE-CONFIGURED BLUEPRINT (1-CLICK)');
+    tplHdr.style.marginTop = '20px';
+    const tplSub = el('div','dim','Skip all questions and immediately synthesize an engineered, production-ready roadmap:');
+    w.append(tplHdr, tplSub);
+
+    const tplGrid = el('div', 'template-grid');
+    const starters = [
+      { id: 'souls', name: '🗡️ Elden Soulslike ARPG', dim: '3D', genre: 'Action RPG', steps: '32 Steps', desc: 'Committed stamina combat, i-frame dodge rolls, bonfire checkpoints & multi-phase boss fight.' },
+      { id: 'stardew', name: '🌾 Harvest Valley Cozy Sim', dim: '2D', genre: 'Cozy Farming', steps: '24 Steps', desc: 'Grid tilemap, seed-to-harvest seasonal clocks, stamina bar, and relaxing ambient loops.' },
+      { id: 'terraria', name: '⛏️ Core Delver 2D Sandbox', dim: '2D', genre: 'Survival Sandbox', steps: '28 Steps', desc: 'Destructible tile grid, mining pickaxe, recipes tree, underground biomes & day/night cycle.' }
+    ];
+
+    starters.forEach(st => {
+      const tc = el('div', 'template-card');
+      const top = el('div', 'row');
+      top.style.alignItems = 'center';
+      top.append(el('b', null, st.name), el('span', 'badge ok', st.steps));
+      const sub = el('div', 'dim', `${st.dim} · ${st.genre}`);
+      const desc = el('div', 'dim', st.desc);
+      desc.style.fontSize = '12px';
+      const btn = el('button', 'btn gold', 'Launch ' + st.genre + ' Blueprint');
+      btn.onclick = () => {
+        const tpl = TEMPLATES.find(t => t.id === st.id);
+        if(!tpl) return;
+        const fresh = JSON.parse(JSON.stringify(DEFAULTS));
+        applyTemplate(fresh, tpl);
+        fresh.name = st.name.replace(/^[^\w]+/, '').trim();
+        const id = 'p' + Date.now();
+        store.list.push({ id, name: fresh.name, profile: fresh, template: st.id, folder: '', done: [], cur: 1 });
+        save();
+        showWiz(false);
+        wz = null;
+        openProject(id);
+        toast('BLUEPRINT GENERATED: ' + fresh.name.toUpperCase());
+      };
+      tc.append(top, sub, desc, btn);
+      tplGrid.append(tc);
+    });
+    w.append(tplGrid);
+
+    const c=el('button','btn','Cancel');
+    c.style.marginTop = '12px';
+    c.onclick=()=>{showWiz(false);wz=null};
+    w.append(c);
+    return;
+  }
   autoFill(a,wz.mode);const pages=pagesOf(wz.mode,a),n=pages.length;WZP=pages;
   const top=el('div','row');const mc=el('button','btn',modeOf(wz.mode).label+' mode');mc.title='Change how many questions you get (your answers are kept)';mc.onclick=()=>{wz.mode=null;renderWiz()};top.append(el('h2',null,'New Project'),mc,el('span','mono wzest',`Estimated steps: ${generate(a).length}`));top.style.justifyContent='space-between';w.append(top);
   const seg=el('div','wzseg');pages.forEach((sc,k)=>{const s=el('i',k===wz.i?'cur':k<wz.i?'ok':'');s.title=sc.title;s.onclick=()=>{wz.i=k;renderWiz()};seg.append(s)});
@@ -2015,16 +2278,37 @@ function openSheetInspector(k, f, p, have){
 function assetsRender(){
   setupAssetFilters();
   const b=$('as-body');if(!b||!PJ)return;b.innerHTML='';$('as-err').textContent='';
-  if(PJ.preset){
-    b.append(el('div','dim','This built-in project has no questionnaire answers, so there is nothing to match. Make a project with New Project.'));
-    return;
-  }
-  const p=PJ.profile, v=vibeOf(p), f=PJ.folder||p.folder;
-  
+
+  const isPreset = !!PJ.preset;
+  const p = isPreset ? (PJ.profile || {
+    name: "Queen's Domain",
+    dim: '2D',
+    art: 'pixel',
+    genre: 'arpg',
+    platform: 'unity',
+    vibe: 'retro',
+    packs: []
+  }) : PJ.profile;
+  if(!p) return;
+  const v = vibeOf(p), f = PJ.folder || p.folder || '';
+
+  const infoFlow = el('div', 'infographic-flow');
+  infoFlow.innerHTML = `
+    <div class="infographic-step">📦 <b>1. Select CC0 Sheet</b> (2D, 3D, SFX)</div>
+    <div class="infographic-arrow">➔</div>
+    <div class="infographic-step">⬇️ <b>2. 1-Click Import</b> into assets/&lt;pack&gt;/</div>
+    <div class="infographic-arrow">➔</div>
+    <div class="infographic-step">🧠 <b>3. Auto-Injected</b> into AI Prompts</div>
+    <div class="infographic-arrow">➔</div>
+    <div class="infographic-step">🎮 <b>4. AI Builds Code</b> with Real Sprites</div>
+  `;
+  b.append(infoFlow);
+
   const metaBar = el('div', 'row');
   metaBar.style.cssText = 'gap:12px;align-items:center;padding:8px 12px;background:#030c1c;border:1px solid #143e77;border-radius:8px;margin-bottom:12px';
   metaBar.innerHTML = `<span class="mono" style="color:var(--cyan);font-size:13px">Matching: <b>${pickOpt(ARTS,p.art).label}</b> art &nbsp;·&nbsp; <b>${(v?pickOpt(VIBES,v).label:'Default')}</b> vibe &nbsp;·&nbsp; <b>${pickOpt(GENRES,p.genre).label}</b> &nbsp;·&nbsp; <b>${p.dim}</b></span>`;
-  if(!f) metaBar.innerHTML += `<span class="badge warn" style="margin-left:auto">No folder yet: create one on Repo tab</span>`;
+  if(isPreset) metaBar.innerHTML += `<span class="badge gold" style="margin-left:auto">Queen's Domain Preset (ARPG CC0 Packs)</span>`;
+  else if(!f) metaBar.innerHTML += `<span class="badge warn" style="margin-left:auto">No folder yet: create one on Repo tab</span>`;
   b.append(metaBar);
 
   const have = new Set((p.packs || []).map(x => x.slug));
